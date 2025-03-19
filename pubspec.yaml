@@ -17,3 +17,20 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: IM FELL English
+      fonts:
+        - asset: assets/fonts/IMFellEnglish-Regular.ttf
+
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/Outfit-Regular.ttf
+
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter_18pt-Regular.ttf
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
