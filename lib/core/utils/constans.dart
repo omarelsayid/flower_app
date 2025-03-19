@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
+import 'package:flower_app/core/utils/screen_dimensions.dart';
 
-double kHorizontalPadding(BuildContext context) {
-  return MediaQuery.of(context).size.width * 0.04; //! 4% of screen width ==(16)
-}
+final kHorizontalPadding = screenWidth * (16 / 375);
