@@ -1,3 +1,5 @@
+import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/core/utils/theming.dart';
 import 'package:flutter/material.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -11,8 +13,19 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: theme(context),
       navigatorKey: navigatorKey,
-      home: Scaffold(body: Center(child: Text('Hello World!'))),
+      home: Scaffold(
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Text(
+              'login',
+             
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
