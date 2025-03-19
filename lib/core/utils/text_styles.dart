@@ -1,12 +1,10 @@
-import 'package:flower_app/core/utils/screen_dimensions.dart';
+import 'package:flower_app/core/services/screen_size_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flower_app/main.dart';
 
 class AppTextStyles {
   static double _responsiveFontSize(double baseSize) {
-    final screenWidth = navigatorKey.currentContext!.size!.width;
-    return (baseSize / baseWidth) *
-        screenWidth; 
+    final screenWidth = ScreenSizeService.width;
+    return (baseSize / ScreenSizeService.baseWidth) * screenWidth;
   }
 
   static TextStyle get inter500_20 => TextStyle(

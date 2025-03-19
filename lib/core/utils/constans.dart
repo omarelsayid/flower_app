@@ -1,3 +1,4 @@
-import 'package:flower_app/core/utils/screen_dimensions.dart';
+import 'package:flower_app/core/services/screen_size_service.dart';
 
-final kHorizontalPadding = screenWidth * (16 / baseWidth);
+final kHorizontalPadding =
+    ScreenSizeService.width * (16 / ScreenSizeService.baseWidth);

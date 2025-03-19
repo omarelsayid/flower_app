@@ -1,6 +1,5 @@
+import 'package:flower_app/core/services/screen_size_service.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
-import 'package:flower_app/core/utils/screen_dimensions.dart';
-import 'package:flower_app/main.dart';
 import 'package:flutter/material.dart';
 
 ThemeData theme(BuildContext context) {
@@ -12,8 +11,8 @@ ThemeData theme(BuildContext context) {
       style: ElevatedButton.styleFrom(
         backgroundColor: primaryColor,
         minimumSize: Size(
-          (343 / baseWidth) * screenWidth,
-          (48 / baseHeight) * screenHeight,
+          (343 / ScreenSizeService.baseWidth) * screenWidth,
+          (48 / ScreenSizeService.baseHeight) * screenHeight,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(screenWidth * 0.1),
@@ -24,7 +23,7 @@ ThemeData theme(BuildContext context) {
 }
 
 OutlineInputBorder textFiledInputBorder() {
-  final screenWidth = navigatorKey.currentState!.context.size!.width;
+  final screenWidth = ScreenSizeService.width;
 
   double responsiveRadius = (4 / 375.0) * screenWidth;
   double responsiveBorderWidth = (1 / 375.0) * screenWidth;
