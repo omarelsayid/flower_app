@@ -14,6 +14,7 @@ dependencies:
   injectable:  
   get_it:      
   flutter_bloc: ^9.1.0
+  easy_localization: ^3.0.7+1
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +29,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  assets:
+    - assets/translations/
   fonts:
     - family: IM FELL English
       fonts:
