@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.0
 
 dev_dependencies:
   flutter_test:
@@ -17,7 +18,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
+  assets:
+    - assets/icons/
   fonts:
     - family: IM FELL English
       fonts:

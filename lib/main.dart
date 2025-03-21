@@ -16,6 +16,7 @@ class MainApp extends StatelessWidget {
     ScreenSizeService.init(context);
     return MaterialApp(
       theme: theme(context),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: buildCustomAppBar(
           title: 'Login',
