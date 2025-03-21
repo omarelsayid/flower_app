@@ -1,11 +1,19 @@
 import 'package:flower_app/core/services/screen_size_service.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/core/utils/theming.dart';
-import 'package:flower_app/core/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-void main() {
-  runApp(const MainApp());
+import 'core/routes_generator/pages_routes.dart';
+import 'core/routes_generator/routes_generator.dart';
+import 'core/services/shared_preference_services.dart';
+import 'di/injectable_initializer.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+   configureDependencies();
+  await SharedPreferenceServices.init();
+  runApp(MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -16,30 +24,10 @@ class MainApp extends StatelessWidget {
     ScreenSizeService.init(context);
     return MaterialApp(
       theme: theme(context),
-      home: Scaffold(
-        appBar: buildCustomAppBar(
-          title: 'Login',
-          isVisible: false,
-          context: context,
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: Text(
-                  'login',
-                  style: AppTextStyles.inter500_16.copyWith(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              TextFormField(),
-              TextButton(onPressed: () {}, child: Text('Login')),
-            ],
-          ),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: RoutesGenerator.onGenerateRoute,
+      initialRoute: PagesRoutes.signUpScreen,
+      builder: EasyLoading.init(),
     );
   }
 }
