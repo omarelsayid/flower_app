@@ -19,23 +19,3 @@ abstract class ApiClient {
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
 }
 
-class DioLogger {
-  static void addLoggingInterceptor(Dio dio) {
-    dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) {
-        log("➡️ Request: ${options.method} ${options.uri}");
-        log("➡️ Headers: ${options.headers}");
-        log("➡️ Data: ${options.data}");
-        return handler.next(options);
-      },
-      onResponse: (response, handler) {
-        log("✅ Response: ${response.statusCode} ${response.data}");
-        return handler.next(response);
-      },
-      onError: (DioError e, handler) {
-        log("❌ Dio Error: ${e.response?.statusCode} ${e.response?.data}");
-        return handler.next(e);
-      },
-    ));
-  }
-}
