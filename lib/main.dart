@@ -32,6 +32,7 @@ class MainApp extends StatelessWidget {
       locale: context.locale,
       //==============================================
       theme: theme(context),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: buildCustomAppBar(
           title: 'login'.tr(),
