@@ -1,7 +1,7 @@
 import 'package:flower_app/core/services/screen_size_service.dart';
 import 'package:flutter/material.dart';
 
-class AppTextStyles {
+abstract class AppTextStyles {
   static double _responsiveFontSize(double baseSize) {
     final screenWidth = ScreenSizeService.width;
     return (baseSize / ScreenSizeService.baseWidth) * screenWidth;
