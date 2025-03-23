@@ -8,9 +8,17 @@ ThemeData theme(BuildContext context) {
   final double screenHeight = MediaQuery.of(context).size.height;
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: AppColors.primaryColor,
+     unselectedLabelStyle: AppTextStyles.inter400_12,
+      selectedLabelStyle: AppTextStyles.inter400_12
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: primaryColor,
+        backgroundColor: AppColors.primaryColor,
         minimumSize: Size(
           (343 / ScreenSizeService.baseWidth) * screenWidth,
           (48 / ScreenSizeService.baseHeight) * screenHeight,
@@ -42,16 +50,16 @@ ThemeData theme(BuildContext context) {
 
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: primaryColor,
+        foregroundColor: AppColors.primaryColor,
         textStyle: AppTextStyles.inter500_16.copyWith(
           decoration: TextDecoration.underline,
-          decorationColor: primaryColor,
+          decorationColor: AppColors.primaryColor,
           decorationStyle: TextDecorationStyle.solid,
         ),
       ),
     ),
     radioTheme: RadioThemeData(
-      fillColor: WidgetStateProperty.all(primaryColor),
+      fillColor: WidgetStateProperty.all(AppColors.primaryColor),
     ),
   );
 }
@@ -67,7 +75,7 @@ OutlineInputBorder textFiledInputBorder() {
       topLeft: Radius.circular(responsiveRadius),
       topRight: Radius.circular(responsiveRadius),
     ),
-    borderSide: BorderSide(color: Colors.grey, width: responsiveBorderWidth),
+    borderSide: BorderSide(color: AppColors.greyColor, width: responsiveBorderWidth),
   );
 }
 
