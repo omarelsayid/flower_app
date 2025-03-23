@@ -1,7 +1,7 @@
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/data/model/sign_up_response_dto.dart';
+import 'package:flower_app/features/domain/entity/sign_in_request.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -17,5 +17,7 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
-}
 
+  @POST("/api/v1/auth/signin")
+  Future<HttpResponse<SignUpResponseDTO>> signIn(@Body() SignInRequest data);
+}

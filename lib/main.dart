@@ -1,5 +1,4 @@
 import 'package:flower_app/core/services/screen_size_service.dart';
-import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/core/utils/theming.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -11,7 +10,7 @@ import 'di/injectable_initializer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   configureDependencies();
+  configureDependencies();
   await SharedPreferenceServices.init();
   runApp(MainApp());
 }
@@ -26,7 +25,7 @@ class MainApp extends StatelessWidget {
       theme: theme(context),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.signUpScreen,
+      initialRoute: PagesRoutes.signInScreen,
       builder: EasyLoading.init(),
     );
   }
