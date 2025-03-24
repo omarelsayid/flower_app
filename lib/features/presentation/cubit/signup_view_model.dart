@@ -68,19 +68,29 @@ class SignUpViewModel extends Cubit<SignUpState> {
     switch (result) {
       case Success():
         if (result.data != null) {
-          emit(SuccessSignUpState(result.data!));
-          log("Sign-up success: ${result.data!.firstName}");
+          final signUpResponse = result.data!;
+          final user = signUpResponse.user;
+          final token = signUpResponse.token ?? "";
+
+          if (user != null && token.isNotEmpty) {
+            emit(SuccessSignUpState(user, token));
+            log("Sign-up success: ${user.firstName}, Token: $token");
+          } else {
+            emit(SignUpErrorState("Sign-up failed: Missing user or token"));
+          }
         } else {
-          emit(ErrorSignUpState("Sign-up failed"));
+          emit(SignUpErrorState("Sign-up failed"));
         }
         break;
 
       case Error():
-        emit(ErrorSignUpState(result.exception.toString()));
+        emit(SignUpErrorState(result.exception.toString()));
         log("Sign-up API Error: ${result.exception}");
         break;
     }
   }
+
+
 }
 
 class SuccessSignUPState {}

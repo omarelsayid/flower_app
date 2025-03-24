@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/data/model/sign_up_response_dto.dart';
 import 'package:injectable/injectable.dart';

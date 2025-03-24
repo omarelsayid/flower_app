@@ -10,7 +10,7 @@ class AuthUseCase {
 
  AuthUseCase(this._authRepository);
 
- Future<Result<User>> execute(SignUpRequest request) {
+ Future<Result<SignUpResponseEntity>> execute(SignUpRequest request) {
   return _authRepository.signUp(request);
  }
 }

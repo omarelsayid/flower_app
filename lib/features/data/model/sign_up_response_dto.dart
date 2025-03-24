@@ -5,6 +5,7 @@ part 'sign_up_response_dto.g.dart';
 
 @JsonSerializable()
 class SignUpResponseDTO extends SignUpResponseEntity {
+  @override
   @JsonKey(fromJson: UserDTO.fromJson, toJson: _userToJson)
   final UserDTO? user;
 

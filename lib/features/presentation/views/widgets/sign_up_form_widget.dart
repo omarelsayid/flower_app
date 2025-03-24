@@ -1,9 +1,9 @@
-import 'package:flower_app/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constans.dart';
 import '../../../../core/utils/text_styles.dart';
+import '../../../../core/widgets/custom_validate.dart';
 import '../../cubit/signup_view_model.dart';
 
 class SignUpFormWidget extends StatelessWidget {
@@ -29,13 +29,7 @@ class SignUpFormWidget extends StatelessWidget {
                       hintText: 'Enter first name',
                       labelText: 'First name',
                     ),
-                    // validator: AppValidate.validateEmail,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your First Name';
-                      }
-                      return null;
-                    },
+                    validator: AppValidate.validateFullName,
                   ),
                 ),
                 SizedBox(width: kHorizontalPadding),
@@ -46,12 +40,7 @@ class SignUpFormWidget extends StatelessWidget {
                       hintText: 'Enter last name',
                       labelText: 'Last name',
                     ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your Last Name';
-                      }
-                      return null;
-                    },
+                    validator: AppValidate.validateFullName,
                   ),
                 ),
               ],
@@ -63,16 +52,7 @@ class SignUpFormWidget extends StatelessWidget {
                 hintText: 'Enter your email',
                 labelText: 'Email',
               ),
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your email';
-                }
-
-                if (!value.isValidEmail) {
-                  return 'invalid email format';
-                }
-                return null;
-              },
+              validator: AppValidate.validateEmail,
             ),
             SizedBox(height: kVerticalPadding),
             Row(
@@ -85,17 +65,7 @@ class SignUpFormWidget extends StatelessWidget {
                       labelText: 'Enter password',
                     ),
                     obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
-                      }
-
-                      if (!value.isValidPassword) {
-                        return 'invalid password format';
-                      }
-
-                      return null;
-                    },
+                    validator: AppValidate.validatePassword,
                   ),
                 ),
                 SizedBox(width: kHorizontalPadding),
@@ -107,17 +77,7 @@ class SignUpFormWidget extends StatelessWidget {
                       labelText: 'Confirm Password',
                     ),
                     obscureText: true,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
-                      }
-
-                      if (!value.isValidPassword) {
-                        return 'invalid password format';
-                      }
-
-                      return null;
-                    },
+                    validator: AppValidate.validatePassword,
                   ),
                 ),
               ],
@@ -130,17 +90,7 @@ class SignUpFormWidget extends StatelessWidget {
                 labelText: 'Phone number',
               ),
               keyboardType: TextInputType.phone,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter your phone number';
-                }
-
-                if (!value.isValidPhone) {
-                  return 'invalid phone format';
-                }
-
-                return null;
-              },
+              validator: AppValidate.validateMobile,
             ),
             Row(
               children: [
@@ -185,16 +135,11 @@ class SignUpFormWidget extends StatelessWidget {
             ElevatedButton(
               onPressed: () => vmSignUp.doIntent(SignUpClickedIntent()),
               style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
                 minimumSize: const Size.fromHeight(50),
               ),
-              child: const Text(
+              child:  Text(
                 "Sign up",
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                style: AppTextStyles.inter500_16.copyWith(color: Colors.white,),
               ),
             ),
             SizedBox(height: kVerticalHPadding),
@@ -206,15 +151,15 @@ class SignUpFormWidget extends StatelessWidget {
                 child: Text.rich(
                   TextSpan(
                     text: "Already have an account? ",
+                    style: AppTextStyles.inter500_16,
                     children: [
                       TextSpan(
                         text: "Login",
-                        style: TextStyle(
+                        style: AppTextStyles.inter500_16.copyWith(
                           color: primaryColor,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline,
                           decorationColor: primaryColor,
-                          decorationThickness: 2,
                         ),
                       ),
                     ],

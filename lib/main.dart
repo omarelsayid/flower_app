@@ -1,5 +1,4 @@
 import 'package:flower_app/core/services/screen_size_service.dart';
-import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/core/utils/theming.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';

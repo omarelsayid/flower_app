@@ -6,14 +6,17 @@ class SignUpLoadingState extends SignUpState {}
 
 class SuccessSignUpState extends SignUpState {
   final User? success;
-  SuccessSignUpState(this.success);
+  final String token;
+
+  SuccessSignUpState(this.success, this.token);
 }
 
-class ErrorSignUpState extends SignUpState {
-  final String? errMessage;
 
-  ErrorSignUpState(this.errMessage);
+class SignUpErrorState extends SignUpState {
+  final String message;
+  SignUpErrorState(this.message);
 }
+
 class SignUpGenderChangedState extends SignUpState {
   final String gender;
   SignUpGenderChangedState(this.gender);
