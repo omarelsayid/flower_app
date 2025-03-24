@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flower_app/features/domain/entity/forget_response_password_entity.dart';
+import 'package:flower_app/features/domain/entity/reset_password_response_entity.dart';
+import 'package:flower_app/features/domain/entity/verify_email_response_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/services/shared_preference_services.dart';
@@ -10,6 +13,7 @@ import '../../domain/entity/sign_up_request.dart';
 import '../../domain/entity/sign_up_response_entity.dart';
 import '../../domain/repository/auth_repository.dart';
 import '../data_source/auth_remote_data_source.dart';
+import '../model/forget_response_password_dto.dart';
 import '../model/sign_up_response_dto.dart';
 
 @Injectable(as: AuthRepository)
@@ -44,4 +48,99 @@ class AuthRepositoryImpl implements AuthRepository {
       return Error("Unexpected error: $e");
     }
   }
+
+  @override
+  Future<Result<ForgetResponsePasswordDto>> forgetPassword(String email) async {
+    try {
+      final ForgetResponsePasswordDto response = await _authRemoteDataSource.forgetPassword(email);
+      log('SignUp Response: $response');
+      log('Response Message: ${response.message}');
+      log('Response info: ${response.info}');
+   //   log('Response info: ${response.code}');
+
+   //   var response = await _authRemoteDataSource.forgetPassword(email);
+
+      // التأكد من أن الاستجابة تحتوي على بيانات صحيحة
+      if (response.message == "success" && response.info != null) {
+      //  await SharedPreferenceServices.saveData(AppConstants.token, response.message!);
+        return Success(response);
+      } else {
+        log(' failed, response message: ${response.message}');
+        return Error(response.message ?? "Unknown error");
+      }
+    } on DioException catch (dioException) {
+      log("Dio Exception: ${dioException.response?.data}");
+      return Error(dioException.response?.data["message"] ?? "Unknown error");
+    } catch (e) {
+      log("Unexpected error: $e");
+      return Error("Unexpted error: $e");
+    }
+  }
+
+
+
+  @override
+  Future<Result<VerifyEmailResponseEntity>> verifyEmail(String code) async {
+    {
+      try {
+        final VerifyEmailResponseEntity response = await _authRemoteDataSource.verifyEmail(code);
+        log('SignUp Response: $response');
+        log('Response status: ${response.status}');
+
+        //   var response = await _authRemoteDataSource.forgetPassword(email);
+
+        // التأكد من أن الاستجابة تحتوي على بيانات صحيحة
+        if (response.status == "success" ) {
+          //  await SharedPreferenceServices.saveData(AppConstants.token, response.message!);
+          return Success(response );
+        } else {
+          log(' failed, response message: ${response.status}');
+          return Error( "Unknown error");
+        }
+      } on DioException catch (dioException) {
+        log("Dio Exception: ${dioException.response?.data}");
+        return Error(dioException.response?.data["message"] ?? "Unknown error");
+      } catch (e) {
+        log("Unexpected error: $e");
+        return Error("Unexpected error: $e");
+      }
+    }
+
+  }
+
+  // @override
+  // Future<Result<ResetPasswordResponseEntity>> resetPassword(String email, String newPassword) {
+  //   // TODO: implement resetPassword
+  //   throw UnimplementedError();
+  // }
+  //
+  // @override
+  // Future<Result<VerifyEmailResponseEntity>> verifyEmail(String code) {
+  //   // TODO: implement verifyEmail
+  //   throw UnimplementedError();
+  // }
+
+
+  // Future<Result<ForgetResponsePasswordEntity>> forgetPassword(String email)
+  // async{
+  //   return executeApi<ForgetResponsePasswordEntity>(
+  //         () async {
+  //       var response = await _authRemoteDataSource.forgetPassword(email);
+  //       var data = ForgetResponsePasswordDto.fromJson(response.data);
+  //       return data;
+  //     },
+  //   );
+  // }
+
+  // @override
+  // // Future<Result<dynamic>> resetPassword(String email, String newPassword) {
+  // //   // TODO: implement resetPassword
+  // //   throw UnimplementedError();
+  // // }
+  // //
+  // // @override
+  // // Future<Result<VerifyEmailResponseEntity>> verifyEmail(String code) {
+  // //   // TODO: implement verifyEmail
+  // //   throw UnimplementedError();
+  // // }
 }

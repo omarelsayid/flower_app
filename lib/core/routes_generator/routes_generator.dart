@@ -1,6 +1,9 @@
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
+import 'package:flower_app/features/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import 'package:flower_app/features/presentation/views/sign_up_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/presentation/views/forget_passwerd/email_verification_screen.dart';
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -8,7 +11,12 @@ class RoutesGenerator {
       case PagesRoutes.signUpScreen:
         return MaterialPageRoute(
             builder: (context) => const SignUpScreen(), settings: settings);
-
+      case PagesRoutes.forgetPassword:
+        return MaterialPageRoute(
+            builder: (context) => const ForgetPasswordScreen(), settings: settings);
+      case PagesRoutes.emailVerification:
+        return MaterialPageRoute(
+            builder: (context) => const EmailVerificationsScreen(), settings: settings);
 
       default:
         return unDefinedRoute();
