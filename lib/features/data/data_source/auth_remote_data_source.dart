@@ -36,7 +36,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<VerifyEmailResponseDto> verifyEmail(String code) async {
     return await
-    _apiClient.verifyEmail ({"code": code});
+    _apiClient.verifyEmail ({"resetCode": code});
   }
 
 

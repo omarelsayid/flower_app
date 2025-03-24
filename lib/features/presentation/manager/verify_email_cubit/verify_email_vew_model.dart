@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/features/presentation/manager/verify_email_cubit/verify_email_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,9 +59,11 @@ class VerifyEmailVewModel extends Cubit<VerifyEmailState> {
   void _verifyEmail(String code) async {
     emit(LoadingVerifyEmailState());
     var result = await _auth.callVerifyEmail(code);
+    log(("result => $result"));
     switch (result) {
       case Success():
         var data = result.data;
+        log("data $data");
         if (data!.status == "Success") {
           emit(SuccessVerifyEmailState());
         } else {

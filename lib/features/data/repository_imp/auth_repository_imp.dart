@@ -90,7 +90,7 @@ class AuthRepositoryImpl implements AuthRepository {
         //   var response = await _authRemoteDataSource.forgetPassword(email);
 
         // التأكد من أن الاستجابة تحتوي على بيانات صحيحة
-        if (response.status == "success" ) {
+        if (response.status == "Success" ) {
           //  await SharedPreferenceServices.saveData(AppConstants.token, response.message!);
           return Success(response );
         } else {

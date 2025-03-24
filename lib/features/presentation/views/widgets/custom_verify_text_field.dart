@@ -13,12 +13,10 @@ class CustomVerifyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical:kVerticalHPadding ,
-          horizontal: kHorizontalPadding,
-        ),
-        child: Container(
 
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        child: Container(
+           width: 15,
           decoration: BoxDecoration(
             //color: Color(0xFFCFCFCF),
             borderRadius: BorderRadius.circular(10),

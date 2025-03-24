@@ -10,9 +10,12 @@ import '../../../../di/injectable_initializer.dart';
 import '../../manager/verify_email_cubit/verify_email_state.dart';
 import '../../manager/verify_email_cubit/verify_email_vew_model.dart';
 import '../widgets/custom_verify_text_field.dart';
+import '../widgets/resend_otp_button.dart';
 
 class EmailVerificationsScreen extends StatelessWidget {
   const EmailVerificationsScreen({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +76,14 @@ class EmailVerificationsScreen extends StatelessWidget {
                     "Email verification",
 
                   ),
+                  SizedBox(height: kVerticalPadding),
 
                   Text(
                     "Please enter your code that send to your\n email address",
                     textAlign: TextAlign.center,
 
                     ),
+                  SizedBox(height: kVerticalPadding),
 
 
                   Row(
@@ -122,7 +127,7 @@ class EmailVerificationsScreen extends StatelessWidget {
 
                     ],
                   ),
-
+                  SizedBox(height: kVerticalPadding),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -130,16 +135,19 @@ class EmailVerificationsScreen extends StatelessWidget {
                         "Didn't receive code?",
 
                       ),
-                      TextButton(
-                        onPressed: () {
-                          vewModel.doIntent(ResendClickedIntent());
-                        },
-                        child: Text("Resend",
-                            ),
-                      ),
+                      ResendOTPButton(onResend:(){
+                        vewModel.doIntent(ResendClickedIntent());
+                      }),
+                      // TextButton(
+                      //   onPressed: () {
+                      //     vewModel.doIntent(ResendClickedIntent());
+                      //   },
+                      //   child: Text("Resend",
+                      //       ),
+                      // ),
                     ],
                   ),
-
+                  SizedBox(height: kVerticalPadding),
                   ElevatedButton(
 
               onPressed: () {
