@@ -40,7 +40,7 @@ class ServerFailure extends Failure {
     }
 
     final statusCode = response.statusCode;
-    final message = response.data['message'];
+    final message = response.data['error'];
 
     switch (statusCode) {
       case 401:

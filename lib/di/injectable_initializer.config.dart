@@ -1,0 +1,66 @@
+// dart format width=80
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+// **************************************************************************
+// InjectableConfigGenerator
+// **************************************************************************
+
+// ignore_for_file: type=lint
+// coverage:ignore-file
+
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:dio/dio.dart' as _i361;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+import 'package:internet_connection_checker/internet_connection_checker.dart'
+    as _i973;
+
+import '../core/api/api_client.dart' as _i424;
+import '../core/services/internet_connection_check.dart' as _i697;
+import '../features/data/data_source/auth_remote_data_source.dart' as _i340;
+import '../features/data/repository_imp/auth_repository_imp.dart' as _i839;
+import '../features/domain/repository/auth_repository.dart' as _i767;
+import '../features/domain/use_case/auth_use_case.dart' as _i19;
+import '../features/domain/use_case/sign_in%20_use_case.dart' as _i750;
+import '../features/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
+    as _i512;
+import '../features/presentation/cubit/signup_view_model.dart' as _i201;
+
+extension GetItInjectableX on _i174.GetIt {
+  // initializes the registration of main-scope dependencies inside of GetIt
+  _i174.GetIt init({
+    String? environment,
+    _i526.EnvironmentFilter? environmentFilter,
+  }) {
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
+    final dataModule = _$DataModule();
+    gh.singleton<_i973.InternetConnectionChecker>(
+      () => dataModule.getInternetConnectionCheck(),
+    );
+    gh.singleton<_i424.ApiClient>(() => _i424.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i340.AuthRemoteDataSource>(
+      () => _i340.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i767.AuthRepository>(
+      () => _i839.AuthRepositoryImpl(
+        gh<_i340.AuthRemoteDataSource>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
+    gh.factory<_i19.AuthUseCase>(
+      () => _i19.AuthUseCase(gh<_i767.AuthRepository>()),
+    );
+    gh.factory<_i750.SignInUseCase>(
+      () => _i750.SignInUseCase(gh<_i767.AuthRepository>()),
+    );
+    gh.factory<_i201.SignUpViewModel>(
+      () => _i201.SignUpViewModel(gh<_i19.AuthUseCase>()),
+    );
+    gh.factory<_i512.SignInViewModel>(
+      () => _i512.SignInViewModel(gh<_i750.SignInUseCase>()),
+    );
+    return this;
+  }
+}
+
+class _$DataModule extends _i697.DataModule {}
