@@ -46,7 +46,6 @@ class VerifyEmailVewModel extends Cubit<VerifyEmailState> {
     code4.clear();
     code5.clear();
     code6.clear();
-
   }
   String _collectVerifyCode() {
     return "${code1.text}${code2.text}${code3.text}${code4.text}${code5.text}${code6.text}";
@@ -54,10 +53,9 @@ class VerifyEmailVewModel extends Cubit<VerifyEmailState> {
   void onChanged(BuildContext context,String value, FocusNode nextFocusNode,FocusNode previousNode) {
     if (value.length == 1) {
       FocusScope.of(context).requestFocus(nextFocusNode);
-    }if (value.isEmpty  ) {
+    }else if (value.isEmpty) {
       FocusScope.of(context).requestFocus(previousNode); // الرجوع للخلف عند المسح
     }
-
   }
 
   void _verifyEmail(String code) async {
@@ -94,7 +92,7 @@ class VerifyEmailVewModel extends Cubit<VerifyEmailState> {
   }
 }
 sealed class VerifyEmailIntent {}
+
 class ContinueClickedIntent extends VerifyEmailIntent {}
-class ResendClickedIntent extends VerifyEmailIntent {
-}
+class ResendClickedIntent extends VerifyEmailIntent {}
 class DisposeEmailIntent extends VerifyEmailIntent{}

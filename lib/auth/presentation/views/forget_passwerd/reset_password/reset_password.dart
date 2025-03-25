@@ -26,7 +26,7 @@ class _ResetPasswordState extends State<ResetPassword> {
 
   @override
   Widget build(BuildContext context) {
-   widget.email = ModalRoute.of(context)!.settings.arguments.toString();
+   widget.email = ModalRoute.of(context)!.settings.arguments as String;
 
     print("the email is ${widget.email}");
     return BlocProvider(
@@ -192,7 +192,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   });
 
                   context.read<ResetPasswordViewModel>().resetPassword(
-                    widget.email,
+                    widget.email.trim(),
                     confirmPasswordController.text.trim(),
                   );                } else {
                   setState(() {

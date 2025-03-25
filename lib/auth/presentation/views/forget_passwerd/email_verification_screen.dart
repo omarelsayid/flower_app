@@ -19,7 +19,7 @@ class EmailVerificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     VerifyEmailVewModel vewModel = getIt.get<VerifyEmailVewModel>();
-    email = ModalRoute.of(context)!.settings.arguments.toString();
+    email = ModalRoute.of(context)!.settings.arguments as String;
     debugPrint(email);
     return BlocProvider(
       create: (context) => vewModel,
