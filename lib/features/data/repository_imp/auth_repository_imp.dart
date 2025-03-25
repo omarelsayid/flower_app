@@ -19,6 +19,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<User>> signUp(SignUpRequest data) async {
     try {
+      //0000000000000
       final SignUpResponseDTO response = await _authRemoteDataSource.signUp(data);
 
       // Log the response from the API
