@@ -3,13 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i8;
 
-import 'package:flower_app/core/api/api_client.dart' as _i4;
-import 'package:flower_app/auth/data/model/sign_up_response_dto.dart'
-    as _i2;
-import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i7;
-import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i6;
+import 'package:flower_app/auth/data/model/forget_response_password_dto.dart'
+    as _i4;
+import 'package:flower_app/auth/data/model/reset_password_dto.dart' as _i6;
+import 'package:flower_app/auth/data/model/sign_up_response_dto.dart' as _i2;
+import 'package:flower_app/auth/data/model/verify_email_response_dto.dart'
+    as _i5;
+import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i10;
+import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i9;
+import 'package:flower_app/core/api/api_client.dart' as _i7;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:retrofit/retrofit.dart' as _i3;
 
@@ -39,40 +43,103 @@ class _FakeHttpResponse_1<T> extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeForgetResponsePasswordDto_2 extends _i1.SmartFake
+    implements _i4.ForgetResponsePasswordDto {
+  _FakeForgetResponsePasswordDto_2(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeVerifyEmailResponseDto_3 extends _i1.SmartFake
+    implements _i5.VerifyEmailResponseDto {
+  _FakeVerifyEmailResponseDto_3(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeResetPasswordResponseDTO_4 extends _i1.SmartFake
+    implements _i6.ResetPasswordResponseDTO {
+  _FakeResetPasswordResponseDTO_4(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ApiClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiClient extends _i1.Mock implements _i4.ApiClient {
+class MockApiClient extends _i1.Mock implements _i7.ApiClient {
   MockApiClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.SignUpResponseDTO> signUp(_i6.SignUpRequest? data) =>
+  _i8.Future<_i2.SignUpResponseDTO> signUp(_i9.SignUpRequest? data) =>
       (super.noSuchMethod(
             Invocation.method(#signUp, [data]),
-            returnValue: _i5.Future<_i2.SignUpResponseDTO>.value(
+            returnValue: _i8.Future<_i2.SignUpResponseDTO>.value(
               _FakeSignUpResponseDTO_0(
                 this,
                 Invocation.method(#signUp, [data]),
               ),
             ),
           )
-          as _i5.Future<_i2.SignUpResponseDTO>);
+          as _i8.Future<_i2.SignUpResponseDTO>);
 
   @override
-  _i5.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>> signIn(
-    _i7.SignInRequest? data,
+  _i8.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>> signIn(
+    _i10.SignInRequest? data,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#signIn, [data]),
             returnValue:
-                _i5.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>.value(
+                _i8.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>.value(
                   _FakeHttpResponse_1<_i2.SignUpResponseDTO>(
                     this,
                     Invocation.method(#signIn, [data]),
                   ),
                 ),
           )
-          as _i5.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>);
+          as _i8.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>);
+
+  @override
+  _i8.Future<_i4.ForgetResponsePasswordDto> forgetPassword(
+    Map<String, dynamic>? data,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#forgetPassword, [data]),
+            returnValue: _i8.Future<_i4.ForgetResponsePasswordDto>.value(
+              _FakeForgetResponsePasswordDto_2(
+                this,
+                Invocation.method(#forgetPassword, [data]),
+              ),
+            ),
+          )
+          as _i8.Future<_i4.ForgetResponsePasswordDto>);
+
+  @override
+  _i8.Future<_i5.VerifyEmailResponseDto> verifyEmail(
+    Map<String, String>? code,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#verifyEmail, [code]),
+            returnValue: _i8.Future<_i5.VerifyEmailResponseDto>.value(
+              _FakeVerifyEmailResponseDto_3(
+                this,
+                Invocation.method(#verifyEmail, [code]),
+              ),
+            ),
+          )
+          as _i8.Future<_i5.VerifyEmailResponseDto>);
+
+  @override
+  _i8.Future<_i6.ResetPasswordResponseDTO> resetPassword(
+    Map<String, dynamic>? data,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#resetPassword, [data]),
+            returnValue: _i8.Future<_i6.ResetPasswordResponseDTO>.value(
+              _FakeResetPasswordResponseDTO_4(
+                this,
+                Invocation.method(#resetPassword, [data]),
+              ),
+            ),
+          )
+          as _i8.Future<_i6.ResetPasswordResponseDTO>);
 }
