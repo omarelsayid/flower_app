@@ -7,6 +7,7 @@ import 'core/routes_generator/routes_generator.dart';
 import 'core/services/bloc_observer.dart';
 import 'core/services/easy_loading_service.dart';
 import 'core/services/shared_preference_services.dart';
+import 'core/utils/constant_manager.dart';
 import 'di/injectable_initializer.dart';
 import 'features/presentation/views/forget_passwerd/reset_password/reset_password.dart';
 
@@ -17,11 +18,17 @@ void main() async {
   configureDependencies();
   await SharedPreferenceServices.init();
   ConfigLoading().showLoading();
-  runApp(MainApp());
+  String? token =
+      SharedPreferenceServices.getData(AppConstants.token) as String?;
+  bool? rememberMe =
+      SharedPreferenceServices.getData(AppConstants.rememberMe) as bool?;
+  runApp(MainApp(token: token, rememberMe: rememberMe));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  const MainApp({super.key, this.token, this.rememberMe});
+  final String? token;
+  final bool? rememberMe;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +37,10 @@ class MainApp extends StatelessWidget {
       theme: theme(context),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.signInScreen,
+      initialRoute:
+          token != null && rememberMe!
+              ? PagesRoutes.layOutScreen
+              : PagesRoutes.signInScreen,
       builder: EasyLoading.init(),
     );
   }
