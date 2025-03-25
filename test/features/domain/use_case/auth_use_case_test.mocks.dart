@@ -6,10 +6,16 @@
 import 'dart:async' as _i3;
 
 import 'package:flower_app/auth/domain/common/result.dart' as _i4;
+import 'package:flower_app/auth/domain/entity/forget_response_password_entity.dart'
+    as _i9;
+import 'package:flower_app/auth/domain/entity/reset_password_response_entity.dart'
+    as _i11;
 import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i8;
 import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i6;
 import 'package:flower_app/auth/domain/entity/sign_up_response_entity.dart'
     as _i5;
+import 'package:flower_app/auth/domain/entity/verify_email_response_entity.dart'
+    as _i10;
 import 'package:flower_app/auth/domain/repository/auth_repository.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
@@ -65,4 +71,53 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
             ),
           )
           as _i3.Future<_i4.Result<_i5.SignUpResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i9.ForgetResponsePasswordEntity>> forgetPassword(
+    String? email,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#forgetPassword, [email]),
+            returnValue:
+                _i3.Future<_i4.Result<_i9.ForgetResponsePasswordEntity>>.value(
+                  _i7.dummyValue<_i4.Result<_i9.ForgetResponsePasswordEntity>>(
+                    this,
+                    Invocation.method(#forgetPassword, [email]),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.Result<_i9.ForgetResponsePasswordEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i10.VerifyEmailResponseEntity>> verifyEmail(
+    String? code,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#verifyEmail, [code]),
+            returnValue:
+                _i3.Future<_i4.Result<_i10.VerifyEmailResponseEntity>>.value(
+                  _i7.dummyValue<_i4.Result<_i10.VerifyEmailResponseEntity>>(
+                    this,
+                    Invocation.method(#verifyEmail, [code]),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.Result<_i10.VerifyEmailResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i11.ResetPasswordResponseEntity>> resetPassword(
+    String? email,
+    String? newPassword,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#resetPassword, [email, newPassword]),
+            returnValue:
+                _i3.Future<_i4.Result<_i11.ResetPasswordResponseEntity>>.value(
+                  _i7.dummyValue<_i4.Result<_i11.ResetPasswordResponseEntity>>(
+                    this,
+                    Invocation.method(#resetPassword, [email, newPassword]),
+                  ),
+                ),
+          )
+          as _i3.Future<_i4.Result<_i11.ResetPasswordResponseEntity>>);
 }

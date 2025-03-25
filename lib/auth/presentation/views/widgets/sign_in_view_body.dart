@@ -124,7 +124,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // Navigate to forget password view
+                     Navigator.pushNamed(context, PagesRoutes.forgetPassword);
                       },
                       child: Text(
                         'Forget password?',

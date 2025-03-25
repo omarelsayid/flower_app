@@ -1,8 +1,7 @@
 import 'dart:developer';
 
-import 'package:flower_app/features/presentation/manager/verify_email_cubit/verify_email_state.dart';
+import 'package:flower_app/auth/presentation/cubit/verify_email_cubit/verify_email_state.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -60,16 +59,7 @@ class VerifyEmailVewModel extends Cubit<VerifyEmailState> {
     }
 
   }
-  // Future<void> onKeyPress(BuildContext context, RawKeyEvent event, FocusNode previousNode,String value,) async {
-  //   if (
-  //       event.logicalKey == LogicalKeyboardKey.backspace &&
-  //        value.isEmpty) {
-  //
-  //        // مسح الرقم من الحقل السابق
-  //       FocusScope.of(context).requestFocus(previousNode); // الرجوع للخلف
-  //
-  //   }
-  // }
+
   void _verifyEmail(String code) async {
     emit(LoadingVerifyEmailState());
     var result = await _auth.callVerifyEmail(code);

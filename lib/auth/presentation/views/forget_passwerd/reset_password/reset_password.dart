@@ -1,7 +1,6 @@
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/extensions.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
-import 'package:flower_app/features/presentation/manager/reset_password_cubit/reset_password_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart' show BlocBuilder, BlocListener, BlocProvider, ReadContext;
 
@@ -9,8 +8,10 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/constans.dart';
 import '../../../../../core/utils/text_styles.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../cubit/reset_password_cubit/reset_password_view_model.dart';
 
 class ResetPassword extends StatefulWidget {
+  late String email;
   @override
   State<ResetPassword> createState() => _ResetPasswordState();
 }
@@ -25,9 +26,9 @@ class _ResetPasswordState extends State<ResetPassword> {
 
   @override
   Widget build(BuildContext context) {
-   // email = ModalRoute.of(context)!.settings.arguments as String;
+   widget.email = ModalRoute.of(context)!.settings.arguments.toString();
 
-    // print("the email is $email");
+    print("the email is ${widget.email}");
     return BlocProvider(
       create: (context) => getIt<ResetPasswordViewModel>(),
       child: BlocListener<ResetPasswordViewModel, ResetPasswordState>(
@@ -41,7 +42,7 @@ class _ResetPasswordState extends State<ResetPassword> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.response.message!), backgroundColor: Colors.green),
             );
-            Navigator.pushReplacementNamed(context, PagesRoutes.signUpScreen);
+            Navigator.pushReplacementNamed(context, PagesRoutes.signInScreen);
           }
         },
         child: Scaffold(
@@ -81,13 +82,13 @@ class _ResetPasswordState extends State<ResetPassword> {
                         maxLines: 3,
                         textAlign: TextAlign.center,
                         style: AppTextStyles.inter400_14.copyWith(
-                          color: greyColor,
+                          color: AppColors.greyColor,
                         ),
                       ),
                     ],
                   ),
                   buildFormFields(),
-                  buildSubitButton(),
+                  buildSubmitButton(),
                 ],
               ),
             ),
@@ -165,24 +166,20 @@ class _ResetPasswordState extends State<ResetPassword> {
     );
   }
 
-  Widget buildSubitButton() {
+  Widget buildSubmitButton() {
     return BlocBuilder<ResetPasswordViewModel, ResetPasswordState>(
       builder: (context, state) {
         if(state is ResetPasswordLoading)
           {
-            return Center(child: CircularProgressIndicator(color: primaryColor,),);
+            return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
           }
         else {
           return ElevatedButton(
-            child: Text(
-              'Continue',
-              style: AppTextStyles.roboto500_16.copyWith(color: Colors.white),
-            ),
             style: ElevatedButton.styleFrom(
               backgroundColor:
               validateMode == AutovalidateMode.disabled
-                  ? primaryColor
-                  : greyColor,
+                  ? AppColors.primaryColor
+                  : AppColors.greyColor,
             ),
 
             onPressed: () {
@@ -195,7 +192,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   });
 
                   context.read<ResetPasswordViewModel>().resetPassword(
-                    "qwer353666@gmail.com",
+                    widget.email,
                     confirmPasswordController.text.trim(),
                   );                } else {
                   setState(() {
@@ -204,6 +201,10 @@ class _ResetPasswordState extends State<ResetPassword> {
                 }
               }
             },
+            child: Text(
+              'Continue',
+              style: AppTextStyles.roboto500_16.copyWith(color: Colors.white),
+            ),
           );
         }
 

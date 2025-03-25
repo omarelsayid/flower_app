@@ -17,6 +17,7 @@ abstract class AuthRemoteDataSource {
   Future<ForgetResponsePasswordDto> forgetPassword(String email);
    Future<VerifyEmailResponseDto> verifyEmail(String code);
   Future<ResetPasswordResponseDTO> resetPassword(String email,String newPassword);
+
 }
 
 @Injectable(as: AuthRemoteDataSource)

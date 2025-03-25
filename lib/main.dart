@@ -9,13 +9,11 @@ import 'core/services/easy_loading_service.dart';
 import 'core/services/shared_preference_services.dart';
 import 'core/utils/constant_manager.dart';
 import 'di/injectable_initializer.dart';
-import 'features/presentation/views/forget_passwerd/reset_password/reset_password.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   configureDependencies();
-  MyBlocObserver();
   configureDependencies();
+  MyBlocObserver();
   await SharedPreferenceServices.init();
   ConfigLoading().showLoading();
   String? token =
@@ -38,7 +36,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       initialRoute:
-          token != null && rememberMe!
+          token != null && (rememberMe ?? false)
               ? PagesRoutes.layOutScreen
               : PagesRoutes.signInScreen,
       builder: EasyLoading.init(),

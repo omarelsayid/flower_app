@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../../../../core/routes_generator/pages_routes.dart';
-import '../../../../core/utils/app_colors.dart' as ColorsManager;
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constans.dart';
 import '../../../../core/widgets/custom_diaolg.dart';
 import '../../../../core/widgets/custom_validate.dart';
 import '../../../../di/injectable_initializer.dart';
-import '../../manager/forget_password_cubit/forget_password_state.dart';
-import '../../manager/forget_password_cubit/forget_password_view_model.dart';
+import '../../cubit/forget_password_cubit/forget_password_state.dart';
+import '../../cubit/forget_password_cubit/forget_password_view_model.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
@@ -84,7 +84,7 @@ class ForgetPasswordScreen extends StatelessWidget {
 
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: ColorsManager.primaryColor,
+                      backgroundColor: AppColors.primaryColor,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),

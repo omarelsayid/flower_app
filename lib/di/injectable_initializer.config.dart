@@ -20,19 +20,17 @@ import '../auth/data/repository_imp/auth_repository_imp.dart' as _i465;
 import '../auth/domain/repository/auth_repository.dart' as _i1051;
 import '../auth/domain/use_case/auth_use_case.dart' as _i373;
 import '../auth/domain/use_case/sign_in%20_use_case.dart' as _i679;
+import '../auth/presentation/cubit/forget_password_cubit/forget_password_view_model.dart'
+    as _i526;
+import '../auth/presentation/cubit/reset_password_cubit/reset_password_view_model.dart'
+    as _i721;
 import '../auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
     as _i168;
 import '../auth/presentation/cubit/signup_view_model.dart' as _i573;
+import '../auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
+    as _i837;
 import '../core/api/api_client.dart' as _i424;
 import '../core/services/internet_connection_check.dart' as _i697;
-import '../features/data/repository_imp/auth_repository_imp.dart' as _i839;
-import '../features/domain/repository/auth_repository.dart' as _i767;
-import '../features/presentation/manager/forget_password_cubit/forget_password_view_model.dart'
-    as _i882;
-import '../features/presentation/manager/reset_password_cubit/reset_password_view_model.dart'
-    as _i551;
-import '../features/presentation/manager/verify_email_cubit/verify_email_vew_model.dart'
-    as _i536;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -45,19 +43,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i973.InternetConnectionChecker>(
       () => dataModule.getInternetConnectionCheck(),
     );
-    gh.factory<_i536.VerifyEmailVewModel>(
-      () => _i536.VerifyEmailVewModel(gh<InvalidType>()),
-    );
     gh.singleton<_i424.ApiClient>(() => _i424.ApiClient(gh<_i361.Dio>()));
-    gh.factory<_i767.AuthRepository>(
-      () => _i839.AuthRepositoryImpl(gh<InvalidType>()),
-    );
-    gh.factory<_i882.ForgetPasswordViewModel>(
-      () => _i882.ForgetPasswordViewModel(gh<InvalidType>()),
-    );
-    gh.factory<_i551.ResetPasswordViewModel>(
-      () => _i551.ResetPasswordViewModel(gh<InvalidType>()),
-    );
     gh.factory<_i561.AuthRemoteDataSource>(
       () => _i561.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
@@ -73,11 +59,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i679.SignInUseCase>(
       () => _i679.SignInUseCase(gh<_i1051.AuthRepository>()),
     );
+    gh.factory<_i526.ForgetPasswordViewModel>(
+      () => _i526.ForgetPasswordViewModel(gh<_i373.AuthUseCase>()),
+    );
+    gh.factory<_i721.ResetPasswordViewModel>(
+      () => _i721.ResetPasswordViewModel(gh<_i373.AuthUseCase>()),
+    );
     gh.factory<_i573.SignUpViewModel>(
       () => _i573.SignUpViewModel(gh<_i373.AuthUseCase>()),
     );
     gh.factory<_i168.SignInViewModel>(
       () => _i168.SignInViewModel(gh<_i679.SignInUseCase>()),
+    );
+    gh.factory<_i837.VerifyEmailVewModel>(
+      () => _i837.VerifyEmailVewModel(gh<_i373.AuthUseCase>()),
     );
     return this;
   }

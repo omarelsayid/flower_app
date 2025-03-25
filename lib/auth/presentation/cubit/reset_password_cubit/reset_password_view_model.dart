@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
-import 'package:flower_app/features/domain/common/result.dart';
-import 'package:flower_app/features/domain/entity/reset_password_response_entity.dart';
-import 'package:flower_app/features/domain/use_case/auth_use_case.dart';
+import 'package:flower_app/auth/domain/common/result.dart';
+import 'package:flower_app/auth/domain/entity/reset_password_response_entity.dart';
+import 'package:flower_app/auth/domain/use_case/auth_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 
