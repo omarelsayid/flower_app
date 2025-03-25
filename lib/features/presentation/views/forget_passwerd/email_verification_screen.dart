@@ -74,7 +74,10 @@ class EmailVerificationsScreen extends StatelessWidget {
                   SizedBox(height: kHorizontalPadding,),
                   Text(
                     "Email verification",
-
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500
+                    ),
                   ),
                   SizedBox(height: kVerticalPadding),
 
