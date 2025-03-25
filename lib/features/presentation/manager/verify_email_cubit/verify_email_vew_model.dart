@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flower_app/features/presentation/manager/verify_email_cubit/verify_email_state.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -39,7 +40,7 @@ class VerifyEmailVewModel extends Cubit<VerifyEmailState> {
         _disposeTextField();
     }
   }
- void _disposeTextField(){
+  void _disposeTextField(){
     code1.clear();
     code2.clear();
     code3.clear();
@@ -47,15 +48,28 @@ class VerifyEmailVewModel extends Cubit<VerifyEmailState> {
     code5.clear();
     code6.clear();
 
- }
+  }
   String _collectVerifyCode() {
     return "${code1.text}${code2.text}${code3.text}${code4.text}${code5.text}${code6.text}";
   }
-  void onChanged(BuildContext context,String value, FocusNode nextFocusNode) {
+  void onChanged(BuildContext context,String value, FocusNode nextFocusNode,FocusNode previousNode) {
     if (value.length == 1) {
       FocusScope.of(context).requestFocus(nextFocusNode);
+    }if (value.isEmpty  ) {
+      FocusScope.of(context).requestFocus(previousNode); // الرجوع للخلف عند المسح
     }
+
   }
+  // Future<void> onKeyPress(BuildContext context, RawKeyEvent event, FocusNode previousNode,String value,) async {
+  //   if (
+  //       event.logicalKey == LogicalKeyboardKey.backspace &&
+  //        value.isEmpty) {
+  //
+  //        // مسح الرقم من الحقل السابق
+  //       FocusScope.of(context).requestFocus(previousNode); // الرجوع للخلف
+  //
+  //   }
+  // }
   void _verifyEmail(String code) async {
     emit(LoadingVerifyEmailState());
     var result = await _auth.callVerifyEmail(code);

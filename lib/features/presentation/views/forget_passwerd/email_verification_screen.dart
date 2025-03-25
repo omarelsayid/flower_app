@@ -97,31 +97,31 @@ class EmailVerificationsScreen extends StatelessWidget {
                         controller: vewModel.code1,
                         focusNode: vewModel.focusNode1,
                         onChanged: (value) => vewModel.onChanged(
-                            context, value, vewModel.focusNode2),
+                            context, value, vewModel.focusNode2,vewModel.focusNode1),
                       ),
                       CustomVerifyTextField(
                         controller: vewModel.code2,
                         focusNode: vewModel.focusNode2,
                         onChanged: (value) => vewModel.onChanged(
-                            context, value, vewModel.focusNode3),
+                            context, value, vewModel.focusNode3,vewModel.focusNode1),
                       ),
                       CustomVerifyTextField(
                         controller: vewModel.code3,
                         focusNode: vewModel.focusNode3,
                         onChanged: (value) => vewModel.onChanged(
-                            context, value, vewModel.focusNode4),
+                            context, value, vewModel.focusNode4,vewModel.focusNode2),
                       ),
                       CustomVerifyTextField(
                         controller: vewModel.code4,
                         focusNode: vewModel.focusNode4,
                         onChanged: (value) => vewModel.onChanged(
-                            context, value, vewModel.focusNode5),
+                            context, value, vewModel.focusNode5,vewModel.focusNode3),
                       ),
                       CustomVerifyTextField(
                         controller: vewModel.code5,
                         focusNode: vewModel.focusNode5,
                         onChanged: (value) => vewModel.onChanged(
-                            context, value, vewModel.focusNode6),
+                            context, value, vewModel.focusNode6,vewModel.focusNode4),
                       ),
                       CustomVerifyTextField(
                         controller: vewModel.code6,

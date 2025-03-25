@@ -9,6 +9,8 @@ class CustomVerifyTextField extends StatelessWidget {
   TextEditingController? controller;
    FocusNode? focusNode;
    void Function(String)? onChanged;
+
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -27,12 +29,12 @@ class CustomVerifyTextField extends StatelessWidget {
             controller: controller,
             keyboardType: TextInputType.number,
             maxLength: 1,
-            textAlign: TextAlign.center,
-            onChanged: onChanged,
+            textAlign: TextAlign.start,
+           onChanged: onChanged,
 
             decoration: InputDecoration(
               floatingLabelAlignment: FloatingLabelAlignment.center,
-              counterText: "",
+              counterText: " ",
               label: const Text(''),
 
               border: OutlineInputBorder(
