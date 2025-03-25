@@ -140,8 +140,8 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor:
                         validateMode == AutovalidateMode.disabled
-                            ? primaryColor
-                            : greyColor,
+                            ? AppColors.primaryColor
+                            : AppColors.greyColor,
                   ),
                   onPressed: () {
                     if (validateMode == AutovalidateMode.always) {

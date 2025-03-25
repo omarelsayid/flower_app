@@ -19,7 +19,7 @@ class RememberMeWidget extends StatelessWidget {
       children: [
         Checkbox(
           checkColor: Colors.white,
-          activeColor: primaryColor,
+          activeColor: AppColors.primaryColor,
           value: value,
           onChanged: onChanged,
         ),

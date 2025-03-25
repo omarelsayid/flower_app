@@ -20,9 +20,9 @@ class NoHaveAccountWidget extends StatelessWidget {
           child: Text(
             'Sign up',
             style: AppTextStyles.inter500_16.copyWith(
-              color: primaryColor,
+              color: AppColors.primaryColor,
               decoration: TextDecoration.underline,
-              decorationColor: primaryColor,
+              decorationColor: AppColors.primaryColor,
               decorationThickness: 1.5,
             ),
           ),
