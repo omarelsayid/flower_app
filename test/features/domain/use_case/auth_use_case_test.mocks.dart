@@ -6,6 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:flower_app/features/domain/common/result.dart' as _i4;
+import 'package:flower_app/features/domain/entity/sign_in_request.dart' as _i8;
 import 'package:flower_app/features/domain/entity/sign_up_request.dart' as _i6;
 import 'package:flower_app/features/domain/entity/sign_up_response_entity.dart'
     as _i5;
@@ -46,6 +47,21 @@ class MockAuthRepository extends _i1.Mock implements _i2.AuthRepository {
               _i7.dummyValue<_i4.Result<_i5.SignUpResponseEntity>>(
                 this,
                 Invocation.method(#signUp, [data]),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.Result<_i5.SignUpResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i5.SignUpResponseEntity>> signIn(
+    _i8.SignInRequest? data,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#signIn, [data]),
+            returnValue: _i3.Future<_i4.Result<_i5.SignUpResponseEntity>>.value(
+              _i7.dummyValue<_i4.Result<_i5.SignUpResponseEntity>>(
+                this,
+                Invocation.method(#signIn, [data]),
               ),
             ),
           )

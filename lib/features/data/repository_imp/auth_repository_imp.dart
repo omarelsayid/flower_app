@@ -2,10 +2,14 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:retrofit/dio.dart';
 
+import '../../../core/error/failures.dart';
 import '../../../core/services/shared_preference_services.dart';
 import '../../../core/utils/constant_manager.dart';
 import '../../domain/common/result.dart';
+import '../../domain/entity/sign_in_request.dart';
 import '../../domain/entity/sign_up_request.dart';
 import '../../domain/entity/sign_up_response_entity.dart';
 import '../../domain/repository/auth_repository.dart';
@@ -16,8 +20,9 @@ import '../model/sign_up_response_dto.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _authRemoteDataSource;
+  final InternetConnectionChecker internetConnectionChecker;
 
-  AuthRepositoryImpl(this._authRemoteDataSource);
+  AuthRepositoryImpl(this._authRemoteDataSource, this.internetConnectionChecker);
 
   @override
   Future<Result<SignUpResponseEntity>> signUp(SignUpRequest data) async {

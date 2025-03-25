@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import '../../../core/routes_generator/pages_routes.dart';
 import '../cubit/signup_view_model.dart';
 import '../cubit/signup_state.dart';
 
@@ -23,7 +24,7 @@ class SignUpScreen extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text("Signup successful!")),
             );
-            // Navigator.pushNamed(context, PagesRoutes.);
+            Navigator.pushNamed(context, PagesRoutes.signInScreen);
           } else if (state is SignUpErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               // SnackBar(content: Text("Signup failed: ${state.message}")),

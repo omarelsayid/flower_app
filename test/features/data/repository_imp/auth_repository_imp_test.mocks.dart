@@ -3,14 +3,16 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:flower_app/features/data/data_source/auth_remote_data_source.dart'
-    as _i3;
+    as _i4;
 import 'package:flower_app/features/data/model/sign_up_response_dto.dart'
     as _i2;
-import 'package:flower_app/features/domain/entity/sign_up_request.dart' as _i5;
+import 'package:flower_app/features/domain/entity/sign_in_request.dart' as _i7;
+import 'package:flower_app/features/domain/entity/sign_up_request.dart' as _i6;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:retrofit/retrofit.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -32,25 +34,47 @@ class _FakeSignUpResponseDTO_0 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeHttpResponse_1<T> extends _i1.SmartFake
+    implements _i3.HttpResponse<T> {
+  _FakeHttpResponse_1(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
 /// A class which mocks [AuthRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthRemoteDataSource extends _i1.Mock
-    implements _i3.AuthRemoteDataSource {
+    implements _i4.AuthRemoteDataSource {
   MockAuthRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.SignUpResponseDTO> signUp(_i5.SignUpRequest? data) =>
+  _i5.Future<_i2.SignUpResponseDTO> signUp(_i6.SignUpRequest? data) =>
       (super.noSuchMethod(
             Invocation.method(#signUp, [data]),
-            returnValue: _i4.Future<_i2.SignUpResponseDTO>.value(
+            returnValue: _i5.Future<_i2.SignUpResponseDTO>.value(
               _FakeSignUpResponseDTO_0(
                 this,
                 Invocation.method(#signUp, [data]),
               ),
             ),
           )
-          as _i4.Future<_i2.SignUpResponseDTO>);
+          as _i5.Future<_i2.SignUpResponseDTO>);
+
+  @override
+  _i5.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>> signIn(
+    _i7.SignInRequest? data,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#signIn, [data]),
+            returnValue:
+                _i5.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>.value(
+                  _FakeHttpResponse_1<_i2.SignUpResponseDTO>(
+                    this,
+                    Invocation.method(#signIn, [data]),
+                  ),
+                ),
+          )
+          as _i5.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>);
 }

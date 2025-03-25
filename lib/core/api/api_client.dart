@@ -17,8 +17,9 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
-}
 
   @POST("/api/v1/auth/signin")
   Future<HttpResponse<SignUpResponseDTO>> signIn(@Body() SignInRequest data);
 }
+
+

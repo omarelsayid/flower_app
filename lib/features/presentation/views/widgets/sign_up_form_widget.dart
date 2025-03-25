@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/routes_generator/pages_routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constans.dart';
 import '../../../../core/utils/text_styles.dart';
@@ -148,8 +149,7 @@ class SignUpFormWidget extends StatelessWidget {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  // Navigate to login
-                },
+                  Navigator.pushReplacementNamed(context, PagesRoutes.signInScreen);},
                 child: Text.rich(
                   TextSpan(
                     text: "Already have an account? ",
