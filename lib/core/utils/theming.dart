@@ -39,7 +39,7 @@ ThemeData theme(BuildContext context) {
         0,
         (4 / ScreenSizeService.baseHeight) * screenHeight,
       ),
-      focusedBorder: textFiledInputBorderFoucus(),
+      focusedBorder: textFiledInputBorderFocus(),
       enabledBorder: textFiledInputBorder(),
       border: textFiledInputBorder(),
       filled: true,
@@ -79,7 +79,7 @@ OutlineInputBorder textFiledInputBorder() {
   );
 }
 
-OutlineInputBorder textFiledInputBorderFoucus() {
+OutlineInputBorder textFiledInputBorderFocus() {
   final screenWidth = ScreenSizeService.width;
 
   double responsiveRadius = (4 / 375.0) * screenWidth;
@@ -93,3 +93,5 @@ OutlineInputBorder textFiledInputBorderFoucus() {
     borderSide: BorderSide(color: Colors.black, width: responsiveBorderWidth),
   );
 }
+
+

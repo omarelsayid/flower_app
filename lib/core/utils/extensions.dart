@@ -14,7 +14,7 @@ extension StringExtensions on String {
   }
 
   bool get isValidPhone {
-    final bool phoneValid = RegExp(r"^01[0125][0-9]{8}$").hasMatch(this);
+    final bool phoneValid = RegExp(r'^\+(\d{1,4})\d{7,10}$').hasMatch(this);
     return phoneValid;
   }
 }
