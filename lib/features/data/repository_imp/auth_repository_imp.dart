@@ -108,39 +108,27 @@ class AuthRepositoryImpl implements AuthRepository {
 
   }
 
-  // @override
-  // Future<Result<ResetPasswordResponseEntity>> resetPassword(String email, String newPassword) {
-  //   // TODO: implement resetPassword
-  //   throw UnimplementedError();
-  // }
-  //
-  // @override
-  // Future<Result<VerifyEmailResponseEntity>> verifyEmail(String code) {
-  //   // TODO: implement verifyEmail
-  //   throw UnimplementedError();
-  // }
 
+  @override
+  Future<Result<ResetPasswordResponseEntity>> resetPassword(String email, String newPassword) async {
+    try {
+      final resetResponse = await _authRemoteDataSource.resetPassword(email, newPassword);
+      log('ResetPassword Response: $resetResponse');
+      if (resetResponse.message == "success" && resetResponse.token != null) {
+        await SharedPreferenceServices.saveData(AppConstants.token, resetResponse.token!);
+        final entity = ResetPasswordResponseEntity(
+          message: resetResponse.message!,
+          token: resetResponse.token!,
+        );
+        return Success(entity);
+      } else {
+        return Error(resetResponse.error ?? "Unknown error");
+      }
+    } on DioException catch (dioException) {
+      return Error(dioException.response?.data["error"] ?? "Unknown error");
+    } catch (e) {
+      return Error("Unexpected error: $e");
+    }
+  }
 
-  // Future<Result<ForgetResponsePasswordEntity>> forgetPassword(String email)
-  // async{
-  //   return executeApi<ForgetResponsePasswordEntity>(
-  //         () async {
-  //       var response = await _authRemoteDataSource.forgetPassword(email);
-  //       var data = ForgetResponsePasswordDto.fromJson(response.data);
-  //       return data;
-  //     },
-  //   );
-  // }
-
-  // @override
-  // // Future<Result<dynamic>> resetPassword(String email, String newPassword) {
-  // //   // TODO: implement resetPassword
-  // //   throw UnimplementedError();
-  // // }
-  // //
-  // // @override
-  // // Future<Result<VerifyEmailResponseEntity>> verifyEmail(String code) {
-  // //   // TODO: implement verifyEmail
-  // //   throw UnimplementedError();
-  // // }
 }

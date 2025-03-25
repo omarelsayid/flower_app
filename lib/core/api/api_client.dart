@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/data/model/forget_response_password_dto.dart';
+import '../../features/data/model/reset_password_dto.dart';
 import '../../features/data/model/verify_email_response_dto.dart';
 import '../../features/domain/entity/sign_up_request.dart';
 
@@ -25,5 +26,8 @@ abstract class ApiClient {
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String,String> code);
 
+  
+  @PUT("/api/v1/auth/resetPassword")
+  Future<ResetPasswordResponseDTO> resetPassword(@Body() Map<String, dynamic> data);
 }
 

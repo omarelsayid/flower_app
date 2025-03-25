@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flower_app/features/data/model/reset_password_dto.dart';
 import 'package:injectable/injectable.dart';
 import '../../../core/api/api_client.dart';
 import '../../domain/entity/sign_up_request.dart';
@@ -11,7 +12,7 @@ abstract class AuthRemoteDataSource {
   Future<SignUpResponseDTO> signUp(SignUpRequest data);
   Future<ForgetResponsePasswordDto> forgetPassword(String email);
    Future<VerifyEmailResponseDto> verifyEmail(String code);
-  // Future<Response> resetPassword(String email,String newPassword);
+  Future<ResetPasswordResponseDTO> resetPassword(String email,String newPassword);
 }
 
 
@@ -39,18 +40,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     _apiClient.verifyEmail ({"code": code});
   }
 
-
-// @override
-  // Future<dynamic> resetPassword(String email, String newPassword) {
-  //   // TODO: implement resetPassword
-  //   throw UnimplementedError();
-  // }
-  //
-  // @override
-  // Future<dynamic> verifyEmail(String code) {
-  //   // TODO: implement verifyEmail
-  //   throw UnimplementedError();
-  // }
+  @override
+  Future<ResetPasswordResponseDTO> resetPassword(String email, String newPassword)async {
+    log("Resetting password for :$email");
+    return await _apiClient.resetPassword({
+      "email":email,
+      "newPassword":newPassword
+    });
+  }
 }
 
 
