@@ -24,9 +24,7 @@ class SignUpScreen extends StatelessWidget {
               state.token,
             );
             debugPrint("+++++Saved token+++++++: ${state.token}");
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text("Signup successful!")));
+            EasyLoading.showSuccess("Sign up successfully");
             Navigator.pushNamed(context, PagesRoutes.signInScreen);
           } else if (state is SignUpErrorState) {
             EasyLoading.showError(state.message);
