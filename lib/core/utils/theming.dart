@@ -93,3 +93,18 @@ OutlineInputBorder textFiledInputBorderFoucus() {
     borderSide: BorderSide(color: Colors.black, width: responsiveBorderWidth),
   );
 }
+
+OutlineInputBorder textFiledInputBorderFoucus() {
+  final screenWidth = ScreenSizeService.width;
+
+  double responsiveRadius = (4 / 375.0) * screenWidth;
+  double responsiveBorderWidth = (1 / 375.0) * screenWidth;
+
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(responsiveRadius),
+      topRight: Radius.circular(responsiveRadius),
+    ),
+    borderSide: BorderSide(color: Colors.black, width: responsiveBorderWidth),
+  );
+}
