@@ -10,7 +10,7 @@ import 'di/injectable_initializer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   configureDependencies();
+  configureDependencies();
   await SharedPreferenceServices.init();
   runApp(MainApp());
 }
@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
       theme: theme(context),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.signUpScreen,
+      initialRoute: PagesRoutes.signInScreen,
       builder: EasyLoading.init(),
     );
   }

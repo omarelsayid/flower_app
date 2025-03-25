@@ -1,6 +1,10 @@
 import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../core/services/shared_preference_services.dart';
+import '../../../core/utils/constant_manager.dart';
 import '../../domain/common/result.dart';
 import '../../domain/entity/sign_up_request.dart';
 import '../../domain/entity/sign_up_response_entity.dart';
@@ -38,6 +42,58 @@ class AuthRepositoryImpl implements AuthRepository {
     } catch (e) {
       log("Unexpected error: $e");
       return Error("Unexpected error: $e");
+    }
+  }
+
+  @override
+  Future<Result<SignUpResponseEntity>> signIn(SignInRequest data) async {
+    try {
+      bool isConnected = await internetConnectionChecker.hasConnection;
+      if (isConnected) {
+        final HttpResponse<SignUpResponseDTO> response =
+            await _authRemoteDataSource.signIn(data);
+
+        log('status code: ${response.response.statusCode}');
+
+        if (response.response.statusCode! >= 200 &&
+            response.response.statusCode! < 300) {
+          // await SharedPreferenceServices.saveData(
+          //   AppConstants.token,
+          //   response.data.token!,
+          // );
+          log('status code: ${response.data.user!.email}');
+          log('status code: ${response.data.user!.firstName}');
+          log('status code: ${response.data.token}');
+          log('success');
+          return Success(response.data);
+        } else {
+          log('Error: ${response.response.data['error']}');
+          return Error(
+            ServerFailure.fromDioException(
+              response.response.data['error'],
+            ).errorMessage.toString(),
+          );
+        }
+      } else {
+        log('Please check your internet connection ad try again later');
+        return Error(
+          "Please check your internet connection and try again later",
+        );
+      }
+    } on DioException catch (e) {
+      log('error 1');
+
+      log(
+        'Error: ${ServerFailure.fromDioException(e).errorMessage.toString()}',
+      );
+      return Error(ServerFailure.fromDioException(e).errorMessage.toString());
+    } catch (e) {
+      log('error 2');
+
+      log('Error: ${e.toString()}');
+      return Error(
+        ServerFailure(errorMessage: e.toString()).errorMessage.toString(),
+      );
     }
   }
 }

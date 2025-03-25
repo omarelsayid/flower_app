@@ -21,6 +21,7 @@ dependencies:
   bloc_test: ^10.0.0
   mockito: ^5.4.5
   dio:
+  internet_connection_checker: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -30,8 +31,8 @@ dev_dependencies:
   json_serializable: ^6.8.0
   mockito: ^5.4.5
   injectable_generator:
-  build_runner:    
- 
+  build_runner:
+
 
 flutter:
   uses-material-design: true
