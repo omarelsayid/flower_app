@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:flower_app/features/domain/common/result.dart';
-import 'package:flower_app/features/domain/entity/sign_up_request.dart';
-import 'package:flower_app/features/domain/entity/sign_up_response_entity.dart';
-import 'package:flower_app/features/domain/use_case/auth_use_case.dart';
-import 'package:flower_app/features/presentation/cubit/signup_state.dart';
-import 'package:flower_app/features/presentation/cubit/signup_view_model.dart';
+import 'package:flower_app/auth/domain/common/result.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_request.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_response_entity.dart';
+import 'package:flower_app/auth/domain/use_case/auth_use_case.dart';
+import 'package:flower_app/auth/presentation/cubit/signup_state.dart';
+import 'package:flower_app/auth/presentation/cubit/signup_view_model.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

@@ -1,3 +1,4 @@
+import 'package:flower_app/core/services/easy_loading_service.dart';
 import 'package:flower_app/core/services/screen_size_service.dart';
 import 'package:flower_app/core/utils/theming.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   await SharedPreferenceServices.init();
+  ConfigLoading().showLoading();
   runApp(MainApp());
 }
 

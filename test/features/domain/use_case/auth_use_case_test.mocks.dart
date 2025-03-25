@@ -5,12 +5,12 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:flower_app/features/domain/common/result.dart' as _i4;
-import 'package:flower_app/features/domain/entity/sign_in_request.dart' as _i8;
-import 'package:flower_app/features/domain/entity/sign_up_request.dart' as _i6;
-import 'package:flower_app/features/domain/entity/sign_up_response_entity.dart'
+import 'package:flower_app/auth/domain/common/result.dart' as _i4;
+import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i8;
+import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i6;
+import 'package:flower_app/auth/domain/entity/sign_up_response_entity.dart'
     as _i5;
-import 'package:flower_app/features/domain/repository/auth_repository.dart'
+import 'package:flower_app/auth/domain/repository/auth_repository.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;

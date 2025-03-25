@@ -17,14 +17,14 @@ import 'package:internet_connection_checker/internet_connection_checker.dart'
 
 import '../core/api/api_client.dart' as _i424;
 import '../core/services/internet_connection_check.dart' as _i697;
-import '../features/data/data_source/auth_remote_data_source.dart' as _i340;
-import '../features/data/repository_imp/auth_repository_imp.dart' as _i839;
-import '../features/domain/repository/auth_repository.dart' as _i767;
-import '../features/domain/use_case/auth_use_case.dart' as _i19;
-import '../features/domain/use_case/sign_in%20_use_case.dart' as _i750;
-import '../features/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
+import '../auth/data/data_source/auth_remote_data_source.dart' as _i340;
+import '../auth/data/repository_imp/auth_repository_imp.dart' as _i839;
+import '../auth/domain/repository/auth_repository.dart' as _i767;
+import '../auth/domain/use_case/auth_use_case.dart' as _i19;
+import '../auth/domain/use_case/sign_in _use_case.dart' as _i750;
+import '../auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
     as _i512;
-import '../features/presentation/cubit/signup_view_model.dart' as _i201;
+import '../auth/presentation/cubit/signup_view_model.dart' as _i201;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt

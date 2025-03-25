@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:flower_app/features/domain/common/result.dart';
-import 'package:flower_app/features/domain/entity/sign_in_request.dart';
-import 'package:flower_app/features/domain/use_case/sign_in%20_use_case.dart';
-import 'package:flower_app/features/presentation/cubit/sign_in_cubit/sign_in_state.dart';
+import 'package:flower_app/auth/domain/common/result.dart';
+import 'package:flower_app/auth/domain/entity/sign_in_request.dart';
+import 'package:flower_app/auth/domain/use_case/sign_in%20_use_case.dart';
+import 'package:flower_app/auth/presentation/cubit/sign_in_cubit/sign_in_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 

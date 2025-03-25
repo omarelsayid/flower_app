@@ -1,6 +1,6 @@
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
-import 'package:flower_app/features/presentation/views/sign_in_screen.dart';
-import 'package:flower_app/features/presentation/views/sign_up_screen.dart';
+import 'package:flower_app/auth/presentation/views/sign_in_screen.dart';
+import 'package:flower_app/auth/presentation/views/sign_up_screen.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 

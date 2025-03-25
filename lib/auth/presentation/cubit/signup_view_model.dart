@@ -1,6 +1,6 @@
 import 'dart:developer';
-import 'package:flower_app/features/domain/use_case/auth_use_case.dart';
-import 'package:flower_app/features/presentation/cubit/signup_state.dart';
+import 'package:flower_app/auth/domain/use_case/auth_use_case.dart';
+import 'package:flower_app/auth/presentation/cubit/signup_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';

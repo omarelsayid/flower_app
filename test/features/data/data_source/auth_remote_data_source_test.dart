@@ -1,7 +1,7 @@
 import 'package:flower_app/core/api/api_client.dart';
-import 'package:flower_app/features/data/data_source/auth_remote_data_source.dart';
-import 'package:flower_app/features/data/model/sign_up_response_dto.dart';
-import 'package:flower_app/features/domain/entity/sign_up_request.dart';
+import 'package:flower_app/auth/data/data_source/auth_remote_data_source.dart';
+import 'package:flower_app/auth/data/model/sign_up_response_dto.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_request.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

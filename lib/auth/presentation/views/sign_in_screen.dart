@@ -1,6 +1,6 @@
 import 'package:flower_app/di/injectable_initializer.dart';
-import 'package:flower_app/features/presentation/cubit/sign_in_cubit/sign_in_view_model.dart';
-import 'package:flower_app/features/presentation/views/widgets/sign_in_view_body.dart';
+import 'package:flower_app/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart';
+import 'package:flower_app/auth/presentation/views/widgets/sign_in_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

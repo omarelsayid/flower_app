@@ -1,4 +1,4 @@
-import 'package:flower_app/features/domain/entity/sign_up_response_entity.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_response_entity.dart';
 
 sealed class SignInState {}
 

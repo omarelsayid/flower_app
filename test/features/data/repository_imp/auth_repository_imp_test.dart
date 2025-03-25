@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:flower_app/features/data/data_source/auth_remote_data_source.dart';
-import 'package:flower_app/features/data/repository_imp/auth_repository_imp.dart';
-import 'package:flower_app/features/domain/common/result.dart';
-import 'package:flower_app/features/domain/entity/sign_up_request.dart';
-import 'package:flower_app/features/data/model/sign_up_response_dto.dart';
-import 'package:flower_app/features/domain/entity/sign_up_response_entity.dart';
+import 'package:flower_app/auth/data/data_source/auth_remote_data_source.dart';
+import 'package:flower_app/auth/data/repository_imp/auth_repository_imp.dart';
+import 'package:flower_app/auth/domain/common/result.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_request.dart';
+import 'package:flower_app/auth/data/model/sign_up_response_dto.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_response_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     mockAuthRemoteDataSource = MockAuthRemoteDataSource();
-    authRepository = AuthRepositoryImpl(mockAuthRemoteDataSource);
+    authRepository = AuthRepositoryImpl(mockAuthRemoteDataSource,);
   });
 
   group('AuthRepositoryImpl signUp tests', () {

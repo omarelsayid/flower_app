@@ -1,4 +1,4 @@
-import 'package:flower_app/features/domain/entity/sign_up_response_entity.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'sign_up_response_dto.g.dart';

@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:flower_app/features/domain/entity/sign_in_request.dart';
+import 'package:flower_app/auth/domain/entity/sign_in_request.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 import '../../../core/api/api_client.dart';

@@ -1,6 +1,6 @@
 import 'package:flower_app/core/services/shared_preference_services.dart';
 import 'package:flower_app/core/utils/constant_manager.dart';
-import 'package:flower_app/features/presentation/views/widgets/sign_up_form_widget.dart';
+import 'package:flower_app/auth/presentation/views/widgets/sign_up_form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
@@ -19,17 +19,17 @@ class SignUpScreen extends StatelessWidget {
       child: BlocListener<SignUpViewModel, SignUpState>(
         listener: (context, state) async {
           if (state is SuccessSignUpState) {
-            await SharedPreferenceServices.saveData(AppConstants.token, state.token);
-            debugPrint("+++++Saved token+++++++: ${state.token}");
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Signup successful!")),
+            await SharedPreferenceServices.saveData(
+              AppConstants.token,
+              state.token,
             );
+            debugPrint("+++++Saved token+++++++: ${state.token}");
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text("Signup successful!")));
             Navigator.pushNamed(context, PagesRoutes.signInScreen);
           } else if (state is SignUpErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              // SnackBar(content: Text("Signup failed: ${state.message}")),
-              SnackBar(content: Text("Signup failed")),
-            );
+            EasyLoading.showError(state.message);
           } else if (state is SignUpLoadingState) {
             EasyLoading.show();
           }

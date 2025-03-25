@@ -1,9 +1,9 @@
-import 'package:flower_app/features/data/model/sign_up_response_dto.dart';
-import 'package:flower_app/features/domain/common/result.dart';
-import 'package:flower_app/features/domain/entity/sign_up_request.dart';
-import 'package:flower_app/features/domain/entity/sign_up_response_entity.dart';
-import 'package:flower_app/features/domain/repository/auth_repository.dart';
-import 'package:flower_app/features/domain/use_case/auth_use_case.dart';
+import 'package:flower_app/auth/data/model/sign_up_response_dto.dart';
+import 'package:flower_app/auth/domain/common/result.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_request.dart';
+import 'package:flower_app/auth/domain/entity/sign_up_response_entity.dart';
+import 'package:flower_app/auth/domain/repository/auth_repository.dart';
+import 'package:flower_app/auth/domain/use_case/auth_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
