@@ -15,6 +15,10 @@ dependencies:
   get_it:
   easy_localization: ^3.0.7+1
   flutter_bloc: ^9.1.0
+  equatable:
+  flutter_easyloading:
+  shared_preferences:
+  internet_connection_checker: ^3.0.1
 
 dev_dependencies:
   flutter_test:
