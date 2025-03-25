@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flower_app/features/domain/use_case/auth_use_case.dart';
 import 'package:flower_app/features/presentation/cubit/signup_state.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,8 @@ import 'package:injectable/injectable.dart';
 import '../../domain/common/result.dart';
 import '../../domain/entity/sign_up_request.dart';
 
-enum Gender { male, female }
+enum Gender { male, female, }
+
 @injectable
 class SignUpViewModel extends Cubit<SignUpState> {
   SignUpViewModel(this._authUseCase) : super(SignUpLoadingState());
@@ -26,10 +26,12 @@ class SignUpViewModel extends Cubit<SignUpState> {
 
   final GlobalKey<FormState> formSignUpKey = GlobalKey<FormState>();
 
-  Gender selectedGender = Gender.male;
+  Gender? selectedGender;
+  bool isGenderSelected = true;
 
   void updateGender(Gender gender) {
     selectedGender = gender;
+    isGenderSelected = true;
     emit(SignUpGenderChangedState(selectedGender.toString()));
   }
 
@@ -46,11 +48,16 @@ class SignUpViewModel extends Cubit<SignUpState> {
       EasyLoading.showError("Passwords do not match");
       return;
     }
+    if (selectedGender == null) {
+      isGenderSelected = false;
+      emit(SignUpGenderChangedState("No gender selected"));
+      return;
+    }
 
     EasyLoading.show();
     emit(SignUpLoadingState());
 
-    final genderStr = selectedGender == Gender.male ? 'male' : 'female';
+    final genderStr = selectedGender?.name ?? '';
 
     var data = SignUpRequest(
       firstName: firstNameController.text,
@@ -89,8 +96,6 @@ class SignUpViewModel extends Cubit<SignUpState> {
         break;
     }
   }
-
-
 }
 
 class SuccessSignUPState {}

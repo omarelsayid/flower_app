@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constans.dart';
 import '../../../../core/utils/text_styles.dart';
@@ -112,14 +111,17 @@ class SignUpFormWidget extends StatelessWidget {
                 Text("Male", style: AppTextStyles.inter400_14),
               ],
             ),
-
+            if (!vmSignUp.isGenderSelected)
+              Text(
+                "Please select a gender",
+                style: TextStyle(color: errorColor,),
+              ),
             Row(
               children: [
                 Text(
                   "Creating an account, you agree to our ",
                   style: AppTextStyles.inter400_12,
                 ),
-
                 Text(
                   "Terms&Conditions",
                   style: AppTextStyles.inter400_12.copyWith(
@@ -137,9 +139,9 @@ class SignUpFormWidget extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size.fromHeight(50),
               ),
-              child:  Text(
+              child: Text(
                 "Sign up",
-                style: AppTextStyles.inter500_16.copyWith(color: Colors.white,),
+                style: AppTextStyles.inter500_16.copyWith(color: Colors.white),
               ),
             ),
             SizedBox(height: kVerticalHPadding),

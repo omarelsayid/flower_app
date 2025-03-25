@@ -8,7 +8,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../cubit/signup_view_model.dart';
 import '../cubit/signup_state.dart';
 
-
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
@@ -27,7 +26,8 @@ class SignUpScreen extends StatelessWidget {
             // Navigator.pushNamed(context, PagesRoutes.);
           } else if (state is SignUpErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Signup failed: ${state.message}")),
+              // SnackBar(content: Text("Signup failed: ${state.message}")),
+              SnackBar(content: Text("Signup failed")),
             );
           } else if (state is SignUpLoadingState) {
             EasyLoading.show();
@@ -46,6 +46,3 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 }
-
-
-

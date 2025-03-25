@@ -19,6 +19,7 @@ dependencies:
   shared_preferences:
   bloc_test: ^10.0.0
   mockito: ^5.4.5
+  dio:
 
 dev_dependencies:
   flutter_test:
