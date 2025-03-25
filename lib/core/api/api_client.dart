@@ -5,7 +5,11 @@ import 'package:flower_app/auth/domain/entity/sign_in_request.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../auth/data/model/forget_response_password_dto.dart';
+import '../../auth/data/model/reset_password_dto.dart';
+import '../../auth/data/model/verify_email_response_dto.dart';
 import '../../auth/domain/entity/sign_up_request.dart';
+
 
 part 'api_client.g.dart';
 
@@ -20,6 +24,15 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/signin")
   Future<HttpResponse<SignUpResponseDTO>> signIn(@Body() SignInRequest data);
+  @POST("/api/v1/auth/forgotPassword")
+  Future<ForgetResponsePasswordDto> forgetPassword(@Body() Map<String,dynamic> data);
+
+  @POST("/api/v1/auth/verifyResetCode")
+  Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String,String> code);
+
+
+  @PUT("/api/v1/auth/resetPassword")
+  Future<ResetPasswordResponseDTO> resetPassword(@Body() Map<String, dynamic> data);
 }
 
 

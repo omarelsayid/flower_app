@@ -15,16 +15,22 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i973;
 
+import '../auth/data/data_source/auth_remote_data_source.dart' as _i561;
+import '../auth/data/repository_imp/auth_repository_imp.dart' as _i465;
+import '../auth/domain/repository/auth_repository.dart' as _i1051;
+import '../auth/domain/use_case/auth_use_case.dart' as _i373;
+import '../auth/domain/use_case/sign_in%20_use_case.dart' as _i679;
+import '../auth/presentation/cubit/forget_password_cubit/forget_password_view_model.dart'
+    as _i526;
+import '../auth/presentation/cubit/reset_password_cubit/reset_password_view_model.dart'
+    as _i721;
+import '../auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
+    as _i168;
+import '../auth/presentation/cubit/signup_view_model.dart' as _i573;
+import '../auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
+    as _i837;
 import '../core/api/api_client.dart' as _i424;
 import '../core/services/internet_connection_check.dart' as _i697;
-import '../auth/data/data_source/auth_remote_data_source.dart' as _i340;
-import '../auth/data/repository_imp/auth_repository_imp.dart' as _i839;
-import '../auth/domain/repository/auth_repository.dart' as _i767;
-import '../auth/domain/use_case/auth_use_case.dart' as _i19;
-import '../auth/domain/use_case/sign_in _use_case.dart' as _i750;
-import '../auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
-    as _i512;
-import '../auth/presentation/cubit/signup_view_model.dart' as _i201;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -38,26 +44,35 @@ extension GetItInjectableX on _i174.GetIt {
       () => dataModule.getInternetConnectionCheck(),
     );
     gh.singleton<_i424.ApiClient>(() => _i424.ApiClient(gh<_i361.Dio>()));
-    gh.factory<_i340.AuthRemoteDataSource>(
-      () => _i340.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    gh.factory<_i561.AuthRemoteDataSource>(
+      () => _i561.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
-    gh.factory<_i767.AuthRepository>(
-      () => _i839.AuthRepositoryImpl(
-        gh<_i340.AuthRemoteDataSource>(),
+    gh.factory<_i1051.AuthRepository>(
+      () => _i465.AuthRepositoryImpl(
+        gh<_i561.AuthRemoteDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
     );
-    gh.factory<_i19.AuthUseCase>(
-      () => _i19.AuthUseCase(gh<_i767.AuthRepository>()),
+    gh.factory<_i373.AuthUseCase>(
+      () => _i373.AuthUseCase(gh<_i1051.AuthRepository>()),
     );
-    gh.factory<_i750.SignInUseCase>(
-      () => _i750.SignInUseCase(gh<_i767.AuthRepository>()),
+    gh.factory<_i679.SignInUseCase>(
+      () => _i679.SignInUseCase(gh<_i1051.AuthRepository>()),
     );
-    gh.factory<_i201.SignUpViewModel>(
-      () => _i201.SignUpViewModel(gh<_i19.AuthUseCase>()),
+    gh.factory<_i526.ForgetPasswordViewModel>(
+      () => _i526.ForgetPasswordViewModel(gh<_i373.AuthUseCase>()),
     );
-    gh.factory<_i512.SignInViewModel>(
-      () => _i512.SignInViewModel(gh<_i750.SignInUseCase>()),
+    gh.factory<_i721.ResetPasswordViewModel>(
+      () => _i721.ResetPasswordViewModel(gh<_i373.AuthUseCase>()),
+    );
+    gh.factory<_i573.SignUpViewModel>(
+      () => _i573.SignUpViewModel(gh<_i373.AuthUseCase>()),
+    );
+    gh.factory<_i168.SignInViewModel>(
+      () => _i168.SignInViewModel(gh<_i679.SignInUseCase>()),
+    );
+    gh.factory<_i837.VerifyEmailVewModel>(
+      () => _i837.VerifyEmailVewModel(gh<_i373.AuthUseCase>()),
     );
     return this;
   }

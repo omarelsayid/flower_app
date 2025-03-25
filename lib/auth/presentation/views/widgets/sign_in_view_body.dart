@@ -124,7 +124,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     ),
                     TextButton(
                       onPressed: () {
-                        // Navigate to forget password view
+                     Navigator.pushNamed(context, PagesRoutes.forgetPassword);
                       },
                       child: Text(
                         'Forget password?',
@@ -176,7 +176,10 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, PagesRoutes.layOutScreen);
+                    Navigator.pushReplacementNamed(
+                      context,
+                      PagesRoutes.layOutScreen,
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
@@ -212,13 +215,16 @@ class _SignInViewBodyState extends State<SignInViewBody> {
   }
 
   void _saveToken(SignInSuccessState state) async {
-    if (rememberMe) {
-      await SharedPreferenceServices.saveData(
-        AppConstants.token,
-        state.data.token,
-      );
-      log('token saved');
-      log(SharedPreferenceServices.getData(AppConstants.token).toString());
-    }
+    log('token saved');
+    await SharedPreferenceServices.saveData(
+      AppConstants.token,
+      state.data.token,
+    );
+    await SharedPreferenceServices.saveData(
+      AppConstants.rememberMe,
+      rememberMe ? true : false,
+    );
+    log(SharedPreferenceServices.getData(AppConstants.token).toString());
+    log(SharedPreferenceServices.getData(AppConstants.rememberMe).toString());
   }
 }
