@@ -34,7 +34,7 @@ class EmailVerificationsScreen extends StatelessWidget {
             if (state is SuccessVerifyEmailState) {
               EasyLoading.dismiss();
               vewModel.doIntent(DisposeEmailIntent());
-              Navigator.pushNamed(context, PagesRoutes.signUpScreen);
+              Navigator.pushNamed(context, PagesRoutes.resetPassword);
             }
             if (state is ErrorVerifyEmailState) {
               EasyLoading.dismiss();

@@ -27,7 +27,7 @@ class MainApp extends StatelessWidget {
       theme: theme(context),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.resetPassword,
+      initialRoute: PagesRoutes.forgetPassword,
       builder: EasyLoading.init(),
     );
   }
