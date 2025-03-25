@@ -12,7 +12,7 @@ class ConfigLoading {
     ..indicatorSize = 45.0
     ..radius = 15.0
     ..progressColor = Colors.red
-    ..indicatorColor = primaryColor
+    ..indicatorColor = AppColors.primaryColor
     ..textColor = Colors.grey
     ..maskColor = Colors.blue.withOpacity(0.5)
     ..userInteractions = false

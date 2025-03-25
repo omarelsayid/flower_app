@@ -99,14 +99,14 @@ class SignUpFormWidget extends StatelessWidget {
                   value: Gender.female,
                   groupValue: vmSignUp.selectedGender,
                   onChanged: (val) => vmSignUp.updateGender(val!),
-                  activeColor: primaryColor,
+                  activeColor: AppColors.primaryColor,
                 ),
                 Text("Female", style: AppTextStyles.inter400_14),
                 Radio<Gender>(
                   value: Gender.male,
                   groupValue: vmSignUp.selectedGender,
                   onChanged: (val) => vmSignUp.updateGender(val!),
-                  activeColor: primaryColor,
+                  activeColor: AppColors.primaryColor,
                 ),
                 Text("Male", style: AppTextStyles.inter400_14),
               ],
@@ -114,7 +114,7 @@ class SignUpFormWidget extends StatelessWidget {
             if (!vmSignUp.isGenderSelected)
               Text(
                 "Please select a gender",
-                style: TextStyle(color: errorColor,),
+                style: TextStyle(color: AppColors.errorColor,),
               ),
             Row(
               children: [
@@ -158,10 +158,10 @@ class SignUpFormWidget extends StatelessWidget {
                       TextSpan(
                         text: "Login",
                         style: AppTextStyles.inter500_16.copyWith(
-                          color: primaryColor,
+                          color: AppColors.primaryColor,
                           fontWeight: FontWeight.bold,
                           decoration: TextDecoration.underline,
-                          decorationColor: primaryColor,
+                          decorationColor: AppColors.primaryColor,
                         ),
                       ),
                     ],
