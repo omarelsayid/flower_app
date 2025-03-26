@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:flower_app/auth/data/model/forget_response_password_dto.dart';
+import 'package:flower_app/auth/domain/entity/reset_password_response_entity.dart';
+import 'package:flower_app/auth/domain/entity/verify_email_response_entity.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:retrofit/dio.dart';
@@ -110,6 +113,88 @@ class AuthRepositoryImpl implements AuthRepository {
       return Error(
         ServerFailure(errorMessage: e.toString()).errorMessage.toString(),
       );
+    }
+  }
+
+  @override
+  Future<Result<ForgetResponsePasswordDto>> forgetPassword(String email) async {
+    try {
+      final ForgetResponsePasswordDto response = await _authRemoteDataSource.forgetPassword(email);
+      log('SignUp Response: $response');
+      log('Response Message: ${response.message}');
+      log('Response info: ${response.info}');
+      //   log('Response info: ${response.code}');
+
+      //   var response = await _authRemoteDataSource.forgetPassword(email);
+
+      // التأكد من أن الاستجابة تحتوي على بيانات صحيحة
+      if (response.message == "success" && response.info != null) {
+        //  await SharedPreferenceServices.saveData(AppConstants.token, response.message!);
+        return Success(response);
+      } else {
+        log(' failed, response message: ${response.message}');
+        return Error(response.message ?? "Unknown error");
+      }
+    } on DioException catch (dioException) {
+      log("Dio Exception: ${dioException.response?.data}");
+      return Error(dioException.response?.data["message"] ?? "Unknown error");
+    } catch (e) {
+      log("Unexpected error: $e");
+      return Error("Unexpted error: $e");
+    }
+  }
+
+
+
+  @override
+  Future<Result<VerifyEmailResponseEntity>> verifyEmail(String code) async {
+    {
+      try {
+        final VerifyEmailResponseEntity response = await _authRemoteDataSource.verifyEmail(code);
+        log('SignUp Response: $response');
+        log('Response status: ${response.status}');
+
+        //   var response = await _authRemoteDataSource.forgetPassword(email);
+
+        // التأكد من أن الاستجابة تحتوي على بيانات صحيحة
+        if (response.status == "Success" ) {
+          //  await SharedPreferenceServices.saveData(AppConstants.token, response.message!);
+          return Success(response );
+        } else {
+          log(' failed, response message: ${response.status}');
+          return Error( "Unknown error");
+        }
+      } on DioException catch (dioException) {
+        log("Dio Exception: ${dioException.response?.data}");
+        return Error(dioException.response?.data["message"] ?? "Unknown error");
+      } catch (e) {
+        log("Unexpected error: $e");
+        return Error("Unexpected error: $e");
+      }
+    }
+
+  }
+
+
+  @override
+  Future<Result<ResetPasswordResponseEntity>> resetPassword(String email, String newPassword) async {
+    try {
+      final resetResponse = await _authRemoteDataSource.resetPassword(email, newPassword);
+      log('ResetPassword Response: $resetResponse');
+      if (resetResponse.message == "success" && resetResponse.token != null) {
+        await SharedPreferenceServices.saveData(AppConstants.token, resetResponse.token!);
+        final entity = ResetPasswordResponseEntity(
+          message: resetResponse.message!,
+          token: resetResponse.token!,
+        );
+        return Success(entity);
+      } else {
+        return Error(resetResponse.error ?? "Unknown error");
+      }
+    } on DioException catch (dioException) {
+      return Error(dioException.response?.data["error"] ?? "Unknown error");
+    } catch (e) {
+      return Error("Unexpected error: $e");
     }
   }
 }
