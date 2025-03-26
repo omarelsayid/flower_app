@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     mockAuthRemoteDataSource = MockAuthRemoteDataSource();
-    authRepository = AuthRepositoryImpl(mockAuthRemoteDataSource,);
+    authRepository = AuthRepositoryImpl(mockAuthRemoteDataSource);
   });
 
   group('AuthRepositoryImpl signUp tests', () {
