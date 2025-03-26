@@ -4,14 +4,15 @@ import 'package:dio/dio.dart';
 import 'package:flower_app/auth/data/model/forget_response_password_dto.dart';
 import 'package:flower_app/auth/domain/entity/reset_password_response_entity.dart';
 import 'package:flower_app/auth/domain/entity/verify_email_response_entity.dart';
+import 'package:flower_app/core/api/api_execute.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:retrofit/dio.dart';
 
+import '../../../core/common/result.dart';
 import '../../../core/error/failures.dart';
 import '../../../core/services/shared_preference_services.dart';
 import '../../../core/utils/constant_manager.dart';
-import '../../domain/common/result.dart';
 import '../../domain/entity/sign_in_request.dart';
 import '../../domain/entity/sign_up_request.dart';
 import '../../domain/entity/sign_up_response_entity.dart';
@@ -31,6 +32,13 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<Result<SignUpResponseEntity>> signUp(SignUpRequest data) async {
+    // executeApi(
+    //   () async{
+    //     var result=await _authRemoteDataSource.signUp(data);
+    //     var res=SignUpResponseDTO.fromJson(result.user!.toJson());
+    //     return res;
+    //   },
+    // );
     try {
       final SignUpResponseDTO response = await _authRemoteDataSource.signUp(
         data,

@@ -1,10 +1,10 @@
+import '../../../core/common/result.dart';
 import '../entity/forget_response_password_entity.dart';
 import '../entity/reset_password_response_entity.dart';
 import '../entity/verify_email_response_entity.dart';
 import '../repository/auth_repository.dart';
 import '../entity/sign_up_request.dart';
 import '../entity/sign_up_response_entity.dart';
-import '../common/result.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable

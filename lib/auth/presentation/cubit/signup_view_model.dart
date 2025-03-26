@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/common/result.dart';
+import '../../../core/common/result.dart';
 import '../../domain/entity/sign_up_request.dart';
 
 enum Gender { male, female, }

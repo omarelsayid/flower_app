@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 
+import '../../../../core/common/result.dart';
 import '../../../../core/services/shared_preference_services.dart';
 import '../../../../core/utils/constant_manager.dart';
-import '../../../domain/common/result.dart';
 import '../../../domain/use_case/auth_use_case.dart';
 import 'forget_password_state.dart';
 
