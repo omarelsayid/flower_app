@@ -12,7 +12,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     fontSize: _responsiveFontSize(20),
   );
-
+  static TextStyle get inter500_14 => TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w500,
+    fontSize: _responsiveFontSize(14),
+  );
   static TextStyle get inter400_14 => TextStyle(
     fontFamily: 'Inter',
     fontWeight: FontWeight.w400,
@@ -36,7 +40,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
     fontSize: _responsiveFontSize(12),
   );
-
+  static TextStyle get inter700_20 => TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w700,
+    fontSize: _responsiveFontSize(20),
+  );
   static TextStyle get inter500_18 => TextStyle(
     fontFamily: 'Inter',
     fontWeight: FontWeight.w500,

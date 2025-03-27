@@ -40,7 +40,11 @@ class RoutesGenerator {
         );
 
       case PagesRoutes.productDetails:
-        return MaterialPageRoute(builder: (context) => ProductsDetailsView());
+        return MaterialPageRoute(
+          builder:
+              (context) => ProductsDetailsView(),
+          settings: settings,
+        );
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(

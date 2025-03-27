@@ -38,8 +38,8 @@ class MainApp extends StatelessWidget {
       initialRoute:
           // token != null && (rememberMe ?? false)
           //     ? PagesRoutes.layOutScreen
-              // : 
-              PagesRoutes.signInScreen,
+          // :
+          PagesRoutes.productDetails,
       builder: EasyLoading.init(),
     );
   }
