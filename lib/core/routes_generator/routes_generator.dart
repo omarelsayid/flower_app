@@ -1,6 +1,7 @@
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart';
+import 'package:flower_app/features/products_details/presentation/views/products_details_view.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +38,9 @@ class RoutesGenerator {
           builder: (context) => EmailVerificationsScreen(),
           settings: settings,
         );
+
+      case PagesRoutes.productDetails:
+        return MaterialPageRoute(builder: (context) => ProductsDetailsView());
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(

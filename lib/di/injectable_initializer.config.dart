@@ -33,6 +33,16 @@ import '../features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dar
 import '../features/auth/presentation/cubit/signup_view_model.dart' as _i965;
 import '../features/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i882;
+import '../features/products_details/data/data_source/products_details_remote_data_scource.dart'
+    as _i1037;
+import '../features/products_details/data/data_source/products_details_remote_data_scource_imp.dart'
+    as _i399;
+import '../features/products_details/data/repositories/products_detail_repo_imp.dart'
+    as _i142;
+import '../features/products_details/domain/repositories/get_product_details_repo.dart'
+    as _i794;
+import '../features/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
+    as _i610;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -49,10 +59,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i366.AuthRemoteDataSource>(
       () => _i366.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
+    gh.factory<_i1037.ProductsDetailsRemoteDataScource>(
+      () => _i399.ProductsDetailsRemoteDataScourceImp(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i267.AuthRepository>(
       () => _i1042.AuthRepositoryImpl(
         gh<_i366.AuthRemoteDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
+    gh.factory<_i794.GetProductDetailsRepo>(
+      () => _i142.ProductsDetailRepoImp(
+        gh<_i1037.ProductsDetailsRemoteDataScource>(),
       ),
     );
     gh.factory<_i546.AuthUseCase>(
@@ -75,6 +93,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i882.VerifyEmailVewModel>(
       () => _i882.VerifyEmailVewModel(gh<_i546.AuthUseCase>()),
+    );
+    gh.factory<_i610.ProductsDetailCubit>(
+      () => _i610.ProductsDetailCubit(gh<_i794.GetProductDetailsRepo>()),
     );
     return this;
   }

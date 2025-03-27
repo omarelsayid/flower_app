@@ -31,4 +31,25 @@ const  ProductsDetailsModels({
 
   /// Method for serialization
   Map<String, dynamic> toJson() => _$ProductsDetailsModelsToJson(this);
+
+ProductDetailsEntity toEntity() => ProductDetailsEntity(
+      id: id,
+      title: title,
+      slug: slug,
+      description: description,
+      imgCover: imgCover,
+      images: images,
+      price: price,
+      priceAfterDiscount: priceAfterDiscount,
+      quantity: quantity,
+      category: category,
+      occasion: occasion,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      discount: discount,
+      sold: sold,
+      rateAvg: rateAvg,
+      rateCount: rateCount,
+    );
+
 }
