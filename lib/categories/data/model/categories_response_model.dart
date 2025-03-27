@@ -1,4 +1,4 @@
-import 'package:flower_app/layout/domain/entity/categories_response_entity.dart';
+import 'package:flower_app/categories/domain/entity/categories_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'categories_response_model.g.dart';
 @JsonSerializable()
