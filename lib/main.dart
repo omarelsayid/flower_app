@@ -36,9 +36,10 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       initialRoute:
-          token != null && (rememberMe ?? false)
-              ? PagesRoutes.layOutScreen
-              : PagesRoutes.signInScreen,
+          // token != null && (rememberMe ?? false)
+          //     ? PagesRoutes.layOutScreen
+              // : 
+              PagesRoutes.signInScreen,
       builder: EasyLoading.init(),
     );
   }
