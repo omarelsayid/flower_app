@@ -108,8 +108,18 @@ class ProductsDetailsViewBody extends StatelessWidget {
                 SizedBox(height: resposiveHeight(24)),
 
                 ReviewTextWidget(state: state),
+                SizedBox(height: resposiveHeight(35)),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Add to cart',
+                    style: AppTextStyles.inter500_16.copyWith(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
 
-                // Container(height: double.infinity),
+                // * this containers for test the scrolling
                 Container(height: resposiveHeight(300)),
                 Container(height: resposiveHeight(300)),
               ],
