@@ -7,34 +7,33 @@ environment:
   sdk: ^3.7.0
 
 dependencies:
+  bloc_test: ^10.0.0
+  cached_network_image: ^3.4.1
+  dio: null
+  easy_localization: ^3.0.7+1
+  equatable: null
   flutter:
     sdk: flutter
-  retrofit: ^4.4.2
-  json_annotation: ^4.9.0
-  injectable:
-  get_it:
-  easy_localization: ^3.0.7+1
   flutter_bloc: ^9.1.0
-  equatable:
-  flutter_easyloading:
-  shared_preferences:
-  bloc_test: ^10.0.0
-  mockito: ^5.4.5
-  dio:
+  flutter_easyloading: null
+  get_it: null
+  injectable: null
   internet_connection_checker: ^3.0.1
+  json_annotation: ^4.9.0
+  mockito: ^5.4.5
+  retrofit: ^4.4.2
+  shared_preferences: null
   smooth_page_indicator: ^1.2.1
-  cached_network_image: ^3.4.1
 
 dev_dependencies:
+  build_runner: null
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  injectable_generator: null
   json_serializable: ^6.8.0
   mockito: ^5.4.5
-  injectable_generator:
-  build_runner:
-
+  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
 
 flutter:
   uses-material-design: true
