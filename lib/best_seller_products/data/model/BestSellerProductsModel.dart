@@ -1,4 +1,4 @@
-import 'package:flower_app/most_selling/data/model/ProductModel.dart';
+import 'package:flower_app/best_seller_products/data/model/ProductModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'BestSellerProductsModel.g.dart';
