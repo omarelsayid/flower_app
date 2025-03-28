@@ -5,25 +5,25 @@ part 'products_details_models.g.dart';
 @JsonSerializable()
 class ProductsDetailsModels extends ProductDetailsEntity {
   @JsonKey(name: '_id')
-  final String id;
+  final String? id;
 const  ProductsDetailsModels({
-    required this.id,
-    required super.title,
-    required super.slug,
-    required super.description,
-    required super.imgCover,
-    required super.images,
-    required super.price,
-    required super.priceAfterDiscount,
-    required super.quantity,
-    required super.category,
-    required super.occasion,
-    required super.createdAt,
-    required super.updatedAt,
-    required super.discount,
-    required super.sold,
-    required super.rateAvg,
-    required super.rateCount,
+     this.id,
+     super.title,
+     super.slug,
+     super.description,
+     super.imgCover,
+     super.images,
+     super.price,
+     super.priceAfterDiscount,
+     super.quantity,
+     super.category,
+     super.occasion,
+     super.createdAt,
+     super.updatedAt,
+     super.discount,
+     super.sold,
+     super.rateAvg,
+     super.rateCount,
   });
 
   factory ProductsDetailsModels.fromJson(Map<String, dynamic> json) =>
