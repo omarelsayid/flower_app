@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/products_details/presentation/cubits/product_details_cubit/products_detail_states.dart';
+import 'package:flower_app/features/products_details/presentation/views/widgets/collpased_sliver_app_bar_widget.dart';
 import 'package:flower_app/features/products_details/presentation/views/widgets/products_details_image_view_widget.dart';
 import 'package:flower_app/features/products_details/presentation/views/widgets/review_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -42,32 +43,7 @@ class ProductsDetailsViewBody extends StatelessWidget {
               return FlexibleSpaceBar(
                 title:
                     isCollapsed
-                        ? Row(
-                          children: [
-                            SizedBox(
-                              height: resposiveHeight(35),
-                              child: CachedNetworkImage(
-                                imageUrl: state.productDetailsEntity.imgCover!,
-                                imageBuilder:
-                                    (context, imageProvider) => Image.network(
-                                      state.productDetailsEntity.imgCover!,
-                                    ),
-                                fadeInDuration: const Duration(
-                                  milliseconds: 600,
-                                ),
-                                fadeInCurve: Curves.easeInCubic,
-                              ),
-                            ),
-                            SizedBox(width: resposiveWidth(8)),
-
-                            Text(
-                              state.productDetailsEntity.slug!,
-                              style: AppTextStyles.inter500_20.copyWith(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        )
+                        ? CollapsedSliverAppBarWidget(state: state)
                         : null,
                 background: ProductsDetailsImageViewWidget(
                   pageController: _pageController,
