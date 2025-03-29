@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/products_details/presentation/cubits/product_details_cubit/products_detail_states.dart';
@@ -21,6 +22,8 @@ class ProductsDetailsViewBody extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         SliverAppBar(
+          // leadingWidth: resposiveWidth(20),
+          // titleSpacing: 100,
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
             onPressed: () => Navigator.pop(context),
@@ -28,21 +31,50 @@ class ProductsDetailsViewBody extends StatelessWidget {
           pinned: true,
           floating: true,
           expandedHeight: resposiveHeight(400),
-          // title: CircleAvatar(
-          //   radius: 40,
-          //   backgroundColor: AppColors.primaryColor,
-          //   child: CircleAvatar(
-          //     radius: 30,
-          //     child: Image(
-          //       image: NetworkImage(state.productDetailsEntity.imgCover!),
-          //     ),
-          //   ),
-          // ),
-          flexibleSpace: FlexibleSpaceBar(
-            background: ProductsDetailsImageViewWidget(
-              pageController: _pageController,
-              state: state,
-            ),
+          flexibleSpace: LayoutBuilder(
+            builder: (context, constraints) {
+              // * cacluating how much the app bar is collapsed based on its height
+
+              double collapsePercentage =
+                  (constraints.maxHeight) / (resposiveHeight(400));
+              bool isCollapsed = collapsePercentage < 0.3;
+
+              return FlexibleSpaceBar(
+                title:
+                    isCollapsed
+                        ? Row(
+                          children: [
+                            SizedBox(
+                              height: resposiveHeight(35),
+                              child: CachedNetworkImage(
+                                imageUrl: state.productDetailsEntity.imgCover!,
+                                imageBuilder:
+                                    (context, imageProvider) => Image.network(
+                                      state.productDetailsEntity.imgCover!,
+                                    ),
+                                fadeInDuration: const Duration(
+                                  milliseconds: 600,
+                                ),
+                                fadeInCurve: Curves.easeInCubic,
+                              ),
+                            ),
+                            SizedBox(width: resposiveWidth(8)),
+
+                            Text(
+                              state.productDetailsEntity.slug!,
+                              style: AppTextStyles.inter500_20.copyWith(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        )
+                        : null,
+                background: ProductsDetailsImageViewWidget(
+                  pageController: _pageController,
+                  state: state,
+                ),
+              );
+            },
           ),
         ),
         SliverToBoxAdapter(

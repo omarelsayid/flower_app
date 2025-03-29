@@ -42,10 +42,7 @@ class _ProductsDetailViewBodyBlocConsumerState
       listener: (context, state) {
         if (state is ProductsDetailError) {
           EasyLoading.showError(state.message);
-          Future.delayed(
-            Duration(seconds: 2),
-            () => EasyLoading.dismiss(),
-          ); // Dismiss loading indicator on error
+          EasyLoading.dismiss(); // Dismiss loading indicator on error
         } else if (state is ProductsDetailLoading) {
           EasyLoading.show();
         } else if (state is ProductsDetailSuccess) {
