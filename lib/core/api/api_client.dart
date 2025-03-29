@@ -2,6 +2,8 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/auth/domain/entity/sign_in_request.dart';
+import 'package:flower_app/categories/data/model/categories_response_model.dart';
+import 'package:flower_app/categories/domain/entity/categories_response_entity.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -33,6 +35,8 @@ abstract class ApiClient {
 
   @PUT("/api/v1/auth/resetPassword")
   Future<ResetPasswordResponseDTO> resetPassword(@Body() Map<String, dynamic> data);
+  @GET("/api/v1/categories")
+  Future<CategoriesResponseModel> getAllCategories();
 }
 
 
