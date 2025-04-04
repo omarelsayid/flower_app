@@ -17,17 +17,13 @@ class CategoriesEntity extends Equatable {
       this.id, 
       this.name, 
       this.slug, 
-      this.image, 
-      this.createdAt, 
-      this.updatedAt, 
+      this.image,
       this.productsCount,});
 
   String? id;
   String? name;
   String? slug;
   String? image;
-  String? createdAt;
-  String? updatedAt;
   num? productsCount;
 
   @override

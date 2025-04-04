@@ -1,4 +1,5 @@
 import 'package:flower_app/categories/domain/entity/categories_response_entity.dart';
+import 'package:flower_app/categories/domain/entity/specific_category_response_entity.dart';
 
 sealed class CategoriesState {}
 
@@ -15,3 +16,18 @@ class CategoriesErrorState extends CategoriesState {
 
   CategoriesErrorState(this.errMessage);
 }
+
+class SpecificCategoriesLoadingState extends CategoriesState {}
+
+class SpecificCategoriesErrorState extends CategoriesState {
+  final String errMessage;
+
+  SpecificCategoriesErrorState(this.errMessage);
+}
+
+class SpecificCategoriesSuccessState extends CategoriesState {
+  List<ProductsEntity> products;
+
+  SpecificCategoriesSuccessState(this.products);
+}
+class ChangeCategoriesIndexState extends CategoriesState{}
