@@ -24,6 +24,7 @@ dependencies:
   internet_connection_checker: ^3.0.1
   cached_network_image: ^3.4.1
   skeletonizer: ^1.4.3
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +42,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/translations/
+    - assets/images/
   fonts:
     - family: IM FELL English
       fonts:
