@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import '../../auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
+import '../widgets/test_screen.dart';
 
 
 class RoutesGenerator {
@@ -37,6 +38,8 @@ class RoutesGenerator {
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(builder: (_)=>ResetPassword(),settings: settings);
+      case PagesRoutes.testScreen:
+        return MaterialPageRoute(builder: (_)=>TestScreen(),settings: settings);
       default:
         return unDefinedRoute();
     }
