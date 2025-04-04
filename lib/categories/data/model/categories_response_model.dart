@@ -20,6 +20,8 @@ class CategoriesModel extends CategoriesEntity{
     super.name,
     super.image,
     super.slug,
+    super.createdAt,
+    super.updatedAt,
     super.productsCount,
 });
 

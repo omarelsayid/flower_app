@@ -39,6 +39,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/translations/
+    - assets/image/
   fonts:
     - family: IM FELL English
       fonts:
