@@ -17,7 +17,7 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
   List<CategoriesEntity> categories = [];
   List<ProductsEntity> products = [];
   int currentIndex = 0;
-
+ bool isSearching=false;
   void doIntent(CategoriesIntent categoriesIntent) {
     switch (categoriesIntent) {
       case GetAllCategoriesIntent():
@@ -28,6 +28,20 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         break;
       case ChangeCategoriesIndexIntent():
         _changeCategoryIndex(categoriesIntent.index);
+        break;
+      case SearchIntent():
+        _search(query: categoriesIntent.query);
+    }
+  }
+  Future<void> _search({String? query})async{
+    try{
+      emit(LoadingSearchState());
+      var result=await _categoriesUseCase.invoke(query!);
+      products=result;
+      log(products.toString());
+      emit(SuccessfulSearchState(result));
+    } catch(e){
+      emit(FailedSearchState(e.toString()));
     }
   }
 
@@ -100,4 +114,8 @@ class ChangeCategoriesIndexIntent extends CategoriesIntent {
   final int index;
 
   ChangeCategoriesIndexIntent(this.index);
+}
+class SearchIntent extends CategoriesIntent{
+  final String query;
+  SearchIntent(this.query);
 }

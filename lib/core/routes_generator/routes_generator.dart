@@ -43,8 +43,6 @@ class RoutesGenerator {
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(builder: (_)=>ResetPassword(),settings: settings);
-      case PagesRoutes.testScreen:
-        return MaterialPageRoute(builder: (_)=>TestScreen(),settings: settings);
         return MaterialPageRoute(
           builder: (_) => ResetPassword(),
           settings: settings,

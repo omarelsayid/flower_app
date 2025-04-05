@@ -20,4 +20,7 @@ class CategoriesUseCase {
   ) {
     return _categoriesRepository.getSpecificCategory(categoryId);
   }
+  Future<List<ProductsEntity>> invoke(String search) {
+    return _categoriesRepository.search(search);
+  }
 }

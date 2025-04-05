@@ -1,4 +1,3 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constans.dart';
@@ -20,7 +19,7 @@ class OccasionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        
+
         Expanded(
           child: GridView.builder(
             shrinkWrap: true, // Fixes overflow issue in Column

@@ -3,15 +3,17 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i5;
+import 'dart:async' as _i3;
 
 import 'package:flower_app/categories/data/data_source/categories_remote_data_source.dart'
-    as _i4;
-import 'package:flower_app/categories/domain/entity/categories_response_entity.dart'
     as _i2;
+import 'package:flower_app/categories/domain/entity/categories_response_entity.dart'
+    as _i5;
 import 'package:flower_app/categories/domain/entity/specific_category_response_entity.dart'
-    as _i3;
+    as _i7;
+import 'package:flower_app/core/common/result.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -27,54 +29,42 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeCategoriesResponseEntity_0 extends _i1.SmartFake
-    implements _i2.CategoriesResponseEntity {
-  _FakeCategoriesResponseEntity_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
-}
-
-class _FakeSpecificCategoriesResponseEntity_1 extends _i1.SmartFake
-    implements _i3.SpecificCategoriesResponseEntity {
-  _FakeSpecificCategoriesResponseEntity_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(parent, parentInvocation);
-}
-
 /// A class which mocks [CategoriesRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockCategoriesRemoteDataSource extends _i1.Mock
-    implements _i4.CategoriesRemoteDataSource {
+    implements _i2.CategoriesRemoteDataSource {
   MockCategoriesRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i5.Future<_i2.CategoriesResponseEntity> getAllCategories() =>
+  _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>> getAllCategories() =>
       (super.noSuchMethod(
             Invocation.method(#getAllCategories, []),
-            returnValue: _i5.Future<_i2.CategoriesResponseEntity>.value(
-              _FakeCategoriesResponseEntity_0(
-                this,
-                Invocation.method(#getAllCategories, []),
-              ),
-            ),
+            returnValue:
+                _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>.value(
+                  _i6.dummyValue<_i4.Result<_i5.CategoriesResponseEntity>>(
+                    this,
+                    Invocation.method(#getAllCategories, []),
+                  ),
+                ),
           )
-          as _i5.Future<_i2.CategoriesResponseEntity>);
+          as _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>);
 
   @override
-  _i5.Future<_i3.SpecificCategoriesResponseEntity> getSpecificCategory(
-    String? categoryId,
-  ) =>
+  _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>
+  getSpecificCategory(String? categoryId) =>
       (super.noSuchMethod(
             Invocation.method(#getSpecificCategory, [categoryId]),
-            returnValue: _i5.Future<_i3.SpecificCategoriesResponseEntity>.value(
-              _FakeSpecificCategoriesResponseEntity_1(
+            returnValue: _i3.Future<
+              _i4.Result<_i7.SpecificCategoriesResponseEntity>
+            >.value(
+              _i6.dummyValue<_i4.Result<_i7.SpecificCategoriesResponseEntity>>(
                 this,
                 Invocation.method(#getSpecificCategory, [categoryId]),
               ),
             ),
           )
-          as _i5.Future<_i3.SpecificCategoriesResponseEntity>);
+          as _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>);
 }

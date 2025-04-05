@@ -31,3 +31,14 @@ class SpecificCategoriesSuccessState extends CategoriesState {
   SpecificCategoriesSuccessState(this.products);
 }
 class ChangeCategoriesIndexState extends CategoriesState{}
+class LoadingSearchState extends CategoriesState{
+
+}
+class FailedSearchState extends CategoriesState{
+  String errMessage;
+  FailedSearchState(this.errMessage);
+}
+class SuccessfulSearchState extends CategoriesState{
+  List<ProductsEntity> products;
+  SuccessfulSearchState(this.products);
+}
