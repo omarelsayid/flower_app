@@ -1,6 +1,7 @@
 //import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../services/screen_size_service.dart';
 import '../utils/constans.dart';
 import 'flower_card.dart';
  List<Map<String, String>> flowers = [
@@ -45,8 +46,8 @@ class OccasionWidget extends StatelessWidget {
             },
              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 8, // Add spacing between columns
-            mainAxisSpacing: 8,  // Add spacing between rows
+            crossAxisSpacing:ScreenSizeService.width*(8/ScreenSizeService.baseWidth), // Add spacing between columns
+            mainAxisSpacing: ScreenSizeService.height*(8/ScreenSizeService.baseHeight),  // Add spacing between rows
             childAspectRatio: 0.7, // Adjust item ratio to avoid overflow
           ),
           ),

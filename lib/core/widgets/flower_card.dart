@@ -21,7 +21,7 @@ class FlowerCard extends StatelessWidget {
       child: Card(
        // elevation:6,
           child: Padding(
-            padding:  EdgeInsets.symmetric( horizontal: kHorizontalPadding*0.5, ),
+            padding:  EdgeInsets.symmetric( horizontal: kHorizontalPadding*0.5,),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
