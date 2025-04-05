@@ -35,8 +35,7 @@ class FlowerCard extends StatelessWidget {
                   height:  MediaQuery.of(context).size.height*0.18,
                     child:   CachedNetworkImage(
                       imageUrl: imageUrl,
-                      placeholder: (context, url) => CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
+
                     )
                   ),
                   ],
