@@ -2,13 +2,16 @@ import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  const CustomCardWidget({super.key, required this.imgUrl, required this.name,  this.price});
-  final String imgUrl;
+   CustomCardWidget({super.key, required this.imgUrl, required this.name,  this.price});
+   String imgUrl;
   final String name;
   final double ?price;
 
   @override
   Widget build(BuildContext context) {
+    if(!imgUrl.contains("http")){
+      imgUrl="https://flower.elevateegy.com/uploads/"+imgUrl;
+    }
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 12,vertical: 12),
       child: Column(
@@ -37,7 +40,7 @@ class CustomCardWidget extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             // Price text
-            Text(
+            (price==null)?SizedBox.shrink(): Text(
               "$price EGP",
               style: AppTextStyles.inter500_14.copyWith(fontWeight: FontWeight.bold),
             ),

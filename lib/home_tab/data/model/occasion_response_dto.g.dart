@@ -10,8 +10,8 @@ OccasionResponseDTO _$OccasionResponseDTOFromJson(Map<String, dynamic> json) =>
     OccasionResponseDTO(
       message: json['message'] as String,
       metadata: Metadata.fromJson(json['metadata'] as Map<String, dynamic>),
-      categories:
-          (json['categories'] as List<dynamic>)
+      occasions:
+          (json['occasions'] as List<dynamic>)
               .map((e) => Occasion.fromJson(e as Map<String, dynamic>))
               .toList(),
       error: json['error'] as String?,
@@ -22,7 +22,7 @@ Map<String, dynamic> _$OccasionResponseDTOToJson(
 ) => <String, dynamic>{
   'message': instance.message,
   'metadata': instance.metadata,
-  'categories': instance.categories,
+  'occasions': instance.occasions,
   'error': instance.error,
 };
 

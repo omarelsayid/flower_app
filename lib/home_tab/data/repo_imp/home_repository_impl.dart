@@ -75,7 +75,7 @@ class HomeRepositoryImpl implements HomeRepo{
         if(occasionResponseDTO.message == "success")
         {
           log("i am in the rpo imp");
-          final occasion = occasionResponseDTO.categories.map((dto) {
+          final occasion = occasionResponseDTO.occasions.map((dto) {
             return MasterEntity(
               id: dto.id,
               name: dto.name,

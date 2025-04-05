@@ -7,13 +7,13 @@ part 'occasion_response_dto.g.dart';
 class OccasionResponseDTO {
   final String message;
   final Metadata metadata;
-  final List<Occasion> categories;
+  final List<Occasion> occasions;
   final String? error;
 
   OccasionResponseDTO({
     required this.message,
     required this.metadata,
-    required this.categories,
+    required this.occasions,
     this.error
   }
       );
