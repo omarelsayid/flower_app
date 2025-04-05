@@ -1,11 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_colors.dart';
 import '../utils/constans.dart';
 
 class FlowerCard extends StatelessWidget {
-   FlowerCard({super.key,/* required this.image*/required this.discount,required this.cost,required this.discountRate,required this.name});
-   //Image ? image;
+   FlowerCard({super.key, required this.imageUrl,required this.discount,required this.cost,required this.discountRate,required this.name});
+   String imageUrl;
    String name ;
    String cost ;
    String discount ;
@@ -32,8 +33,11 @@ class FlowerCard extends StatelessWidget {
                   SizedBox(
                    width:  MediaQuery.of(context).size.width*0.4,
                   height:  MediaQuery.of(context).size.height*0.18,
-                    child:   Image.asset('assets/image/Image.png'
-                    ),
+                    child:   CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      placeholder: (context, url) => CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    )
                   ),
                   ],
                 ),

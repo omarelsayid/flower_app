@@ -3,19 +3,21 @@ import 'package:flutter/material.dart';
 
 import '../utils/constans.dart';
 import 'flower_card.dart';
-
+ List<Map<String, String>> flowers = [
+  {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
+  {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
+  {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
+  {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
+  {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
+  {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
+  {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
+  {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
+];
 class OccasionWidget extends StatelessWidget {
-   OccasionWidget({super.key});
-  final List<Map<String, String>> flowers = [
-    {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
-    {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
-    {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
-    {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
-    {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
-    {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
-    {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
-    {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
-  ];
+
+    const OccasionWidget({super.key,required this.flowers});
+  final List<Map<String, String>> flowers;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,6 +38,7 @@ class OccasionWidget extends StatelessWidget {
                   discount: flowers[index]["discount"]!,
                   discountRate: flowers[index]["discountRate"]!,
                   cost: flowers[index]["cost"]!,
+                  imageUrl: '',
                   // Example image
                 ),
               );
