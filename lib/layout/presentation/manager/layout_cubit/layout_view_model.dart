@@ -1,4 +1,5 @@
 import 'package:flower_app/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
+import 'package:flower_app/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
 import 'package:flower_app/layout/presentation/manager/layout_cubit/layout_state.dart';
 import 'package:flower_app/layout/presentation/tabs/category_tab.dart';
 import 'package:flower_app/home_tab/presentation/views/home_tab.dart';
@@ -28,6 +29,9 @@ List<Widget>tabs=[
 ),
     BlocProvider(
       create: (context) => getIt.get<BestSellerCubit>()..getBestSeller(),
+    ),
+    BlocProvider(
+      create: (context) => getIt.get<OccasionCubit>()..fetchOccasion(),
     ),
   ],
   child: HomeTab(),

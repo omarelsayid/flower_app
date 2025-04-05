@@ -2,7 +2,7 @@
 
 import 'package:equatable/equatable.dart';
 
-class CategoryEntity extends Equatable {
+class MasterEntity extends Equatable {
   final String id;
   final String name;
   final String slug;
@@ -11,7 +11,7 @@ class CategoryEntity extends Equatable {
   final DateTime updatedAt;
   final int productsCount;
 
-  const CategoryEntity({
+  const MasterEntity({
     required this.id,
     required this.name,
     required this.slug,

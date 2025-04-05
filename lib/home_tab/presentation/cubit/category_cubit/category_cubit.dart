@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/home_tab/domain/user_case/get_category_use_case.dart';
+import 'package:flower_app/home_tab/domain/user_case/home_use_case.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
@@ -12,13 +12,13 @@ part 'category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this.getCategoriesUseCase) : super(CategoryInitial());
-  final GetCategoriesUseCase getCategoriesUseCase;
+  final HomeUseCase getCategoriesUseCase;
 
 
   Future<void> fetchCategories()async{
     emit(CategoryLoading());
 
-    final result = await getCategoriesUseCase.execute();
+    final result = await getCategoriesUseCase.executeCategory();
     switch(result)
         {
       case Success():

@@ -3,19 +3,21 @@
 import 'dart:developer';
 
 import 'package:flower_app/core/api/api_client.dart';
+import 'package:flower_app/home_tab/data/model/occasion_response_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../model/category_response_dto.dart';
 
-abstract class CategoryDataSource{
+abstract class HomeDataSource{
 
   Future<CategoryResponseDTO> getAllCategories();
+  Future<OccasionResponseDTO> getOccasion();
 }
 
 
 
-@Injectable(as: CategoryDataSource)
-class CategoryDataSourceImp implements  CategoryDataSource{
+@Injectable(as: HomeDataSource)
+class CategoryDataSourceImp implements  HomeDataSource{
   final ApiClient _apiClient;
 
   CategoryDataSourceImp(this._apiClient);
@@ -28,6 +30,16 @@ class CategoryDataSourceImp implements  CategoryDataSource{
       log("Category from data source");
       return response;
   }
+
+  @override
+  Future<OccasionResponseDTO> getOccasion()async {
+    final response = await _apiClient.getOccasion();
+    log("Category from data source");
+    return response;
+  }
+
+
+
 
 
 }

@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/auth/domain/entity/sign_in_request.dart';
+import 'package:flower_app/home_tab/data/model/occasion_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -41,6 +42,9 @@ abstract class ApiClient {
 
   @GET("/api/v1/categories")
   Future<CategoryResponseDTO> getCategories();
+
+  @GET("/api/v1/occasions")
+  Future<OccasionResponseDTO> getOccasion();
 
 }
 
