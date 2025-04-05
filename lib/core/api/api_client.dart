@@ -10,6 +10,7 @@ import '../../auth/data/model/reset_password_dto.dart';
 import '../../auth/data/model/verify_email_response_dto.dart';
 import '../../auth/domain/entity/sign_up_request.dart';
 import '../../best_seller_products/data/model/BestSellerProductsModel.dart';
+import '../../home_tab/data/model/category_response_dto.dart';
 
 
 part 'api_client.g.dart';
@@ -37,6 +38,10 @@ abstract class ApiClient {
   
   @GET("/api/v1/best-seller")
   Future<HttpResponse<BestSellerProductsModel>> getBestSeller();
+
+  @GET("/api/v1/categories")
+  Future<CategoryResponseDTO> getCategories();
+
 }
 
 

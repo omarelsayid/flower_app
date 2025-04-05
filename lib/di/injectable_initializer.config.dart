@@ -42,6 +42,12 @@ import '../best_seller_products/presentation/cubit/best_seller_cubit.dart'
     as _i34;
 import '../core/api/api_client.dart' as _i424;
 import '../core/services/internet_connection_check.dart' as _i697;
+import '../home_tab/data/data_source/category_data_source.dart' as _i764;
+import '../home_tab/data/repo_imp/category_repository_impl.dart' as _i551;
+import '../home_tab/domain/repo/category_repo.dart' as _i477;
+import '../home_tab/domain/user_case/get_category_use_case.dart' as _i416;
+import '../home_tab/presentation/cubit/category_cubit/category_cubit.dart'
+    as _i228;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -55,11 +61,23 @@ extension GetItInjectableX on _i174.GetIt {
       () => dataModule.getInternetConnectionCheck(),
     );
     gh.singleton<_i424.ApiClient>(() => _i424.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i764.CategoryDataSource>(
+      () => _i764.CategoryDataSourceImp(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i477.CategoryRepo>(
+      () => _i551.CategoryRepositoryImpl(
+        gh<_i764.CategoryDataSource>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
     gh.factory<_i689.BestSellerRemoteDataSource>(
       () => _i211.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
     gh.factory<_i561.AuthRemoteDataSource>(
       () => _i561.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i416.GetCategoriesUseCase>(
+      () => _i416.GetCategoriesUseCase(gh<_i477.CategoryRepo>()),
     );
     gh.factory<_i118.BestSellerRepo>(
       () => _i37.BestSellerRepoImpl(gh<_i689.BestSellerRemoteDataSource>()),
@@ -69,6 +87,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i561.AuthRemoteDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
+    );
+    gh.factory<_i228.CategoryCubit>(
+      () => _i228.CategoryCubit(gh<_i416.GetCategoriesUseCase>()),
     );
     gh.factory<_i373.AuthUseCase>(
       () => _i373.AuthUseCase(gh<_i1051.AuthRepository>()),

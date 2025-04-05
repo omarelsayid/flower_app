@@ -1,9 +1,12 @@
+import 'package:flower_app/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/layout/presentation/manager/layout_cubit/layout_state.dart';
 import 'package:flower_app/layout/presentation/tabs/category_tab.dart';
-import 'package:flower_app/layout/presentation/tabs/home_tab.dart';
+import 'package:flower_app/home_tab/presentation/views/home_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../di/injectable_initializer.dart';
+import '../../../../home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart';
 import '../../tabs/cart_tab.dart';
 import '../../tabs/profile_tab.dart';
 
@@ -18,7 +21,17 @@ class LayoutViewModel extends Cubit <LayoutState> {
     }
   }
 List<Widget>tabs=[
-  const HomeTab(),
+   MultiBlocProvider(
+  providers: [
+    BlocProvider(
+  create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
+),
+    BlocProvider(
+      create: (context) => getIt.get<BestSellerCubit>()..getBestSeller(),
+    ),
+  ],
+  child: HomeTab(),
+),
   const CategoryTab(),
   const CartTab(),
   const ProfileTab(),
