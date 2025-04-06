@@ -10,15 +10,13 @@ class TestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-         body:Expanded(child: OccasionWidget( flowers: [
-         {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
-         {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
-         {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
-         {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
-         {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
-         {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
-         {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
-         {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
+         body:Expanded(child: OccasionWidget( flowers:[
+           {"name":"rose", "discount": "800", "discountRate": "20%", "cost": '500'},
+           {"name": "Lily", "discount": "500", "discountRate": "15%", "cost": '10000'},
+           {"name": "Tulip", "discount": "70000", "discountRate": "25%", "cost": '500'},
+           {"name": "Rose", "discount": "800", "discountRate": "20%", "cost": '500'},
+           {"name": "Lily", "discount": "500", "discountRate": "15%", "cost": '10000'},
+           {"name": "Tulip", "discount": "70000", "discountRate": "25%", "cost": '500'},
          ],)),
     );
   }

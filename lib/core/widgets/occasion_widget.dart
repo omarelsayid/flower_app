@@ -4,16 +4,7 @@ import 'package:flutter/material.dart';
 import '../services/screen_size_service.dart';
 import '../utils/constans.dart';
 import 'flower_card.dart';
- List<Map<String, String>> flowers = [
-  {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
-  {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
-  {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
-  {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
-  {"name": "Rose", "discount": "Spring Sale", "discountRate": "20%", "cost": ''},
-  {"name": "Lily", "discount": "Summer Sale", "discountRate": "15%", "cost": ''},
-  {"name": "Tulip", "discount": "Winter Sale", "discountRate": "25%", "cost": ''},
-  {"name": "Sunflower", "discount": "Autumn Sale", "discountRate": "30%", "cost": ''},
-];
+
 class OccasionWidget extends StatelessWidget {
 
     const OccasionWidget({super.key,required this.flowers});
@@ -36,7 +27,7 @@ class OccasionWidget extends StatelessWidget {
                 height:  MediaQuery.of(context).size.height*0.268,
                 child: FlowerCard(
                   name: flowers[index]["name"]!,
-                  discount: flowers[index]["discount"]!,
+                  beforDiscount: flowers[index]["discount"]!,
                   discountRate: flowers[index]["discountRate"]!,
                   cost: flowers[index]["cost"]!,
                   imageUrl: '',

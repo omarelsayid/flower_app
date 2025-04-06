@@ -5,11 +5,11 @@ import '../utils/app_colors.dart';
 import '../utils/constans.dart';
 
 class FlowerCard extends StatelessWidget {
-   FlowerCard({super.key, required this.imageUrl,required this.discount,required this.cost,required this.discountRate,required this.name});
+   FlowerCard({super.key, required this.imageUrl,required this.beforDiscount,required this.cost,required this.discountRate,required this.name});
    String imageUrl;
    String name ;
    String cost ;
-   String discount ;
+   String beforDiscount ;
    String discountRate;
 
 
@@ -48,27 +48,38 @@ class FlowerCard extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('red rose',
+                          Text(
+                            name,
                             //textAlign: TextAlign.start,
                           ),
                           RichText(
+
                             text: TextSpan(
 
                               children: [
-                                TextSpan(text: "EGP 600  ",
+                                TextSpan(
+                                    text: cost,
                                 style:  TextStyle(
+
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500, color: AppColors.blackColor)
                                 ),
+                                TextSpan(
+                                  text: '  '
+                                ),
 
                                 TextSpan(
-                                  text: " 800",
+                                  text: beforDiscount,
                                     style:  TextStyle(
+                                        decoration: TextDecoration.lineThrough,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400, color: AppColors.blackColor)
                                 ),
                                 TextSpan(
-                                    text: "  %20",
+                                    text: '  '
+                                ),
+                                TextSpan(
+                                    text: discountRate,
                                     style:  TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.w400, color: AppColors.blackColor)
