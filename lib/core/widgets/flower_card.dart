@@ -12,7 +12,6 @@ class FlowerCard extends StatelessWidget {
    String beforDiscount ;
    String discountRate;
 
-
    @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -36,8 +35,7 @@ class FlowerCard extends StatelessWidget {
                    width:  MediaQuery.of(context).size.width*0.4,
                   height:  MediaQuery.of(context).size.height*0.18,
                     child:   CachedNetworkImage(
-                      imageUrl: imageUrl,
-
+                      imageUrl: "imageUrl",
                     )
                   ),
                   ],
@@ -83,8 +81,9 @@ class FlowerCard extends StatelessWidget {
                                 TextSpan(
                                     text: discountRate,
                                     style:  TextStyle(
+
                                         fontSize: 12,
-                                        fontWeight: FontWeight.w400, color: AppColors.blackColor)
+                                        fontWeight: FontWeight.w400, color: AppColors.greenColor)
                                 ),
                               ],
                             ),
