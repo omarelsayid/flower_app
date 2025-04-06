@@ -19,6 +19,8 @@ class FlowerCard extends StatelessWidget {
       width:  MediaQuery.of(context).size.width*0.43,
       height:  MediaQuery.of(context).size.height*0.268,
       child: Card(
+
+        color:AppColors.whiteColor,
        // elevation:6,
           child: Padding(
             padding:  EdgeInsets.symmetric( horizontal: kHorizontalPadding*0.5,),
