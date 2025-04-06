@@ -6,15 +6,16 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import '../../../../core/common/result.dart';
 import '../../domain/repository/occasion_repository.dart';
 import '../data_source/occasion_remote_data_source.dart';
+import '../model/occasions_dto.dart';
 
 @Injectable(as: OccasionRepository)
 class OccasionRepositoryImpl implements OccasionRepository {
   final OccasionRemoteDataSource _occasionRemoteDataSource;
-  final InternetConnectionChecker internetConnectionChecker;
+  // final InternetConnectionChecker internetConnectionChecker;
 
   OccasionRepositoryImpl(
     this._occasionRemoteDataSource,
-    this.internetConnectionChecker,
+    // this.internetConnectionChecker,
   );
 
   @override

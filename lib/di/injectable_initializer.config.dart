@@ -55,10 +55,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1016.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
     gh.factory<_i938.OccasionRepository>(
-      () => _i509.OccasionRepositoryImpl(
-        gh<_i1016.OccasionRemoteDataSource>(),
-        gh<_i973.InternetConnectionChecker>(),
-      ),
+      () => _i509.OccasionRepositoryImpl(gh<_i1016.OccasionRemoteDataSource>()),
     );
     gh.factory<_i561.AuthRemoteDataSource>(
       () => _i561.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),

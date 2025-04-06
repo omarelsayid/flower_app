@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flower_app/home/occasions/domain/entity/occasions_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
@@ -12,6 +13,8 @@ class OccasionViewModel extends Cubit<OccasionState> {
 
   final OccasionUseCase _occasionUseCase;
   String? selectedOccasionId;
+  int currentIndex = 0;
+  List<Occasion> occasions = [];
 
   void doIntent(OccasionIntent occasionIntent) {
     switch (occasionIntent) {
@@ -22,7 +25,18 @@ class OccasionViewModel extends Cubit<OccasionState> {
         selectedOccasionId = occasionId;
         _getSpecificOccasion(occasionId);
         break;
+      case ChangeOccasionIndexIntent(:final index):
+        _changeOccasionIndex(index);
+        break;
     }
+  }
+
+  void _changeOccasionIndex(int index) {
+    emit(ChangeOccasionIndexState());
+    currentIndex = index;
+    _getSpecificOccasion(occasions[currentIndex].id.toString());
+    log("Changed occasion index to: $currentIndex");
+    emit(SuccessOccasionState(occasions));  // Update occasions after changing the index
   }
 
   Future<void> _getOccasion() async {
@@ -41,6 +55,7 @@ class OccasionViewModel extends Cubit<OccasionState> {
           if (occasionsList.isEmpty) {
             emit(ErrorOccasionState("No occasions available"));
           } else {
+            occasions = occasionsList;
             emit(SuccessOccasionState(occasionsList));
             log("Fetched ${occasionsList.length} occasions successfully.");
           }
@@ -88,9 +103,15 @@ class OccasionViewModel extends Cubit<OccasionState> {
   }
 }
 
+
+
 sealed class OccasionIntent {}
 
 class OccasionClickedIntent extends OccasionIntent {}
+class ChangeOccasionIndexIntent extends OccasionIntent {
+  final int index;
+  ChangeOccasionIndexIntent(this.index);
+}
 
 class SpecificOccasionClickedIntent extends OccasionIntent {
   final String occasionId;

@@ -46,9 +46,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
               // Listen to tab change and update selected occasion
               _tabController?.addListener(() {
                 if (_tabController!.indexIsChanging) {
-                  final occasionId = occasions[_tabController!.index]?.id;
-                  log("Tab Clicked: Index ${_tabController!.index}, Occasion ID: $occasionId");
-                  viewModel.doIntent(SpecificOccasionClickedIntent(occasionId!));
+                  viewModel.doIntent(ChangeOccasionIndexIntent(_tabController!.index));
                 }
               });
 
@@ -60,6 +58,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
               });
             }
           }
+
           if (occasions.isEmpty) {
             return const Scaffold(
               body: Center(child: Text("No occasions available")),
@@ -70,18 +69,18 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
             appBar: AppBar(
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-            Text("Occasions", style: AppTextStyles.inter500_20),
-            Text(
-              "Bloom with our exquisite best sellers",
-              style: AppTextStyles.inter400_14.copyWith(
-                color: AppColors.greyDarkColor,
-              ),
-            ),
-          ],
+                children: [
+                  Text("Occasions", style: AppTextStyles.inter500_20),
+                  Text(
+                    "Bloom with our exquisite best sellers",
+                    style: AppTextStyles.inter400_14.copyWith(
+                      color: AppColors.greyDarkColor,
+                    ),
+                  ),
+                ],
               ),
               bottom: _tabController == null
-                  ? const TabBar(tabs: [],)
+                  ? const TabBar(tabs: [])
                   : TabBar(
                 tabAlignment: TabAlignment.start,
                 controller: _tabController,
@@ -104,7 +103,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                       final product = products[index];
                       return ListTile(
                         leading: product.imgCover != null
-                            ? Image.network(product.imgCover!,)
+                            ? Image.network(product.imgCover!)
                             : const Icon(Icons.image),
                         title: Text(product.title ?? "No Title"),
                         subtitle: Text(product.slug ?? ""),
@@ -112,7 +111,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                     },
                   );
                 } else if (state is ErrorOccasionState) {
-                  return Center(child: Text("Error: ${state.message}",));
+                  return Center(child: Text("Error: ${state.message}"));
                 }
                 return const Center(child: Text("Select an occasion"));
               },

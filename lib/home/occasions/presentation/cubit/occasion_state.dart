@@ -19,4 +19,5 @@ class SuccessSpecificOccasionState extends OccasionState {
   final List<Products> specificOccasion;
   SuccessSpecificOccasionState(this.specificOccasion);
 }
+class ChangeOccasionIndexState extends OccasionState {}
 
