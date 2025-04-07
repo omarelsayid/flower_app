@@ -1,56 +1,65 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_colors.dart';
 import '../utils/constans.dart';
 
 class FlowerCard extends StatelessWidget {
-   FlowerCard({super.key, required this.imageUrl,required this.beforDiscount,required this.cost,required this.discountRate,required this.name});
+   FlowerCard({super.key, required this.imageUrl,required this.beforeDiscount,required this.cost,required this.discountRate,required this.name});
    String imageUrl;
    String name ;
    String cost ;
-   String beforDiscount ;
+   String beforeDiscount ;
    String discountRate;
 
    @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width:  MediaQuery.of(context).size.width*0.43,
-      height:  MediaQuery.of(context).size.height*0.268,
+      width:  resposiveWidth(163),
+      height:  resposiveHeight(229),
       child: Card(
 
         color:AppColors.whiteColor,
        // elevation:6,
           child: Padding(
-            padding:  EdgeInsets.symmetric( horizontal: kHorizontalPadding*0.5,),
+            padding:  EdgeInsets.symmetric( horizontal: resposiveWidth(4),),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-
-                  SizedBox(
-                   width:  MediaQuery.of(context).size.width*0.4,
-                  height:  MediaQuery.of(context).size.height*0.18,
-                    child:   CachedNetworkImage(
-                      imageUrl: "imageUrl",
-                    )
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: resposiveWidth(8),vertical: resposiveHeight(8)),
+                  color: AppColors.lightPinkColor,
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    width:resposiveWidth(147),
+                    height:  resposiveHeight(131),
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.lightPinkColor,
+                        ),
+                      );
+                    },
                   ),
-                  ],
                 ),
                 Padding(
-                  padding:  EdgeInsets.symmetric( horizontal: kHorizontalPadding*0.5, ),
+                  padding:  EdgeInsets.symmetric( horizontal: 4, ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
 
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            name,
-                            //textAlign: TextAlign.start,
+                            name.split(' ').length >= 2
+                                ? '${name.split(' ')[0]} ${name.split(' ')[1]}'
+                                : name,
+                            style: AppTextStyles.inter400_12,
                           ),
                           RichText(
 
@@ -58,18 +67,15 @@ class FlowerCard extends StatelessWidget {
 
                               children: [
                                 TextSpan(
-                                    text: cost,
-                                style:  TextStyle(
-
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500, color: AppColors.blackColor)
+                                    text: "EGP $cost",
+                                style:  AppTextStyles.inter400_14.copyWith(color: AppColors.blackColor,fontWeight: FontWeight.w500)
                                 ),
                                 TextSpan(
                                   text: '  '
                                 ),
 
                                 TextSpan(
-                                  text: beforDiscount,
+                                  text: beforeDiscount,
                                     style:  TextStyle(
                                         decoration: TextDecoration.lineThrough,
                                         fontSize: 12,

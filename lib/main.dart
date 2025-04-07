@@ -35,7 +35,7 @@ class MainApp extends StatelessWidget {
       theme: theme(context),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute:PagesRoutes.testScreen,
+      initialRoute:PagesRoutes.layOutScreen,
           // token != null && (rememberMe ?? false)
           //     ? PagesRoutes.layOutScreen
           //     : PagesRoutes.signInScreen,

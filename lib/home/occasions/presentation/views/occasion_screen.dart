@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import '../../../../core/services/screen_size_service.dart';
+import '../../../../core/widgets/occasion_widget.dart';
 import '../../domain/entity/occasions_entity.dart';
 import '../cubit/occasion_view_model.dart';
 import '../cubit/occasion_state.dart';
@@ -97,19 +99,51 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                   EasyLoading.show();
                 } else if (state is SuccessSpecificOccasionState) {
                   final products = state.specificOccasion;
-                  return ListView.builder(
+                  return GridView.builder(
+                    padding: const EdgeInsets.all(2),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: ScreenSizeService.width * (8 / ScreenSizeService.baseWidth), // Add spacing between columns
+                      mainAxisSpacing: ScreenSizeService.height * (8 / ScreenSizeService.baseHeight),  // Add spacing between rows
+                      childAspectRatio: 0.7,),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
                       final product = products[index];
-                      return ListTile(
-                        leading: product.imgCover != null
-                            ? Image.network(product.imgCover!)
-                            : const Icon(Icons.image),
-                        title: Text(product.title ?? "No Title"),
-                        subtitle: Text(product.slug ?? ""),
-                      );
+                      return OccasionWidget(flowers: [
+                        {
+                          "name": product.title.toString(),
+                          "discount": "${product.discount}",
+                          "discountRate": "${product.priceAfterDiscount}%",
+                          "cost": '${product.price}',
+                          "imageUrl": '${product.imgCover}'
+                        },
+                      ]);
                     },
                   );
+
+                  // return ListView.builder(
+                  //   itemCount: products.length,
+                  //   itemBuilder: (context, index) {
+                  //     final product = products[index];
+                  //     print('Product: ${product.title}, Discount: ${product.discount}');
+                  //     return OccasionWidget(flowers: [
+                  //       {
+                  //         "name":product.title.toString(),
+                  //         "discount": "${product.discount}",
+                  //         "discountRate": "${product.priceAfterDiscount}",
+                  //         "cost": '${product.price}',
+                  //         "imageUrl": '${product.imgCover}'
+                  //       },
+                  //     ],);
+                  //     // return ListTile(
+                  //     //   leading: product.imgCover != null
+                  //     //       ? Image.network(product.imgCover!)
+                  //     //       : const Icon(Icons.image),
+                  //     //   title: Text(product.title ?? "No Title"),
+                  //     //   subtitle: Text(product.slug ?? ""),
+                  //     // );
+                  //   },
+                  // );
                 } else if (state is ErrorOccasionState) {
                   return Center(child: Text("Error: ${state.message}"));
                 }
