@@ -35,7 +35,8 @@ class FlowerCard extends StatelessWidget {
                    width:  MediaQuery.of(context).size.width*0.4,
                   height:  MediaQuery.of(context).size.height*0.18,
                     child:   CachedNetworkImage(
-                      imageUrl: "imageUrl",
+                      imageUrl: imageUrl,
+
                     )
                   ),
                   ],
