@@ -67,4 +67,14 @@ class MockCategoriesRepository extends _i1.Mock
             ),
           )
           as _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>);
+
+  @override
+  _i3.Future<List<_i7.ProductsEntity>> search(String? query) =>
+      (super.noSuchMethod(
+            Invocation.method(#search, [query]),
+            returnValue: _i3.Future<List<_i7.ProductsEntity>>.value(
+              <_i7.ProductsEntity>[],
+            ),
+          )
+          as _i3.Future<List<_i7.ProductsEntity>>);
 }

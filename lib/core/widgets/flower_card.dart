@@ -5,11 +5,11 @@ import '../utils/app_colors.dart';
 import '../utils/constans.dart';
 
 class FlowerCard extends StatelessWidget {
-   FlowerCard({super.key, required this.imageUrl,required this.beforDiscount,required this.cost,required this.discountRate,required this.name});
+   FlowerCard({super.key, required this.imageUrl,required this.beforeDiscount,required this.cost,required this.discountRate,required this.name});
    String imageUrl;
    String name ;
    String cost ;
-   String beforDiscount ;
+   String beforeDiscount ;
    String discountRate;
 
    @override
@@ -70,7 +70,7 @@ class FlowerCard extends StatelessWidget {
                                 ),
 
                                 TextSpan(
-                                  text: beforDiscount,
+                                  text: beforeDiscount,
                                     style:  TextStyle(
                                         decoration: TextDecoration.lineThrough,
                                         fontSize: 12,

@@ -1,4 +1,3 @@
-//import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../services/screen_size_service.dart';
@@ -14,7 +13,7 @@ class OccasionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        
+
         Expanded(
           child: GridView.builder(
             shrinkWrap: true, // Fixes overflow issue in Column
@@ -27,7 +26,7 @@ class OccasionWidget extends StatelessWidget {
                 height:  MediaQuery.of(context).size.height*0.268,
                 child: FlowerCard(
                   name: flowers[index]["name"]!,
-                  beforDiscount: flowers[index]["discount"]!,
+                  beforeDiscount: flowers[index]["discount"]!,
                   discountRate: flowers[index]["discountRate"]!,
                   cost: flowers[index]["cost"]!,
                   imageUrl: '',

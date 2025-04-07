@@ -1,8 +1,6 @@
-import 'package:flower_app/categories/presentation/manager/categories_view_model.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/auth/presentation/views/sign_in_screen.dart';
 import 'package:flower_app/auth/presentation/views/sign_up_screen.dart';
-import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
+import '../widgets/test_screen.dart';
+
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -43,6 +43,7 @@ class RoutesGenerator {
         );
 
       case PagesRoutes.resetPassword:
+        return MaterialPageRoute(builder: (_)=>ResetPassword(),settings: settings);
         return MaterialPageRoute(
           builder: (_) => ResetPassword(),
           settings: settings,
