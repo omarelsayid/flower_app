@@ -3,17 +3,24 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/text_styles.dart';
+import '../../../di/injectable_initializer.dart';
+import '../manager/categories_view_model.dart';
 
 class CustomSearchCategories extends StatelessWidget {
-  const CustomSearchCategories({super.key});
-
+   CustomSearchCategories({super.key,this.onChanged});
+  void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Row(
+
       children: [
         Expanded(
           flex: 5,
           child: TextFormField(
+            keyboardType: TextInputType.name,
+
+            onChanged: onChanged,
             decoration: InputDecoration(
               hintText: "Search",
               hintStyle: AppTextStyles.inter400_14.copyWith(
