@@ -10,16 +10,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/utils/app_colors.dart';
 
-class CategoriesTab extends StatelessWidget {
+class CategoriesTab extends StatefulWidget {
   const CategoriesTab({super.key});
 
+  @override
+  State<CategoriesTab> createState() => _CategoriesTabState();
+}
+CategoriesViewModel viewModel = getIt.get<CategoriesViewModel>();
+
+class _CategoriesTabState extends State<CategoriesTab> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery
         .of(context)
         .size
         .height;
-    CategoriesViewModel viewModel = getIt.get<CategoriesViewModel>();
+
     return BlocProvider(
       create: (context) => viewModel,
       child: BlocConsumer<CategoriesViewModel, CategoriesState>(
