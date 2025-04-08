@@ -10,4 +10,5 @@ abstract class PagesRoutes {
   static const String testScreen = "test_screen";
   static const String occasionScreen = "occasion_screen";
   static const String productDetails = "product_details";
+  static const String categoriesScreen = "categories_screen";
 }

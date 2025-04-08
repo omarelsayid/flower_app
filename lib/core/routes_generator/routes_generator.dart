@@ -1,4 +1,5 @@
 import 'package:flower_app/best_seller_products/presentation/views/best_seller_view.dart';
+import 'package:flower_app/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart';
@@ -48,6 +49,13 @@ class RoutesGenerator {
         return MaterialPageRoute(
           builder:
               (context) => ProductsDetailsView(),
+          settings: settings,
+        );
+
+      case PagesRoutes.categoriesScreen:
+        return MaterialPageRoute(
+          builder:
+              (context) => CategoriesTab(),
           settings: settings,
         );
 

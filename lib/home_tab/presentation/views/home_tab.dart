@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/constant_manager.dart';
@@ -87,7 +88,9 @@ class HomeTab extends StatelessWidget {
             // category
             Column(
               children: [
-               RowWidget(txt: "Categories", leading_text:"View all", onPressed: (){}),
+               RowWidget(txt: "Categories", leading_text:"View all", onPressed: (){
+                 Navigator.pushNamed(context, PagesRoutes.categoriesScreen,);
+               }),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
