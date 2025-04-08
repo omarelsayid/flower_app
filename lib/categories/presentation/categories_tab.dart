@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flower_app/categories/presentation/manager/categories_state.dart';
 import 'package:flower_app/categories/presentation/manager/categories_view_model.dart';
 import 'package:flower_app/categories/presentation/widget/custom_search_categories.dart';
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/widgets/custom_diaolg.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ class CategoriesTab extends StatelessWidget {
                   state.products.isNotEmpty
                       ? _buildProductsList(
                         state.products,
-                        viewModel.allProducts.length,
+                        viewModel.products.length,
                       )
                       : const Center(child: Text("No products found"))
                 else if (state is SpecificCategoriesSuccessState &&
@@ -129,12 +130,17 @@ class CategoriesTab extends StatelessWidget {
       itemCount: length,
       itemBuilder: (context, index) {
         final product = products[index];
-        return FlowerCard(
-          name: product.title.toString(),
-          beforeDiscount: "${product.discount}",
-          discountRate: "${product.priceAfterDiscount}%",
-          cost: '${product.price}',
-          imageUrl: '${product.imgCover}',
+        return InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, PagesRoutes.productDetails,arguments: product.id);
+          },
+          child: FlowerCard(
+            name: product.title.toString(),
+            beforeDiscount: "${product.discount}",
+            discountRate: "${product.priceAfterDiscount}%",
+            cost: '${product.price}',
+            imageUrl: '${product.imgCover}',
+          ),
         );
       },
     );

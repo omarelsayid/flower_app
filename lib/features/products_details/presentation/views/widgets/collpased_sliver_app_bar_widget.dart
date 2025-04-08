@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/products_details/presentation/cubits/product_details_cubit/products_detail_states.dart';
 import 'package:flutter/material.dart';
@@ -32,10 +33,15 @@ class CollapsedSliverAppBarWidget extends StatelessWidget {
         ),
         SizedBox(width: resposiveWidth(8)),
     
-        Text(
-          state.productDetailsEntity.slug!,
-          style: AppTextStyles.inter500_20.copyWith(
-            color: Colors.white,
+        Expanded(
+          child: Text(
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            softWrap: false,
+            state.productDetailsEntity.slug!,
+            style: AppTextStyles.inter500_20.copyWith(
+              color: AppColors.blackColor,
+            ),
           ),
         ),
       ],

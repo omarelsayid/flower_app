@@ -21,7 +21,7 @@ class _ProductsDetailViewBodyBlocConsumerState
   void initState() {
     super.initState();
     Future.microtask(
-      () => context.read<ProductsDetailCubit>().getProductDetails(widget.id ),
+      () => context.read<ProductsDetailCubit>().getProductDetails(widget.id),
     );
     _pageController = PageController(initialPage: 0);
   }

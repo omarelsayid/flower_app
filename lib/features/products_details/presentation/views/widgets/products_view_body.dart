@@ -101,7 +101,7 @@ class ProductsDetailsViewBody extends StatelessWidget {
                 ),
 
                 SizedBox(height: resposiveHeight(8)),
-                Text('15 Pink Rose Bouquet', style: AppTextStyles.inter500_16),
+                Text('${state.productDetailsEntity.slug}', style: AppTextStyles.inter500_16),
 
                 SizedBox(height: resposiveHeight(16)),
 

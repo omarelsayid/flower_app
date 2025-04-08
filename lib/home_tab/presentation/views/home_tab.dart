@@ -134,10 +134,12 @@ class HomeTab extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height:16 ,),
+            // SizedBox(height:16 ,),
             Column(
               children: [
-               RowWidget(txt: "Best seller", leading_text:"View all", onPressed: (){}),
+               RowWidget(txt: "Best seller", leading_text:"View all", onPressed: (){
+                 Navigator.pushNamed(context, PagesRoutes.bestSellerScreen);
+               }),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -182,55 +184,57 @@ class HomeTab extends StatelessWidget {
               ],
             ),
         
-            SizedBox(height:16 ,),
-            Column(
-              children: [
-                RowWidget(txt: "Occasion", leading_text:"View all", onPressed: (){
-                  Navigator.pushNamed(context, PagesRoutes.occasionScreen);
-                }),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    BlocBuilder<OccasionCubit, OccasionState>(
-                      builder: (context, state) {
-                        if(state is OccasionLoading){
-                          return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
-        
-                        }
-                        else if(state is OccasionSuccess)
-                        {
-                          log("${state.occasions.length}");
-                          log(state.occasions[1].name);
-        
-                          return Expanded(
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                children: state.occasions.map((cat) {
-                                  return CustomCardWidget(name: cat.name,imgUrl:cat.image,price: null, );
-                                },).toList(),
+            // SizedBox(height:16 ,),
+
+              Column(
+                children: [
+                  RowWidget(txt: "Occasion", leading_text:"View all", onPressed: (){
+                    Navigator.pushNamed(context, PagesRoutes.occasionScreen);
+                  }),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      BlocBuilder<OccasionCubit, OccasionState>(
+                        builder: (context, state) {
+                          if(state is OccasionLoading){
+                            return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
+
+                          }
+                          else if(state is OccasionSuccess)
+                          {
+                            log("${state.occasions.length}");
+                            log(state.occasions[1].name);
+
+                            return Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: state.occasions.map((cat) {
+                                    return CustomCardWidget(name: cat.name,imgUrl:cat.image,price: null, );
+                                  },).toList(),
+                                ),
                               ),
-                            ),
-                          );
-        
-                        }
-                        else if (state is OccasionError && !state.message.contains("internet"))
-                        {
-                          return  Center(child: Text(state.message));
-                        }
-                        else if(state is OccasionError && state.message.contains("internet")){
-        
-                          EasyLoading.showError(state.message);
-                        }
-        
-                        return const SizedBox.shrink();
-        
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                            );
+
+                          }
+                          else if (state is OccasionError && !state.message.contains("internet"))
+                          {
+                            return  Center(child: Text(state.message));
+                          }
+                          else if(state is OccasionError && state.message.contains("internet")){
+
+                            EasyLoading.showError(state.message);
+                          }
+
+                          return const SizedBox.shrink();
+
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+
         
         
           ],
