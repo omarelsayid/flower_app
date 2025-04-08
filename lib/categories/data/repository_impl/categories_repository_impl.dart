@@ -42,5 +42,6 @@ class CategoriesRepositoryImpl implements CategoriesRepository {
               product.title!.toUpperCase().contains(query.toUpperCase()),
         )
         .toList();
+
   }
 }
