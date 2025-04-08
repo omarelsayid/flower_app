@@ -13,7 +13,7 @@ import 'di/injectable_initializer.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  MyBlocObserver();
+  Bloc.observer = MyBlocObserver();
   await SharedPreferenceServices.init();
   ConfigLoading().showLoading();
   String? token =
@@ -39,6 +39,10 @@ class MainApp extends StatelessWidget {
           // token != null && (rememberMe ?? false)
           //     ? PagesRoutes.layOutScreen
           //     : PagesRoutes.signInScreen,
+      initialRoute:
+      token != null && (rememberMe ?? false)
+              ? PagesRoutes.layOutScreen
+              : PagesRoutes.signInScreen,
       builder: EasyLoading.init(),
     );
   }

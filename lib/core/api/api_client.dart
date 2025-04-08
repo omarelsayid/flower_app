@@ -26,10 +26,15 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/signin")
   Future<HttpResponse<SignUpResponseDTO>> signIn(@Body() SignInRequest data);
+
   @POST("/api/v1/auth/forgotPassword")
   Future<ForgetResponsePasswordDto> forgetPassword(@Body() Map<String,dynamic> data);
+
+
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String,String> code);
+  Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
+
   @PUT("/api/v1/auth/resetPassword")
   Future<ResetPasswordResponseDTO> resetPassword(@Body() Map<String, dynamic> data);
 
@@ -40,5 +45,15 @@ abstract class ApiClient {
   @GET('/api/v1/products')
   Future<ProductsResponseDTO> getProductsByOccasion(@Query("occasion") String occasionId);
 }
+  Future<ResetPasswordResponseDTO> resetPassword(
+    @Body() Map<String, dynamic> data,
+  );
 
+  @GET("/api/v1/categories")
+  Future<CategoriesResponseModel> getAllCategories();
 
+  @GET("/api/v1/products")
+  Future<SpecificCategoriesResponseModel> getSpecificCategory(
+    @Query("category") String categoryId,
+  );
+}

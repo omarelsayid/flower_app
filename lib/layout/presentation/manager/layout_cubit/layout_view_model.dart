@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../home/occasions/presentation/views/occasion_screen.dart';
+import '../../../../categories/presentation/categories_tab.dart';
 import '../../tabs/cart_tab.dart';
 import '../../tabs/profile_tab.dart';
 
@@ -19,8 +20,9 @@ class LayoutViewModel extends Cubit <LayoutState> {
     }
   }
 List<Widget>tabs=[
-  OccasionsScreen(),
-  const CategoryTab(),
+  // OccasionsScreen(),
+  const HomeTab(),
+  const CategoriesTab(),
   const CartTab(),
   const ProfileTab(),
 ];
