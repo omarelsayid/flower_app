@@ -1,12 +1,17 @@
 
 import 'package:dio/dio.dart';
+import 'package:flower_app/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
 import 'package:flower_app/features/products_details/data/models/products_details_models.dart';
 import 'package:flower_app/home/occasions/data/model/occasions_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
+
 import '../../best_seller_products/data/model/BestSellerProductsModel.dart';
+import '../../home_tab/data/model/category_response_dto.dart';
+
+
 import '../../categories/data/model/categories_response_model.dart';
 import '../../categories/data/model/specific_categories_response_model.dart';
 import '../../home/occasions/data/model/products_response_dto.dart';
@@ -27,7 +32,6 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/signin")
   Future<HttpResponse<SignUpResponseDTO>> signIn(@Body() SignInRequest data);
-
   @POST("/api/v1/auth/forgotPassword")
   Future<ForgetResponsePasswordDto> forgetPassword(
     @Body() Map<String, dynamic> data,
@@ -43,6 +47,13 @@ abstract class ApiClient {
 
   @GET("/api/v1/best-seller")
   Future<HttpResponse<BestSellerProductsModel>> getBestSeller();
+
+  @GET("/api/v1/categories")
+  Future<CategoryResponseDTO> getCategories();
+
+  @GET("/api/v1/occasions")
+  Future<OccasionResponseDTO> getOccasion();
+
 
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();
@@ -64,6 +75,5 @@ abstract class ApiClient {
       @Query("category") String categoryId,
       );
 }
-
 
 
