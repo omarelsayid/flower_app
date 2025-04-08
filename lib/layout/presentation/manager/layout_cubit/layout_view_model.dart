@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../di/injectable_initializer.dart';
 import '../../../../home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart';
+import '../../../../home/occasions/presentation/views/occasion_screen.dart';
+import '../../../../categories/presentation/categories_tab.dart';
 import '../../tabs/cart_tab.dart';
 import '../../tabs/profile_tab.dart';
 
@@ -37,6 +39,9 @@ List<Widget>tabs=[
   child: HomeTab(),
 ),
   const CategoryTab(),
+  // OccasionsScreen(),
+  const HomeTab(),
+  const CategoriesTab(),
   const CartTab(),
   const ProfileTab(),
 ];

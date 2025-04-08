@@ -29,8 +29,6 @@ CategoriesModel _$CategoriesModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       image: json['image'] as String?,
       slug: json['slug'] as String?,
-      createdAt: json['createdAt'] as String?,
-      updatedAt: json['updatedAt'] as String?,
       productsCount: json['productsCount'] as num?,
     );
 
@@ -39,8 +37,6 @@ Map<String, dynamic> _$CategoriesModelToJson(CategoriesModel instance) =>
       'name': instance.name,
       'slug': instance.slug,
       'image': instance.image,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
       'productsCount': instance.productsCount,
       '_id': instance.id,
     };

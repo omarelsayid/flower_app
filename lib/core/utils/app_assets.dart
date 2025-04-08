@@ -10,6 +10,7 @@ abstract class IconAssets{
   static const String cartIcon="$iconPath/cartIcon.png";
   static const String LocationIcon="$iconPath/location_icon.png";
 
+  static const String filterIcon="$iconPath/filterIcon.png";
 
 }
 abstract class SvgImages{

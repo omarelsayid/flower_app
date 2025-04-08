@@ -9,7 +9,7 @@ class CategoriesResponseModel extends CategoriesResponseEntity{
   });
 
   @JsonKey(name: 'categories')
- final List<CategoriesModel>? categories;
+  final List<CategoriesModel>? categories;
   factory CategoriesResponseModel.fromJson(Map<String, dynamic> json) => _$CategoriesResponseModelFromJson(json);
 }
 
@@ -20,10 +20,8 @@ class CategoriesModel extends CategoriesEntity{
     super.name,
     super.image,
     super.slug,
-    super.createdAt,
-    super.updatedAt,
     super.productsCount,
-});
+  });
 
   @JsonKey(name: '_id')
   final String? id;
