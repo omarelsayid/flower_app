@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../../../core/services/screen_size_service.dart';
+import '../../../../core/widgets/flower_card.dart';
 import '../../../../core/widgets/occasion_widget.dart';
 import '../../domain/entity/occasions_entity.dart';
 import '../cubit/occasion_view_model.dart';
@@ -100,24 +102,24 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                 } else if (state is SuccessSpecificOccasionState) {
                   final products = state.specificOccasion;
                   return GridView.builder(
-                    padding: const EdgeInsets.all(2),
+
+                    padding: const EdgeInsets.all(0),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: ScreenSizeService.width * (8 / ScreenSizeService.baseWidth), // Add spacing between columns
-                      mainAxisSpacing: ScreenSizeService.height * (8 / ScreenSizeService.baseHeight),  // Add spacing between rows
-                      childAspectRatio: 0.7,),
+                      crossAxisSpacing: resposiveHeight(1), // Add spacing between columns
+                      mainAxisSpacing: resposiveWidth(1),  // Add spacing between rows
+                      childAspectRatio: 0.8,
+                    ),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
                       final product = products[index];
-                      return OccasionWidget(flowers: [
-                        {
-                          "name": product.title.toString(),
-                          "discount": "${product.discount}",
-                          "discountRate": "${product.priceAfterDiscount}%",
-                          "cost": '${product.price}',
-                          "imageUrl": '${product.imgCover}'
-                        },
-                      ]);
+                      return FlowerCard(
+                        name: product.title.toString(),
+                        beforeDiscount: "${product.discount}",
+                        discountRate: "${product.priceAfterDiscount}%",
+                        cost: '${product.price}',
+                        imageUrl: '${product.imgCover}',
+                      );
                     },
                   );
 
