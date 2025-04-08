@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
@@ -7,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import '../../../../core/services/screen_size_service.dart';
 import '../../../../core/widgets/flower_card.dart';
-import '../../../../core/widgets/occasion_widget.dart';
 import '../../domain/entity/occasions_entity.dart';
 import '../cubit/occasion_view_model.dart';
 import '../cubit/occasion_state.dart';
@@ -18,7 +14,9 @@ class OccasionsScreen extends StatefulWidget {
   const OccasionsScreen({super.key});
 
   @override
-  _OccasionsScreenState createState() => _OccasionsScreenState();
+  _OccasionsScreenState createState() {
+    return _OccasionsScreenState();
+  }
 }
 
 class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProviderStateMixin {
