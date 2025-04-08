@@ -10,37 +10,40 @@ class LayoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LayoutViewModel viewModel = LayoutViewModel();
-    return BlocBuilder<LayoutViewModel, LayoutState>(
-      bloc: viewModel,
-      builder: (context, state) {
-        return Scaffold(
-          body: viewModel.tabs[viewModel.currentIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: viewModel.currentIndex,
-            onTap: (value) {
-              viewModel.doIntent(LayoutChangeBottomNavIntent(value));
-            },
-            items: [
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage(IconAssets.homeIcon)),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage(IconAssets.categoryIcon)),
-                label: 'Categories',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage(IconAssets.cartIcon)),
-                label: 'Cart',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(AssetImage(IconAssets.profileIcon)),
-                label: 'Profile',
-              ),
-            ],
-          ),
-        );
-      },
+    return BlocProvider(
+      create: (context) => viewModel,
+      child: BlocBuilder<LayoutViewModel, LayoutState>(
+        builder: (context, state) {
+          return Scaffold(
+            resizeToAvoidBottomInset: true,
+            body: viewModel.tabs[viewModel.currentIndex],
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: viewModel.currentIndex,
+              onTap: (value) {
+                viewModel.doIntent(LayoutChangeBottomNavIntent(value));
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage(IconAssets.homeIcon)),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage(IconAssets.categoryIcon)),
+                  label: 'Categories',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage(IconAssets.cartIcon)),
+                  label: 'Cart',
+                ),
+                BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage(IconAssets.profileIcon)),
+                  label: 'Profile',
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
