@@ -39,6 +39,13 @@ import '../categories/presentation/manager/categories_view_model.dart'
     as _i1020;
 import '../core/api/api_client.dart' as _i424;
 import '../core/services/internet_connection_check.dart' as _i697;
+import '../home/occasions/data/data_source/occasion_remote_data_source.dart'
+    as _i1016;
+import '../home/occasions/data/repository_imp/occasion_repository_imp.dart'
+    as _i509;
+import '../home/occasions/domain/repository/occasion_repository.dart' as _i938;
+import '../home/occasions/domain/use_case/occasion_use_case.dart' as _i254;
+import '../home/occasions/presentation/cubit/occasion_view_model.dart' as _i736;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -55,6 +62,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i324.CategoriesRemoteDataSource>(
       () => _i324.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
+    gh.factory<_i1016.OccasionRemoteDataSource>(
+      () => _i1016.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i938.OccasionRepository>(
+      () => _i509.OccasionRepositoryImpl(gh<_i1016.OccasionRemoteDataSource>()),
+    );
     gh.factory<_i561.AuthRemoteDataSource>(
       () => _i561.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
@@ -68,6 +81,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i561.AuthRemoteDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
+    );
+    gh.factory<_i254.OccasionUseCase>(
+      () => _i254.OccasionUseCase(gh<_i938.OccasionRepository>()),
+    );
+    gh.factory<_i736.OccasionViewModel>(
+      () => _i736.OccasionViewModel(gh<_i254.OccasionUseCase>()),
     );
     gh.factory<_i373.AuthUseCase>(
       () => _i373.AuthUseCase(gh<_i1051.AuthRepository>()),

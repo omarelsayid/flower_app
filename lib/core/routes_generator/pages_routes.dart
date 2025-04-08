@@ -7,4 +7,5 @@ abstract class PagesRoutes {
   static const String forgetPassword = "forget_password";
   static const String resetPassword = "reset_password";
   static const String testScreen = "test_screen";
+  static const String occasionScreen = "occasion_screen";
 }
