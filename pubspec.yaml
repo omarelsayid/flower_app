@@ -8,17 +8,18 @@ environment:
 
 dependencies:
   bloc_test: ^10.0.0
-  cached_network_image: ^3.4.1
   dio: null
-  easy_localization: ^3.0.7+1
   equatable: null
   flutter:
     sdk: flutter
+  cached_network_image: ^3.3.0
+  easy_localization: ^3.0.7+1
   flutter_bloc: ^9.1.0
   flutter_easyloading: null
   get_it: null
   injectable: null
   internet_connection_checker: ^3.0.1
+  skeletonizer: ^1.4.3
   json_annotation: ^4.9.0
   mockito: ^5.4.5
   retrofit: ^4.4.2
@@ -40,6 +41,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/translations/
+    - assets/image/
   fonts:
     - family: IM FELL English
       fonts:

@@ -6,5 +6,8 @@ abstract class PagesRoutes {
   static const String emailVerification = "email_verification";
   static const String forgetPassword = "forget_password";
   static const String resetPassword = "reset_password";
+  static const String bestSellerScreen = "best_seller";
+  static const String testScreen = "test_screen";
+  static const String occasionScreen = "occasion_screen";
   static const String productDetails = "product_details";
 }

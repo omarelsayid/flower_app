@@ -24,6 +24,15 @@
 //     super.updatedAt,
 //     super.productsCount,
 // });
+@JsonSerializable()
+class CategoriesModel extends CategoriesEntity{
+  CategoriesModel({
+    this.id,
+    super.name,
+    super.image,
+    super.slug,
+    super.productsCount,
+});
 
 //   @JsonKey(name: '_id')
 //   final String? id;
