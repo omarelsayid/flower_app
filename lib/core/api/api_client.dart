@@ -51,15 +51,11 @@ abstract class ApiClient {
   @GET('/api/v1/products')
   Future<ProductsResponseDTO> getProductsByOccasion(@Query("occasion") String occasionId);
 
-  Future<ResetPasswordResponseDTO> resetPassword(
-    @Body() Map<String, dynamic> data,
-  );
 
   @GET("/api/v1/products/{id}")
   Future<HttpResponse<ProductsDetailsModels>> getProductDetails(
     @Path("id") String id,
   );
-}
   @GET("/api/v1/categories")
   Future<CategoriesResponseModel> getAllCategories();
 
@@ -68,4 +64,6 @@ abstract class ApiClient {
       @Query("category") String categoryId,
       );
 }
+
+
 

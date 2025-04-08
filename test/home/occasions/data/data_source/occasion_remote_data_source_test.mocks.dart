@@ -5,14 +5,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i12;
 
-import 'package:flower_app/auth/data/model/forget_response_password_dto.dart'
-    as _i4;
-import 'package:flower_app/auth/data/model/reset_password_dto.dart' as _i6;
-import 'package:flower_app/auth/data/model/sign_up_response_dto.dart' as _i2;
-import 'package:flower_app/auth/data/model/verify_email_response_dto.dart'
-    as _i5;
-import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i14;
-import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i13;
 import 'package:flower_app/best_seller_products/data/model/BestSellerProductsModel.dart'
     as _i15;
 import 'package:flower_app/categories/data/model/categories_response_model.dart'
@@ -20,6 +12,20 @@ import 'package:flower_app/categories/data/model/categories_response_model.dart'
 import 'package:flower_app/categories/data/model/specific_categories_response_model.dart'
     as _i10;
 import 'package:flower_app/core/api/api_client.dart' as _i11;
+import 'package:flower_app/features/auth/data/model/forget_response_password_dto.dart'
+    as _i4;
+import 'package:flower_app/features/auth/data/model/reset_password_dto.dart'
+    as _i6;
+import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart'
+    as _i2;
+import 'package:flower_app/features/auth/data/model/verify_email_response_dto.dart'
+    as _i5;
+import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart'
+    as _i14;
+import 'package:flower_app/features/auth/domain/entity/sign_up_request.dart'
+    as _i13;
+import 'package:flower_app/features/products_details/data/models/products_details_models.dart'
+    as _i16;
 import 'package:flower_app/home/occasions/data/model/occasions_dto.dart' as _i7;
 import 'package:flower_app/home/occasions/data/model/products_response_dto.dart'
     as _i8;
@@ -220,6 +226,22 @@ class MockApiClient extends _i1.Mock implements _i11.ApiClient {
             ),
           )
           as _i12.Future<_i8.ProductsResponseDTO>);
+
+  @override
+  _i12.Future<_i3.HttpResponse<_i16.ProductsDetailsModels>> getProductDetails(
+    String? id,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#getProductDetails, [id]),
+            returnValue:
+                _i12.Future<_i3.HttpResponse<_i16.ProductsDetailsModels>>.value(
+                  _FakeHttpResponse_1<_i16.ProductsDetailsModels>(
+                    this,
+                    Invocation.method(#getProductDetails, [id]),
+                  ),
+                ),
+          )
+          as _i12.Future<_i3.HttpResponse<_i16.ProductsDetailsModels>>);
 
   @override
   _i12.Future<_i9.CategoriesResponseModel> getAllCategories() =>
