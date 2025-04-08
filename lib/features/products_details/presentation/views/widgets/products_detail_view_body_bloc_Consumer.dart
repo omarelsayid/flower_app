@@ -39,7 +39,7 @@ class _ProductsDetailViewBodyBlocConsumerState
           return RefreshIndicatorWidget(
             onRefresh: () async {
               await context.read<ProductsDetailCubit>().getProductDetails(
-                "673e1cd711599201718280fb",
+                widget.id,
               );
             },
           );
