@@ -3,7 +3,7 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i10;
+import 'dart:async' as _i12;
 
 import 'package:flower_app/auth/data/model/forget_response_password_dto.dart'
     as _i4;
@@ -11,9 +11,13 @@ import 'package:flower_app/auth/data/model/reset_password_dto.dart' as _i6;
 import 'package:flower_app/auth/data/model/sign_up_response_dto.dart' as _i2;
 import 'package:flower_app/auth/data/model/verify_email_response_dto.dart'
     as _i5;
-import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i12;
-import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i11;
-import 'package:flower_app/core/api/api_client.dart' as _i9;
+import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i14;
+import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i13;
+import 'package:flower_app/categories/data/model/categories_response_model.dart'
+    as _i9;
+import 'package:flower_app/categories/data/model/specific_categories_response_model.dart'
+    as _i10;
+import 'package:flower_app/core/api/api_client.dart' as _i11;
 import 'package:flower_app/home/occasions/data/model/occasions_dto.dart' as _i7;
 import 'package:flower_app/home/occasions/data/model/products_response_dto.dart'
     as _i8;
@@ -76,113 +80,156 @@ class _FakeProductsResponseDTO_6 extends _i1.SmartFake
     : super(parent, parentInvocation);
 }
 
+class _FakeCategoriesResponseModel_7 extends _i1.SmartFake
+    implements _i9.CategoriesResponseModel {
+  _FakeCategoriesResponseModel_7(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
+}
+
+class _FakeSpecificCategoriesResponseModel_8 extends _i1.SmartFake
+    implements _i10.SpecificCategoriesResponseModel {
+  _FakeSpecificCategoriesResponseModel_8(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(parent, parentInvocation);
+}
+
 /// A class which mocks [ApiClient].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiClient extends _i1.Mock implements _i9.ApiClient {
+class MockApiClient extends _i1.Mock implements _i11.ApiClient {
   MockApiClient() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i10.Future<_i2.SignUpResponseDTO> signUp(_i11.SignUpRequest? data) =>
+  _i12.Future<_i2.SignUpResponseDTO> signUp(_i13.SignUpRequest? data) =>
       (super.noSuchMethod(
             Invocation.method(#signUp, [data]),
-            returnValue: _i10.Future<_i2.SignUpResponseDTO>.value(
+            returnValue: _i12.Future<_i2.SignUpResponseDTO>.value(
               _FakeSignUpResponseDTO_0(
                 this,
                 Invocation.method(#signUp, [data]),
               ),
             ),
           )
-          as _i10.Future<_i2.SignUpResponseDTO>);
+          as _i12.Future<_i2.SignUpResponseDTO>);
 
   @override
-  _i10.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>> signIn(
-    _i12.SignInRequest? data,
+  _i12.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>> signIn(
+    _i14.SignInRequest? data,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#signIn, [data]),
             returnValue:
-                _i10.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>.value(
+                _i12.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>.value(
                   _FakeHttpResponse_1<_i2.SignUpResponseDTO>(
                     this,
                     Invocation.method(#signIn, [data]),
                   ),
                 ),
           )
-          as _i10.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>);
+          as _i12.Future<_i3.HttpResponse<_i2.SignUpResponseDTO>>);
 
   @override
-  _i10.Future<_i4.ForgetResponsePasswordDto> forgetPassword(
+  _i12.Future<_i4.ForgetResponsePasswordDto> forgetPassword(
     Map<String, dynamic>? data,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#forgetPassword, [data]),
-            returnValue: _i10.Future<_i4.ForgetResponsePasswordDto>.value(
+            returnValue: _i12.Future<_i4.ForgetResponsePasswordDto>.value(
               _FakeForgetResponsePasswordDto_2(
                 this,
                 Invocation.method(#forgetPassword, [data]),
               ),
             ),
           )
-          as _i10.Future<_i4.ForgetResponsePasswordDto>);
+          as _i12.Future<_i4.ForgetResponsePasswordDto>);
 
   @override
-  _i10.Future<_i5.VerifyEmailResponseDto> verifyEmail(
+  _i12.Future<_i5.VerifyEmailResponseDto> verifyEmail(
     Map<String, String>? code,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#verifyEmail, [code]),
-            returnValue: _i10.Future<_i5.VerifyEmailResponseDto>.value(
+            returnValue: _i12.Future<_i5.VerifyEmailResponseDto>.value(
               _FakeVerifyEmailResponseDto_3(
                 this,
                 Invocation.method(#verifyEmail, [code]),
               ),
             ),
           )
-          as _i10.Future<_i5.VerifyEmailResponseDto>);
+          as _i12.Future<_i5.VerifyEmailResponseDto>);
 
   @override
-  _i10.Future<_i6.ResetPasswordResponseDTO> resetPassword(
+  _i12.Future<_i6.ResetPasswordResponseDTO> resetPassword(
     Map<String, dynamic>? data,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#resetPassword, [data]),
-            returnValue: _i10.Future<_i6.ResetPasswordResponseDTO>.value(
+            returnValue: _i12.Future<_i6.ResetPasswordResponseDTO>.value(
               _FakeResetPasswordResponseDTO_4(
                 this,
                 Invocation.method(#resetPassword, [data]),
               ),
             ),
           )
-          as _i10.Future<_i6.ResetPasswordResponseDTO>);
+          as _i12.Future<_i6.ResetPasswordResponseDTO>);
 
   @override
-  _i10.Future<_i7.OccasionsResponseDTO> getOccasions() =>
+  _i12.Future<_i7.OccasionsResponseDTO> getOccasions() =>
       (super.noSuchMethod(
             Invocation.method(#getOccasions, []),
-            returnValue: _i10.Future<_i7.OccasionsResponseDTO>.value(
+            returnValue: _i12.Future<_i7.OccasionsResponseDTO>.value(
               _FakeOccasionsResponseDTO_5(
                 this,
                 Invocation.method(#getOccasions, []),
               ),
             ),
           )
-          as _i10.Future<_i7.OccasionsResponseDTO>);
+          as _i12.Future<_i7.OccasionsResponseDTO>);
 
   @override
-  _i10.Future<_i8.ProductsResponseDTO> getProductsByOccasion(
+  _i12.Future<_i8.ProductsResponseDTO> getProductsByOccasion(
     String? occasionId,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#getProductsByOccasion, [occasionId]),
-            returnValue: _i10.Future<_i8.ProductsResponseDTO>.value(
+            returnValue: _i12.Future<_i8.ProductsResponseDTO>.value(
               _FakeProductsResponseDTO_6(
                 this,
                 Invocation.method(#getProductsByOccasion, [occasionId]),
               ),
             ),
           )
-          as _i10.Future<_i8.ProductsResponseDTO>);
+          as _i12.Future<_i8.ProductsResponseDTO>);
+
+  @override
+  _i12.Future<_i9.CategoriesResponseModel> getAllCategories() =>
+      (super.noSuchMethod(
+            Invocation.method(#getAllCategories, []),
+            returnValue: _i12.Future<_i9.CategoriesResponseModel>.value(
+              _FakeCategoriesResponseModel_7(
+                this,
+                Invocation.method(#getAllCategories, []),
+              ),
+            ),
+          )
+          as _i12.Future<_i9.CategoriesResponseModel>);
+
+  @override
+  _i12.Future<_i10.SpecificCategoriesResponseModel> getSpecificCategory(
+    String? categoryId,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#getSpecificCategory, [categoryId]),
+            returnValue:
+                _i12.Future<_i10.SpecificCategoriesResponseModel>.value(
+                  _FakeSpecificCategoriesResponseModel_8(
+                    this,
+                    Invocation.method(#getSpecificCategory, [categoryId]),
+                  ),
+                ),
+          )
+          as _i12.Future<_i10.SpecificCategoriesResponseModel>);
 }

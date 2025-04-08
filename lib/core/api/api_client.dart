@@ -10,6 +10,8 @@ import '../../auth/data/model/forget_response_password_dto.dart';
 import '../../auth/data/model/reset_password_dto.dart';
 import '../../auth/data/model/verify_email_response_dto.dart';
 import '../../auth/domain/entity/sign_up_request.dart';
+import '../../categories/data/model/categories_response_model.dart';
+import '../../categories/data/model/specific_categories_response_model.dart';
 import '../../home/occasions/data/model/products_response_dto.dart';
 
 
@@ -33,7 +35,6 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String,String> code);
-  Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
 
   @PUT("/api/v1/auth/resetPassword")
   Future<ResetPasswordResponseDTO> resetPassword(@Body() Map<String, dynamic> data);
@@ -44,16 +45,14 @@ abstract class ApiClient {
   // Future<SpecificOccasionsResponseDTO> getSpecificOccasion(@Path("id") String occasionId);
   @GET('/api/v1/products')
   Future<ProductsResponseDTO> getProductsByOccasion(@Query("occasion") String occasionId);
-}
-  Future<ResetPasswordResponseDTO> resetPassword(
-    @Body() Map<String, dynamic> data,
-  );
+
 
   @GET("/api/v1/categories")
   Future<CategoriesResponseModel> getAllCategories();
 
   @GET("/api/v1/products")
   Future<SpecificCategoriesResponseModel> getSpecificCategory(
-    @Query("category") String categoryId,
-  );
+      @Query("category") String categoryId,
+      );
 }
+
