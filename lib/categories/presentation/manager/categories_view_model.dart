@@ -5,63 +5,68 @@ import 'package:flower_app/categories/domain/use_case/categories_use_case.dart';
 import 'package:flower_app/categories/presentation/manager/categories_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-
 import '../../../core/common/result.dart';
 
 @injectable
 class CategoriesViewModel extends Cubit<CategoriesState> {
   CategoriesViewModel(this._categoriesUseCase)
-    : super(CategoriesLoadingState());
+      : super(CategoriesLoadingState());
+
   final CategoriesUseCase _categoriesUseCase;
 
   List<CategoriesEntity> categories = [];
+  List<ProductsEntity> allProducts = [];  // store all products
   List<ProductsEntity> products = [];
   int currentIndex = 0;
- bool isSearching=false;
-  void doIntent(CategoriesIntent categoriesIntent) {
-    switch (categoriesIntent) {
+  bool isSearching = false;
+
+  void doIntent(CategoriesIntent intent) {
+    switch (intent) {
       case GetAllCategoriesIntent():
         _getAllCategories();
         break;
       case GetSpecificCategoryIntent():
-        _getSpecificCategory(categoriesIntent.categoryId);
+        _getSpecificCategory(intent.categoryId);
         break;
       case ChangeCategoriesIndexIntent():
-        _changeCategoryIndex(categoriesIntent.index);
+        _changeCategoryIndex(intent.index);
         break;
       case SearchIntent():
-        _search(query: categoriesIntent.query);
+        _search(query: intent.query);
+        break;
     }
   }
-  Future<void> _search({String? query})async{
-    try{
+
+  Future<void> _search({required String query}) async {
+    try {
       emit(LoadingSearchState());
-      var result=await _categoriesUseCase.invoke(query!);
-      products=result;
-      log(products.toString());
-      emit(SuccessfulSearchState(result));
-    } catch(e){
+      isSearching = true;
+      var result = allProducts.where((product) =>
+          product.title!.toUpperCase().contains(query.toUpperCase())
+      ).toList();
+
+      products = result;
+      log("Search Results: ${products.length}");
+      emit(SuccessfulSearchState(products));
+    } catch (e) {
       emit(FailedSearchState(e.toString()));
     }
   }
 
   Future<void> _getAllCategories() async {
     emit(CategoriesLoadingState());
+    isSearching = false;
     var result = await _categoriesUseCase.execute();
+
     switch (result) {
       case Success():
         var data = result.data;
         if (data!.message == "success") {
           categories = data.categories!;
-          for (var i = 0; i < categories.length; i++) {
-            log("categories ${categories[i].name}");
-          }
+          emit(CategoriesSuccessState(categories));
           _getSpecificCategory(categories[currentIndex].id.toString());
-          emit(CategoriesSuccessState(data.categories!));
-
         } else {
           emit(CategoriesErrorState(data.message!));
-
         }
         break;
       case Error():
@@ -69,26 +74,23 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         break;
     }
   }
-
   void _changeCategoryIndex(int index) {
-    emit(ChangeCategoriesIndexState());
     currentIndex = index;
+    emit(ChangeCategoriesIndexState());
     _getSpecificCategory(categories[currentIndex].id.toString());
-    log(currentIndex.toString());
-    emit(CategoriesSuccessState(categories));
   }
 
   Future<void> _getSpecificCategory(String categoryId) async {
     emit(SpecificCategoriesLoadingState());
     var result = await _categoriesUseCase.call(categoryId);
-    log("message $result");
+
     switch (result) {
       case Success():
         var data = result.data;
-        if ( data!.message == "success") {
-          // products = data.products!;
-          log("title ${data.products!.length.toString()}");
-          emit(SpecificCategoriesSuccessState(data.products??[]));
+        if (data!.message == "success") {
+          allProducts = data.products ?? [];
+          log("Products Count: ${allProducts.length}");
+          emit(SpecificCategoriesSuccessState(data.products ?? []));
         } else {
           emit(SpecificCategoriesErrorState(data.message!));
         }
@@ -99,6 +101,8 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
     }
   }
 }
+
+
 
 sealed class CategoriesIntent {}
 

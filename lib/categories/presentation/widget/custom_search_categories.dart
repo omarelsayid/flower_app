@@ -1,3 +1,4 @@
+import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/utils/app_assets.dart';
@@ -12,42 +13,47 @@ class CustomSearchCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Row(
-
-      children: [
-        Expanded(
-          flex: 5,
-          child: TextFormField(
-            keyboardType: TextInputType.name,
-
-            onChanged: onChanged,
-            decoration: InputDecoration(
-              hintText: "Search",
-              hintStyle: AppTextStyles.inter400_14.copyWith(
-                color: AppColors.greyColor,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              prefixIcon: Icon(Icons.search, color: AppColors.greyColor),
-            ),
-          ),
-        ),
-        SizedBox(width: 8),
-        Expanded(
-          flex: 1,
-          child: OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              minimumSize: Size(64, 48),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+    return Padding(
+      padding:  EdgeInsets.symmetric(vertical:resposiveHeight(8),horizontal: resposiveWidth(16)),
+      child: Row(
+      
+        children: [
+          SizedBox(
+            width:resposiveWidth(271) ,
+            height:resposiveHeight(48) ,
+            child: TextFormField(
+              keyboardType: TextInputType.name,
+      
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                hintText: "Search",
+                hintStyle: AppTextStyles.inter400_14.copyWith(
+                  color: AppColors.greyColor,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                prefixIcon: Icon(Icons.search, color: AppColors.greyColor),
               ),
             ),
-            onPressed: () {},
-            child: ImageIcon(AssetImage(IconAssets.filterIcon)),
           ),
-        ),
-      ],
+          SizedBox(width: resposiveWidth(8),),
+          SizedBox(
+            width: resposiveWidth(64),
+            height:  resposiveHeight(48),
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                minimumSize: Size(resposiveWidth(64), resposiveHeight(48)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              onPressed: () {},
+              child: ImageIcon(AssetImage(IconAssets.filterIcon)),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

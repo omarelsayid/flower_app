@@ -1,8 +1,5 @@
-import 'dart:developer';
-import 'dart:ui';
-import 'package:flower_app/categories/domain/entity/categories_response_entity.dart';
-import 'package:flower_app/core/api/api_execute.dart';
 
+import 'package:flower_app/categories/domain/entity/categories_response_entity.dart';
 import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:injectable/injectable.dart';
@@ -42,5 +39,6 @@ class CategoriesRepositoryImpl implements CategoriesRepository {
               product.title!.toUpperCase().contains(query.toUpperCase()),
         )
         .toList();
+
   }
 }

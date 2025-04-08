@@ -1,142 +1,126 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_colors.dart';
-import '../utils/constans.dart';
 
 class FlowerCard extends StatelessWidget {
-   FlowerCard({super.key, required this.imageUrl,required this.beforeDiscount,required this.cost,required this.discountRate,required this.name});
-   String imageUrl;
-   String name ;
-   String cost ;
-   String beforeDiscount ;
-   String discountRate;
+  FlowerCard({super.key, required this.imageUrl,required this.beforeDiscount,required this.cost,required this.discountRate,required this.name});
+  String imageUrl;
+  String name ;
+  String cost ;
+  String beforeDiscount ;
+  String discountRate;
 
-   @override
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width:  MediaQuery.of(context).size.width*0.43,
-      height:  MediaQuery.of(context).size.height*0.268,
-      child: Card(
-
-        color:AppColors.whiteColor,
-       // elevation:6,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: resposiveWidth(8), vertical: resposiveHeight(8)),
+      // size ====>    width:  resposiveWidth(163),
+      //         height:  resposiveHeight(229),
+      child: SizedBox(
+        width:  resposiveWidth(163),
+        height:  resposiveHeight(229),
+        child: Card(
+          // color:AppColors.whiteColor,
+          // color:Colors.white70,
+          // elevation:6,
           child: Padding(
-            padding:  EdgeInsets.symmetric( horizontal: kHorizontalPadding*0.5,),
+            padding:  EdgeInsets.symmetric( horizontal: resposiveWidth(4),),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-
-                  SizedBox(
-                   width:  MediaQuery.of(context).size.width*0.4,
-                  height:  MediaQuery.of(context).size.height*0.18,
-                    child:   CachedNetworkImage(
-                      imageUrl: imageUrl,
-
-                    )
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: resposiveWidth(8),vertical: resposiveHeight(8)),
+                  color: AppColors.lightPinkColor,
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    width:resposiveWidth(147),
+                    height:  resposiveHeight(131),
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) {
+                      return Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.lightPinkColor,
+                        ),
+                      );
+                    },
                   ),
-                  ],
                 ),
                 Padding(
-                  padding:  EdgeInsets.symmetric( horizontal: kHorizontalPadding*0.5, ),
-                  child: Row(
-
+                  padding:  EdgeInsets.symmetric(horizontal: resposiveWidth(8),vertical: resposiveWidth(4)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            name,
-                            //textAlign: TextAlign.start,
-                          ),
-                          RichText(
-
-                            text: TextSpan(
-
-                              children: [
-                                TextSpan(
-                                    text: cost,
-                                style:  TextStyle(
-
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500, color: AppColors.blackColor)
-                                ),
-                                TextSpan(
-                                  text: '  '
-                                ),
-
-                                TextSpan(
-                                  text: beforeDiscount,
-                                    style:  TextStyle(
-                                        decoration: TextDecoration.lineThrough,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400, color: AppColors.blackColor)
-                                ),
-                                TextSpan(
-                                    text: '  '
-                                ),
-                                TextSpan(
-                                    text: discountRate,
-                                    style:  TextStyle(
-
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400, color: AppColors.greenColor)
-                                ),
-                              ],
+                      Text(
+                        name.split(' ').length >= 2
+                            ? '${name.split(' ')[0]} ${name.split(' ')[1]}'
+                            : name,
+                        style: AppTextStyles.inter400_12,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                                text: "EGP $cost",
+                                style:  AppTextStyles.inter400_14.copyWith(color: AppColors.blackColor,fontWeight: FontWeight.w500)
                             ),
-                          ),
-                        ],
+                            TextSpan(
+                                text: '  '
+                            ),
+                            TextSpan(
+                                text: beforeDiscount,
+                                style:  AppTextStyles.inter400_12.copyWith(
+                                    decoration: TextDecoration.lineThrough,
+                                    color: AppColors.blackColor
+                                )),
+                            TextSpan(
+                                text: '  '
+                            ),
+                            TextSpan(
+                                text: discountRate,
+                                style:AppTextStyles.inter400_12.copyWith(
+                                    color: AppColors.greenColor
+                                )
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 ),
-                // Row(
-                //   children: [
-                //    Text('EGP 600',
-                //    style: TextStyle(
-                //      fontSize: 14,
-                //    ),
-                //    )
-                //   ],
-                // ),
                 SizedBox(
-                  height:  MediaQuery.of(context).size.height*0.04,
                   child: ElevatedButton(onPressed: ()
                   {/* add to caRD FUNCTION*/},
-                      style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor,
-
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor,
+                      minimumSize: Size.fromHeight(resposiveHeight(40)),
                       shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width* 0.15),
+                        borderRadius: BorderRadius.circular(MediaQuery.of(context).size.width* 0.15),
                       ),
                     ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                           ImageIcon(
-                             AssetImage(IconAssets.cartIcon),
-                             size:  MediaQuery.of(context).size.width*0.04,
-                             color: AppColors.whiteColor,
-                           ),
-                          Text(  "add to card"  ,
-                            style: TextStyle(
-                              color:AppColors.whiteColor ,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500
-                            ),
-                          )
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        ImageIcon(
+                          AssetImage(IconAssets.cartIcon),
+                          size:  MediaQuery.of(context).size.width*0.04,
+                          color: AppColors.whiteColor,
+                        ),
+                        Text(  "add to card"  ,
+                            style: AppTextStyles.inter400_12.copyWith(color: AppColors.whiteColor)
+                        )
 
-                        ],
-                      ),
+                      ],
+                    ),
                   ),
                 )
               ],
             ),
           ),
+        ),
       ),
     );
   }
