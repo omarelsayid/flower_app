@@ -7,8 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class ProductsDetailViewBodyBlocConsumer extends StatefulWidget {
-  const ProductsDetailViewBodyBlocConsumer({super.key, this.id});
-  final int? id;
+   const ProductsDetailViewBodyBlocConsumer({super.key, required this.id});
+  final String id;
   @override
   State<ProductsDetailViewBodyBlocConsumer> createState() =>
       _ProductsDetailViewBodyBlocConsumerState();
@@ -21,9 +21,7 @@ class _ProductsDetailViewBodyBlocConsumerState
   void initState() {
     super.initState();
     Future.microtask(
-      () => context.read<ProductsDetailCubit>().getProductDetails(
-        "673e1cd711599201718280fb",
-      ),
+      () => context.read<ProductsDetailCubit>().getProductDetails(widget.id ),
     );
     _pageController = PageController(initialPage: 0);
   }

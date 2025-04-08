@@ -1,4 +1,5 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -111,12 +112,17 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                     itemCount: products.length,
                     itemBuilder: (context, index) {
                       final product = products[index];
-                      return FlowerCard(
-                        name: product.title.toString(),
-                        beforeDiscount: "${product.discount}",
-                        discountRate: "${product.priceAfterDiscount}%",
-                        cost: '${product.price}',
-                        imageUrl: '${product.imgCover}',
+                      return InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, PagesRoutes.productDetails,arguments: product.id.toString());
+                        },
+                        child: FlowerCard(
+                          name: product.title.toString(),
+                          beforeDiscount: "${product.discount}",
+                          discountRate: "${product.priceAfterDiscount}%",
+                          cost: '${product.price}',
+                          imageUrl: '${product.imgCover}',
+                        ),
                       );
                     },
                   );

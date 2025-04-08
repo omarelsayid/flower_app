@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductsDetailsView extends StatelessWidget {
-  const ProductsDetailsView({super.key, this.id});
-  final int? id;
+  const ProductsDetailsView({super.key,  this.id});
+  final String id;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create:
           (context) => ProductsDetailCubit(getIt.get<GetProductDetailsRepo>()),
-      child: Scaffold(body: ProductsDetailViewBodyBlocConsumer(id: id)),
+      child: Scaffold(body: ProductsDetailViewBodyBlocConsumer(id: id ?? '')),
     );
   }
 }

@@ -185,7 +185,9 @@ class HomeTab extends StatelessWidget {
             SizedBox(height:16 ,),
             Column(
               children: [
-                RowWidget(txt: "Occasion", leading_text:"View all", onPressed: (){}),
+                RowWidget(txt: "Occasion", leading_text:"View all", onPressed: (){
+                  Navigator.pushNamed(context, PagesRoutes.occasionScreen);
+                }),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
