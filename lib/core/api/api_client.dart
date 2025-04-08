@@ -43,7 +43,6 @@ abstract class ApiClient {
   
   @GET("/api/v1/best-seller")
   Future<HttpResponse<BestSellerProductsModel>> getBestSeller();
-}
 
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();

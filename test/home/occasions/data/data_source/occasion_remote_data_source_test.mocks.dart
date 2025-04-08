@@ -13,6 +13,8 @@ import 'package:flower_app/auth/data/model/verify_email_response_dto.dart'
     as _i5;
 import 'package:flower_app/auth/domain/entity/sign_in_request.dart' as _i14;
 import 'package:flower_app/auth/domain/entity/sign_up_request.dart' as _i13;
+import 'package:flower_app/best_seller_products/data/model/BestSellerProductsModel.dart'
+    as _i15;
 import 'package:flower_app/categories/data/model/categories_response_model.dart'
     as _i9;
 import 'package:flower_app/categories/data/model/specific_categories_response_model.dart'
@@ -175,6 +177,21 @@ class MockApiClient extends _i1.Mock implements _i11.ApiClient {
             ),
           )
           as _i12.Future<_i6.ResetPasswordResponseDTO>);
+
+  @override
+  _i12.Future<_i3.HttpResponse<_i15.BestSellerProductsModel>> getBestSeller() =>
+      (super.noSuchMethod(
+            Invocation.method(#getBestSeller, []),
+            returnValue: _i12.Future<
+              _i3.HttpResponse<_i15.BestSellerProductsModel>
+            >.value(
+              _FakeHttpResponse_1<_i15.BestSellerProductsModel>(
+                this,
+                Invocation.method(#getBestSeller, []),
+              ),
+            ),
+          )
+          as _i12.Future<_i3.HttpResponse<_i15.BestSellerProductsModel>>);
 
   @override
   _i12.Future<_i7.OccasionsResponseDTO> getOccasions() =>

@@ -70,11 +70,11 @@ extension GetItInjectableX on _i174.GetIt {
       () => dataModule.getInternetConnectionCheck(),
     );
     gh.singleton<_i424.ApiClient>(() => _i424.ApiClient(gh<_i361.Dio>()));
-    gh.factory<_i689.BestSellerRemoteDataSource>(
-      () => _i211.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
-    );
     gh.factory<_i324.CategoriesRemoteDataSource>(
       () => _i324.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i689.BestSellerRemoteDataSource>(
+      () => _i211.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
     gh.factory<_i1016.OccasionRemoteDataSource>(
       () => _i1016.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
@@ -85,13 +85,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i561.AuthRemoteDataSource>(
       () => _i561.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
-    gh.factory<_i118.BestSellerRepo>(
-      () => _i37.BestSellerRepoImpl(gh<_i689.BestSellerRemoteDataSource>()),
-    );
     gh.factory<_i743.CategoriesRepository>(
       () => _i536.CategoriesRepositoryImpl(
         gh<_i324.CategoriesRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i118.BestSellerRepo>(
+      () => _i37.BestSellerRepoImpl(gh<_i689.BestSellerRemoteDataSource>()),
     );
     gh.factory<_i1051.AuthRepository>(
       () => _i465.AuthRepositoryImpl(
@@ -114,11 +114,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i209.BestSellerUseCase>(
       () => _i209.BestSellerUseCase(gh<_i118.BestSellerRepo>()),
     );
-    gh.factory<_i34.BestSellerViewModel>(
-      () => _i34.BestSellerViewModel(gh<_i209.BestSellerUseCase>()),
-    );
     gh.factory<_i44.CategoriesUseCase>(
       () => _i44.CategoriesUseCase(gh<_i743.CategoriesRepository>()),
+    );
+    gh.factory<_i34.BestSellerViewModel>(
+      () => _i34.BestSellerViewModel(gh<_i209.BestSellerUseCase>()),
     );
     gh.factory<_i526.ForgetPasswordViewModel>(
       () => _i526.ForgetPasswordViewModel(gh<_i373.AuthUseCase>()),
