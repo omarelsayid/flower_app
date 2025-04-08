@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/text_styles.dart';
-import '../../../di/injectable_initializer.dart';
-import '../manager/categories_view_model.dart';
 
 class CustomSearchCategories extends StatelessWidget {
    CustomSearchCategories({super.key,this.onChanged});
@@ -16,15 +14,13 @@ class CustomSearchCategories extends StatelessWidget {
     return Padding(
       padding:  EdgeInsets.symmetric(vertical:resposiveHeight(8),horizontal: resposiveWidth(16)),
       child: Row(
-      
         children: [
-          SizedBox(
-            width:resposiveWidth(271) ,
-            height:resposiveHeight(48) ,
+          Expanded(
+            flex: 5,
             child: TextFormField(
               keyboardType: TextInputType.name,
-      
               onChanged: onChanged,
+
               decoration: InputDecoration(
                 hintText: "Search",
                 hintStyle: AppTextStyles.inter400_14.copyWith(
@@ -38,9 +34,8 @@ class CustomSearchCategories extends StatelessWidget {
             ),
           ),
           SizedBox(width: resposiveWidth(8),),
-          SizedBox(
-            width: resposiveWidth(64),
-            height:  resposiveHeight(48),
+          Expanded(
+            flex: 1,
             child: OutlinedButton(
               style: OutlinedButton.styleFrom(
                 minimumSize: Size(resposiveWidth(64), resposiveHeight(48)),
@@ -53,7 +48,6 @@ class CustomSearchCategories extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      ));
   }
 }

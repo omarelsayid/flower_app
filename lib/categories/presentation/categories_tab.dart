@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flower_app/categories/presentation/manager/categories_state.dart';
 import 'package:flower_app/categories/presentation/manager/categories_view_model.dart';
 import 'package:flower_app/categories/presentation/widget/custom_search_categories.dart';
@@ -5,6 +7,7 @@ import 'package:flower_app/core/widgets/custom_diaolg.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../core/common/get_resposive_height_and_width.dart';
 import '../../core/utils/app_colors.dart';
@@ -26,9 +29,10 @@ class CategoriesTab extends StatelessWidget {
               state is SpecificCategoriesErrorState) {
             DialogUtils.showMessage(
               context: context,
-              message: (state is CategoriesErrorState)
-                  ? state.errMessage
-                  : (state as SpecificCategoriesErrorState).errMessage,
+              message:
+                  (state is CategoriesErrorState)
+                      ? state.errMessage
+                      : (state as SpecificCategoriesErrorState).errMessage,
               title: "Error",
               negativeActionName: "Cancel",
             );
@@ -63,16 +67,18 @@ class CategoriesTab extends StatelessWidget {
                         TabBar(
                           onTap: (index) {
                             viewModel.doIntent(
-                                ChangeCategoriesIndexIntent(index));
+                              ChangeCategoriesIndexIntent(index),
+                            );
                           },
                           tabAlignment: TabAlignment.start,
                           isScrollable: true,
                           labelColor: AppColors.primaryColor,
                           unselectedLabelColor: AppColors.greyColor,
                           indicatorColor: AppColors.primaryColor,
-                          tabs: viewModel.categories
-                              .map((category) => Tab(text: category.name))
-                              .toList(),
+                          tabs:
+                              viewModel.categories
+                                  .map((category) => Tab(text: category.name))
+                                  .toList(),
                         ),
                       ],
                     ),
@@ -83,21 +89,24 @@ class CategoriesTab extends StatelessWidget {
                 // Products Display
                 if (state is LoadingSearchState ||
                     state is SpecificCategoriesLoadingState)
-                  const Center(child: CircularProgressIndicator())
+                  Skeletonizer(
+                      enabled: true,
+                      containersColor: AppColors.whiteColor,
+                      child: _buildProductsList(viewModel.allProducts,5))
                 else if (state is SuccessfulSearchState &&
                     viewModel.isSearching)
-
-                      state.products.isNotEmpty
-                      ? _buildProductsList(state.products)
+                  state.products.isNotEmpty
+                      ? _buildProductsList(
+                        state.products,
+                        viewModel.allProducts.length,
+                      )
                       : const Center(child: Text("No products found"))
-
                 else if (state is SpecificCategoriesSuccessState &&
-                      state.products.isNotEmpty &&
-                      !viewModel.isSearching)
-                    _buildProductsList(state.products)
-
-                  else
-                    const Center(child: Text("No products found")),
+                    state.products.isNotEmpty &&
+                    !viewModel.isSearching)
+                  _buildProductsList(state.products, state.products.length)
+                else
+                  const Center(child: Text("No products found")),
               ],
             ),
           );
@@ -106,7 +115,7 @@ class CategoriesTab extends StatelessWidget {
     );
   }
 
-  Widget _buildProductsList(List products) {
+  Widget _buildProductsList(List products, int length) {
     return GridView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -114,10 +123,10 @@ class CategoriesTab extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: resposiveHeight(1), // Add spacing between columns
-        mainAxisSpacing: resposiveWidth(1),  // Add spacing between rows
-        childAspectRatio: 0.8,
+        mainAxisSpacing: resposiveWidth(1), // Add spacing between rows
+        childAspectRatio: 0.7,
       ),
-      itemCount: products.length,
+      itemCount: length,
       itemBuilder: (context, index) {
         final product = products[index];
         return FlowerCard(
@@ -129,17 +138,5 @@ class CategoriesTab extends StatelessWidget {
         );
       },
     );
-    // return ListView.builder(
-    //   shrinkWrap: true,
-    //   physics: const NeverScrollableScrollPhysics(),
-    //   itemCount: products.length,
-    //   itemBuilder: (context, index) {
-    //     return Card(
-    //       child: ListTile(
-    //         title: Text(products[index].title ?? ''),
-    //       ),
-    //     );
-    //   },
-    // );
   }
 }

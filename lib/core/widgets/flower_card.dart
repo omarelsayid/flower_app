@@ -21,7 +21,7 @@ class FlowerCard extends StatelessWidget {
       //         height:  resposiveHeight(229),
       child: SizedBox(
         width:  resposiveWidth(163),
-        height:  resposiveHeight(229),
+        height: 400,
         child: Card(
           // color:AppColors.whiteColor,
           // color:Colors.white70,
@@ -112,10 +112,12 @@ class FlowerCard extends StatelessWidget {
                         Text(  "add to card"  ,
                             style: AppTextStyles.inter400_12.copyWith(color: AppColors.whiteColor)
                         )
-
                       ],
                     ),
                   ),
+                ),
+                SizedBox(
+                    height: 8,
                 )
               ],
             ),
