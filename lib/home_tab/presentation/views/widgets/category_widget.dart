@@ -23,7 +23,7 @@ class CategoryWidget extends StatelessWidget {
             height: 65,
 
             decoration: BoxDecoration(
-              color:AppColors.lightPink,
+              color:AppColors.lightPinkColor,
               borderRadius: BorderRadius.circular(20)
             ),
 
