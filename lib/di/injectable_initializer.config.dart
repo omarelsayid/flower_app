@@ -29,6 +29,17 @@ import '../auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
 import '../auth/presentation/cubit/signup_view_model.dart' as _i573;
 import '../auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i837;
+import '../best_seller_products/data/data_source/best_seller_remote_data_source.dart'
+    as _i689;
+import '../best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
+    as _i211;
+import '../best_seller_products/data/repository_impl/best_seller_repo_impl.dart'
+    as _i37;
+import '../best_seller_products/domain/repo/best_seller_repo.dart' as _i118;
+import '../best_seller_products/domain/use_case/best_seller_use_case.dart'
+    as _i209;
+import '../best_seller_products/presentation/cubit/best_seller_cubit.dart'
+    as _i34;
 import '../categories/data/data_source/categories_remote_data_source.dart'
     as _i324;
 import '../categories/data/repository_impl/categories_repository_impl.dart'
@@ -62,6 +73,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i324.CategoriesRemoteDataSource>(
       () => _i324.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
+    gh.factory<_i689.BestSellerRemoteDataSource>(
+      () => _i211.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i1016.OccasionRemoteDataSource>(
       () => _i1016.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
@@ -75,6 +89,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i536.CategoriesRepositoryImpl(
         gh<_i324.CategoriesRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i118.BestSellerRepo>(
+      () => _i37.BestSellerRepoImpl(gh<_i689.BestSellerRemoteDataSource>()),
     );
     gh.factory<_i1051.AuthRepository>(
       () => _i465.AuthRepositoryImpl(
@@ -94,8 +111,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i679.SignInUseCase>(
       () => _i679.SignInUseCase(gh<_i1051.AuthRepository>()),
     );
+    gh.factory<_i209.BestSellerUseCase>(
+      () => _i209.BestSellerUseCase(gh<_i118.BestSellerRepo>()),
+    );
     gh.factory<_i44.CategoriesUseCase>(
       () => _i44.CategoriesUseCase(gh<_i743.CategoriesRepository>()),
+    );
+    gh.factory<_i34.BestSellerViewModel>(
+      () => _i34.BestSellerViewModel(gh<_i209.BestSellerUseCase>()),
     );
     gh.factory<_i526.ForgetPasswordViewModel>(
       () => _i526.ForgetPasswordViewModel(gh<_i373.AuthUseCase>()),

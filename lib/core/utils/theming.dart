@@ -7,6 +7,9 @@ ThemeData theme(BuildContext context) {
   final double screenWidth = MediaQuery.of(context).size.width;
   final double screenHeight = MediaQuery.of(context).size.height;
   return ThemeData(
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.white
+    ),
     scaffoldBackgroundColor: Colors.white,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.white,

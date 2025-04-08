@@ -40,10 +40,11 @@ class MainApp extends StatelessWidget {
           // token != null && (rememberMe ?? false)
           //     ? PagesRoutes.layOutScreen
           //     : PagesRoutes.signInScreen,
-      initialRoute:
-      token != null && (rememberMe ?? false)
-              ? PagesRoutes.layOutScreen
-              : PagesRoutes.signInScreen,
+      // initialRoute:
+      //     token != null && (rememberMe ?? false)
+      //         ? PagesRoutes.layOutScreen
+      //         : PagesRoutes.signInScreen,
+      initialRoute: PagesRoutes.bestSellerScreen,
       builder: EasyLoading.init(),
     );
   }

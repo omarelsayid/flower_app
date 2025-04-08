@@ -10,6 +10,7 @@ import '../../auth/data/model/forget_response_password_dto.dart';
 import '../../auth/data/model/reset_password_dto.dart';
 import '../../auth/data/model/verify_email_response_dto.dart';
 import '../../auth/domain/entity/sign_up_request.dart';
+import '../../best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../categories/data/model/categories_response_model.dart';
 import '../../categories/data/model/specific_categories_response_model.dart';
 import '../../home/occasions/data/model/products_response_dto.dart';
@@ -36,8 +37,12 @@ abstract class ApiClient {
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String,String> code);
 
+
   @PUT("/api/v1/auth/resetPassword")
   Future<ResetPasswordResponseDTO> resetPassword(@Body() Map<String, dynamic> data);
+  
+  @GET("/api/v1/best-seller")
+  Future<HttpResponse<BestSellerProductsModel>> getBestSeller();
 
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();

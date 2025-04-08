@@ -1,0 +1,45 @@
+import 'package:flower_app/best_seller_products/presentation/cubit/best_seller_cubit.dart';
+import 'package:flower_app/best_seller_products/presentation/views/best_seller_view_body.dart';
+import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/utils/app_colors.dart';
+import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../di/injectable_initializer.dart';
+
+class BestSellerView extends StatelessWidget {
+  BestSellerView({super.key});
+
+  BestSellerViewModel bestSellerViewModel = getIt.get<BestSellerViewModel>();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => bestSellerViewModel,
+      child: Scaffold(
+        appBar: AppBar(
+          toolbarHeight: resposiveHeight(80),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Best Seller',
+                style: AppTextStyles.inter500_20.copyWith(
+                  color: AppColors.blackColor,
+                ),
+              ),
+              Text(
+                'Bloom with our exquisite best sellers',
+                style: AppTextStyles.inter500_13.copyWith(
+                  color: AppColors.blackColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+        body: BestSellerViewBody(bestSellerViewModel: bestSellerViewModel),
+      ),
+    );
+  }
+}
