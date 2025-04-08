@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/auth/domain/entity/sign_in_request.dart';
+import 'package:flower_app/home/occasions/data/model/occasions_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -10,6 +11,9 @@ import '../../auth/data/model/reset_password_dto.dart';
 import '../../auth/data/model/verify_email_response_dto.dart';
 import '../../auth/domain/entity/sign_up_request.dart';
 import '../../best_seller_products/data/model/BestSellerProductsModel.dart';
+import '../../categories/data/model/categories_response_model.dart';
+import '../../categories/data/model/specific_categories_response_model.dart';
+import '../../home/occasions/data/model/products_response_dto.dart';
 
 
 part 'api_client.g.dart';
@@ -25,8 +29,10 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/signin")
   Future<HttpResponse<SignUpResponseDTO>> signIn(@Body() SignInRequest data);
+
   @POST("/api/v1/auth/forgotPassword")
   Future<ForgetResponsePasswordDto> forgetPassword(@Body() Map<String,dynamic> data);
+
 
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String,String> code);
@@ -39,4 +45,20 @@ abstract class ApiClient {
   Future<HttpResponse<BestSellerProductsModel>> getBestSeller();
 }
 
+  @GET('/api/v1/occasions')
+  Future<OccasionsResponseDTO> getOccasions();
+  // @GET('/api/v1/occasions/{id}')
+  // Future<SpecificOccasionsResponseDTO> getSpecificOccasion(@Path("id") String occasionId);
+  @GET('/api/v1/products')
+  Future<ProductsResponseDTO> getProductsByOccasion(@Query("occasion") String occasionId);
+
+
+  @GET("/api/v1/categories")
+  Future<CategoriesResponseModel> getAllCategories();
+
+  @GET("/api/v1/products")
+  Future<SpecificCategoriesResponseModel> getSpecificCategory(
+      @Query("category") String categoryId,
+      );
+}
 

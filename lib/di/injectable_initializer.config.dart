@@ -40,8 +40,23 @@ import '../best_seller_products/domain/use_case/best_seller_use_case.dart'
     as _i209;
 import '../best_seller_products/presentation/cubit/best_seller_cubit.dart'
     as _i34;
+import '../categories/data/data_source/categories_remote_data_source.dart'
+    as _i324;
+import '../categories/data/repository_impl/categories_repository_impl.dart'
+    as _i536;
+import '../categories/domain/repository/categories_repository.dart' as _i743;
+import '../categories/domain/use_case/categories_use_case.dart' as _i44;
+import '../categories/presentation/manager/categories_view_model.dart'
+    as _i1020;
 import '../core/api/api_client.dart' as _i424;
 import '../core/services/internet_connection_check.dart' as _i697;
+import '../home/occasions/data/data_source/occasion_remote_data_source.dart'
+    as _i1016;
+import '../home/occasions/data/repository_imp/occasion_repository_imp.dart'
+    as _i509;
+import '../home/occasions/domain/repository/occasion_repository.dart' as _i938;
+import '../home/occasions/domain/use_case/occasion_use_case.dart' as _i254;
+import '../home/occasions/presentation/cubit/occasion_view_model.dart' as _i736;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -58,17 +73,37 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i689.BestSellerRemoteDataSource>(
       () => _i211.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
+    gh.factory<_i324.CategoriesRemoteDataSource>(
+      () => _i324.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i1016.OccasionRemoteDataSource>(
+      () => _i1016.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i938.OccasionRepository>(
+      () => _i509.OccasionRepositoryImpl(gh<_i1016.OccasionRemoteDataSource>()),
+    );
     gh.factory<_i561.AuthRemoteDataSource>(
       () => _i561.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
     gh.factory<_i118.BestSellerRepo>(
       () => _i37.BestSellerRepoImpl(gh<_i689.BestSellerRemoteDataSource>()),
     );
+    gh.factory<_i743.CategoriesRepository>(
+      () => _i536.CategoriesRepositoryImpl(
+        gh<_i324.CategoriesRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i1051.AuthRepository>(
       () => _i465.AuthRepositoryImpl(
         gh<_i561.AuthRemoteDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
+    );
+    gh.factory<_i254.OccasionUseCase>(
+      () => _i254.OccasionUseCase(gh<_i938.OccasionRepository>()),
+    );
+    gh.factory<_i736.OccasionViewModel>(
+      () => _i736.OccasionViewModel(gh<_i254.OccasionUseCase>()),
     );
     gh.factory<_i373.AuthUseCase>(
       () => _i373.AuthUseCase(gh<_i1051.AuthRepository>()),
@@ -81,6 +116,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i34.BestSellerViewModel>(
       () => _i34.BestSellerViewModel(gh<_i209.BestSellerUseCase>()),
+    );
+    gh.factory<_i44.CategoriesUseCase>(
+      () => _i44.CategoriesUseCase(gh<_i743.CategoriesRepository>()),
     );
     gh.factory<_i526.ForgetPasswordViewModel>(
       () => _i526.ForgetPasswordViewModel(gh<_i373.AuthUseCase>()),
@@ -96,6 +134,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i837.VerifyEmailVewModel>(
       () => _i837.VerifyEmailVewModel(gh<_i373.AuthUseCase>()),
+    );
+    gh.factory<_i1020.CategoriesViewModel>(
+      () => _i1020.CategoriesViewModel(gh<_i44.CategoriesUseCase>()),
     );
     return this;
   }

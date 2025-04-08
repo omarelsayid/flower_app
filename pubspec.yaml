@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cached_network_image: ^3.3.0
   retrofit: ^4.4.2
   json_annotation: ^4.9.0
   injectable:
@@ -23,6 +24,7 @@ dependencies:
   dio:
   internet_connection_checker: ^3.0.1
   cached_network_image: ^3.4.1
+  skeletonizer: ^1.4.3
   skeletonizer: ^1.4.3
 
 dev_dependencies:
@@ -41,6 +43,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/translations/
+    - assets/image/
   fonts:
     - family: IM FELL English
       fonts:

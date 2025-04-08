@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class CategoriesResponseEntity {
   CategoriesResponseEntity({
       this.message, 
@@ -10,23 +12,23 @@ class CategoriesResponseEntity {
 
 }
 
-class CategoriesEntity {
+class CategoriesEntity extends Equatable {
   CategoriesEntity({
       this.id, 
       this.name, 
       this.slug, 
-      this.image, 
-      this.createdAt, 
-      this.updatedAt, 
+      this.image,
       this.productsCount,});
 
   String? id;
   String? name;
   String? slug;
   String? image;
-  String? createdAt;
-  String? updatedAt;
   num? productsCount;
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id,name];
 }
 //
 // class CategoriesMetadata {

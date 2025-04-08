@@ -1,6 +1,7 @@
 import 'package:flower_app/core/services/screen_size_service.dart';
 import 'package:flower_app/core/utils/theming.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'core/routes_generator/pages_routes.dart';
 import 'core/routes_generator/routes_generator.dart';
@@ -13,7 +14,7 @@ import 'di/injectable_initializer.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  MyBlocObserver();
+  Bloc.observer = MyBlocObserver();
   await SharedPreferenceServices.init();
   ConfigLoading().showLoading();
   String? token =
@@ -35,6 +36,10 @@ class MainApp extends StatelessWidget {
       theme: theme(context),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
+      // initialRoute:PagesRoutes.layOutScreen,
+          // token != null && (rememberMe ?? false)
+          //     ? PagesRoutes.layOutScreen
+          //     : PagesRoutes.signInScreen,
       // initialRoute:
       //     token != null && (rememberMe ?? false)
       //         ? PagesRoutes.layOutScreen
