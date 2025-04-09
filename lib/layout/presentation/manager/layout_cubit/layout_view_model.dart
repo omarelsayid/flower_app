@@ -1,7 +1,6 @@
 import 'package:flower_app/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
 import 'package:flower_app/layout/presentation/manager/layout_cubit/layout_state.dart';
-import 'package:flower_app/layout/presentation/tabs/category_tab.dart';
 import 'package:flower_app/home_tab/presentation/views/home_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,9 +37,8 @@ List<Widget>tabs=[
   ],
   child: HomeTab(),
 ),
-  const CategoryTab(),
   // OccasionsScreen(),
-  const HomeTab(),
+  // const HomeTab(),
   const CategoriesTab(),
   const CartTab(),
   const ProfileTab(),
