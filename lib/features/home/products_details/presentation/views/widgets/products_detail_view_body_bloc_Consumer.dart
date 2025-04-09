@@ -54,7 +54,7 @@ class _ProductsDetailViewBodyBlocConsumerState
           Future.delayed(Duration.zero, () => EasyLoading.show());
         } else if (state is ProductsDetailSuccess) {
           Future.delayed(
-            Duration(seconds: 2),
+            Duration(seconds: 1),
             () => EasyLoading.dismiss(),
           ); // Dismiss loading when data is successfully loaded
         }
