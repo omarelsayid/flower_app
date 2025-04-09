@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/features/products_details/data/data_source/products_details_remote_data_scource.dart';
-import 'package:flower_app/features/products_details/data/models/products_details_models.dart';
-import 'package:flower_app/features/products_details/data/repositories/products_detail_repo_imp.dart';
-import 'package:flower_app/features/products_details/domain/entities/products_details_entity.dart';
-import 'package:flower_app/features/products_details/domain/repositories/get_product_details_repo.dart';
+import 'package:flower_app/features/home/products_details/data/data_source/products_details_remote_data_scource.dart';
+import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
+import 'package:flower_app/features/home/products_details/data/repositories/products_detail_repo_imp.dart';
+import 'package:flower_app/features/home/products_details/domain/entities/products_details_entity.dart';
+import 'package:flower_app/features/home/products_details/domain/repositories/get_product_details_repo.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 

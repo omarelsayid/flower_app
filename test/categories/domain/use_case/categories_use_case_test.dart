@@ -1,7 +1,7 @@
-import 'package:flower_app/categories/domain/entity/categories_response_entity.dart';
-import 'package:flower_app/categories/domain/entity/specific_category_response_entity.dart';
-import 'package:flower_app/categories/domain/repository/categories_repository.dart';
-import 'package:flower_app/categories/domain/use_case/categories_use_case.dart';
+import 'package:flower_app/features/home/categories/domain/entity/categories_response_entity.dart';
+import 'package:flower_app/features/home/categories/domain/entity/specific_category_response_entity.dart';
+import 'package:flower_app/features/home/categories/domain/repository/categories_repository.dart';
+import 'package:flower_app/features/home/categories/domain/use_case/categories_use_case.dart';
 import 'package:flower_app/core/common/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

@@ -1,8 +1,8 @@
 import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/home/occasions/domain/entity/occasions_entity.dart';
-import 'package:flower_app/home/occasions/domain/entity/products_response_entity.dart';
-import 'package:flower_app/home/occasions/domain/repository/occasion_repository.dart';
-import 'package:flower_app/home/occasions/domain/use_case/occasion_use_case.dart';
+import 'package:flower_app/features/home/occasions/domain/entity/occasions_entity.dart';
+import 'package:flower_app/features/home/occasions/domain/entity/products_response_entity.dart';
+import 'package:flower_app/features/home/occasions/domain/repository/occasion_repository.dart';
+import 'package:flower_app/features/home/occasions/domain/use_case/occasion_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
