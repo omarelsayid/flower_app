@@ -12,11 +12,11 @@ class OccasionUseCase {
 
  OccasionUseCase(this._occasionRepository);
 
- Future<Result<OccasionsResponseEntity>> execute() {
-  return _occasionRepository.getOccasion();
+ Future<Result<OccasionsResponseEntity>> execute() async{
+  return await _occasionRepository.getOccasion();
  }
- Future<Result<ProductsResponseEntity>> executeSpecific(String occasionId) {
-  return _occasionRepository.getSpecificOccasion(occasionId);
+ Future<Result<ProductsResponseEntity>> executeSpecific(String occasionId) async{
+  return await _occasionRepository.getSpecificOccasion(occasionId);
  }
 
 }
