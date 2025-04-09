@@ -31,9 +31,9 @@ class CategoriesTab extends StatelessWidget {
             DialogUtils.showMessage(
               context: context,
               message:
-                  (state is CategoriesErrorState)
-                      ? state.errMessage
-                      : (state as SpecificCategoriesErrorState).errMessage,
+              (state is CategoriesErrorState)
+                  ? state.errMessage
+                  : (state as SpecificCategoriesErrorState).errMessage,
               title: "Error",
               negativeActionName: "Cancel",
             );
@@ -77,9 +77,9 @@ class CategoriesTab extends StatelessWidget {
                           unselectedLabelColor: AppColors.greyColor,
                           indicatorColor: AppColors.primaryColor,
                           tabs:
-                              viewModel.categories
-                                  .map((category) => Tab(text: category.name))
-                                  .toList(),
+                          viewModel.categories
+                              .map((category) => Tab(text: category.name))
+                              .toList(),
                         ),
                       ],
                     ),
@@ -98,16 +98,16 @@ class CategoriesTab extends StatelessWidget {
                     viewModel.isSearching)
                   state.products.isNotEmpty
                       ? _buildProductsList(
-                        state.products,
-                        viewModel.products.length,
-                      )
+                    state.products,
+                    viewModel.products.length,
+                  )
                       : const Center(child: Text("No products found"))
                 else if (state is SpecificCategoriesSuccessState &&
-                    state.products.isNotEmpty &&
-                    !viewModel.isSearching)
-                  _buildProductsList(state.products, state.products.length)
-                else
-                  const Center(child: Text("No products found")),
+                      state.products.isNotEmpty &&
+                      !viewModel.isSearching)
+                    _buildProductsList(state.products, state.products.length)
+                  else
+                    const Center(child: Text("No products found")),
               ],
             ),
           );
