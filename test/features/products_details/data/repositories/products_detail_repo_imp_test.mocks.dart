@@ -5,9 +5,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i4;
 
-import 'package:flower_app/features/products_details/data/data_source/products_details_remote_data_scource.dart'
+import 'package:flower_app/features/home/products_details/data/data_source/products_details_remote_data_scource.dart'
     as _i3;
-import 'package:flower_app/features/products_details/data/models/products_details_models.dart'
+import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 

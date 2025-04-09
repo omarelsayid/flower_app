@@ -1,8 +1,8 @@
 import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/home/occasions/data/data_source/occasion_remote_data_source.dart';
-import 'package:flower_app/home/occasions/data/model/occasions_dto.dart';
-import 'package:flower_app/home/occasions/data/model/products_response_dto.dart';
+import 'package:flower_app/features/home/occasions/data/data_source/occasion_remote_data_source.dart';
+import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
+import 'package:flower_app/features/home/occasions/data/model/products_response_dto.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

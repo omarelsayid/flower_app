@@ -1,10 +1,10 @@
-import 'package:flower_app/best_seller_products/presentation/views/best_seller_view.dart';
-import 'package:flower_app/categories/presentation/categories_tab.dart';
+import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
+import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/auth/presentation/views/sign_in_screen.dart';
 import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart';
-import 'package:flower_app/features/products_details/presentation/views/products_details_view.dart';
-import 'package:flower_app/home/occasions/presentation/views/occasion_screen.dart';
+import 'package:flower_app/features/home/products_details/presentation/views/products_details_view.dart';
+import 'package:flower_app/features/home/occasions/presentation/views/occasion_screen.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

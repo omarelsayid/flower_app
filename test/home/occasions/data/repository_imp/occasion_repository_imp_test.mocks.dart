@@ -5,10 +5,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i5;
 
-import 'package:flower_app/home/occasions/data/data_source/occasion_remote_data_source.dart'
+import 'package:flower_app/features/home/occasions/data/data_source/occasion_remote_data_source.dart'
     as _i4;
-import 'package:flower_app/home/occasions/data/model/occasions_dto.dart' as _i2;
-import 'package:flower_app/home/occasions/data/model/products_response_dto.dart'
+import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart' as _i2;
+import 'package:flower_app/features/home/occasions/data/model/products_response_dto.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 

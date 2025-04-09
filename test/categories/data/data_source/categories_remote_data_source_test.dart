@@ -1,8 +1,8 @@
-import 'package:flower_app/categories/data/data_source/categories_remote_data_source.dart';
-import 'package:flower_app/categories/data/model/categories_response_model.dart';
-import 'package:flower_app/categories/data/model/specific_categories_response_model.dart';
-import 'package:flower_app/categories/domain/entity/categories_response_entity.dart';
-import 'package:flower_app/categories/domain/entity/specific_category_response_entity.dart';
+import 'package:flower_app/features/home/categories/data/data_source/categories_remote_data_source.dart';
+import 'package:flower_app/features/home/categories/data/model/categories_response_model.dart';
+import 'package:flower_app/features/home/categories/data/model/specific_categories_response_model.dart';
+import 'package:flower_app/features/home/categories/domain/entity/categories_response_entity.dart';
+import 'package:flower_app/features/home/categories/domain/entity/specific_category_response_entity.dart';
 import 'package:flower_app/core/api/api_client.dart';
 import 'package:flower_app/core/common/result.dart';
 import 'package:flutter_test/flutter_test.dart';

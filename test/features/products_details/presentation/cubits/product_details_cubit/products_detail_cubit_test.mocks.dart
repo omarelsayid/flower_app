@@ -6,9 +6,9 @@
 import 'dart:async' as _i3;
 
 import 'package:flower_app/core/common/result.dart' as _i4;
-import 'package:flower_app/features/products_details/domain/entities/products_details_entity.dart'
+import 'package:flower_app/features/home/products_details/domain/entities/products_details_entity.dart'
     as _i5;
-import 'package:flower_app/features/products_details/domain/repositories/get_product_details_repo.dart'
+import 'package:flower_app/features/home/products_details/domain/repositories/get_product_details_repo.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;

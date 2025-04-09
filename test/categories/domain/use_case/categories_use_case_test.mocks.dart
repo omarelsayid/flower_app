@@ -5,11 +5,11 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:flower_app/categories/domain/entity/categories_response_entity.dart'
+import 'package:flower_app/features/home/categories/domain/entity/categories_response_entity.dart'
     as _i5;
-import 'package:flower_app/categories/domain/entity/specific_category_response_entity.dart'
+import 'package:flower_app/features/home/categories/domain/entity/specific_category_response_entity.dart'
     as _i7;
-import 'package:flower_app/categories/domain/repository/categories_repository.dart'
+import 'package:flower_app/features/home/categories/domain/repository/categories_repository.dart'
     as _i2;
 import 'package:flower_app/core/common/result.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;

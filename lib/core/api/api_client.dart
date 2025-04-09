@@ -1,20 +1,20 @@
 
 import 'package:dio/dio.dart';
-import 'package:flower_app/home_tab/data/model/occasion_response_dto.dart';
+import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
-import 'package:flower_app/features/products_details/data/models/products_details_models.dart';
-import 'package:flower_app/home/occasions/data/model/occasions_dto.dart';
+import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
+import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
-import '../../best_seller_products/data/model/BestSellerProductsModel.dart';
-import '../../home_tab/data/model/category_response_dto.dart';
+import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
+import '../../features/home/home_tab/data/model/category_response_dto.dart';
 
 
-import '../../categories/data/model/categories_response_model.dart';
-import '../../categories/data/model/specific_categories_response_model.dart';
-import '../../home/occasions/data/model/products_response_dto.dart';
+import '../../features/home/categories/data/model/categories_response_model.dart';
+import '../../features/home/categories/data/model/specific_categories_response_model.dart';
+import '../../features/home/occasions/data/model/products_response_dto.dart';
 import '../../features/auth/data/model/forget_response_password_dto.dart';
 import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';

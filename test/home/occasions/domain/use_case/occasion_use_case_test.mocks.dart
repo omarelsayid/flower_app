@@ -6,11 +6,11 @@
 import 'dart:async' as _i3;
 
 import 'package:flower_app/core/common/result.dart' as _i4;
-import 'package:flower_app/home/occasions/domain/entity/occasions_entity.dart'
+import 'package:flower_app/features/home/occasions/domain/entity/occasions_entity.dart'
     as _i5;
-import 'package:flower_app/home/occasions/domain/entity/products_response_entity.dart'
+import 'package:flower_app/features/home/occasions/domain/entity/products_response_entity.dart'
     as _i7;
-import 'package:flower_app/home/occasions/domain/repository/occasion_repository.dart'
+import 'package:flower_app/features/home/occasions/domain/repository/occasion_repository.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;

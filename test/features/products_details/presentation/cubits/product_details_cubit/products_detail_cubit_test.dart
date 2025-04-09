@@ -1,9 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/features/products_details/domain/entities/products_details_entity.dart';
-import 'package:flower_app/features/products_details/domain/repositories/get_product_details_repo.dart';
-import 'package:flower_app/features/products_details/presentation/cubits/product_details_cubit/products_detail_states.dart';
-import 'package:flower_app/features/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart';
+import 'package:flower_app/features/home/products_details/domain/entities/products_details_entity.dart';
+import 'package:flower_app/features/home/products_details/domain/repositories/get_product_details_repo.dart';
+import 'package:flower_app/features/home/products_details/presentation/cubits/product_details_cubit/products_detail_states.dart';
+import 'package:flower_app/features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
