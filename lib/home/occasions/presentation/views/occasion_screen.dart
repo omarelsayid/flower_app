@@ -5,7 +5,6 @@ import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../../../core/widgets/flower_card.dart';
 import '../../domain/entity/occasions_entity.dart';
 import '../cubit/occasion_view_model.dart';
@@ -64,7 +63,9 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
 
           if (occasions.isEmpty) {
             return const Scaffold(
-              body: Center(child: Text("No occasions available")),
+              body: Center(
+                  child: CircularProgressIndicator(color: AppColors.primaryColor,)
+              ),
             );
           }
 
@@ -97,7 +98,8 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
             body: BlocBuilder<OccasionViewModel, OccasionState>(
               builder: (context, state) {
                 if (state is LoadingOccasionState) {
-                  EasyLoading.show();
+                  return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
+                  debugPrint("Loading..........");
                 } else if (state is SuccessSpecificOccasionState) {
                   final products = state.specificOccasion;
                   return GridView.builder(
@@ -107,7 +109,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                       crossAxisCount: 2,
                       crossAxisSpacing: resposiveHeight(1), // Add spacing between columns
                       mainAxisSpacing: resposiveWidth(1),  // Add spacing between rows
-                      childAspectRatio: 0.8,
+                      childAspectRatio: 0.7,
                     ),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
@@ -151,9 +153,9 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                   //   },
                   // );
                 } else if (state is ErrorOccasionState) {
-                  return Center(child: Text("Error: ${state.message}"));
+                  return Center(child: Text(state.message));
                 }
-                return const Center(child: Text("Select an occasion"));
+                return const Center(child: CircularProgressIndicator(color: AppColors.primaryColor,));
               },
             ),
           );

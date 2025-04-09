@@ -40,11 +40,11 @@ class OccasionViewModel extends Cubit<OccasionState> {
   }
 
   Future<void> _getOccasion() async {
-    EasyLoading.show(status: "Loading...");
+    // EasyLoading.show(status: "Loading...");
     emit(LoadingOccasionState());
 
     var result = await _occasionUseCase.execute();
-    EasyLoading.dismiss();
+    // EasyLoading.dismiss();
 
     switch (result) {
       case Success():
@@ -72,11 +72,11 @@ class OccasionViewModel extends Cubit<OccasionState> {
   }
 
   Future<void> _getSpecificOccasion(String occasionId) async {
-    EasyLoading.show();
+    // EasyLoading.show();
     emit(LoadingOccasionState());
 
     var result = await _occasionUseCase.executeSpecific(occasionId);
-    EasyLoading.dismiss();
+    // EasyLoading.dismiss();
 
     switch (result) {
       case Success():
