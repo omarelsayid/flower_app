@@ -31,9 +31,9 @@ class CategoriesTab extends StatelessWidget {
             DialogUtils.showMessage(
               context: context,
               message:
-              (state is CategoriesErrorState)
-                  ? state.errMessage
-                  : (state as SpecificCategoriesErrorState).errMessage,
+                  (state is CategoriesErrorState)
+                      ? state.errMessage
+                      : (state as SpecificCategoriesErrorState).errMessage,
               title: "Error",
               negativeActionName: "Cancel",
             );
@@ -56,7 +56,6 @@ class CategoriesTab extends StatelessWidget {
                 ),
                 SizedBox(height: height * 0.015),
 
-                // Category Tabs
                 if (state is CategoriesLoadingState)
                   const Center(child: CircularProgressIndicator())
                 else if (viewModel.categories.isNotEmpty)
@@ -77,9 +76,9 @@ class CategoriesTab extends StatelessWidget {
                           unselectedLabelColor: AppColors.greyColor,
                           indicatorColor: AppColors.primaryColor,
                           tabs:
-                          viewModel.categories
-                              .map((category) => Tab(text: category.name))
-                              .toList(),
+                              viewModel.categories
+                                  .map((category) => Tab(text: category.name))
+                                  .toList(),
                         ),
                       ],
                     ),
@@ -87,27 +86,27 @@ class CategoriesTab extends StatelessWidget {
 
                 SizedBox(height: height * 0.02),
 
-                // Products Display
                 if (state is LoadingSearchState ||
                     state is SpecificCategoriesLoadingState)
                   Skeletonizer(
-                      enabled: true,
-                      containersColor: AppColors.whiteColor,
-                      child: _buildProductsList(viewModel.allProducts,5))
+                    enabled: true,
+                    containersColor: AppColors.whiteColor,
+                    child: _buildProductsList([], 5),
+                  )
                 else if (state is SuccessfulSearchState &&
                     viewModel.isSearching)
                   state.products.isNotEmpty
                       ? _buildProductsList(
-                    state.products,
-                    viewModel.products.length,
-                  )
+                        state.products,
+                        state.products.length,
+                      )
                       : const Center(child: Text("No products found"))
                 else if (state is SpecificCategoriesSuccessState &&
-                      state.products.isNotEmpty &&
-                      !viewModel.isSearching)
-                    _buildProductsList(state.products, state.products.length)
-                  else
-                    const Center(child: Text("No products found")),
+                    state.products.isNotEmpty &&
+                    !viewModel.isSearching)
+                  _buildProductsList(state.products, state.products.length)
+                else
+                  const Center(child: Text("No products found")),
               ],
             ),
           );
@@ -117,22 +116,34 @@ class CategoriesTab extends StatelessWidget {
   }
 
   Widget _buildProductsList(List products, int length) {
+    if (products.isEmpty || length == 0) {
+      return const Center(child: Text("No products available"));
+    }
+
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        crossAxisSpacing: resposiveHeight(1), // Add spacing between columns
-        mainAxisSpacing: resposiveWidth(1), // Add spacing between rows
+        crossAxisSpacing: resposiveHeight(1),
+        mainAxisSpacing: resposiveWidth(1),
         childAspectRatio: 0.7,
       ),
       itemCount: length,
       itemBuilder: (context, index) {
+        if (index >= products.length) {
+          return const SizedBox();
+        }
+
         final product = products[index];
         return InkWell(
           onTap: () {
-            Navigator.pushNamed(context, PagesRoutes.productDetails,arguments: product.id);
+            Navigator.pushNamed(
+              context,
+              PagesRoutes.productDetails,
+              arguments: product.id,
+            );
           },
           child: FlowerCard(
             name: product.title.toString(),
