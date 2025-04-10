@@ -1,10 +1,11 @@
 import 'dart:developer';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/services/localization_service.dart';
 import 'package:flower_app/core/services/shared_preference_services.dart';
 import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/text_styles.dart';
 
@@ -31,13 +32,9 @@ class LanguageTileWidget extends StatelessWidget {
       ),
       child: RadioListTile<String>(
         value: value,
-        groupValue: context.locale.languageCode,
+        groupValue: context.watch<LocaleProvider>().locale.languageCode,
         onChanged: (val) async {
-          // context.setLocale(Locale(value));
-          // await SharedPreferenceServices.saveData(
-          //   AppConstants.locale,
-          //   context.locale.languageCode,
-          // );
+          context.read<LocaleProvider>().changeLocale(Locale(val!));
         },
         title: Text(
           title,
