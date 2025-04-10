@@ -30,7 +30,7 @@ class UserInformationWidget extends StatelessWidget {
                   SizedBox(
                     width:resposiveWidth(24),
                       height: resposiveHeight(24),
-                      child: ImageIcon(AssetImage(IconAssets.editIcon,),)),//I want to add width and height 24
+                      child: ImageIcon(AssetImage(IconAssets.editIcon,),)),
                 ],
               ),
               Text('email@gmail.com',style: AppTextStyles.inter500_18.copyWith(color: AppColors.greyDarkColor),)
