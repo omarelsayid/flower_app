@@ -87,4 +87,18 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     fontSize: _responsiveFontSize(18),
   );
+  static TextStyle get outfit700_20 => TextStyle(
+    fontFamily: 'Outfit',
+    fontWeight: FontWeight.w700,
+    fontSize: _responsiveFontSize(20),
+    height: 1.2, // 120%
+    letterSpacing: 0.3,
+  );
+  static TextStyle get outfitMedium_16 => TextStyle(
+    fontFamily: 'Outfit',
+    fontWeight: FontWeight.w500,
+    fontSize: _responsiveFontSize(16),
+    height: 1.2, // 120%
+    letterSpacing: 0.3,
+  );
 }

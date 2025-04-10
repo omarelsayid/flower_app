@@ -1,8 +1,11 @@
+import 'package:flower_app/core/services/localization_service.dart';
 import 'package:flower_app/core/services/screen_size_service.dart';
+import 'package:flower_app/core/utils/constans.dart';
 import 'package:flower_app/core/utils/theming.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:provider/provider.dart';
 import 'core/routes_generator/pages_routes.dart';
 import 'core/routes_generator/routes_generator.dart';
 import 'core/services/bloc_observer.dart';
@@ -10,6 +13,9 @@ import 'core/services/easy_loading_service.dart';
 import 'core/services/shared_preference_services.dart';
 import 'core/utils/constant_manager.dart';
 import 'di/injectable_initializer.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+// import 'generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,20 +38,37 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScreenSizeService.init(context);
-    return MaterialApp(
-      theme: theme(context),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute:
-          token != null && (rememberMe ?? false)
-              ? PagesRoutes.layOutScreen
-              : PagesRoutes.signInScreen,
-      // initialRoute: PagesRoutes.bestSellerScreen,
-      // initialRoute:
-      //     token != null && (rememberMe ?? false)
-      //         ? PagesRoutes.layOutScreen
-      //         : PagesRoutes.signInScreen,
-      builder: EasyLoading.init(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => LocaleProvider()),
+      ],
+
+      builder: (context, child) {
+        final localeProvider = context.watch<LocaleProvider>();
+        return MaterialApp(
+          locale: localeProvider.locale,
+            localizationsDelegates: const [
+            // S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          // supportedLocales: S.delegate.supportedLocales,
+          theme: theme(context),
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: RoutesGenerator.onGenerateRoute,
+          initialRoute:
+              token != null && (rememberMe ?? false)
+                  ? PagesRoutes.layOutScreen
+                  : PagesRoutes.signInScreen,
+          // initialRoute: PagesRoutes.bestSellerScreen,
+          // initialRoute:
+          //     token != null && (rememberMe ?? false)
+          //         ? PagesRoutes.layOutScreen
+          //         : PagesRoutes.signInScreen,
+          builder: EasyLoading.init(),
+        );
+      },
     );
   }
 }
