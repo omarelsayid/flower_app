@@ -9,13 +9,14 @@ import '../../../../di/injectable_initializer.dart';
 import '../../../../features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart';
 import '../../../../features/home/occasions/presentation/views/occasion_screen.dart';
 import '../../../../features/home/categories/presentation/categories_tab.dart';
+import '../../../../features/profile/main_profile_screen/presentation/views/profile_tab.dart';
 import '../../tabs/cart_tab.dart';
 import '../../tabs/profile_tab.dart';
 
 
 class LayoutViewModel extends Cubit <LayoutState> {
   LayoutViewModel() : super(LayoutInitialState());
-  int currentIndex = 0;
+  int currentIndex = 3;
   void doIntent(LayoutIntent layoutIntent) {
     switch(layoutIntent) {
       case LayoutChangeBottomNavIntent():
@@ -37,8 +38,7 @@ List<Widget>tabs=[
   ],
   child: HomeTab(),
 ),
-  // OccasionsScreen(),
-  // const HomeTab(),
+
   const CategoriesTab(),
   const CartTab(),
   const ProfileTab(),

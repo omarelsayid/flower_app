@@ -87,6 +87,16 @@ import '../features/home/products_details/domain/repositories/get_product_detail
     as _i652;
 import '../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
     as _i83;
+import '../features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
+    as _i808;
+import '../features/profile/main_profile_screen/data/repository_imp/profile_screen_repository_imp.dart'
+    as _i442;
+import '../features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
+    as _i758;
+import '../features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart'
+    as _i526;
+import '../features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart'
+    as _i961;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -135,6 +145,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i1007.OccasionRemoteDataSource>(
       () => _i1007.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
+    gh.factory<_i808.ProfileRemoteDataSource>(
+      () => _i808.ProfileRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i267.AuthRepository>(
       () => _i1042.AuthRepositoryImpl(
         gh<_i366.AuthRemoteDataSource>(),
@@ -154,6 +167,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i235.HomeDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
+    );
+    gh.factory<_i758.ProfileRepository>(
+      () => _i442.ProfileRepositoryImpl(gh<_i808.ProfileRemoteDataSource>()),
     );
     gh.factory<_i546.AuthUseCase>(
       () => _i546.AuthUseCase(gh<_i267.AuthRepository>()),
@@ -199,6 +215,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i512.OccasionViewModel>(
       () => _i512.OccasionViewModel(gh<_i518.OccasionUseCase>()),
+    );
+    gh.factory<_i526.ProfileUseCase>(
+      () => _i526.ProfileUseCase(gh<_i758.ProfileRepository>()),
+    );
+    gh.factory<_i961.ProfileViewModel>(
+      () => _i961.ProfileViewModel(gh<_i526.ProfileUseCase>()),
     );
     return this;
   }
