@@ -1,10 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flower_app/core/services/localization_service.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/lang_bottom_sheet_decoration_dash.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/language_tile_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../../../core/common/get_resposive_height_and_width.dart';
 import '../../../../../../core/utils/text_styles.dart';
@@ -66,9 +64,7 @@ class LanguageWidget extends StatelessWidget {
             Text('Language', style: AppTextStyles.inter500_13),
             Spacer(),
             Text(
-              context.watch<LocaleProvider>().locale.languageCode == 'en'
-                  ? 'English'
-                  : 'Arabic',
+              context.locale.languageCode == 'ar' ? 'Arabic' : 'English',
               style: AppTextStyles.inter400_12.copyWith(
                 fontSize: 10,
                 color: AppColors.primaryColor,
