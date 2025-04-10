@@ -8,36 +8,39 @@ environment:
 
 dependencies:
   bloc_test: ^10.0.0
-  dio: null
-  equatable: null
+  dio: ^5.0.0  # Specify the correct version for dio
+  equatable: ^2.0.0  # Specify the correct version for equatable
   flutter:
     sdk: flutter
   cached_network_image: ^3.3.0
   easy_localization: ^3.0.7+1
   flutter_bloc: ^9.1.0
-  flutter_easyloading: null
-  get_it: null
-  injectable: null
+  flutter_easyloading: ^3.0.0  # Specify the correct version for flutter_easyloading
+  get_it: ^8.0.0  # Specify the correct version for get_it
+  injectable: ^2.1.0  # Specify the correct version for injectable
   internet_connection_checker: ^3.0.1
   skeletonizer: ^1.4.3
   json_annotation: ^4.9.0
   mockito: ^5.4.5
   retrofit: ^4.4.2
-  shared_preferences: null
+  shared_preferences: ^2.0.15  # Specify the correct version for shared_preferences
   smooth_page_indicator: ^1.2.1
   flutter_svg: ^2.0.17
   provider: ^6.1.4
   intl: ^0.19.0
+  flutter_intl: ^0.0.1
+  flutter_localization: ^0.3.2
 
 dev_dependencies:
-  build_runner: null
+  intl_utils: ^2.8.10
+  build_runner: ^2.3.3  # Specify the correct version for build_runner
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  injectable_generator: null
+  injectable_generator: ^2.1.0  # Specify the correct version for injectable_generator
   json_serializable: ^6.8.0
   mockito: ^5.4.5
-  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  retrofit_generator: ^9.0.0 # for Dart 3.3 use ^9.0.0
 
 flutter:
   uses-material-design: true
@@ -61,5 +64,6 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
+
 flutter_intl:
   enabled: true
