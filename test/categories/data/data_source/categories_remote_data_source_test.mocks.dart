@@ -5,12 +5,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i14;
 
-import 'package:flower_app/features/home/best_seller_products/data/model/BestSellerProductsModel.dart'
-    as _i17;
-import 'package:flower_app/features/home/categories/data/model/categories_response_model.dart'
-    as _i11;
-import 'package:flower_app/features/home/categories/data/model/specific_categories_response_model.dart'
-    as _i12;
 import 'package:flower_app/core/api/api_client.dart' as _i13;
 import 'package:flower_app/features/auth/data/model/forget_response_password_dto.dart'
     as _i4;
@@ -24,15 +18,22 @@ import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart'
     as _i16;
 import 'package:flower_app/features/auth/domain/entity/sign_up_request.dart'
     as _i15;
-import 'package:flower_app/features/products_details/data/models/products_details_models.dart'
-    as _i18;
-import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart' as _i9;
-import 'package:flower_app/features/home/occasions/data/model/products_response_dto.dart'
-    as _i10;
+import 'package:flower_app/features/home/best_seller_products/data/model/BestSellerProductsModel.dart'
+    as _i17;
+import 'package:flower_app/features/home/categories/data/model/categories_response_model.dart'
+    as _i11;
+import 'package:flower_app/features/home/categories/data/model/specific_categories_response_model.dart'
+    as _i12;
 import 'package:flower_app/features/home/home_tab/data/model/category_response_dto.dart'
     as _i7;
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart'
     as _i8;
+import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart'
+    as _i9;
+import 'package:flower_app/features/home/occasions/data/model/products_response_dto.dart'
+    as _i10;
+import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart'
+    as _i18;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:retrofit/retrofit.dart' as _i3;
 

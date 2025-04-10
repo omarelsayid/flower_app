@@ -15,25 +15,6 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i973;
 
-import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
-    as _i689;
-import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
-    as _i211;
-import '../features/home/best_seller_products/data/repository_impl/best_seller_repo_impl.dart'
-    as _i37;
-import '../features/home/best_seller_products/domain/repo/best_seller_repo.dart' as _i118;
-import '../features/home/best_seller_products/domain/use_case/best_seller_use_case.dart'
-    as _i209;
-import '../features/home/best_seller_products/presentation/cubit/best_seller_cubit.dart'
-    as _i34;
-import '../features/home/categories/data/data_source/categories_remote_data_source.dart'
-    as _i324;
-import '../features/home/categories/data/repository_impl/categories_repository_impl.dart'
-    as _i536;
-import '../features/home/categories/domain/repository/categories_repository.dart' as _i743;
-import '../features/home/categories/domain/use_case/categories_use_case.dart' as _i44;
-import '../features/home/categories/presentation/manager/categories_view_model.dart'
-    as _i1020;
 import '../core/api/api_client.dart' as _i424;
 import '../core/services/internet_connection_check.dart' as _i697;
 import '../features/auth/data/data_source/auth_remote_data_source.dart'
@@ -52,33 +33,60 @@ import '../features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dar
 import '../features/auth/presentation/cubit/signup_view_model.dart' as _i965;
 import '../features/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i882;
-import '../features/home/products_details/data/data_source/products_details_remote_data_scource.dart'
-    as _i1037;
-import '../features/home/products_details/data/data_source/products_details_remote_data_scource_imp.dart'
-    as _i399;
-import '../features/home/products_details/data/repositories/products_detail_repo_imp.dart'
-    as _i142;
-import '../features/home/products_details/domain/repositories/get_product_details_repo.dart'
-    as _i794;
-import '../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
-    as _i610;
-import '../features/home/occasions/data/data_source/occasion_remote_data_source.dart'
+import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
+    as _i481;
+import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
     as _i1016;
-import '../features/home/occasions/data/repository_imp/occasion_repository_imp.dart'
-    as _i509;
-import '../features/home/occasions/domain/repository/occasion_repository.dart' as _i938;
-import '../features/home/occasions/domain/use_case/occasion_use_case.dart' as _i254;
-import '../features/home/occasions/presentation/cubit/occasion_view_model.dart' as _i736;
-import '../features/home/home_tab/data/data_source/home_data_source.dart' as _i858;
-import '../features/home/home_tab/data/repo_imp/home_repository_impl.dart' as _i794;
-import '../features/home/home_tab/domain/repo/home_repo.dart' as _i312;
-import '../features/home/home_tab/domain/user_case/home_use_case.dart' as _i756;
+import '../features/home/best_seller_products/data/repository_impl/best_seller_repo_impl.dart'
+    as _i601;
+import '../features/home/best_seller_products/domain/repo/best_seller_repo.dart'
+    as _i84;
+import '../features/home/best_seller_products/domain/use_case/best_seller_use_case.dart'
+    as _i215;
+import '../features/home/best_seller_products/presentation/cubit/best_seller_cubit.dart'
+    as _i543;
+import '../features/home/categories/data/data_source/categories_remote_data_source.dart'
+    as _i702;
+import '../features/home/categories/data/repository_impl/categories_repository_impl.dart'
+    as _i1059;
+import '../features/home/categories/domain/repository/categories_repository.dart'
+    as _i799;
+import '../features/home/categories/domain/use_case/categories_use_case.dart'
+    as _i402;
+import '../features/home/categories/presentation/manager/categories_view_model.dart'
+    as _i287;
+import '../features/home/home_tab/data/data_source/home_data_source.dart'
+    as _i235;
+import '../features/home/home_tab/data/repo_imp/home_repository_impl.dart'
+    as _i637;
+import '../features/home/home_tab/domain/repo/home_repo.dart' as _i971;
+import '../features/home/home_tab/domain/user_case/home_use_case.dart' as _i770;
 import '../features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart'
-    as _i769;
+    as _i672;
 import '../features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart'
-    as _i228;
+    as _i851;
 import '../features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart'
-    as _i677;
+    as _i137;
+import '../features/home/occasions/data/data_source/occasion_remote_data_source.dart'
+    as _i1007;
+import '../features/home/occasions/data/repository_imp/occasion_repository_imp.dart'
+    as _i141;
+import '../features/home/occasions/domain/repository/occasion_repository.dart'
+    as _i238;
+import '../features/home/occasions/domain/use_case/occasion_use_case.dart'
+    as _i518;
+import '../features/home/occasions/presentation/cubit/occasion_view_model.dart'
+    as _i512;
+import '../features/home/products_details/data/data_source/products_details_remote_data_scource.dart'
+    as _i530;
+import '../features/home/products_details/data/data_source/products_details_remote_data_scource_imp.dart'
+    as _i890;
+import '../features/home/products_details/data/repositories/products_detail_repo_imp.dart'
+    as _i647;
+import '../features/home/products_details/domain/repositories/get_product_details_repo.dart'
+    as _i652;
+import '../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
+    as _i83;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -92,26 +100,40 @@ extension GetItInjectableX on _i174.GetIt {
       () => dataModule.getInternetConnectionCheck(),
     );
     gh.singleton<_i424.ApiClient>(() => _i424.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i481.BestSellerRemoteDataSource>(
+      () => _i1016.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i702.CategoriesRemoteDataSource>(
+      () => _i702.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i366.AuthRemoteDataSource>(
       () => _i366.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
-    gh.factory<_i324.CategoriesRemoteDataSource>(
-      () => _i324.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    gh.factory<_i84.BestSellerRepo>(
+      () => _i601.BestSellerRepoImpl(gh<_i481.BestSellerRemoteDataSource>()),
     );
-    gh.factory<_i858.HomeDataSource>(
-      () => _i858.CategoryDataSourceImp(gh<_i424.ApiClient>()),
+    gh.factory<_i215.BestSellerUseCase>(
+      () => _i215.BestSellerUseCase(gh<_i84.BestSellerRepo>()),
     );
-    gh.factory<_i689.BestSellerRemoteDataSource>(
-      () => _i211.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    gh.factory<_i543.BestSellerViewModel>(
+      () => _i543.BestSellerViewModel(gh<_i215.BestSellerUseCase>()),
     );
-    gh.factory<_i1037.ProductsDetailsRemoteDataScource>(
-      () => _i399.ProductsDetailsRemoteDataScourceImp(gh<_i424.ApiClient>()),
+    gh.factory<_i672.BestSellerCubit>(
+      () => _i672.BestSellerCubit(gh<_i215.BestSellerUseCase>()),
     );
-    gh.factory<_i1016.OccasionRemoteDataSource>(
-      () => _i1016.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    gh.factory<_i530.ProductsDetailsRemoteDataScource>(
+      () => _i890.ProductsDetailsRemoteDataScourceImp(gh<_i424.ApiClient>()),
     );
-    gh.factory<_i938.OccasionRepository>(
-      () => _i509.OccasionRepositoryImpl(gh<_i1016.OccasionRemoteDataSource>()),
+    gh.factory<_i235.HomeDataSource>(
+      () => _i235.CategoryDataSourceImp(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i799.CategoriesRepository>(
+      () => _i1059.CategoriesRepositoryImpl(
+        gh<_i702.CategoriesRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i1007.OccasionRemoteDataSource>(
+      () => _i1007.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
     gh.factory<_i267.AuthRepository>(
       () => _i1042.AuthRepositoryImpl(
@@ -119,26 +141,18 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i973.InternetConnectionChecker>(),
       ),
     );
-    gh.factory<_i743.CategoriesRepository>(
-      () => _i536.CategoriesRepositoryImpl(
-        gh<_i324.CategoriesRemoteDataSource>(),
+    gh.factory<_i652.GetProductDetailsRepo>(
+      () => _i647.ProductsDetailRepoImp(
+        gh<_i530.ProductsDetailsRemoteDataScource>(),
       ),
     );
-    gh.factory<_i118.BestSellerRepo>(
-      () => _i37.BestSellerRepoImpl(gh<_i689.BestSellerRemoteDataSource>()),
+    gh.factory<_i238.OccasionRepository>(
+      () => _i141.OccasionRepositoryImpl(gh<_i1007.OccasionRemoteDataSource>()),
     );
-    gh.factory<_i312.HomeRepo>(
-      () => _i794.HomeRepositoryImpl(
-        gh<_i858.HomeDataSource>(),
+    gh.factory<_i971.HomeRepo>(
+      () => _i637.HomeRepositoryImpl(
+        gh<_i235.HomeDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
-      ),
-    );
-    gh.factory<_i254.OccasionUseCase>(
-      () => _i254.OccasionUseCase(gh<_i938.OccasionRepository>()),
-    );
-    gh.factory<_i794.GetProductDetailsRepo>(
-      () => _i142.ProductsDetailRepoImp(
-        gh<_i1037.ProductsDetailsRemoteDataScource>(),
       ),
     );
     gh.factory<_i546.AuthUseCase>(
@@ -147,8 +161,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i28.SignInUseCase>(
       () => _i28.SignInUseCase(gh<_i267.AuthRepository>()),
     );
-    gh.factory<_i756.HomeUseCase>(
-      () => _i756.HomeUseCase(gh<_i312.HomeRepo>()),
+    gh.factory<_i83.ProductsDetailCubit>(
+      () => _i83.ProductsDetailCubit(gh<_i652.GetProductDetailsRepo>()),
+    );
+    gh.factory<_i402.CategoriesUseCase>(
+      () => _i402.CategoriesUseCase(gh<_i799.CategoriesRepository>()),
+    );
+    gh.factory<_i518.OccasionUseCase>(
+      () => _i518.OccasionUseCase(gh<_i238.OccasionRepository>()),
+    );
+    gh.factory<_i770.HomeUseCase>(
+      () => _i770.HomeUseCase(gh<_i971.HomeRepo>()),
     );
     gh.factory<_i229.ForgetPasswordViewModel>(
       () => _i229.ForgetPasswordViewModel(gh<_i546.AuthUseCase>()),
@@ -159,38 +182,23 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i965.SignUpViewModel>(
       () => _i965.SignUpViewModel(gh<_i546.AuthUseCase>()),
     );
-    gh.factory<_i736.OccasionViewModel>(
-      () => _i736.OccasionViewModel(gh<_i254.OccasionUseCase>()),
-    );
     gh.factory<_i803.SignInViewModel>(
       () => _i803.SignInViewModel(gh<_i28.SignInUseCase>()),
     );
-    gh.factory<_i228.CategoryCubit>(
-      () => _i228.CategoryCubit(gh<_i756.HomeUseCase>()),
+    gh.factory<_i851.CategoryCubit>(
+      () => _i851.CategoryCubit(gh<_i770.HomeUseCase>()),
     );
-    gh.factory<_i677.OccasionCubit>(
-      () => _i677.OccasionCubit(gh<_i756.HomeUseCase>()),
+    gh.factory<_i137.OccasionCubit>(
+      () => _i137.OccasionCubit(gh<_i770.HomeUseCase>()),
     );
-    gh.factory<_i209.BestSellerUseCase>(
-      () => _i209.BestSellerUseCase(gh<_i118.BestSellerRepo>()),
+    gh.factory<_i287.CategoriesViewModel>(
+      () => _i287.CategoriesViewModel(gh<_i402.CategoriesUseCase>()),
     );
     gh.factory<_i882.VerifyEmailVewModel>(
       () => _i882.VerifyEmailVewModel(gh<_i546.AuthUseCase>()),
     );
-    gh.factory<_i44.CategoriesUseCase>(
-      () => _i44.CategoriesUseCase(gh<_i743.CategoriesRepository>()),
-    );
-    gh.factory<_i34.BestSellerViewModel>(
-      () => _i34.BestSellerViewModel(gh<_i209.BestSellerUseCase>()),
-    );
-    gh.factory<_i769.BestSellerCubit>(
-      () => _i769.BestSellerCubit(gh<_i209.BestSellerUseCase>()),
-    );
-    gh.factory<_i610.ProductsDetailCubit>(
-      () => _i610.ProductsDetailCubit(gh<_i794.GetProductDetailsRepo>()),
-    );
-    gh.factory<_i1020.CategoriesViewModel>(
-      () => _i1020.CategoriesViewModel(gh<_i44.CategoriesUseCase>()),
+    gh.factory<_i512.OccasionViewModel>(
+      () => _i512.OccasionViewModel(gh<_i518.OccasionUseCase>()),
     );
     return this;
   }
