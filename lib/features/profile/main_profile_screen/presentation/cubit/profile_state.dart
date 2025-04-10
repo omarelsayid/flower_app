@@ -1,11 +1,12 @@
-import 'package:flower_app/features/auth/domain/entity/sign_up_response_entity.dart';
+
+import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
 
 sealed class ProfileState {}
 
 class LoadingProfileState extends ProfileState {}
 
 class SuccessProfileState extends ProfileState {
-  final User? user;
+  final UserEntity? user;
   SuccessProfileState(this.user,);
 }
 

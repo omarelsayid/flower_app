@@ -6,16 +6,22 @@ import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/text_styles.dart';
 
 class UserInformationWidget extends StatelessWidget {
-  const UserInformationWidget({super.key});
+  const UserInformationWidget({super.key,required this.name,
+    required this.email,  this.image,});
+  final String name;
+  final String email;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         CircleAvatar(
+          backgroundColor: AppColors.lightPinkColor,
           radius: 50,
-          // backgroundImage: NetworkImage(''),
-          backgroundImage: AssetImage(ImageAssets.profileImage),
+          backgroundImage: image == null || image!.isEmpty
+              ? AssetImage(ImageAssets.profileImage)
+              : NetworkImage(image!),
         ),
         Padding(
           padding: EdgeInsets.only(top:resposiveHeight(16),bottom: resposiveHeight(24)),
@@ -25,7 +31,7 @@ class UserInformationWidget extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Name",style: AppTextStyles.inter500_18),
+                  Text(name,style: AppTextStyles.inter500_18),
                   SizedBox(width: resposiveWidth(8),),
                   SizedBox(
                     width:resposiveWidth(24),
@@ -33,7 +39,7 @@ class UserInformationWidget extends StatelessWidget {
                       child: ImageIcon(AssetImage(IconAssets.editIcon,),)),
                 ],
               ),
-              Text('email@gmail.com',style: AppTextStyles.inter500_18.copyWith(color: AppColors.greyDarkColor),)
+              Text(email,style: AppTextStyles.inter500_18.copyWith(color: AppColors.greyDarkColor),)
             ],
           ),
         ),

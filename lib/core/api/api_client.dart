@@ -23,10 +23,14 @@ import '../../features/auth/domain/entity/sign_up_request.dart';
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
-@singleton
+// @singleton
 abstract class ApiClient {
-  @factoryMethod
+  // @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
+
+
+  @GET("/api/v1/auth/profile-data")
+  Future<ProfileResponseDTO> getProfileData();
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -76,8 +80,7 @@ abstract class ApiClient {
       @Query("category") String categoryId,
       );
 
-  @GET("/api/v1/auth/profile-data")
-  Future<ProfileResponseDTO> getProfileData();
+
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
 }
 

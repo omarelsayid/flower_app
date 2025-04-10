@@ -16,6 +16,8 @@ import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i973;
 
 import '../core/api/api_client.dart' as _i424;
+import '../core/network/auth_interceptor.dart' as _i552;
+import '../core/network/network_module.dart' as _i419;
 import '../core/services/internet_connection_check.dart' as _i697;
 import '../features/auth/data/data_source/auth_remote_data_source.dart'
     as _i366;
@@ -106,10 +108,19 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dataModule = _$DataModule();
+    final networkModule = _$NetworkModule();
     gh.singleton<_i973.InternetConnectionChecker>(
       () => dataModule.getInternetConnectionCheck(),
     );
-    gh.singleton<_i424.ApiClient>(() => _i424.ApiClient(gh<_i361.Dio>()));
+    gh.lazySingleton<_i552.AuthInterceptor>(
+      () => networkModule.authInterceptor,
+    );
+    gh.lazySingleton<_i361.Dio>(
+      () => networkModule.dio(gh<_i552.AuthInterceptor>()),
+    );
+    gh.lazySingleton<_i424.ApiClient>(
+      () => networkModule.apiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i481.BestSellerRemoteDataSource>(
       () => _i1016.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
@@ -227,3 +238,5 @@ extension GetItInjectableX on _i174.GetIt {
 }
 
 class _$DataModule extends _i697.DataModule {}
+
+class _$NetworkModule extends _i419.NetworkModule {}

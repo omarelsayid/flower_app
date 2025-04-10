@@ -178,7 +178,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 ),
                 const SizedBox(height: 15),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    await SharedPreferenceServices.deleteData(AppConstants.token);
+                    await SharedPreferenceServices.deleteData(AppConstants.rememberMe);
                     Navigator.pushReplacementNamed(
                       context,
                       PagesRoutes.layOutScreen,
