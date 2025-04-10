@@ -11,6 +11,6 @@ final getIt = GetIt.instance;
   asExtension: true,
 )
 void configureDependencies() {
-  getIt.registerLazySingleton<Dio>(() => Dio());
+  // getIt.registerLazySingleton<Dio>(() => Dio());
   getIt.init();
 }
