@@ -3,6 +3,7 @@ import 'package:flower_app/features/home/best_seller_products/presentation/views
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,13 +25,13 @@ class BestSellerView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Best Seller',
+                S.of(context).BestSellers,
                 style: AppTextStyles.inter500_20.copyWith(
                   color: AppColors.blackColor,
                 ),
               ),
               Text(
-                'Bloom with our exquisite best sellers',
+                S.of(context).bloomwithourexquisitebestsellers,
                 style: AppTextStyles.inter500_13.copyWith(
                   color: AppColors.blackColor,
                 ),

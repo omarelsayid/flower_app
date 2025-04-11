@@ -22,11 +22,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "بإنشاء حساب، فإنك توافق على",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
+      "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
+    ),
+    "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
@@ -77,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "occasions": MessageLookupByLibrary.simpleMessage("المناسبات"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "يجب أن تحتوي كلمة المرور على حرف كبير ورقم على الأقل",
@@ -97,5 +103,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام",
     ),
+    "viewAll": MessageLookupByLibrary.simpleMessage("اعرض الكل"),
   };
 }

@@ -22,11 +22,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
+      "Bloom with our exquisite best sellers",
+    ),
+    "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
@@ -81,6 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don\'t have an account?",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "occasions": MessageLookupByLibrary.simpleMessage("Occasions"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "Password must contain at least one uppercase letter and one number",
@@ -95,11 +101,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
+    "search": MessageLookupByLibrary.simpleMessage("Search"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
     ),
+    "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
   };
 }

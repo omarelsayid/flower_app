@@ -45,6 +45,12 @@
   "aboutUs": "About us",
   "logout": "Logout",
   "changeLanguage": "Change Language",
-  "english": "English"
+  "english": "English",
+  "search": "Search",
+  "occasions": "Occasions",
+  "BestSellers": "Best Sellers",
+  "categories": "Categories",
+  "viewAll": "View all",
+  "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers"
 
 }

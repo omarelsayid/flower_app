@@ -45,5 +45,11 @@
   "aboutUs": "معلومات عنا",
   "logout": "تسجيل الخروج",
   "changeLanguage": "تغيير اللغة",
-  "english": "الإنجليزية"
+  "english": "الإنجليزية",
+  "Search": "بحث",
+  "occasions": "المناسبات",
+  "BestSellers": "المنتجات الرائجة",
+  "categories": "التصنيفات",
+  "viewAll": "اعرض الكل",
+  "bloomwithourexquisitebestsellers": "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا"
 }
