@@ -4,9 +4,8 @@ import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
 import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
-import 'package:flower_app/features/profile/edit_profile/data/model/edit_profile_response_dto.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
-import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
@@ -19,7 +18,7 @@ import '../../features/auth/data/model/forget_response_password_dto.dart';
 import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';
 import '../../features/auth/domain/entity/sign_up_request.dart';
-import '../../features/profile/edit_profile/data/model/edit_profile_request.dart';
+import '../../features/profile/main_profile_screen/data/model/edit_profile_request.dart';
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
