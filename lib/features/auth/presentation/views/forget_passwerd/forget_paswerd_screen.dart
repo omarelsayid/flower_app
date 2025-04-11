@@ -9,7 +9,7 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/constans.dart';
 import '../../../../../core/widgets/custom_diaolg.dart';
 import '../../../../../core/widgets/custom_validate.dart';
-import '../../../../../di/injectable_initializer.dart';
+import '../../../../../core/di/injectable_initializer.dart';
 import '../../cubit/forget_password_cubit/forget_password_state.dart';
 import '../../cubit/forget_password_cubit/forget_password_view_model.dart';
 

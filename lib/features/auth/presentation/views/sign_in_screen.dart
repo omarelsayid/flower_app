@@ -1,4 +1,4 @@
-import 'package:flower_app/di/injectable_initializer.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart';
 import 'package:flower_app/features/auth/presentation/views/widgets/sign_in_view_body.dart';
 import 'package:flower_app/generated/l10n.dart';

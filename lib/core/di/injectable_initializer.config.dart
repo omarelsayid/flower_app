@@ -15,89 +15,89 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i973;
 
-import '../core/api/api_client.dart' as _i424;
-import '../core/network/auth_interceptor.dart' as _i552;
-import '../core/network/network_module.dart' as _i419;
-import '../core/services/internet_connection_check.dart' as _i697;
-import '../features/auth/data/data_source/auth_remote_data_source.dart'
+import '../api/api_client.dart' as _i424;
+import '../network/auth_interceptor.dart' as _i552;
+import '../network/network_module.dart' as _i419;
+import '../services/internet_connection_check.dart' as _i697;
+import '../../features/auth/data/data_source/auth_remote_data_source.dart'
     as _i366;
-import '../features/auth/data/repository_imp/auth_repository_imp.dart'
+import '../../features/auth/data/repository_imp/auth_repository_imp.dart'
     as _i1042;
-import '../features/auth/domain/repository/auth_repository.dart' as _i267;
-import '../features/auth/domain/use_case/auth_use_case.dart' as _i546;
-import '../features/auth/domain/use_case/sign_in%20_use_case.dart' as _i28;
-import '../features/auth/presentation/cubit/forget_password_cubit/forget_password_view_model.dart'
+import '../../features/auth/domain/repository/auth_repository.dart' as _i267;
+import '../../features/auth/domain/use_case/auth_use_case.dart' as _i546;
+import '../../features/auth/domain/use_case/sign_in%20_use_case.dart' as _i28;
+import '../../features/auth/presentation/cubit/forget_password_cubit/forget_password_view_model.dart'
     as _i229;
-import '../features/auth/presentation/cubit/reset_password_cubit/reset_password_view_model.dart'
+import '../../features/auth/presentation/cubit/reset_password_cubit/reset_password_view_model.dart'
     as _i205;
-import '../features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
+import '../../features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart'
     as _i803;
-import '../features/auth/presentation/cubit/signup_view_model.dart' as _i965;
-import '../features/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
+import '../../features/auth/presentation/cubit/signup_view_model.dart' as _i965;
+import '../../features/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i882;
-import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
+import '../../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
     as _i481;
-import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
+import '../../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
     as _i1016;
-import '../features/home/best_seller_products/data/repository_impl/best_seller_repo_impl.dart'
+import '../../features/home/best_seller_products/data/repository_impl/best_seller_repo_impl.dart'
     as _i601;
-import '../features/home/best_seller_products/domain/repo/best_seller_repo.dart'
+import '../../features/home/best_seller_products/domain/repo/best_seller_repo.dart'
     as _i84;
-import '../features/home/best_seller_products/domain/use_case/best_seller_use_case.dart'
+import '../../features/home/best_seller_products/domain/use_case/best_seller_use_case.dart'
     as _i215;
-import '../features/home/best_seller_products/presentation/cubit/best_seller_cubit.dart'
+import '../../features/home/best_seller_products/presentation/cubit/best_seller_cubit.dart'
     as _i543;
-import '../features/home/categories/data/data_source/categories_remote_data_source.dart'
+import '../../features/home/categories/data/data_source/categories_remote_data_source.dart'
     as _i702;
-import '../features/home/categories/data/repository_impl/categories_repository_impl.dart'
+import '../../features/home/categories/data/repository_impl/categories_repository_impl.dart'
     as _i1059;
-import '../features/home/categories/domain/repository/categories_repository.dart'
+import '../../features/home/categories/domain/repository/categories_repository.dart'
     as _i799;
-import '../features/home/categories/domain/use_case/categories_use_case.dart'
+import '../../features/home/categories/domain/use_case/categories_use_case.dart'
     as _i402;
-import '../features/home/categories/presentation/manager/categories_view_model.dart'
+import '../../features/home/categories/presentation/manager/categories_view_model.dart'
     as _i287;
-import '../features/home/home_tab/data/data_source/home_data_source.dart'
+import '../../features/home/home_tab/data/data_source/home_data_source.dart'
     as _i235;
-import '../features/home/home_tab/data/repo_imp/home_repository_impl.dart'
+import '../../features/home/home_tab/data/repo_imp/home_repository_impl.dart'
     as _i637;
-import '../features/home/home_tab/domain/repo/home_repo.dart' as _i971;
-import '../features/home/home_tab/domain/user_case/home_use_case.dart' as _i770;
-import '../features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart'
+import '../../features/home/home_tab/domain/repo/home_repo.dart' as _i971;
+import '../../features/home/home_tab/domain/user_case/home_use_case.dart' as _i770;
+import '../../features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart'
     as _i672;
-import '../features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart'
+import '../../features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart'
     as _i851;
-import '../features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart'
+import '../../features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart'
     as _i137;
-import '../features/home/occasions/data/data_source/occasion_remote_data_source.dart'
+import '../../features/home/occasions/data/data_source/occasion_remote_data_source.dart'
     as _i1007;
-import '../features/home/occasions/data/repository_imp/occasion_repository_imp.dart'
+import '../../features/home/occasions/data/repository_imp/occasion_repository_imp.dart'
     as _i141;
-import '../features/home/occasions/domain/repository/occasion_repository.dart'
+import '../../features/home/occasions/domain/repository/occasion_repository.dart'
     as _i238;
-import '../features/home/occasions/domain/use_case/occasion_use_case.dart'
+import '../../features/home/occasions/domain/use_case/occasion_use_case.dart'
     as _i518;
-import '../features/home/occasions/presentation/cubit/occasion_view_model.dart'
+import '../../features/home/occasions/presentation/cubit/occasion_view_model.dart'
     as _i512;
-import '../features/home/products_details/data/data_source/products_details_remote_data_scource.dart'
+import '../../features/home/products_details/data/data_source/products_details_remote_data_scource.dart'
     as _i530;
-import '../features/home/products_details/data/data_source/products_details_remote_data_scource_imp.dart'
+import '../../features/home/products_details/data/data_source/products_details_remote_data_scource_imp.dart'
     as _i890;
-import '../features/home/products_details/data/repositories/products_detail_repo_imp.dart'
+import '../../features/home/products_details/data/repositories/products_detail_repo_imp.dart'
     as _i647;
-import '../features/home/products_details/domain/repositories/get_product_details_repo.dart'
+import '../../features/home/products_details/domain/repositories/get_product_details_repo.dart'
     as _i652;
-import '../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
+import '../../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
     as _i83;
-import '../features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
+import '../../features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
     as _i808;
-import '../features/profile/main_profile_screen/data/repository_imp/profile_screen_repository_imp.dart'
+import '../../features/profile/main_profile_screen/data/repository_imp/profile_screen_repository_imp.dart'
     as _i442;
-import '../features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
+import '../../features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
     as _i758;
-import '../features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart'
+import '../../features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart'
     as _i526;
-import '../features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart'
+import '../../features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart'
     as _i961;
 
 extension GetItInjectableX on _i174.GetIt {

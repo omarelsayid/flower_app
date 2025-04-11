@@ -1,4 +1,4 @@
-import 'package:flower_app/di/injectable_initializer.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/features/home/products_details/domain/repositories/get_product_details_repo.dart';
 import 'package:flower_app/features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/widgets/products_detail_view_body_bloc_Consumer.dart';

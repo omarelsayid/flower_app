@@ -1,7 +1,7 @@
 
 import 'package:flower_app/features/home/categories/domain/entity/categories_response_entity.dart';
 import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/di/injectable_initializer.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/entity/specific_category_response_entity.dart';

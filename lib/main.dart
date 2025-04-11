@@ -14,7 +14,7 @@ import 'core/utils/theming.dart';
 import 'generated/l10n.dart';
 import 'core/routes_generator/pages_routes.dart';
 import 'core/routes_generator/routes_generator.dart';
-import 'di/injectable_initializer.dart';
+import 'core/di/injectable_initializer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,13 +23,12 @@ void main() async {
   ConfigLoading().showLoading();
   await SharedPreferenceServices.init();
 
-  // Retrieve token and rememberMe flag from shared preferences
+
   String? token =
       SharedPreferenceServices.getData(AppConstants.token) as String?;
   bool? rememberMe =
       SharedPreferenceServices.getData(AppConstants.rememberMe) as bool?;
 
-  // Run the app starting with PreInitApp that provides a valid MediaQuery context
   runApp(PreInitApp(token: token, rememberMe: rememberMe));
 }
 
@@ -41,16 +40,12 @@ class PreInitApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // This MaterialApp creates the necessary MediaQuery context for initialization.
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // Use a Builder to get a new BuildContext where MediaQuery is available.
       home: Builder(
         builder: (context) {
-          // Initialize ScreenSizeService once using this context.
           ScreenSizeService.init(context);
 
-          // Provide your app-level providers (like localization) here.
           return MultiProvider(
             providers: [
               ChangeNotifierProvider(create: (_) => LocaleProvider()),
@@ -70,13 +65,12 @@ class MainAppContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Now that ScreenSizeService is initialized, theme() which might depend
-    // on ScreenSizeService.width/height will not throw an error.
+
     final localeProvider = context.watch<LocaleProvider>();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: theme(), // Safe to use ScreenSizeService.width here.
+      theme: theme(),
       locale: localeProvider.locale,
       supportedLocales: S.delegate.supportedLocales,
       localizationsDelegates: const [
@@ -93,7 +87,6 @@ class MainAppContent extends StatelessWidget {
                       false))
               ? PagesRoutes.layOutScreen
               : PagesRoutes.signInScreen,
-      // Wrap with EasyLoading to ensure overlays work.
       builder: EasyLoading.init(builder: (context, child) => child!),
     );
   }

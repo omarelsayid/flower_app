@@ -7,7 +7,7 @@ import 'package:flower_app/core/utils/app_colors.dart';
 import '../../../../../core/routes_generator/pages_routes.dart';
 import '../../../../../core/utils/constans.dart';
 import '../../../../../core/widgets/custom_diaolg.dart';
-import '../../../../../di/injectable_initializer.dart';
+import '../../../../../core/di/injectable_initializer.dart';
 import '../../cubit/verify_email_cubit/verify_email_state.dart';
 import '../../cubit/verify_email_cubit/verify_email_vew_model.dart';
 import '../widgets/custom_verify_text_field.dart';

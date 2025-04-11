@@ -10,7 +10,7 @@ import '../../../../../core/common/get_resposive_height_and_width.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
-import '../../../../../di/injectable_initializer.dart';
+import '../../../../../core/di/injectable_initializer.dart';
 import '../cubit/profile_state.dart';
 import '../cubit/profile_view_model.dart';
 import 'widget/profile_app_bar_widget.dart';

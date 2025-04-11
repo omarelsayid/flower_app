@@ -5,7 +5,7 @@ import 'package:flower_app/features/home/categories/presentation/manager/categor
 import 'package:flower_app/features/home/categories/presentation/widget/custom_search_categories.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/widgets/custom_diaolg.dart';
-import 'package:flower_app/di/injectable_initializer.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';

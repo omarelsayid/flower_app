@@ -6,7 +6,7 @@ import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../di/injectable_initializer.dart';
+import '../../../../../core/di/injectable_initializer.dart';
 
 class BestSellerView extends StatelessWidget {
   BestSellerView({super.key});
