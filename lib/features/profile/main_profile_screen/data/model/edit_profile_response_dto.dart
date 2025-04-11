@@ -1,3 +1,4 @@
+import 'package:flower_app/features/profile/main_profile_screen/domain/entity/edit_profile_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'edit_profile_response_dto.g.dart';
@@ -49,4 +50,19 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  EditProfileResponseEntity toEntity() {
+    return EditProfileResponseEntity(
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      gender: gender,
+      phone: phone,
+      photo: photo,
+      role: role,
+      wishlist: wishlist,
+      addresses: addresses,
+    );
+  }
 }
