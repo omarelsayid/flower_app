@@ -110,7 +110,7 @@ extension GetItInjectableX on _i174.GetIt {
     final dataModule = _$DataModule();
     final networkModule = _$NetworkModule();
     gh.singleton<_i973.InternetConnectionChecker>(
-      () => dataModule.getInternetConnectionCheck(),
+      () => _i697.DataModule.getInternetConnectionCheck(),
     );
     gh.lazySingleton<_i552.AuthInterceptor>(
       () => networkModule.authInterceptor,
