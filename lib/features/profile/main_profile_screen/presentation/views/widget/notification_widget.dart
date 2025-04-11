@@ -1,4 +1,5 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/app_colors.dart';
@@ -25,7 +26,7 @@ class NotificationWidget extends StatelessWidget {
             inactiveTrackColor: AppColors.greyColor,
           ),
         ),
-        Text('Notifications', style: AppTextStyles.inter500_13,),
+        Text(S.of(context).notifications, style: AppTextStyles.inter500_13,),
         Spacer(),
         Icon(Icons.arrow_forward_ios,size: 20,),
         SizedBox(width: resposiveWidth(16),)

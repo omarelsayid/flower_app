@@ -2,6 +2,7 @@ import 'package:flower_app/core/services/localization_service.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/lang_bottom_sheet_decoration_dash.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/language_tile_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../../core/common/get_resposive_height_and_width.dart';
@@ -42,15 +43,21 @@ class LanguageWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'Change Language',
+                          S.of(context).language,
                           style: AppTextStyles.outfit700_20.copyWith(
                             color: AppColors.primaryColor,
                           ),
                         ),
                       ],
                     ),
-                    LanguageTileWidget(title: 'English', value: 'en'),
-                    LanguageTileWidget(title: 'Arabic', value: 'ar'),
+                    LanguageTileWidget(
+                      title: S.of(context).english,
+                      value: 'en',
+                    ),
+                    LanguageTileWidget(
+                      title: S.of(context).arabic,
+                      value: 'ar',
+                    ),
                   ],
                 ),
               );
@@ -61,12 +68,12 @@ class LanguageWidget extends StatelessWidget {
           children: [
             Icon(Icons.language, size: 20),
             SizedBox(width: resposiveWidth(8)),
-            Text('Language', style: AppTextStyles.inter500_13),
+            Text(S.of(context).language, style: AppTextStyles.inter500_13),
             Spacer(),
             Text(
               context.watch<LocaleProvider>().locale.languageCode == 'en'
-                  ? 'English'
-                  : 'Arabic',
+                  ? S.of(context).english
+                  : S.of(context).arabic,
               style: AppTextStyles.inter400_12.copyWith(
                 fontSize: 10,
                 color: AppColors.primaryColor,

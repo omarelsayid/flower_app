@@ -11,6 +11,7 @@ import 'package:flower_app/features/auth/presentation/cubit/sign_in_cubit/sign_i
 import 'package:flower_app/features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart';
 import 'package:flower_app/features/auth/presentation/views/widgets/no_have_account_widget.dart';
 import 'package:flower_app/features/auth/presentation/views/widgets/remember_me_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -74,18 +75,18 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   autovalidateMode: validateMode,
                   validator: (value) {
                     if (value == null || value.isEmpty == true) {
-                      return "emails can not be empty";
+                      return S.of(context).emailRequired;
                     }
                     if (!value.isValidEmail) {
-                      return "Please enter a valid email";
+                      return S.of(context).emailInvalid;
                     }
                     return null;
                   },
                   onChanged: onChange,
                   controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Enter your Email',
+                  decoration: InputDecoration(
+                    labelText: S.of(context).email,
+                    hintText: S.of(context).enterYourPassword,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -93,21 +94,21 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   autovalidateMode: validateMode,
                   validator: (value) {
                     if (value == null || value.isEmpty == true) {
-                      return "empty passwords are not allowed";
+                      return S.of(context).passwordRequired;
                     }
                     if (value.length < 8) {
-                      return "passwords can not be less than 8 characters";
+                      return S.of(context).passwordTooShort;
                     }
                     if (!value.isValidPassword) {
-                      return "password must contain at least one upper case letter and one number";
+                      return S.of(context).passwordInvalid;
                     }
                     return null;
                   },
                   onChanged: onChange,
                   controller: _passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Enter your Password',
+                  decoration: InputDecoration(
+                    labelText: S.of(context).password,
+                    hintText: S.of(context).enterYourPassword,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -130,7 +131,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         );
                       },
                       child: Text(
-                        'Forget password?',
+                        S.of(context).forgetPassword,
                         style: AppTextStyles.inter400_12.copyWith(
                           color: Colors.black,
                           decoration: TextDecoration.underline,
@@ -170,7 +171,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     }
                   },
                   child: Text(
-                    'Login',
+                    S.of(context).login,
                     style: AppTextStyles.inter500_16.copyWith(
                       color: Colors.white,
                     ),
@@ -179,8 +180,12 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                 const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () async {
-                    await SharedPreferenceServices.deleteData(AppConstants.token);
-                    await SharedPreferenceServices.deleteData(AppConstants.rememberMe);
+                    await SharedPreferenceServices.deleteData(
+                      AppConstants.token,
+                    );
+                    await SharedPreferenceServices.deleteData(
+                      AppConstants.rememberMe,
+                    );
                     Navigator.pushReplacementNamed(
                       context,
                       PagesRoutes.layOutScreen,
@@ -191,7 +196,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     side: BorderSide(color: Colors.black),
                   ),
                   child: Text(
-                    'Continue as guest',
+                    S.of(context).continueAsGuest,
                     style: AppTextStyles.inter500_16.copyWith(
                       color: Colors.black,
                     ),

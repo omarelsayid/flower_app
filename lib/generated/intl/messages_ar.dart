@@ -21,5 +21,81 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "agreeToTerms": MessageLookupByLibrary.simpleMessage(
+      "بإنشاء حساب، فإنك توافق على",
+    ),
+    "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
+    "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage(
+      "تأكيد كلمة المرور",
+    ),
+    "continueAsGuest": MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
+    "didNotReceiveCode": MessageLookupByLibrary.simpleMessage("لم يصلك الرمز؟"),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال بريد إلكتروني صالح",
+    ),
+    "emailRequired": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن ترك البريد الإلكتروني فارغًا",
+    ),
+    "emailVerification": MessageLookupByLibrary.simpleMessage(
+      "التحقق من البريد الإلكتروني",
+    ),
+    "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+    "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال الرمز المرسل إلى بريدك الإلكتروني",
+    ),
+    "enterFirstName": MessageLookupByLibrary.simpleMessage("أدخل الاسم الأول"),
+    "enterLastName": MessageLookupByLibrary.simpleMessage("أدخل اسم العائلة"),
+    "enterPhoneNumber": MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
+    "enterYourEmail": MessageLookupByLibrary.simpleMessage(
+      "أدخل بريدك الإلكتروني",
+    ),
+    "enterYourPassword": MessageLookupByLibrary.simpleMessage(
+      "أدخل كلمة المرور",
+    ),
+    "female": MessageLookupByLibrary.simpleMessage("أنثى"),
+    "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage(
+      "هل نسيت كلمة المرور؟",
+    ),
+    "forgetPasswordDescription": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال البريد الإلكتروني المرتبط بحسابك",
+    ),
+    "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
+    "guestUser": MessageLookupByLibrary.simpleMessage("زائر"),
+    "haveAccount": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+    "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
+    "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "loginLink": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+    "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
+    "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "passwordInvalid": MessageLookupByLibrary.simpleMessage(
+      "يجب أن تحتوي كلمة المرور على حرف كبير ورقم على الأقل",
+    ),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن ترك كلمة المرور فارغة",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "يجب ألا تقل كلمة المرور عن 8 أحرف",
+    ),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
+    "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
+    "savedAddress": MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
+    "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "signUpLink": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "termsAndConditions": MessageLookupByLibrary.simpleMessage(
+      "الشروط والأحكام",
+    ),
+  };
 }

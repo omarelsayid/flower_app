@@ -1,3 +1,4 @@
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/routes_generator/pages_routes.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -26,8 +27,8 @@ class SignUpFormWidget extends StatelessWidget {
                   child: TextFormField(
                     controller: vmSignUp.firstNameController,
                     decoration: InputDecoration(
-                      hintText: 'Enter first name',
-                      labelText: 'First name',
+                      hintText: S.of(context).firstName,
+                      labelText: S.of(context).enterFirstName,
                     ),
                     validator: AppValidate.validateFullName,
                   ),
@@ -37,8 +38,8 @@ class SignUpFormWidget extends StatelessWidget {
                   child: TextFormField(
                     controller: vmSignUp.lastNameController,
                     decoration: InputDecoration(
-                      hintText: 'Enter last name',
-                      labelText: 'Last name',
+                      hintText: S.of(context).lastName,
+                      labelText: S.of(context).enterLastName,
                     ),
                     validator: AppValidate.validateFullName,
                   ),
@@ -49,8 +50,8 @@ class SignUpFormWidget extends StatelessWidget {
             TextFormField(
               controller: vmSignUp.emailController,
               decoration: InputDecoration(
-                hintText: 'Enter your email',
-                labelText: 'Email',
+                hintText: S.of(context).enterYourEmail,
+                labelText: S.of(context).email,
               ),
               validator: AppValidate.validateEmail,
             ),
@@ -61,8 +62,8 @@ class SignUpFormWidget extends StatelessWidget {
                   child: TextFormField(
                     controller: vmSignUp.passwordController,
                     decoration: InputDecoration(
-                      hintText: 'Password',
-                      labelText: 'Enter password',
+                      hintText: S.of(context).password,
+                      labelText: S.of(context).enterYourPassword,
                     ),
                     obscureText: true,
                     validator: AppValidate.validatePassword,
@@ -73,8 +74,8 @@ class SignUpFormWidget extends StatelessWidget {
                   child: TextFormField(
                     controller: vmSignUp.rePasswordController,
                     decoration: InputDecoration(
-                      hintText: 'Confirm Password',
-                      labelText: 'Confirm Password',
+                      hintText: S.of(context).password,
+                      labelText: S.of(context).confirmPassword,
                     ),
                     obscureText: true,
                     validator: AppValidate.validatePassword,
@@ -86,15 +87,15 @@ class SignUpFormWidget extends StatelessWidget {
             TextFormField(
               controller: vmSignUp.phoneController,
               decoration: InputDecoration(
-                hintText: 'Enter phone number',
-                labelText: 'Phone number',
+                hintText: S.of(context).enterPhoneNumber,
+                labelText: S.of(context).phoneNumber,
               ),
               keyboardType: TextInputType.phone,
               validator: AppValidate.validateMobile,
             ),
             Row(
               children: [
-                Text("Gender", style: AppTextStyles.inter500_18),
+                Text(S.of(context).gender, style: AppTextStyles.inter500_18),
                 SizedBox(width: kHorizontalPadding),
                 Radio<Gender>(
                   value: Gender.female,
@@ -102,29 +103,29 @@ class SignUpFormWidget extends StatelessWidget {
                   onChanged: (val) => vmSignUp.updateGender(val!),
                   activeColor: AppColors.primaryColor,
                 ),
-                Text("Female", style: AppTextStyles.inter400_14),
+                Text(S.of(context).male, style: AppTextStyles.inter400_14),
                 Radio<Gender>(
                   value: Gender.male,
                   groupValue: vmSignUp.selectedGender,
                   onChanged: (val) => vmSignUp.updateGender(val!),
                   activeColor: AppColors.primaryColor,
                 ),
-                Text("Male", style: AppTextStyles.inter400_14),
+                Text(S.of(context).female, style: AppTextStyles.inter400_14),
               ],
             ),
             if (!vmSignUp.isGenderSelected)
               Text(
                 "Please select a gender",
-                style: TextStyle(color: AppColors.errorColor,),
+                style: TextStyle(color: AppColors.errorColor),
               ),
             Row(
               children: [
                 Text(
-                  "Creating an account, you agree to our ",
+                  S.of(context).agreeToTerms,
                   style: AppTextStyles.inter400_12,
                 ),
                 Text(
-                  "Terms&Conditions",
+                  S.of(context).termsAndConditions,
                   style: AppTextStyles.inter400_12.copyWith(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -141,7 +142,7 @@ class SignUpFormWidget extends StatelessWidget {
                 minimumSize: const Size.fromHeight(50),
               ),
               child: Text(
-                "Sign up",
+                S.of(context).signUp,
                 style: AppTextStyles.inter500_16.copyWith(color: Colors.white),
               ),
             ),
@@ -149,14 +150,18 @@ class SignUpFormWidget extends StatelessWidget {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, PagesRoutes.signInScreen);},
+                  Navigator.pushReplacementNamed(
+                    context,
+                    PagesRoutes.signInScreen,
+                  );
+                },
                 child: Text.rich(
                   TextSpan(
-                    text: "Already have an account? ",
+                    text: S.of(context).haveAccount,
                     style: AppTextStyles.inter500_16,
                     children: [
                       TextSpan(
-                        text: "Login",
+                        text: S.of(context).loginLink,
                         style: AppTextStyles.inter500_16.copyWith(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.bold,

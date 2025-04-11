@@ -21,5 +21,85 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+    "agreeToTerms": MessageLookupByLibrary.simpleMessage(
+      "Creating an account, you agree to our",
+    ),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
+    "continueAsGuest": MessageLookupByLibrary.simpleMessage(
+      "Continue as guest",
+    ),
+    "didNotReceiveCode": MessageLookupByLibrary.simpleMessage(
+      "Didn\'t receive code?",
+    ),
+    "email": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailInvalid": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid email",
+    ),
+    "emailRequired": MessageLookupByLibrary.simpleMessage(
+      "Email cannot be empty",
+    ),
+    "emailVerification": MessageLookupByLibrary.simpleMessage(
+      "Email verification",
+    ),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
+      "Please enter the code sent to your email address",
+    ),
+    "enterFirstName": MessageLookupByLibrary.simpleMessage("Enter first name"),
+    "enterLastName": MessageLookupByLibrary.simpleMessage("Enter last name"),
+    "enterPhoneNumber": MessageLookupByLibrary.simpleMessage(
+      "Enter phone number",
+    ),
+    "enterYourEmail": MessageLookupByLibrary.simpleMessage("Enter your Email"),
+    "enterYourPassword": MessageLookupByLibrary.simpleMessage(
+      "Enter your Password",
+    ),
+    "female": MessageLookupByLibrary.simpleMessage("Female"),
+    "firstName": MessageLookupByLibrary.simpleMessage("First name"),
+    "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget password?"),
+    "forgetPasswordDescription": MessageLookupByLibrary.simpleMessage(
+      "Please enter your email associated to your account",
+    ),
+    "gender": MessageLookupByLibrary.simpleMessage("Gender"),
+    "guestUser": MessageLookupByLibrary.simpleMessage("Guest User"),
+    "haveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginLink": MessageLookupByLibrary.simpleMessage("Login"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "myOrders": MessageLookupByLibrary.simpleMessage("My orders"),
+    "noAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "password": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordInvalid": MessageLookupByLibrary.simpleMessage(
+      "Password must contain at least one uppercase letter and one number",
+    ),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Password cannot be empty",
+    ),
+    "passwordTooShort": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 8 characters long",
+    ),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+    "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
+    "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
+    "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+    "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "termsAndConditions": MessageLookupByLibrary.simpleMessage(
+      "Terms & Conditions",
+    ),
+  };
 }

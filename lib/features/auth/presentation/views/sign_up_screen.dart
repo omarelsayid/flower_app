@@ -1,6 +1,7 @@
 import 'package:flower_app/core/services/shared_preference_services.dart';
 import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/features/auth/presentation/views/widgets/sign_up_form_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
@@ -33,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
-          appBar: AppBar(title: const Text("Sign up")),
+          appBar: AppBar(title:  Text(S.of(context).signUp)),
           body: BlocBuilder<SignUpViewModel, SignUpState>(
             builder: (context, state) {
               final cubit = context.read<SignUpViewModel>();

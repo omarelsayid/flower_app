@@ -1,3 +1,4 @@
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -30,7 +31,8 @@ class EmailVerificationsScreen extends StatelessWidget {
             appBar: AppBar(title: const Text("Password")),
             body: BlocListener<VerifyEmailVewModel, VerifyEmailState>(
               listener: (context, state) {
-                if (state is LoadingVerifyEmailState || state is LoadingResendEmailState) {
+                if (state is LoadingVerifyEmailState ||
+                    state is LoadingResendEmailState) {
                   EasyLoading.show();
                 } else {
                   EasyLoading.dismiss();
@@ -38,7 +40,11 @@ class EmailVerificationsScreen extends StatelessWidget {
 
                 if (state is SuccessVerifyEmailState) {
                   vewModel.doIntent(DisposeEmailIntent());
-                  Navigator.pushNamed(context, PagesRoutes.resetPassword, arguments: email);
+                  Navigator.pushNamed(
+                    context,
+                    PagesRoutes.resetPassword,
+                    arguments: email,
+                  );
                 }
 
                 if (state is ErrorVerifyEmailState) {
@@ -70,47 +76,80 @@ class EmailVerificationsScreen extends StatelessWidget {
               child: Form(
                 key: vewModel.formVerifyKey,
                 child: Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                   child: Column(
                     children: [
-                       SizedBox(height: kHorizontalPadding),
-                       Text(
-                        "Email verification",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                      SizedBox(height: kHorizontalPadding),
+                      Text(
+                        S.of(context).emailVerification,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                       SizedBox(height: kVerticalPadding),
-                      const Text(
-                        "Please enter the code sent to your\nemail address",
+                      SizedBox(height: kVerticalPadding),
+                      Text(
+                        S.of(context).enterCodeSentToEmail,
                         textAlign: TextAlign.center,
                       ),
-                       SizedBox(height: kVerticalPadding),
+                      SizedBox(height: kVerticalPadding),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           CustomVerifyTextField(
                             controller: vewModel.code1,
                             focusNode: vewModel.focusNode1,
-                            onChanged: (value) => vewModel.onChanged(context, value, vewModel.focusNode2, vewModel.focusNode1),
+                            onChanged:
+                                (value) => vewModel.onChanged(
+                                  context,
+                                  value,
+                                  vewModel.focusNode2,
+                                  vewModel.focusNode1,
+                                ),
                           ),
                           CustomVerifyTextField(
                             controller: vewModel.code2,
                             focusNode: vewModel.focusNode2,
-                            onChanged: (value) => vewModel.onChanged(context, value, vewModel.focusNode3, vewModel.focusNode1),
+                            onChanged:
+                                (value) => vewModel.onChanged(
+                                  context,
+                                  value,
+                                  vewModel.focusNode3,
+                                  vewModel.focusNode1,
+                                ),
                           ),
                           CustomVerifyTextField(
                             controller: vewModel.code3,
                             focusNode: vewModel.focusNode3,
-                            onChanged: (value) => vewModel.onChanged(context, value, vewModel.focusNode4, vewModel.focusNode2),
+                            onChanged:
+                                (value) => vewModel.onChanged(
+                                  context,
+                                  value,
+                                  vewModel.focusNode4,
+                                  vewModel.focusNode2,
+                                ),
                           ),
                           CustomVerifyTextField(
                             controller: vewModel.code4,
                             focusNode: vewModel.focusNode4,
-                            onChanged: (value) => vewModel.onChanged(context, value, vewModel.focusNode5, vewModel.focusNode3),
+                            onChanged:
+                                (value) => vewModel.onChanged(
+                                  context,
+                                  value,
+                                  vewModel.focusNode5,
+                                  vewModel.focusNode3,
+                                ),
                           ),
                           CustomVerifyTextField(
                             controller: vewModel.code5,
                             focusNode: vewModel.focusNode5,
-                            onChanged: (value) => vewModel.onChanged(context, value, vewModel.focusNode6, vewModel.focusNode4),
+                            onChanged:
+                                (value) => vewModel.onChanged(
+                                  context,
+                                  value,
+                                  vewModel.focusNode6,
+                                  vewModel.focusNode4,
+                                ),
                           ),
                           CustomVerifyTextField(
                             controller: vewModel.code6,
@@ -118,19 +157,21 @@ class EmailVerificationsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                       SizedBox(height: kVerticalPadding),
+                      SizedBox(height: kVerticalPadding),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("Didn't receive code?"),
+                          Text(S.of(context).didNotReceiveCode),
                           ResendOTPButton(
-                            onResend: () => vewModel.doIntent(ResendClickedIntent()),
+                            onResend:
+                                () => vewModel.doIntent(ResendClickedIntent()),
                           ),
                         ],
                       ),
-                       SizedBox(height: kVerticalPadding),
+                      SizedBox(height: kVerticalPadding),
                       ElevatedButton(
-                        onPressed: () => vewModel.doIntent(ContinueClickedIntent()),
+                        onPressed:
+                            () => vewModel.doIntent(ContinueClickedIntent()),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primaryColor,
                           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -139,8 +180,8 @@ class EmailVerificationsScreen extends StatelessWidget {
                           ),
                           minimumSize: const Size.fromHeight(50),
                         ),
-                        child: const Text(
-                          "Confirm",
+                        child: Text(
+                          S.of(context).confirm,
                           style: TextStyle(fontSize: 16, color: Colors.white),
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'package:flower_app/features/profile/main_profile_screen/presentation/vie
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/language_widget.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/logout_widget.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/notification_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -37,8 +38,8 @@ class ProfileTab extends StatelessWidget {
                   builder: (context, state) {
                     if (state is SuccessProfileState) {
                       return UserInformationWidget(
-                        name: state.user?.firstName ?? 'guest user',
-                        email: state.user?.email ?? 'guest@gmail.com',
+                        name: state.user?.firstName ?? S.of(context).guestUser,
+                        email: state.user?.email ?? S.of(context).guestUser,
                         image: state.user?.photo,
                       );
                     } else if (state is LoadingProfileState) {
@@ -59,16 +60,16 @@ class ProfileTab extends StatelessWidget {
                 ),
 
 
-                const BodyWidget(text: 'My orders', icon: Icons.list_alt),
-                const BodyWidget(text: 'Saved address', icon: Icons.location_on),
+                 BodyWidget(text: S.of(context).myOrders, icon: Icons.list_alt),
+                 BodyWidget(text: S.of(context).savedAddress, icon: Icons.location_on),
                 const Divider(color: AppColors.greyColor),
 
                 const NotificationWidget(),
                 const Divider(color: AppColors.greyColor),
 
                 const LanguageWidget(),
-                const BodyWidget(text: 'About us'),
-                const BodyWidget(text: 'Terms & conditions'),
+                 BodyWidget(text: S.of(context).aboutUs),
+                 BodyWidget(text: S.of(context).termsAndConditions),
                 const Divider(color: AppColors.greyColor),
 
                 const LogoutWidget(),
