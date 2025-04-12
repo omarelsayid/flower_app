@@ -1,4 +1,6 @@
+import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_request.dart';
+import 'package:flower_app/features/profile/main_profile_screen/domain/entity/edit_profile_response_entity.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart';
 
 class EditProfileUseCase {
@@ -6,7 +8,7 @@ class EditProfileUseCase {
 
   EditProfileUseCase(this._profileRepository);
 
-  Future<void> execute(EditProfileRequest data) async {
-    await _profileRepository.editProfile(data);
+  Future<Result<EditProfileResponseEntity>> execute(EditProfileRequest data) async {
+  return await _profileRepository.editProfile(data);
   }
 }
