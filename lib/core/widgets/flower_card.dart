@@ -1,7 +1,12 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
+import '../services/shared_preference_services.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_colors.dart';
 import '../utils/constans.dart';
@@ -14,6 +19,7 @@ class FlowerCard extends StatelessWidget {
     required this.cost,
     required this.discountRate,
     required this.name,
+    required this.id
   });
   String imageUrl;
   String name;
@@ -21,6 +27,7 @@ class FlowerCard extends StatelessWidget {
   String beforeDiscount;
   String discountRate;
 
+  String id;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -119,8 +126,24 @@ class FlowerCard extends StatelessWidget {
                 ),
                 SizedBox(
                   child: ElevatedButton(
-                    onPressed: () {
-                      /* add to caRD FUNCTION*/
+                    onPressed:() async {
+                      // Retrieve token from shared preferences. Adjust the key "token" if necessary.
+                      final tokenValue = SharedPreferenceServices.getData("token");
+                      if (tokenValue == null || tokenValue.toString().isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('User token not found')),
+                        );
+                        return;
+                      }
+
+
+                      final String token = tokenValue.toString();
+                      log(token);
+                      context.read<AddToCartCubit>().createCart(
+                        token: token,
+                        productId: id,
+                        quantity: 1,
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,

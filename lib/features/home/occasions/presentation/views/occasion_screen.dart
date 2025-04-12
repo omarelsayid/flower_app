@@ -123,6 +123,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                           discountRate: "${product.priceAfterDiscount}%",
                           cost: '${product.price}',
                           imageUrl: '${product.imgCover}',
+                          id: "${product.id}",
                         ),
                       );
                     },

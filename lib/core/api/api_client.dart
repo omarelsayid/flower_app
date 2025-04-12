@@ -1,5 +1,6 @@
 
 import 'package:dio/dio.dart';
+import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
@@ -8,6 +9,7 @@ import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../features/cart/data/models/create_cart_request.dart';
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../features/home/home_tab/data/model/category_response_dto.dart';
 
@@ -74,6 +76,16 @@ abstract class ApiClient {
   Future<SpecificCategoriesResponseModel> getSpecificCategory(
       @Query("category") String categoryId,
       );
+//========================================================================
+//==========================Cart Api======================================
+
+  @POST("/api/v1/cart")
+  Future<HttpResponse<CreateCartResponse>> addProductToCart(
+      @Header("Authorization") String token,
+      @Body()CreateCartRequest request,
+      );
+
+
 }
 
 

@@ -33,6 +33,13 @@ import '../features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dar
 import '../features/auth/presentation/cubit/signup_view_model.dart' as _i965;
 import '../features/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i882;
+import '../features/cart/data/data_source/cart_remote_data_source.dart'
+    as _i1021;
+import '../features/cart/data/repo_imp/cart_repo_imp.dart' as _i817;
+import '../features/cart/domain/repo/cart_repo.dart' as _i329;
+import '../features/cart/domain/use_case/add_to_cart_use_case.dart' as _i18;
+import '../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart'
+    as _i742;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
     as _i481;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
@@ -109,6 +116,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i366.AuthRemoteDataSource>(
       () => _i366.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
+    gh.factory<_i1021.CartRemoteDataSource>(
+      () => _i1021.CartRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i84.BestSellerRepo>(
       () => _i601.BestSellerRepoImpl(gh<_i481.BestSellerRemoteDataSource>()),
     );
@@ -123,6 +133,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i530.ProductsDetailsRemoteDataScource>(
       () => _i890.ProductsDetailsRemoteDataScourceImp(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i329.CartRepository>(
+      () => _i817.CartRepositoryImpl(gh<_i1021.CartRemoteDataSource>()),
     );
     gh.factory<_i235.HomeDataSource>(
       () => _i235.CategoryDataSourceImp(gh<_i424.ApiClient>()),
@@ -148,6 +161,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i238.OccasionRepository>(
       () => _i141.OccasionRepositoryImpl(gh<_i1007.OccasionRemoteDataSource>()),
+    );
+    gh.factory<_i18.AddToCartUseCase>(
+      () => _i18.AddToCartUseCase(gh<_i329.CartRepository>()),
+    );
+    gh.factory<_i742.AddToCartCubit>(
+      () => _i742.AddToCartCubit(gh<_i18.AddToCartUseCase>()),
     );
     gh.factory<_i971.HomeRepo>(
       () => _i637.HomeRepositoryImpl(

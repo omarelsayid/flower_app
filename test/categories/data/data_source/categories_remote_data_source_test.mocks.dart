@@ -18,6 +18,10 @@ import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart'
     as _i16;
 import 'package:flower_app/features/auth/domain/entity/sign_up_request.dart'
     as _i15;
+import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart'
+    as _i19;
+import 'package:flower_app/features/cart/data/models/create_cart_request.dart'
+    as _i20;
 import 'package:flower_app/features/home/best_seller_products/data/model/BestSellerProductsModel.dart'
     as _i17;
 import 'package:flower_app/features/home/categories/data/model/categories_response_model.dart'
@@ -314,4 +318,21 @@ class MockApiClient extends _i1.Mock implements _i13.ApiClient {
                 ),
           )
           as _i14.Future<_i12.SpecificCategoriesResponseModel>);
+
+  @override
+  _i14.Future<_i3.HttpResponse<_i19.CreateCartResponse>> addProductToCart(
+    String? token,
+    _i20.CreateCartRequest? request,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#addProductToCart, [token, request]),
+            returnValue:
+                _i14.Future<_i3.HttpResponse<_i19.CreateCartResponse>>.value(
+                  _FakeHttpResponse_1<_i19.CreateCartResponse>(
+                    this,
+                    Invocation.method(#addProductToCart, [token, request]),
+                  ),
+                ),
+          )
+          as _i14.Future<_i3.HttpResponse<_i19.CreateCartResponse>>);
 }

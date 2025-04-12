@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:flower_app/features/home/categories/presentation/manager/categories_state.dart';
 import 'package:flower_app/features/home/categories/presentation/manager/categories_view_model.dart';
 import 'package:flower_app/features/home/categories/presentation/widget/custom_search_categories.dart';
@@ -22,9 +23,16 @@ class CategoriesTab extends StatelessWidget {
     final viewModel = getIt.get<CategoriesViewModel>();
     final height = MediaQuery.of(context).size.height;
 
-    return BlocProvider(
+    return MultiBlocProvider(
+  providers: [
+    BlocProvider(
       create: (_) => viewModel..doIntent(GetAllCategoriesIntent()),
-      child: BlocConsumer<CategoriesViewModel, CategoriesState>(
+),
+    BlocProvider(
+      create: (context) => getIt.get<AddToCartCubit>(),
+    ),
+  ],
+  child: BlocConsumer<CategoriesViewModel, CategoriesState>(
         listener: (context, state) {
           if (state is CategoriesErrorState ||
               state is SpecificCategoriesErrorState) {
@@ -112,7 +120,7 @@ class CategoriesTab extends StatelessWidget {
           );
         },
       ),
-    );
+);
   }
 
   Widget _buildProductsList(List products, int length) {
@@ -151,6 +159,7 @@ class CategoriesTab extends StatelessWidget {
             discountRate: "${product.priceAfterDiscount}%",
             cost: '${product.price}',
             imageUrl: '${product.imgCover}',
+           id: "${product.id}",
           ),
         );
       },

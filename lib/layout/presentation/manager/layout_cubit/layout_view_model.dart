@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../di/injectable_initializer.dart';
+import '../../../../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import '../../../../features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart';
 import '../../../../features/home/occasions/presentation/views/occasion_screen.dart';
 import '../../../../features/home/categories/presentation/categories_tab.dart';
@@ -23,8 +24,9 @@ class LayoutViewModel extends Cubit <LayoutState> {
     }
   }
 List<Widget>tabs=[
-   MultiBlocProvider(
+  MultiBlocProvider(
   providers: [
+    BlocProvider(create: (context) =>getIt.get<AddToCartCubit>()),
     BlocProvider(
   create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
 ),
