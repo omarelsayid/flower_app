@@ -13,8 +13,7 @@ class NotificationWidget extends StatelessWidget {
     return 
       Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: resposiveWidth(16),
-          // vertical: resposiveHeight(8),
+          horizontal: resposiveWidth(8),
         ),
         child: Row(
         children: [
@@ -34,7 +33,7 @@ class NotificationWidget extends StatelessWidget {
           Text(S.of(context).notifications, style: AppTextStyles.inter500_13,),
           Spacer(),
           Icon(Icons.arrow_forward_ios,size: 20,),
-          SizedBox(width: resposiveWidth(8),)
+          SizedBox(width: resposiveWidth(16),)
 
         ],
             ),
