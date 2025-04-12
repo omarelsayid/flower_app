@@ -16,7 +16,7 @@ class BodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding:  EdgeInsets.symmetric(vertical: resposiveHeight(16),horizontal:  resposiveWidth(16)),
+      padding:  EdgeInsets.symmetric(vertical: resposiveHeight(16),horizontal:  resposiveWidth(24)),
       child: Row(
         children: [
           if (icon != null) Icon(icon, size: 20),

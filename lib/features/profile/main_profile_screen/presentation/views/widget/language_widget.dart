@@ -16,7 +16,7 @@ class LanguageWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: resposiveHeight(16),
-        horizontal: resposiveWidth(16),
+        horizontal: resposiveWidth(24),
       ),
       child: InkWell(
         onTap: () {

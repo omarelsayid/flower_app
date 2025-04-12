@@ -13,7 +13,7 @@ import '../../tabs/cart_tab.dart';
 
 class LayoutViewModel extends Cubit <LayoutState> {
   LayoutViewModel() : super(LayoutInitialState());
-  int currentIndex = 0;
+  int currentIndex = 3;
   void doIntent(LayoutIntent layoutIntent) {
     switch(layoutIntent) {
       case LayoutChangeBottomNavIntent():

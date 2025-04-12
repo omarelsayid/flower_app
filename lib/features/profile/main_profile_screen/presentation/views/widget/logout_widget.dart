@@ -10,7 +10,7 @@ class LogoutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(vertical: resposiveHeight(16),horizontal:  resposiveWidth(16)),
+      padding:  EdgeInsets.symmetric(vertical: resposiveHeight(16),horizontal:  resposiveWidth(26)),
       child: Row(
         children: [
           Icon(Icons.logout, size: 16),
