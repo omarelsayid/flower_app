@@ -27,7 +27,8 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   // @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
-
+  // @GET("/api/v1/auth//logout")
+  // Future<ProfileResponseDTO> logout();
 
   @GET("/api/v1/auth/profile-data")
   Future<ProfileResponseDTO> getProfileData();
@@ -79,7 +80,7 @@ abstract class ApiClient {
   Future<SpecificCategoriesResponseModel> getSpecificCategory(
       @Query("category") String categoryId,
       );
-
+  
 
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
 }

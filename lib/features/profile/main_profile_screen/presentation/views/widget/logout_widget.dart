@@ -20,7 +20,8 @@ class LogoutWidget extends StatelessWidget {
           children: [
             Icon(Icons.logout, size: 16),
             SizedBox(width: resposiveWidth(8),),
-            Text('Logout', style: AppTextStyles.inter500_13,),
+            Text('Logout',
+              style: AppTextStyles.inter500_13,),
             Spacer(),
             Icon(Icons.logout, size: 20),
           ],

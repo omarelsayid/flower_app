@@ -32,7 +32,8 @@ class ProfileViewModel extends Cubit<ProfileState> {
     final token = tokenRaw is String ? tokenRaw : null;// instead of use as String direct
 
     //as guest
-    if (token == null || token.isEmpty) {
+    if (token == null || token.isEmpty)
+    {
       final guestUser = UserEntity(
         firstName: 'Guest User',
         email: 'guest@gmail.com',

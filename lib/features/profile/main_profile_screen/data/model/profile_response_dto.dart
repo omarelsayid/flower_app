@@ -22,6 +22,8 @@ class ProfileResponseDTO extends ProfileResponseEntity {
 
 }
 
+
+
 @JsonSerializable()
 class UserDTO extends UserEntity {
   @JsonKey(name: '_id')

@@ -56,6 +56,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     fontSize: _responsiveFontSize(18),
   );
+  static TextStyle get inter600_18 => TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: _responsiveFontSize(18),
+  );
 
   // Roboto Fonts
   static TextStyle get roboto400_12 => TextStyle(

@@ -25,5 +25,14 @@ static Object? getData(String key){
 static Future<bool> deleteData(String key)async{
   return await sharedPreferences.remove(key);
 }
+static Future<void> logoutUser() async {
+  await sharedPreferences.clear();
+}
+}
+class Prefs{
+  static SharedPreferences? _preferences;
+  static Future<void> logoutUser() async {
+    await _preferences?.clear();
+  }
 }
 

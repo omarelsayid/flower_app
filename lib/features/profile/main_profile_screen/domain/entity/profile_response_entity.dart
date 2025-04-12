@@ -9,7 +9,7 @@ class ProfileResponseEntity {
 }
 
 /// _id : "67dc96c7836ee8be70624cdc"
-/// firstName : "fatenn"
+/// firstName : "34fatenn"
 /// lastName : "khalid"
 /// email : "faten505@gmail.com"
 /// gender : "female"
@@ -68,8 +68,8 @@ class UserEntity {
   List<dynamic>? addresses;
 
   // Map<String, dynamic> toJson() {
-  //   final map = <String, dynamic>{};
-  //   map['_id'] = id;
+  //   final map = <String, dynamic>{}+
+
   //   map['firstName'] = firstName;
   //   map['lastName'] = lastName;
   //   map['email'] = email;

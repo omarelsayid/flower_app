@@ -2,8 +2,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/common/get_resposive_height_and_width.dart';
+import '../../../../../../core/routes_generator/pages_routes.dart';
 import '../../../../../../core/services/screen_size_service.dart';
+import '../../../../../../core/services/shared_preference_services.dart';
 import '../../../../../../core/utils/app_colors.dart';
+import '../../../../../../core/utils/text_styles.dart';
 
 void showLogoutDialog(BuildContext context) {
   showDialog(
@@ -11,16 +14,20 @@ void showLogoutDialog(BuildContext context) {
     builder: (BuildContext context) {
       var screenWidth;
       return AlertDialog(
+
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('LOGOUT'),
+            Text('LOGOUT',
+            style:AppTextStyles.inter600_18),
           ],
         ),
         content: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Confirm logout!!'),
+            Text('Confirm logout!!',
+
+            ),
           ],
         ),
         actions: [
@@ -30,7 +37,8 @@ void showLogoutDialog(BuildContext context) {
               // Handle "Cancel" action (logout logic goes here)
               Navigator.of(context).pop();
             },
-            child: Text('Cancel'),
+            child: Text('Cancel',
+              style:  AppTextStyles.inter500_13,),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -42,10 +50,16 @@ void showLogoutDialog(BuildContext context) {
 
             ),
             onPressed: () {
-              // Handle "Logout" action
+
+
               Navigator.of(context).pop();
+              SharedPreferenceServices.logoutUser();
+              Navigator.pushNamed(context, PagesRoutes.signInScreen);
+
             },
-            child: Text('Logout'),
+            child: Text('Logout'
+            , style: AppTextStyles.inter500_13,
+            ),
           ),
         ],
       );
