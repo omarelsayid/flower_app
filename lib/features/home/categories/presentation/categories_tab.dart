@@ -9,6 +9,7 @@ import 'package:flower_app/core/widgets/custom_diaolg.dart';
 import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/common/get_resposive_height_and_width.dart';
@@ -153,14 +154,34 @@ class CategoriesTab extends StatelessWidget {
               arguments: product.id,
             );
           },
-          child: FlowerCard(
+          child: BlocConsumer<AddToCartCubit, AddToCartState>(
+  listener: (context, state) {
+      if(state is AddToCartSuccess && state.id==product.id)
+        {
+          EasyLoading.showSuccess(state.message);
+        }
+      else if(state is AddToCartError && state.id == product.id)
+        {
+          EasyLoading.showError(state.error);
+        }
+
+  },
+  builder: (context, state) {
+    final isLoading = state is AddToCartLoading && state.id==product.id;
+    return FlowerCard(
             name: product.title.toString(),
             beforeDiscount: "${product.discount}",
             discountRate: "${product.priceAfterDiscount}%",
             cost: '${product.price}',
             imageUrl: '${product.imgCover}',
            id: "${product.id}",
-          ),
+      isLoading: isLoading,
+      onAddToCart:() {
+        context.read<AddToCartCubit>().AddToCart(productId:product.id , quantity: 1);
+      },
+          );
+  },
+),
         );
       },
     );

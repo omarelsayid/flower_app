@@ -19,7 +19,9 @@ class FlowerCard extends StatelessWidget {
     required this.cost,
     required this.discountRate,
     required this.name,
-    required this.id
+    required this.id,
+    this.isLoading=false,
+    required this.onAddToCart,
   });
   String imageUrl;
   String name;
@@ -27,6 +29,8 @@ class FlowerCard extends StatelessWidget {
   String beforeDiscount;
   String discountRate;
 
+  bool isLoading;
+  VoidCallback onAddToCart;
   String id;
   @override
   Widget build(BuildContext context) {
@@ -126,25 +130,7 @@ class FlowerCard extends StatelessWidget {
                 ),
                 SizedBox(
                   child: ElevatedButton(
-                    onPressed:() async {
-                      // Retrieve token from shared preferences. Adjust the key "token" if necessary.
-                      final tokenValue = SharedPreferenceServices.getData("token");
-                      if (tokenValue == null || tokenValue.toString().isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('User token not found')),
-                        );
-                        return;
-                      }
-
-
-                      final String token = tokenValue.toString();
-                      log(token);
-                      context.read<AddToCartCubit>().createCart(
-                        token: token,
-                        productId: id,
-                        quantity: 1,
-                      );
-                    },
+                    onPressed:isLoading?null : onAddToCart,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,
                       minimumSize: Size.fromHeight(resposiveHeight(40)),
@@ -154,7 +140,7 @@ class FlowerCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    child: Row(
+                    child: isLoading?Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),):Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         ImageIcon(

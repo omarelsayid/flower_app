@@ -118,6 +118,8 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                           Navigator.pushNamed(context, PagesRoutes.productDetails,arguments: product.id.toString());
                         },
                         child: FlowerCard(
+                          isLoading: false,
+                          onAddToCart: (){},
                           name: product.title.toString(),
                           beforeDiscount: "${product.discount}",
                           discountRate: "${product.priceAfterDiscount}%",
