@@ -26,23 +26,27 @@ class CustomCardWidget extends StatelessWidget {
             child: Image.network(imgUrl,fit: BoxFit.cover,),
           ),
 
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Name text with ellipsis if too long
-          Text(
-            name,
-            style: AppTextStyles.inter400_12,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          // Price text
-          (price==null)?SizedBox.shrink(): Text(
-            "$price EGP",
-            style: AppTextStyles.inter500_14.copyWith(fontWeight: FontWeight.bold),
-          ),
-        ],
+      SizedBox(
+        width: resposiveWidth(131),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Name text with ellipsis if too long
+            Text(
+              name,
+              style: AppTextStyles.inter400_12,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4),
+            // Price text
+            (price==null)?SizedBox.shrink():
+            Text(
+              "$price EGP",
+              style: AppTextStyles.inter500_14.copyWith(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
         ],
       ),
