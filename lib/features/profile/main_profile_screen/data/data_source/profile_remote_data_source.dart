@@ -1,4 +1,3 @@
-import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
 import 'package:injectable/injectable.dart';
 
