@@ -4,6 +4,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i15;
+import 'dart:io' as _i21;
 
 import 'package:flower_app/core/api/api_client.dart' as _i14;
 import 'package:flower_app/features/auth/data/model/forget_response_password_dto.dart'
@@ -354,4 +355,20 @@ class MockApiClient extends _i1.Mock implements _i14.ApiClient {
             ),
           )
           as _i15.Future<_i4.HttpResponse<_i20.EditProfileResponseDTO>>);
+
+  @override
+  _i15.Future<_i4.HttpResponse<dynamic>> uploadPhoto(
+    _i21.File? file,
+    String? description,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#uploadPhoto, [file, description]),
+            returnValue: _i15.Future<_i4.HttpResponse<dynamic>>.value(
+              _FakeHttpResponse_2<dynamic>(
+                this,
+                Invocation.method(#uploadPhoto, [file, description]),
+              ),
+            ),
+          )
+          as _i15.Future<_i4.HttpResponse<dynamic>>);
 }
