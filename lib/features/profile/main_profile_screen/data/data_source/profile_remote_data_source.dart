@@ -27,3 +27,22 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
 
 
+// abstract class LogoutDataSource {
+//   Future<ProfileResponseDTO> Logout();
+// }
+
+// @Injectable(as: ProfileRemoteDataSource)
+// class LogoutDataSourceImpl implements ProfileRemoteDataSource {
+//   final ApiClient _apiClient;
+//   LogoutDataSourceImpl(this._apiClient);
+//
+//   @override
+//   Future<ProfileResponseDTO> getLogoutdata() async {
+//     return await _apiClient.getProfileData();
+//   }
+//
+// }
+
+
+
+
