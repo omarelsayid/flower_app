@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
@@ -84,5 +86,11 @@ abstract class ApiClient {
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
     // @Body() EditProfileRequest data,
     @Body() Map<String, dynamic> data,
+  );
+
+  @PUT("/api/v1/auth/upload-photo")
+  Future<HttpResponse> uploadPhoto(
+    @Part(name: "photo") File file,
+    @Part(name: "Description") String description,
   );
 }
