@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
+import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart';
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
@@ -84,6 +85,12 @@ abstract class ApiClient {
       @Header("Authorization") String token,
       @Body()CreateCartRequest request,
       );
+
+  @GET("/api/v1/cart")
+  Future<UserCartResponseModel> getUserCart(
+      @Header("Authorization") String token,
+      );
+
 
 
 }

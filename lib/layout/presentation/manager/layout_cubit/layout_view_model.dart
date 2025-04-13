@@ -1,3 +1,4 @@
+import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
 import 'package:flower_app/layout/presentation/manager/layout_cubit/layout_state.dart';
@@ -10,7 +11,7 @@ import '../../../../features/cart/presentation/cubit/add_to_cart_cubit/add_to_ca
 import '../../../../features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart';
 import '../../../../features/home/occasions/presentation/views/occasion_screen.dart';
 import '../../../../features/home/categories/presentation/categories_tab.dart';
-import '../../tabs/cart_tab.dart';
+import '../../../../features/cart/presentation/views/cart_tab.dart';
 import '../../tabs/profile_tab.dart';
 
 
@@ -42,7 +43,10 @@ List<Widget>tabs=[
   // OccasionsScreen(),
   // const HomeTab(),
   const CategoriesTab(),
-  const CartTab(),
+   BlocProvider(
+     create: (context)=> getIt.get<GetUserCartCubit>()..GetUserCart(),
+     child: CartTab(),
+),
   const ProfileTab(),
 ];
   void _changeBottomNav(int index) {

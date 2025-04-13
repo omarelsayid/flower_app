@@ -38,8 +38,11 @@ import '../features/cart/data/data_source/cart_remote_data_source.dart'
 import '../features/cart/data/repo_imp/cart_repo_imp.dart' as _i817;
 import '../features/cart/domain/repo/cart_repo.dart' as _i329;
 import '../features/cart/domain/use_case/add_to_cart_use_case.dart' as _i18;
+import '../features/cart/domain/use_case/get_user_cart_use_case.dart' as _i582;
 import '../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart'
     as _i742;
+import '../features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart'
+    as _i188;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
     as _i481;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
@@ -165,6 +168,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i18.AddToCartUseCase>(
       () => _i18.AddToCartUseCase(gh<_i329.CartRepository>()),
     );
+    gh.factory<_i582.GetUserCartUseCase>(
+      () => _i582.GetUserCartUseCase(gh<_i329.CartRepository>()),
+    );
     gh.factory<_i742.AddToCartCubit>(
       () => _i742.AddToCartCubit(gh<_i18.AddToCartUseCase>()),
     );
@@ -173,6 +179,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i235.HomeDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
+    );
+    gh.factory<_i188.GetUserCartCubit>(
+      () => _i188.GetUserCartCubit(gh<_i582.GetUserCartUseCase>()),
     );
     gh.factory<_i546.AuthUseCase>(
       () => _i546.AuthUseCase(gh<_i267.AuthRepository>()),
