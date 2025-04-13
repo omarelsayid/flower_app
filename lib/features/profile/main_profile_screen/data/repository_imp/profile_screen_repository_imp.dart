@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flower_app/core/api/api_execute.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_request.dart';
@@ -30,6 +32,15 @@ class ProfileRepositoryImpl implements ProfileRepository {
       EditProfileResponseDTO response = await _profileRemoteDataSource
           .editProfile(data);
       return response.user!.toEntity();
+    });
+  }
+
+  @override
+  Future<Result<dynamic>> uploadPhoto(File photo, String description)async {
+    return await executeApi(() async {
+      dynamic response = await _profileRemoteDataSource
+          .uploadPhoto(photo, description);
+      return response;
     });
   }
 }

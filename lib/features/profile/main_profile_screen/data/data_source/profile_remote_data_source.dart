@@ -37,6 +37,6 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   @override
   Future<HttpResponse> uploadPhoto(File photo, String description) async {
     HttpResponse response = await _apiClient.uploadPhoto(photo, description);
-    return response;
+    return response.data;
   }
 }
