@@ -5,5 +5,5 @@ import '../../../../../core/common/result.dart';
 
 abstract class ProfileRepository {
   Future<Result<ProfileResponseEntity>> getProfileData();
-  Future<Result<EditProfileResponseEntity>> editProfile(EditProfileRequest data);
+  Future<Result<EditProfileResponseEntity>> editProfile(Map<String,dynamic> data);
 }

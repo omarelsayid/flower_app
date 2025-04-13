@@ -1,4 +1,6 @@
 import 'package:flower_app/core/api/api_execute.dart';
+import 'package:flower_app/core/services/shared_preference_services.dart';
+import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_request.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart';
@@ -10,7 +12,7 @@ import '../../../../../core/api/api_client.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<ProfileResponseDTO> getProfileData();
-  Future<EditProfileResponseDTO> editProfile(EditProfileRequest data);
+  Future<EditProfileResponseDTO> editProfile(Map<String, dynamic> data);
 }
 
 @Injectable(as: ProfileRemoteDataSource)
@@ -24,7 +26,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   }
 
   @override
-  Future<EditProfileResponseDTO> editProfile(EditProfileRequest data) async {
+  Future<EditProfileResponseDTO> editProfile(Map<String, dynamic> data) async {
     HttpResponse<EditProfileResponseDTO> response = await _apiClient
         .editProfile(data);
     return response.data;

@@ -24,7 +24,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
 
   @override
   Future<Result<EditProfileResponseEntity>> editProfile(
-    EditProfileRequest data,
+      Map<String,dynamic> data,
   ) async {
     return await executeApi(() async {
       EditProfileResponseDTO response = await _profileRemoteDataSource

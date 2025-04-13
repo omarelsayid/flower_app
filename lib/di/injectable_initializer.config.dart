@@ -95,8 +95,12 @@ import '../features/profile/main_profile_screen/data/repository_imp/profile_scre
     as _i442;
 import '../features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
     as _i758;
+import '../features/profile/main_profile_screen/domain/use_case/edit_profile_use_case.dart'
+    as _i22;
 import '../features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart'
     as _i526;
+import '../features/profile/main_profile_screen/presentation/cubit/edit_profile_cubit/edit_profile_view_model.dart'
+    as _i339;
 import '../features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart'
     as _i961;
 
@@ -109,7 +113,7 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dataModule = _$DataModule();
     final networkModule = _$NetworkModule();
-    gh.singleton<_i973.InternetConnectionChecker>(
+    gh.factory<_i973.InternetConnectionChecker>(
       () => _i697.DataModule.getInternetConnectionCheck(),
     );
     gh.lazySingleton<_i552.AuthInterceptor>(
@@ -230,8 +234,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i526.ProfileUseCase>(
       () => _i526.ProfileUseCase(gh<_i758.ProfileRepository>()),
     );
+    gh.factory<_i22.EditProfileUseCase>(
+      () => _i22.EditProfileUseCase(gh<_i758.ProfileRepository>()),
+    );
     gh.factory<_i961.ProfileViewModel>(
       () => _i961.ProfileViewModel(gh<_i526.ProfileUseCase>()),
+    );
+    gh.factory<_i339.EditProfileViewModel>(
+      () => _i339.EditProfileViewModel(gh<_i22.EditProfileUseCase>()),
     );
     return this;
   }

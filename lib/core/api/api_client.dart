@@ -82,6 +82,7 @@ abstract class ApiClient {
 
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
-    @Body() EditProfileRequest data,
+    // @Body() EditProfileRequest data,
+    @Body() Map<String, dynamic> data,
   );
 }

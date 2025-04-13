@@ -415,13 +415,13 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
-    EditProfileRequest data,
+    Map<String, dynamic> data,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(data.toJson());
+    _data.addAll(data);
     final _options = _setStreamType<HttpResponse<EditProfileResponseDTO>>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(

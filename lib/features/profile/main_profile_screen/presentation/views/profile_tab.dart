@@ -22,11 +22,15 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileViewModel(getIt())..doIntent(ProfileClickedIntent()),
+      create:
+          (context) =>
+              ProfileViewModel(getIt())..doIntent(ProfileClickedIntent()),
       child: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: resposiveWidth(16), vertical: resposiveHeight(8)),
+            horizontal: resposiveWidth(16),
+            vertical: resposiveHeight(8),
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -37,19 +41,24 @@ class ProfileTab extends StatelessWidget {
                   builder: (context, state) {
                     if (state is SuccessProfileState) {
                       return UserInformationWidget(
-                        name: state.user?.firstName ?? 'guest user',
-                        email: state.user?.email ?? 'guest@gmail.com',
-                        image: state.user?.photo,
+                        userData: state.user!,
+                        // name: state.user?.firstName ?? 'guest user',
+                        // email: state.user?.email ?? 'guest@gmail.com',
+                        // image: state.user?.photo,
                       );
                     } else if (state is LoadingProfileState) {
                       return const Center(
-                        child: CircularProgressIndicator(color: AppColors.primaryColor),
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
                       );
                     } else if (state is ErrorProfileState) {
                       return Center(
                         child: Text(
                           state.message,
-                          style: AppTextStyles.inter500_16.copyWith(color: Colors.red),
+                          style: AppTextStyles.inter500_16.copyWith(
+                            color: Colors.red,
+                          ),
                         ),
                       );
                     } else {
@@ -58,9 +67,11 @@ class ProfileTab extends StatelessWidget {
                   },
                 ),
 
-
                 const BodyWidget(text: 'My orders', icon: Icons.list_alt),
-                const BodyWidget(text: 'Saved address', icon: Icons.location_on),
+                const BodyWidget(
+                  text: 'Saved address',
+                  icon: Icons.location_on,
+                ),
                 const Divider(color: AppColors.greyColor),
 
                 const NotificationWidget(),
@@ -81,7 +92,7 @@ class ProfileTab extends StatelessWidget {
                       color: AppColors.greyDarkColor,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -90,4 +101,3 @@ class ProfileTab extends StatelessWidget {
     );
   }
 }
-

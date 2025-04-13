@@ -34,8 +34,6 @@ import 'package:flower_app/features/home/occasions/data/model/products_response_
     as _i11;
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart'
     as _i19;
-import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_request.dart'
-    as _i21;
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart'
     as _i20;
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart'
@@ -342,7 +340,7 @@ class MockApiClient extends _i1.Mock implements _i14.ApiClient {
 
   @override
   _i15.Future<_i4.HttpResponse<_i20.EditProfileResponseDTO>> editProfile(
-    _i21.EditProfileRequest? data,
+    Map<String, dynamic>? data,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#editProfile, [data]),
