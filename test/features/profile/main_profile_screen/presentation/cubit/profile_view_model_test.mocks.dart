@@ -48,4 +48,17 @@ class MockProfileUseCase extends _i1.Mock implements _i2.ProfileUseCase {
                 ),
           )
           as _i3.Future<_i4.Result<_i5.ProfileResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> callLogout() =>
+      (super.noSuchMethod(
+            Invocation.method(#callLogout, []),
+            returnValue: _i3.Future<_i4.Result<void>>.value(
+              _i6.dummyValue<_i4.Result<void>>(
+                this,
+                Invocation.method(#callLogout, []),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.Result<void>>);
 }

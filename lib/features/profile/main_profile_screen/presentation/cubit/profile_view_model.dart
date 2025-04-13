@@ -17,10 +17,14 @@ class ProfileViewModel extends Cubit<ProfileState> {
 
   final ProfileUseCase _profileUseCase;
 
-  void doIntent(ProfileIntent occasionIntent) {
-    switch (occasionIntent) {
+  void doIntent(ProfileIntent profileIntent) {
+    switch (profileIntent) {
       case ProfileClickedIntent():
         _getProfile();
+        break;
+
+      case LogoutClickedIntent():
+        _logout();
         break;
     }
   }
@@ -63,8 +67,30 @@ class ProfileViewModel extends Cubit<ProfileState> {
         break;
     }
   }
+
+  Future<void> _logout() async {
+    emit(LoadingProfileState());
+
+    final result = await _profileUseCase.callLogout();
+
+    switch (result) {
+      case Success():
+        await SharedPreferenceServices.deleteData(AppConstants.token);
+        emit(LogoutSuccessState());
+        log("User logged out successfully");
+        break;
+
+      case Error():
+        emit(ErrorProfileState("Logout failed: ${result.exception.toString()}"));
+        log("Logout error: ${result.exception}");
+        break;
+    }
+  }
+
 }
 
 sealed class ProfileIntent {}
 
 class ProfileClickedIntent extends ProfileIntent {}
+class LogoutClickedIntent extends ProfileIntent {}
+

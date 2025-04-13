@@ -48,4 +48,17 @@ class MockProfileRepository extends _i1.Mock implements _i2.ProfileRepository {
                 ),
           )
           as _i3.Future<_i4.Result<_i5.ProfileResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i3.Future<_i4.Result<void>>.value(
+              _i6.dummyValue<_i4.Result<void>>(
+                this,
+                Invocation.method(#logout, []),
+              ),
+            ),
+          )
+          as _i3.Future<_i4.Result<void>>);
 }

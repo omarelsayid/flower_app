@@ -335,4 +335,14 @@ class MockApiClient extends _i1.Mock implements _i14.ApiClient {
                 ),
           )
           as _i15.Future<_i13.SpecificCategoriesResponseModel>);
+
+  @override
+  _i15.Future<_i4.HttpResponse<void>> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i15.Future<_i4.HttpResponse<void>>.value(
+              _FakeHttpResponse_2<void>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i15.Future<_i4.HttpResponse<void>>);
 }

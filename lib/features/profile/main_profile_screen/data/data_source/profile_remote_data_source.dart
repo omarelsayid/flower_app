@@ -5,6 +5,7 @@ import '../../../../../core/api/api_client.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<ProfileResponseDTO> getProfileData();
+  Future<void> logout();
 }
 
 @Injectable(as: ProfileRemoteDataSource)
@@ -15,6 +16,11 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   @override
   Future<ProfileResponseDTO> getProfileData() async {
     return await _apiClient.getProfileData();
+  }
+
+  @override
+  Future<void> logout() async {
+    await _apiClient.logout();
   }
 
 }
