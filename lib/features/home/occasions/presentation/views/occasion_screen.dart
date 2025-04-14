@@ -20,7 +20,8 @@ class OccasionsScreen extends StatefulWidget {
   }
 }
 
-class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProviderStateMixin {
+class _OccasionsScreenState extends State<OccasionsScreen>
+    with SingleTickerProviderStateMixin {
   late OccasionViewModel viewModel;
   TabController? _tabController;
   List<Occasion?> occasions = [];
@@ -41,22 +42,32 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
           if (state is SuccessOccasionState) {
             occasions = state.occasion;
 
-            if (_tabController == null || _tabController!.length != occasions.length) {
+            if (_tabController == null ||
+                _tabController!.length != occasions.length) {
               // `vsync` is provided by the `TickerProvider`,
               // which ensures that the tab animations are synchronized with the screen's refresh rate.
-              _tabController = TabController(length: occasions.length, vsync: this);
+              _tabController = TabController(
+                length: occasions.length,
+                vsync: this,
+              );
 
               // Listen to tab change and update selected occasion
               _tabController?.addListener(() {
                 if (_tabController!.indexIsChanging) {
-                  viewModel.doIntent(ChangeOccasionIndexIntent(_tabController!.index));
+                  viewModel.doIntent(
+                    ChangeOccasionIndexIntent(_tabController!.index),
+                  );
                 }
               });
 
               //microtask used here to ensure that the first tab is selected instead of rebuild bloc provider
               Future.microtask(() {
                 if (occasions.isNotEmpty) {
-                  viewModel.doIntent(SpecificOccasionClickedIntent(occasions.first!.id.toString()));
+                  viewModel.doIntent(
+                    SpecificOccasionClickedIntent(
+                      occasions.first!.id.toString(),
+                    ),
+                  );
                 }
               });
             }
@@ -65,7 +76,7 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
           if (occasions.isEmpty) {
             return const Scaffold(
               body: Center(
-                  child: CircularProgressIndicator(color: AppColors.primaryColor,)
+                child: CircularProgressIndicator(color: AppColors.primaryColor),
               ),
             );
           }
@@ -75,7 +86,10 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(S.of(context).BestSellers, style: AppTextStyles.inter500_20),
+                  Text(
+                    S.of(context).occasions,
+                    style: AppTextStyles.inter500_20,
+                  ),
                   Text(
                     S.of(context).bloomwithourexquisitebestsellers,
                     style: AppTextStyles.inter400_14.copyWith(
@@ -84,22 +98,32 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                   ),
                 ],
               ),
-              bottom: _tabController == null
-                  ? const TabBar(tabs: [])
-                  : TabBar(
-                tabAlignment: TabAlignment.start,
-                controller: _tabController,
-                labelColor: AppColors.primaryColor,
-                unselectedLabelColor: AppColors.greyColor,
-                indicatorColor: AppColors.primaryColor,
-                isScrollable: true,
-                tabs: occasions.map((occasion) => Tab(text: occasion?.name ?? '')).toList(),
-              ),
+              bottom:
+                  _tabController == null
+                      ? const TabBar(tabs: [])
+                      : TabBar(
+                        tabAlignment: TabAlignment.start,
+                        controller: _tabController,
+                        labelColor: AppColors.primaryColor,
+                        unselectedLabelColor: AppColors.greyColor,
+                        indicatorColor: AppColors.primaryColor,
+                        isScrollable: true,
+                        tabs:
+                            occasions
+                                .map(
+                                  (occasion) => Tab(text: occasion?.name ?? ''),
+                                )
+                                .toList(),
+                      ),
             ),
             body: BlocBuilder<OccasionViewModel, OccasionState>(
               builder: (context, state) {
                 if (state is LoadingOccasionState) {
-                  return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
+                  return Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.primaryColor,
+                    ),
+                  );
                   debugPrint("Loading..........");
                 } else if (state is SuccessSpecificOccasionState) {
                   final products = state.specificOccasion;
@@ -107,8 +131,12 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                     padding: const EdgeInsets.all(0),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: resposiveHeight(1), // Add spacing between columns
-                      mainAxisSpacing: resposiveWidth(1),  // Add spacing between rows
+                      crossAxisSpacing: resposiveHeight(
+                        1,
+                      ), // Add spacing between columns
+                      mainAxisSpacing: resposiveWidth(
+                        1,
+                      ), // Add spacing between rows
                       childAspectRatio: 0.7,
                     ),
                     itemCount: products.length,
@@ -116,7 +144,11 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                       final product = products[index];
                       return InkWell(
                         onTap: () {
-                          Navigator.pushNamed(context, PagesRoutes.productDetails,arguments: product.id.toString());
+                          Navigator.pushNamed(
+                            context,
+                            PagesRoutes.productDetails,
+                            arguments: product.id.toString(),
+                          );
                         },
                         child: FlowerCard(
                           name: product.title.toString(),
@@ -155,7 +187,11 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
                 } else if (state is ErrorOccasionState) {
                   return Center(child: Text(state.message));
                 }
-                return const Center(child: CircularProgressIndicator(color: AppColors.primaryColor,));
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.primaryColor,
+                  ),
+                );
               },
             ),
           );
