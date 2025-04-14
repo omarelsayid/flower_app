@@ -27,7 +27,8 @@ class LayoutViewModel extends Cubit <LayoutState> {
 List<Widget>tabs=[
   MultiBlocProvider(
   providers: [
-    BlocProvider(create: (context) =>getIt.get<AddToCartCubit>()),
+
+
     BlocProvider(
   create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
 ),
@@ -42,11 +43,8 @@ List<Widget>tabs=[
 ),
   // OccasionsScreen(),
   // const HomeTab(),
-  const CategoriesTab(),
-   BlocProvider(
-     create: (context)=> getIt.get<GetUserCartCubit>()..GetUserCart(),
-     child: CartTab(),
-),
+   CategoriesTab(),
+   CartTab(),
   const ProfileTab(),
 ];
   void _changeBottomNav(int index) {

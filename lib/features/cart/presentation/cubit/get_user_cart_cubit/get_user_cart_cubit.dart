@@ -14,8 +14,6 @@ class GetUserCartCubit extends Cubit<GetUserCartState> {
   GetUserCartCubit(this.getUserCartUseCase) : super(GetUserCartInitial());
   final GetUserCartUseCase getUserCartUseCase;
 
-
-
   Future<void> GetUserCart()async{
 
     emit(GetUserCartLoading());

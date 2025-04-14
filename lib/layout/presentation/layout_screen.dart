@@ -9,11 +9,12 @@ class LayoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LayoutViewModel viewModel = LayoutViewModel();
     return BlocProvider(
-      create: (context) => viewModel,
+      create: (context) => LayoutViewModel(),
       child: BlocBuilder<LayoutViewModel, LayoutState>(
         builder: (context, state) {
+          final viewModel = context.read<LayoutViewModel>();
+
           return Scaffold(
             resizeToAvoidBottomInset: true,
             body: viewModel.tabs[viewModel.currentIndex],

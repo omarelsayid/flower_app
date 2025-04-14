@@ -29,9 +29,7 @@ class CategoriesTab extends StatelessWidget {
     BlocProvider(
       create: (_) => viewModel..doIntent(GetAllCategoriesIntent()),
 ),
-    BlocProvider(
-      create: (context) => getIt.get<AddToCartCubit>(),
-    ),
+
   ],
   child: BlocConsumer<CategoriesViewModel, CategoriesState>(
         listener: (context, state) {
