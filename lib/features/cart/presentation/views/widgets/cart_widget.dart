@@ -56,7 +56,7 @@ class CartItemWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                      userCartItem.product.description,
+                      userCartItem.product.slug,
                     style: AppTextStyles.inter500_13
                   ),
                   const SizedBox(height: 8),

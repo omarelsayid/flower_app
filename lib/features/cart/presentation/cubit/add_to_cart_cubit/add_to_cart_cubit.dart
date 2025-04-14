@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -30,6 +32,7 @@ class AddToCartCubit extends Cubit<AddToCartState> {
       );
       emit(AddToCartSuccess(message,productId));
     } catch (e) {
+      log(e.toString());
       emit(AddToCartError(e.toString(),productId));
     }
   }

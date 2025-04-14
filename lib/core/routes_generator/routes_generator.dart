@@ -41,7 +41,7 @@ class RoutesGenerator {
                     create: (context) => getIt.get<AddToCartCubit>(),
                   ),
                   BlocProvider(
-                    create: (context) => getIt.get<GetUserCartCubit>()..GetUserCart(),
+                    create: (context) => getIt.get<GetUserCartCubit>(),
                   ),
                 ],
                 child: LayoutScreen(),

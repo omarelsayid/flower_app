@@ -23,7 +23,7 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       final response = await _apiClient.addProductToCart("Bearer $token", request);
       return response.data.message;
     } on DioError catch (dioError) {
-      throw Exception(dioError.response?.data['message'] ?? 'Unknown error occurred');
+      throw Exception(dioError.response?.data['message']);
     }
   }
 

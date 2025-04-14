@@ -1,6 +1,7 @@
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
 import 'package:flower_app/features/cart/presentation/views/widgets/cart_widget.dart';
+import 'package:flower_app/features/cart/presentation/views/widgets/summery_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -12,25 +13,53 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constans.dart';
 import '../../../../core/utils/constant_manager.dart';
 
-class CartTab extends StatelessWidget {
+class CartTab extends StatefulWidget {
   const CartTab({super.key});
 
+  @override
+  State<CartTab> createState() => _CartTabState();
+}
+
+class _CartTabState extends State<CartTab> {
+  @override
+  void initState() {
+    context.read<GetUserCartCubit>()..GetUserCart();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetUserCartCubit, GetUserCartState>(
       builder: (context, state) {
         if (state is GetUserCartLoading) {
           return Center(
-            child: CircularProgressIndicator(color: AppColors.primaryColor,),);
-        }
-        else if (state is GetUserCartError) {
+            child: CircularProgressIndicator(color: AppColors.primaryColor),
+          );
+        } else if (state is GetUserCartError) {
           EasyLoading.showError(state.error);
-        }
-        else if (state is GetUserCartSuccess) {
-          final cartItems = state.userCartEntity.cart;
+        } else if (state is GetUserCartSuccess) {
+          final userCart = state.userCartEntity;
+          final cartItems = userCart.cart;
+
+          double subTotal = cartItems.cartItems.fold<double>(
+            0,
+            (previousValue, element) =>
+                previousValue + (element.product.price * element.quantity),
+          );
+          double deliveryFee = 10.0;
+          double total = subTotal + deliveryFee;
+
+          print("+=================================");
+          print("sub total is $subTotal");
+          print("total is $total");
           return Scaffold(
             appBar: AppBar(
-                title: Text("Cart", style: AppTextStyles.inter500_20)),
+              title: Row(
+                children: [
+                  Text("Cart", style: AppTextStyles.inter500_20),
+                  SizedBox(width: 2,),
+                  Text("(${cartItems.cartItems.length} items)",style: AppTextStyles.inter500_16.copyWith(color: AppColors.greyColor),),
+                ],
+              ),
+            ),
 
             body: Padding(
               padding: EdgeInsets.symmetric(
@@ -78,16 +107,50 @@ class CartTab extends StatelessWidget {
 
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: CartItemWidget(() {
-
-                          },  () {
-
-                          }, () {
-
-                          }, cartItem),
+                          child: CartItemWidget(
+                            () {
+                              // on delete
+                            },
+                            () {
+                              //on increment
+                            },
+                            () {
+                              //on decrement
+                            },
+                            cartItem,
+                          ),
                         );
                       },
+                    ),
+                  ),
+                  const Divider(thickness: 1.0),
+                  buildSummaryRow(
+                    "Sub Total",
+                    "\$${subTotal.toStringAsFixed(2)}",
+                  ),
+                  buildSummaryRow(
+                    "Delivery Fee",
+                    "\$${deliveryFee.toStringAsFixed(2)}",
+                  ),
+                  const Divider(thickness: 1.0),
+                  buildSummaryRow(
+                    "Total",
+                    "\$${total.toStringAsFixed(2)}",
+                    isBold: true,
+                  ),
 
+                  SizedBox(height: 8,),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryColor,
+                    ),
+
+                    onPressed: () {},
+                    child: Text(
+                      'Continue',
+                      style: AppTextStyles.roboto500_16.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
