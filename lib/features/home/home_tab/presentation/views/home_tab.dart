@@ -12,6 +12,7 @@ import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cu
 import 'package:flower_app/features/home/home_tab/presentation/views/widgets/custom_card_widget.dart';
 import 'package:flower_app/features/home/home_tab/presentation/views/widgets/category_widget.dart';
 import 'package:flower_app/features/home/home_tab/presentation/views/widgets/row_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -42,7 +43,7 @@ class HomeTab extends StatelessWidget {
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        hintText: S.of(context).search,
                         hintStyle: AppTextStyles.inter400_14.copyWith(
                           color: AppColors.greyColor,
                         ),
@@ -89,7 +90,7 @@ class HomeTab extends StatelessWidget {
               // category
               Column(
                 children: [
-                 RowWidget(txt: "Categories", leading_text:"View all", onPressed: (){
+                 RowWidget(txt:S.of(context).categories, leading_text: S.of(context).viewAll, onPressed: (){
                    Navigator.pushNamed(context, PagesRoutes.categoriesScreen,);
                  }),
                   Row(
@@ -138,7 +139,7 @@ class HomeTab extends StatelessWidget {
               // SizedBox(height:16 ,),
               Column(
                 children: [
-                 RowWidget(txt: "Best seller", leading_text:"View all", onPressed: (){
+                 RowWidget(txt: S.of(context).BestSellers, leading_text:S.of(context).viewAll, onPressed: (){
                    Navigator.pushNamed(context, PagesRoutes.bestSellerScreen);
                  }),
                   Row(
@@ -189,7 +190,7 @@ class HomeTab extends StatelessWidget {
 
                 Column(
                   children: [
-                    RowWidget(txt: "Occasion", leading_text:"View all", onPressed: (){
+                    RowWidget(txt: S.of(context).occasions, leading_text:S.of(context).viewAll, onPressed: (){
                       Navigator.pushNamed(context, PagesRoutes.occasionScreen);
                     }),
                     Row(

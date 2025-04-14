@@ -1,4 +1,5 @@
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_colors.dart';
@@ -24,7 +25,7 @@ class RememberMeWidget extends StatelessWidget {
           onChanged: onChanged,
         ),
         SizedBox(width: 1),
-        Text('Remember me', style: AppTextStyles.inter400_14),
+        Text(S.of(context).rememberMe, style: AppTextStyles.inter400_14),
       ],
     );
   }

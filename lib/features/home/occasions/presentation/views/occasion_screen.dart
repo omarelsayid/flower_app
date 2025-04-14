@@ -2,9 +2,10 @@ import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flower_app/di/injectable_initializer.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import '../../../../../core/widgets/flower_card.dart';
 import '../../domain/entity/occasions_entity.dart';
 import '../cubit/occasion_view_model.dart';
@@ -74,9 +75,9 @@ class _OccasionsScreenState extends State<OccasionsScreen> with SingleTickerProv
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Occasions", style: AppTextStyles.inter500_20),
+                  Text(S.of(context).BestSellers, style: AppTextStyles.inter500_20),
                   Text(
-                    "Bloom with our exquisite best sellers",
+                    S.of(context).bloomwithourexquisitebestsellers,
                     style: AppTextStyles.inter400_14.copyWith(
                       color: AppColors.greyDarkColor,
                     ),

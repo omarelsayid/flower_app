@@ -11,6 +11,7 @@ import 'package:flower_app/features/auth/presentation/cubit/sign_in_cubit/sign_i
 import 'package:flower_app/features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dart';
 import 'package:flower_app/features/auth/presentation/views/widgets/no_have_account_widget.dart';
 import 'package:flower_app/features/auth/presentation/views/widgets/remember_me_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -28,18 +29,14 @@ class SignInViewBody extends StatefulWidget {
 
 class _SignInViewBodyState extends State<SignInViewBody> {
   final TextEditingController _emailController = TextEditingController();
-
   final TextEditingController _passwordController = TextEditingController();
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   AutovalidateMode validateMode = AutovalidateMode.disabled;
-
   bool rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignInViewModel, SignInState>(
+    return BlocConsumer<SignInViewModel, SignInState>(
       bloc: widget.signInViewModel,
       listener: (context, state) {
         switch (state) {
@@ -51,157 +48,163 @@ class _SignInViewBodyState extends State<SignInViewBody> {
             _saveToken(state);
             EasyLoading.dismiss();
             Navigator.pushReplacementNamed(context, PagesRoutes.layOutScreen);
-          //Navigate to home
           case SignInErrorState():
-            log('error');
+            log(state.message+"++++++++++++++");
             EasyLoading.dismiss();
             EasyLoading.showError(state.message);
           default:
         }
       },
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: kHorizontalPadding,
-          vertical: 30,
-        ),
-        child: SingleChildScrollView(
-          child: Form(
-            autovalidateMode: validateMode,
-            key: _formKey,
-            child: Column(
-              children: [
-                TextFormField(
-                  autovalidateMode: validateMode,
-                  validator: (value) {
-                    if (value == null || value.isEmpty == true) {
-                      return "emails can not be empty";
-                    }
-                    if (!value.isValidEmail) {
-                      return "Please enter a valid email";
-                    }
-                    return null;
-                  },
-                  onChanged: onChange,
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Enter your Email',
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextFormField(
-                  autovalidateMode: validateMode,
-                  validator: (value) {
-                    if (value == null || value.isEmpty == true) {
-                      return "empty passwords are not allowed";
-                    }
-                    if (value.length < 8) {
-                      return "passwords can not be less than 8 characters";
-                    }
-                    if (!value.isValidPassword) {
-                      return "password must contain at least one upper case letter and one number";
-                    }
-                    return null;
-                  },
-                  onChanged: onChange,
-                  controller: _passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Enter your Password',
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RememberMeWidget(
-                      value: rememberMe,
-                      onChanged: (value) {
-                        setState(() {
-                          rememberMe = value!;
-                        });
-                      },
+      builder: (context, state) {
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: kHorizontalPadding,
+            vertical: 30,
+          ),
+          child: SingleChildScrollView(
+            child: Form(
+              autovalidateMode: validateMode,
+              key: _formKey,
+              child: Column(
+                children: [
+                  TextFormField(
+                    autovalidateMode: validateMode,
+                    validator: (value) {
+                      if (value == null || value.isEmpty == true) {
+                        return S.of(context).emailRequired;
+                      }
+                      if (!value.isValidEmail) {
+                        return S.of(context).emailInvalid;
+                      }
+                      return null;
+                    },
+                    onChanged: onChange,
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      labelText: S.of(context).email,
+                      hintText: S.of(context).enterYourPassword,
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          PagesRoutes.forgetPassword,
-                        );
-                      },
-                      child: Text(
-                        'Forget password?',
-                        style: AppTextStyles.inter400_12.copyWith(
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                          decorationColor: Colors.black,
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    autovalidateMode: validateMode,
+                    validator: (value) {
+                      if (value == null || value.isEmpty == true) {
+                        return S.of(context).passwordRequired;
+                      }
+                      if (value.length < 8) {
+                        return S.of(context).passwordTooShort;
+                      }
+                      if (!value.isValidPassword) {
+                        return S.of(context).passwordInvalid;
+                      }
+                      return null;
+                    },
+                    onChanged: onChange,
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      labelText: S.of(context).password,
+                      hintText: S.of(context).enterYourPassword,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RememberMeWidget(
+                        value: rememberMe,
+                        onChanged: (value) {
+                          setState(() {
+                            rememberMe = value!;
+                          });
+                        },
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            PagesRoutes.forgetPassword,
+                          );
+                        },
+                        child: Text(
+                          S.of(context).forgetPassword,
+                          style: AppTextStyles.inter400_12.copyWith(
+                            color: Colors.black,
+                            decoration: TextDecoration.underline,
+                            decorationColor: Colors.black,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        validateMode == AutovalidateMode.disabled
-                            ? AppColors.primaryColor
-                            : AppColors.greyColor,
+                    ],
                   ),
-                  onPressed: () {
-                    if (validateMode == AutovalidateMode.always) {
-                      null;
-                    } else {
-                      if (_formKey.currentState!.validate()) {
-                        setState(() {
-                          validateMode = AutovalidateMode.disabled;
-                        });
-                        //view model fun
-                        var data = SignInRequest(
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                        );
-                        widget.signInViewModel.signIn(data);
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          validateMode == AutovalidateMode.disabled
+                              ? AppColors.primaryColor
+                              : AppColors.greyColor,
+                    ),
+                    onPressed: () {
+                      if (validateMode == AutovalidateMode.always) {
+                        null;
                       } else {
-                        setState(() {
-                          validateMode = AutovalidateMode.always;
-                        });
+                        if (_formKey.currentState!.validate()) {
+                          setState(() {
+                            validateMode = AutovalidateMode.disabled;
+                          });
+                          var data = SignInRequest(
+                            email: _emailController.text,
+                            password: _passwordController.text,
+                          );
+                          widget.signInViewModel.signIn(data);
+                        } else {
+                          setState(() {
+                            validateMode = AutovalidateMode.always;
+                          });
+                        }
                       }
-                    }
-                  },
-                  child: Text(
-                    'Login',
-                    style: AppTextStyles.inter500_16.copyWith(
-                      color: Colors.white,
+                    },
+                    child: Text(
+                      S.of(context).login,
+                      style: AppTextStyles.inter500_16.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                      context,
-                      PagesRoutes.layOutScreen,
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    side: BorderSide(color: Colors.black),
-                  ),
-                  child: Text(
-                    'Continue as guest',
-                    style: AppTextStyles.inter500_16.copyWith(
-                      color: Colors.black,
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await SharedPreferenceServices.deleteData(
+                        AppConstants.token,
+                      );
+                      await SharedPreferenceServices.deleteData(
+                        AppConstants.rememberMe,
+                      );
+                      Navigator.pushReplacementNamed(
+                        context,
+                        PagesRoutes.layOutScreen,
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      side: BorderSide(color: Colors.black),
+                    ),
+                    child: Text(
+                      S.of(context).continueAsGuest,
+                      style: AppTextStyles.inter500_16.copyWith(
+                        color: Colors.black,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15),
-                NoHaveAccountWidget(),
-              ],
+                  const SizedBox(height: 15),
+                  NoHaveAccountWidget(),
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 

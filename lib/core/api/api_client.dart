@@ -5,6 +5,7 @@ import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
 import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -22,10 +23,14 @@ import '../../features/auth/domain/entity/sign_up_request.dart';
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
-@singleton
+// @singleton
 abstract class ApiClient {
-  @factoryMethod
+  // @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
+
+
+  @GET("/api/v1/auth/profile-data")
+  Future<ProfileResponseDTO> getProfileData();
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -74,6 +79,9 @@ abstract class ApiClient {
   Future<SpecificCategoriesResponseModel> getSpecificCategory(
       @Query("category") String categoryId,
       );
+
+
+  // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
 }
 
 
