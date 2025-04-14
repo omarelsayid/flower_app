@@ -31,9 +31,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
     ),
+    "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
+    "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),

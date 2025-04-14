@@ -17,7 +17,9 @@ class LanguageTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: EdgeInsets.only(bottom: resposiveHeight(12)),
+    child: Container(
       height: resposiveHeight(56),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -40,7 +42,9 @@ class LanguageTileWidget extends StatelessWidget {
         contentPadding: EdgeInsets.symmetric(horizontal: resposiveWidth(16)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         tileColor: Colors.transparent,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+    ),
     );
   }
 }

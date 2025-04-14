@@ -445,6 +445,21 @@ class S {
     return Intl.message('View all', name: 'viewAll', desc: '', args: []);
   }
 
+  /// `confirm logout`
+  String get confirmLogout {
+    return Intl.message(
+      'confirm logout',
+      name: 'confirmLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `cancel`
+  String get cancel {
+    return Intl.message('cancel', name: 'cancel', desc: '', args: []);
+  }
+
   /// `Bloom with our exquisite best sellers`
   String get bloomwithourexquisitebestsellers {
     return Intl.message(
