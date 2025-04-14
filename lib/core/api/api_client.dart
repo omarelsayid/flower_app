@@ -80,6 +80,9 @@ abstract class ApiClient {
       @Query("category") String categoryId,
       );
 
+  @GET("/api/v1/auth/logout")
+  Future<HttpResponse<void>> logout();
+
 
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
 }

@@ -21,5 +21,16 @@ class ProfileRepositoryImpl implements ProfileRepository {
     );
   }
 
+  @override
+  Future<Result<void>> logout() async {
+    return executeApi<void>(
+          () async {
+        await _profileRemoteDataSource.logout();
+      },
+    );
+  }
+
+
+
 
 }

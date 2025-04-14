@@ -14,4 +14,6 @@ class ErrorProfileState extends ProfileState {
   final String message;
   ErrorProfileState(this.message);
 }
+///////////////////  Logout State /////////////////////////////
+class LogoutSuccessState extends ProfileState {}
 
