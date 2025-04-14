@@ -30,11 +30,14 @@ class CustomCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Name text with ellipsis if too long
-          Text(
-            name,
-            style: AppTextStyles.inter400_12,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+          SizedBox(
+            width:  resposiveWidth(131),
+            child: Text(
+              name,
+              style: AppTextStyles.inter400_12,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           const SizedBox(height: 4),
           // Price text
