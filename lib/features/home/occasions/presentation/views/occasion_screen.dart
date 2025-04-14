@@ -83,6 +83,12 @@ class _OccasionsScreenState extends State<OccasionsScreen>
 
           return Scaffold(
             appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(Icons.arrow_back_ios, color: AppColors.blackColor),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -124,20 +130,19 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                       color: AppColors.primaryColor,
                     ),
                   );
-                  debugPrint("Loading..........");
                 } else if (state is SuccessSpecificOccasionState) {
                   final products = state.specificOccasion;
                   return GridView.builder(
                     padding: const EdgeInsets.all(0),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: resposiveHeight(
-                        1,
-                      ), // Add spacing between columns
-                      mainAxisSpacing: resposiveWidth(
-                        1,
-                      ), // Add spacing between rows
+                      crossAxisSpacing: resposiveHeight(1,), // Add spacing between columns
+                      mainAxisSpacing: resposiveWidth(1,), // Add spacing between rows
                       childAspectRatio: 0.7,
+                      // childAspectRatio: MediaQuery.of(context).size.width / (MediaQuery.of(context).size.height / 1.4),
+                      // mainAxisSpacing: resposiveHeight(1), // Vertical spacing
+                      // crossAxisSpacing: resposiveWidth(1), // Horizontal spacing
+                      // childAspectRatio: resposiveWidth(163) / resposiveHeight(229),
                     ),
                     itemCount: products.length,
                     itemBuilder: (context, index) {
