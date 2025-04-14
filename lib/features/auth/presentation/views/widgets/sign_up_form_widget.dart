@@ -103,14 +103,14 @@ class SignUpFormWidget extends StatelessWidget {
                   onChanged: (val) => vmSignUp.updateGender(val!),
                   activeColor: AppColors.primaryColor,
                 ),
-                Text(S.of(context).male, style: AppTextStyles.inter400_14),
+                Text(S.of(context).female, style: AppTextStyles.inter400_14),
                 Radio<Gender>(
                   value: Gender.male,
                   groupValue: vmSignUp.selectedGender,
                   onChanged: (val) => vmSignUp.updateGender(val!),
                   activeColor: AppColors.primaryColor,
                 ),
-                Text(S.of(context).female, style: AppTextStyles.inter400_14),
+                Text(S.of(context).male, style: AppTextStyles.inter400_14),
               ],
             ),
             if (!vmSignUp.isGenderSelected)
