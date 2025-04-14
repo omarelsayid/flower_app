@@ -22,6 +22,8 @@ import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart'
     as _i20;
 import 'package:flower_app/features/cart/data/models/create_cart_request.dart'
     as _i21;
+import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart'
+    as _i22;
 import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart'
     as _i13;
 import 'package:flower_app/features/home/best_seller_products/data/model/BestSellerProductsModel.dart'
@@ -356,4 +358,21 @@ class MockApiClient extends _i1.Mock implements _i14.ApiClient {
             ),
           )
           as _i15.Future<_i13.UserCartResponseModel>);
+
+  @override
+  _i15.Future<_i3.HttpResponse<_i22.DeleteCartResponseDTO>> deleteCartItem(
+    String? token,
+    String? id,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#deleteCartItem, [token, id]),
+            returnValue:
+                _i15.Future<_i3.HttpResponse<_i22.DeleteCartResponseDTO>>.value(
+                  _FakeHttpResponse_1<_i22.DeleteCartResponseDTO>(
+                    this,
+                    Invocation.method(#deleteCartItem, [token, id]),
+                  ),
+                ),
+          )
+          as _i15.Future<_i3.HttpResponse<_i22.DeleteCartResponseDTO>>);
 }

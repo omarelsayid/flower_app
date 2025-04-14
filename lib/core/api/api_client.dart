@@ -1,6 +1,7 @@
 
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
+import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart';
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
@@ -92,6 +93,13 @@ abstract class ApiClient {
       );
 
 
+  @DELETE("/api/v1/cart/{id}")
+  Future<HttpResponse<DeleteCartResponseDTO>> deleteCartItem(
+      @Header("Authorization") String token,
+      @Path("id") String id,
+       );
+  
+  
 
 }
 

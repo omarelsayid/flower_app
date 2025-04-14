@@ -6,4 +6,6 @@ abstract class CartRepository {
 
   Future<Result<UserCartEntity>> getUserCart();
 
+  Future<Result<String>> deleteCartItem(String id);
+
 }

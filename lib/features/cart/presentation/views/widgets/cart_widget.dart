@@ -49,7 +49,7 @@ class CartItemWidget extends StatelessWidget {
                         ),
                       ),
                       InkWell(
-                        onTap:() => onDelete,
+                        onTap:() => onDelete(),
                         child: Image.asset(IconAssets.deleteIcon)
                       ),
                     ],
@@ -71,7 +71,7 @@ class CartItemWidget extends StatelessWidget {
                         children: [
                           IconButton(
                             icon: Icon(Icons.remove),
-                            onPressed:() => onDecrement,
+                            onPressed:() => onDecrement(),
                           ),
                           Text(
                             userCartItem.quantity.toString(),
@@ -82,7 +82,7 @@ class CartItemWidget extends StatelessWidget {
                           ),
                           IconButton(
                             icon: Icon(Icons.add),
-                            onPressed: () => onIncrement,
+                            onPressed: () => onIncrement(),
                           ),
                         ],
                       ),

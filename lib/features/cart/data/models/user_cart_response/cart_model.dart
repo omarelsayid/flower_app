@@ -7,7 +7,7 @@ part 'cart_model.g.dart';
 class CartModel {
   @JsonKey(name: '_id')
   final String id;
-  final String user;
+  final String? user;
   final List<CartItemModel> cartItems;
   final int discount;
   final int totalPrice;

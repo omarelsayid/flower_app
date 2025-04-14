@@ -1,5 +1,5 @@
 class UserCartEntity {
-  final String message;
+  final String? message;
   final int numOfCartItems;
   final CartEntity cart;
 
@@ -12,7 +12,7 @@ class UserCartEntity {
 
 class CartEntity {
   final String id;
-  final String user;
+  final String? user;
   final List<CartItemEntity> cartItems;
   final int discount;
   final int totalPrice;

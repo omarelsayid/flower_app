@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flower_app/core/api/api_execute.dart';
+import 'package:flower_app/core/error/failures.dart';
 import 'package:flower_app/features/cart/data/models/map_user_cart_model_to_entity.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../core/common/result.dart';
@@ -39,6 +41,19 @@ class CartRepositoryImpl implements CartRepository {
       return Success<UserCartEntity>(entity);
     } catch (error) {
       return Error<UserCartEntity>(error.toString());
+    }
+  }
+
+  @override
+  Future<Result<String>> deleteCartItem( String id) async{
+    try{
+      final String token = await SharedPreferenceServices.getData(
+        AppConstants.token,
+      ).toString();
+      final responseDto = await _cartRemoteDataSource.deleteCArtItem(token, id);
+      return Success<String>(responseDto.message);
+    } catch(e){
+      return Error<String>(e.toString());
     }
   }
 }

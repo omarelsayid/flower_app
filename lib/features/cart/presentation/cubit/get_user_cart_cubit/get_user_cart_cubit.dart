@@ -43,6 +43,7 @@ class GetUserCartCubit extends Cubit<GetUserCartState> {
       else if(result is Error<UserCartEntity>)
         {
           log("i am in error 2");
+          log(result.exception!);
           emit(GetUserCartError(result.exception!));
         }
 

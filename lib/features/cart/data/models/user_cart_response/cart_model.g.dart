@@ -8,7 +8,7 @@ part of 'cart_model.dart';
 
 CartModel _$CartModelFromJson(Map<String, dynamic> json) => CartModel(
   id: json['_id'] as String,
-  user: json['user'] as String,
+  user: json['user'] as String?,
   cartItems:
       (json['cartItems'] as List<dynamic>)
           .map((e) => CartItemModel.fromJson(e as Map<String, dynamic>))
