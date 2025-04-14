@@ -16,7 +16,7 @@ class LanguageWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         vertical: resposiveHeight(16),
-        horizontal: resposiveWidth(16),
+        horizontal: resposiveWidth(24),
       ),
       child: InkWell(
         onTap: () {
@@ -66,7 +66,7 @@ class LanguageWidget extends StatelessWidget {
         },
         child: Row(
           children: [
-            Icon(Icons.language, size: 20),
+            Icon(Icons.translate, size: 16),
             SizedBox(width: resposiveWidth(8)),
             Text(S.of(context).language, style: AppTextStyles.inter500_13),
             Spacer(),

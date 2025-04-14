@@ -87,7 +87,7 @@ class MainAppContent extends StatelessWidget {
                       false))
               ? PagesRoutes.layOutScreen
               : PagesRoutes.signInScreen,
-      builder:(context, child) => child!,
+      builder: (context, child) => child!,
     );
   }
 }
