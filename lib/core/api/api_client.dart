@@ -25,9 +25,10 @@ import '../../features/profile/main_profile_screen/data/model/change_password_re
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
-// @singleton
+@singleton
+@injectable
 abstract class ApiClient {
-  // @factoryMethod
+  @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
 

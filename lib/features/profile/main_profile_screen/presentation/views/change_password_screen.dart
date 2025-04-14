@@ -1,11 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/services/shared_preference_services.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/core/widgets/custom_validate.dart';
-import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_state.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
 import 'package:flutter/cupertino.dart';

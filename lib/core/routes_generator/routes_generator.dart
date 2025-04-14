@@ -1,4 +1,3 @@
-import 'package:flower_app/di/injectable_initializer.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -15,6 +14,7 @@ import '../../features/auth/presentation/views/forget_passwerd/email_verificatio
 import '../../features/auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
 import '../../features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
+import '../di/injectable_initializer.dart';
 import '../widgets/test_screen.dart';
 
 class RoutesGenerator {

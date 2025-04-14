@@ -28,6 +28,7 @@ dependencies:
   provider: ^6.1.4
   intl: ^0.19.0
   flutter_localization: ^0.3.2
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   build_runner: null
