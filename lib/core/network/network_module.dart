@@ -3,6 +3,7 @@ import 'package:flower_app/core/network/auth_interceptor.dart';
 import 'package:injectable/injectable.dart';
 
 import '../api/api_client.dart';
+import '../services/shared_preference_services.dart';
 
 @module
 abstract class NetworkModule {
@@ -19,3 +20,8 @@ abstract class NetworkModule {
   @lazySingleton
   ApiClient apiClient(Dio dio) => ApiClient(dio);
 }
+// @module
+// abstract class AppModule {
+//   @lazySingleton
+//   SharedPreferenceServices get sharedPreferenceServices => SharedPreferenceServices();
+// }
