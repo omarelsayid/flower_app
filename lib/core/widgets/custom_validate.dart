@@ -1,3 +1,7 @@
+import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
+
+import '../../di/injectable_initializer.dart';
+
 class AppValidate {
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -40,7 +44,7 @@ class AppValidate {
   //   if (value == null || value.isEmpty) {
   //     return 'Please confirm your password ';
   //   }
-  //   if (value != getIt<RegisterCubit>().passwordController.text) {
+  //   if (value != getIt<ChangePasswordViewModel>().newPasswordController.text) {
   //     return 'Password do not match ';
   //   }
   //   return null;

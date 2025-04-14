@@ -62,6 +62,7 @@ class CategoriesTab extends StatelessWidget {
                   DefaultTabController(
                     length: viewModel.categories.length,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TabBar(
@@ -91,7 +92,7 @@ class CategoriesTab extends StatelessWidget {
                   Skeletonizer(
                     enabled: true,
                     containersColor: AppColors.whiteColor,
-                    child: _buildProductsList([], 5),
+                    child: _buildProductsList(viewModel.products, 5),
                   )
                 else if (state is SuccessfulSearchState &&
                     viewModel.isSearching)

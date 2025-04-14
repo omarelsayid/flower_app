@@ -84,10 +84,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
         if (response.response.statusCode! >= 200 &&
             response.response.statusCode! < 300) {
-          // await SharedPreferenceServices.saveData(
-          //   AppConstants.token,
-          //   response.data.token!,
-          // );
+          await SharedPreferenceServices.saveData(
+            AppConstants.token,
+            response.data.token!,
+          );
           log('status code: ${response.data.user!.email}');
           log('status code: ${response.data.user!.firstName}');
           log('status code: ${response.data.token}');

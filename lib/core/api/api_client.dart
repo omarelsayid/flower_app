@@ -5,6 +5,7 @@ import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
 import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/change_password_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -20,6 +21,7 @@ import '../../features/auth/data/model/forget_response_password_dto.dart';
 import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';
 import '../../features/auth/domain/entity/sign_up_request.dart';
+import '../../features/profile/main_profile_screen/data/model/change_password_request_model.dart';
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
@@ -82,6 +84,10 @@ abstract class ApiClient {
 
 
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
+  @PATCH("/api/v1/auth/change-password")
+Future<ChangePasswordModel> changePassword(
+      @Body() ChangePasswordRequestModel data,
+      @Header("Authorization") String token,);
 }
 
 

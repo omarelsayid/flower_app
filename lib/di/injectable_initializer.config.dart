@@ -89,14 +89,24 @@ import '../features/home/products_details/domain/repositories/get_product_detail
     as _i652;
 import '../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
     as _i83;
+import '../features/profile/main_profile_screen/data/data_source/change_pasword_data_source.dart'
+    as _i119;
 import '../features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
     as _i808;
+import '../features/profile/main_profile_screen/data/repository_imp/change_password_repositoy_impl.dart'
+    as _i1026;
 import '../features/profile/main_profile_screen/data/repository_imp/profile_screen_repository_imp.dart'
     as _i442;
 import '../features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
     as _i758;
+import '../features/profile/main_profile_screen/domain/repository/reset_password_repository.dart'
+    as _i1016;
+import '../features/profile/main_profile_screen/domain/use_case/change_password_use_case.dart'
+    as _i91;
 import '../features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart'
     as _i526;
+import '../features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart'
+    as _i649;
 import '../features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart'
     as _i961;
 
@@ -124,11 +134,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i481.BestSellerRemoteDataSource>(
       () => _i1016.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
+    gh.factory<_i119.ChangePasswordDataSource>(
+      () => _i119.ChangePasswordDataSourceImp(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i702.CategoriesRemoteDataSource>(
       () => _i702.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
     gh.factory<_i366.AuthRemoteDataSource>(
       () => _i366.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i1016.ChangePasswordRepository>(
+      () => _i1026.ChangePasswordRepositoryImp(
+        gh<_i119.ChangePasswordDataSource>(),
+      ),
     );
     gh.factory<_i84.BestSellerRepo>(
       () => _i601.BestSellerRepoImpl(gh<_i481.BestSellerRemoteDataSource>()),
@@ -165,6 +183,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i973.InternetConnectionChecker>(),
       ),
     );
+    gh.factory<_i91.ChangePasswordUseCase>(
+      () => _i91.ChangePasswordUseCase(gh<_i1016.ChangePasswordRepository>()),
+    );
     gh.factory<_i652.GetProductDetailsRepo>(
       () => _i647.ProductsDetailRepoImp(
         gh<_i530.ProductsDetailsRemoteDataScource>(),
@@ -187,6 +208,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i28.SignInUseCase>(
       () => _i28.SignInUseCase(gh<_i267.AuthRepository>()),
+    );
+    gh.factory<_i649.ChangePasswordViewModel>(
+      () => _i649.ChangePasswordViewModel(gh<_i91.ChangePasswordUseCase>()),
     );
     gh.factory<_i83.ProductsDetailCubit>(
       () => _i83.ProductsDetailCubit(gh<_i652.GetProductDetailsRepo>()),
