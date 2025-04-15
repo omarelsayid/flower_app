@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/constans.dart';
@@ -17,8 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:image_picker/image_picker.dart';
-
-import '../../../../../../di/injectable_initializer.dart';
 
 enum Gender { male, female }
 

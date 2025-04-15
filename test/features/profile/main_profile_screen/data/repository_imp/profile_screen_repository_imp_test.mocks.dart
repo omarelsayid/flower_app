@@ -3,13 +3,18 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
+import 'dart:io' as _i7;
 
+import 'package:flower_app/core/common/result.dart' as _i6;
 import 'package:flower_app/features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
+    as _i4;
+import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart'
     as _i3;
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:mockito/src/dummies.dart' as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -27,38 +32,93 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeProfileResponseDTO_0 extends _i1.SmartFake
     implements _i2.ProfileResponseDTO {
-  _FakeProfileResponseDTO_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeProfileResponseDTO_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeEditProfileResponseDTO_1 extends _i1.SmartFake
+    implements _i3.EditProfileResponseDTO {
+  _FakeEditProfileResponseDTO_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [ProfileRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockProfileRemoteDataSource extends _i1.Mock
-    implements _i3.ProfileRemoteDataSource {
+    implements _i4.ProfileRemoteDataSource {
   MockProfileRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.ProfileResponseDTO> getProfileData() =>
-      (super.noSuchMethod(
-            Invocation.method(#getProfileData, []),
-            returnValue: _i4.Future<_i2.ProfileResponseDTO>.value(
-              _FakeProfileResponseDTO_0(
-                this,
-                Invocation.method(#getProfileData, []),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.ProfileResponseDTO>);
+  _i5.Future<_i2.ProfileResponseDTO> getProfileData() => (super.noSuchMethod(
+        Invocation.method(
+          #getProfileData,
+          [],
+        ),
+        returnValue:
+            _i5.Future<_i2.ProfileResponseDTO>.value(_FakeProfileResponseDTO_0(
+          this,
+          Invocation.method(
+            #getProfileData,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.ProfileResponseDTO>);
 
   @override
-  _i4.Future<void> logout() =>
+  _i5.Future<void> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i5.Future<void>.value(),
+        returnValueForMissingStub: _i5.Future<void>.value(),
+      ) as _i5.Future<void>);
+
+  @override
+  _i5.Future<_i3.EditProfileResponseDTO> editProfile(
+          Map<String, dynamic>? data) =>
       (super.noSuchMethod(
-            Invocation.method(#logout, []),
-            returnValue: _i4.Future<void>.value(),
-            returnValueForMissingStub: _i4.Future<void>.value(),
-          )
-          as _i4.Future<void>);
+        Invocation.method(
+          #editProfile,
+          [data],
+        ),
+        returnValue: _i5.Future<_i3.EditProfileResponseDTO>.value(
+            _FakeEditProfileResponseDTO_1(
+          this,
+          Invocation.method(
+            #editProfile,
+            [data],
+          ),
+        )),
+      ) as _i5.Future<_i3.EditProfileResponseDTO>);
+
+  @override
+  _i5.Future<_i6.Result<String?>> uploadPhoto(_i7.File? photo) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadPhoto,
+          [photo],
+        ),
+        returnValue: _i5.Future<_i6.Result<String?>>.value(
+            _i8.dummyValue<_i6.Result<String?>>(
+          this,
+          Invocation.method(
+            #uploadPhoto,
+            [photo],
+          ),
+        )),
+      ) as _i5.Future<_i6.Result<String?>>);
 }
