@@ -1,6 +1,6 @@
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/extensions.dart';
-import 'package:flower_app/di/injectable_initializer.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart'
     show BlocBuilder, BlocListener, BlocProvider, ReadContext;

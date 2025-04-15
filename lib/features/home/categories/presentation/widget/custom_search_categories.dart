@@ -6,13 +6,16 @@ import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
 
 class CustomSearchCategories extends StatelessWidget {
-   CustomSearchCategories({super.key,this.onChanged});
+  CustomSearchCategories({super.key, this.onChanged});
   void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding:  EdgeInsets.symmetric(vertical:resposiveHeight(8),horizontal: resposiveWidth(16)),
+      padding: EdgeInsets.symmetric(
+        vertical: resposiveHeight(8),
+        horizontal: resposiveWidth(16),
+      ),
       child: Row(
         children: [
           Expanded(
@@ -33,7 +36,7 @@ class CustomSearchCategories extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: resposiveWidth(8),),
+          SizedBox(width: resposiveWidth(8)),
           Expanded(
             flex: 1,
             child: OutlinedButton(
@@ -48,6 +51,7 @@ class CustomSearchCategories extends StatelessWidget {
             ),
           ),
         ],
-      ));
+      ),
+    );
   }
 }

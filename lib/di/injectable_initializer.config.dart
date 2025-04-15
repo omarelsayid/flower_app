@@ -33,23 +33,6 @@ import '../features/auth/presentation/cubit/sign_in_cubit/sign_in_view_model.dar
 import '../features/auth/presentation/cubit/signup_view_model.dart' as _i965;
 import '../features/auth/presentation/cubit/verify_email_cubit/verify_email_vew_model.dart'
     as _i882;
-import '../features/cart/data/data_source/cart_remote_data_source.dart'
-    as _i1021;
-import '../features/cart/data/repo_imp/cart_repo_imp.dart' as _i817;
-import '../features/cart/domain/repo/cart_repo.dart' as _i329;
-import '../features/cart/domain/use_case/add_to_cart_use_case.dart' as _i18;
-import '../features/cart/domain/use_case/delete_use_case.dart' as _i893;
-import '../features/cart/domain/use_case/get_user_cart_use_case.dart' as _i582;
-import '../features/cart/domain/use_case/update_quantity_use_case.dart'
-    as _i362;
-import '../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart'
-    as _i742;
-import '../features/cart/presentation/cubit/delete_cubit/delete_specific_item_cubit/delete_specific_item_cubit.dart'
-    as _i567;
-import '../features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart'
-    as _i188;
-import '../features/cart/presentation/cubit/update_quantity_cubit/update_quantity_cubit.dart'
-    as _i275;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
     as _i481;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
@@ -126,9 +109,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i366.AuthRemoteDataSource>(
       () => _i366.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
     );
-    gh.factory<_i1021.CartRemoteDataSource>(
-      () => _i1021.CartRemoteDataSourceImpl(gh<_i424.ApiClient>()),
-    );
     gh.factory<_i84.BestSellerRepo>(
       () => _i601.BestSellerRepoImpl(gh<_i481.BestSellerRemoteDataSource>()),
     );
@@ -143,9 +123,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i530.ProductsDetailsRemoteDataScource>(
       () => _i890.ProductsDetailsRemoteDataScourceImp(gh<_i424.ApiClient>()),
-    );
-    gh.factory<_i329.CartRepository>(
-      () => _i817.CartRepositoryImpl(gh<_i1021.CartRemoteDataSource>()),
     );
     gh.factory<_i235.HomeDataSource>(
       () => _i235.CategoryDataSourceImp(gh<_i424.ApiClient>()),
@@ -172,29 +149,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i238.OccasionRepository>(
       () => _i141.OccasionRepositoryImpl(gh<_i1007.OccasionRemoteDataSource>()),
     );
-    gh.factory<_i18.AddToCartUseCase>(
-      () => _i18.AddToCartUseCase(gh<_i329.CartRepository>()),
-    );
-    gh.factory<_i582.GetUserCartUseCase>(
-      () => _i582.GetUserCartUseCase(gh<_i329.CartRepository>()),
-    );
-    gh.factory<_i893.DeleteUseCase>(
-      () => _i893.DeleteUseCase(gh<_i329.CartRepository>()),
-    );
-    gh.factory<_i362.UpdateCartQuantityUseCase>(
-      () => _i362.UpdateCartQuantityUseCase(gh<_i329.CartRepository>()),
-    );
-    gh.factory<_i742.AddToCartCubit>(
-      () => _i742.AddToCartCubit(gh<_i18.AddToCartUseCase>()),
-    );
     gh.factory<_i971.HomeRepo>(
       () => _i637.HomeRepositoryImpl(
         gh<_i235.HomeDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
-    );
-    gh.factory<_i188.GetUserCartCubit>(
-      () => _i188.GetUserCartCubit(gh<_i582.GetUserCartUseCase>()),
     );
     gh.factory<_i546.AuthUseCase>(
       () => _i546.AuthUseCase(gh<_i267.AuthRepository>()),
@@ -226,17 +185,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i803.SignInViewModel>(
       () => _i803.SignInViewModel(gh<_i28.SignInUseCase>()),
     );
-    gh.factory<_i567.DeleteSpecificItemCubit>(
-      () => _i567.DeleteSpecificItemCubit(gh<_i893.DeleteUseCase>()),
-    );
     gh.factory<_i851.CategoryCubit>(
       () => _i851.CategoryCubit(gh<_i770.HomeUseCase>()),
     );
     gh.factory<_i137.OccasionCubit>(
       () => _i137.OccasionCubit(gh<_i770.HomeUseCase>()),
-    );
-    gh.factory<_i275.UpdateQuantityCubit>(
-      () => _i275.UpdateQuantityCubit(gh<_i362.UpdateCartQuantityUseCase>()),
     );
     gh.factory<_i287.CategoriesViewModel>(
       () => _i287.CategoriesViewModel(gh<_i402.CategoriesUseCase>()),

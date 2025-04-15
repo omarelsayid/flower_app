@@ -41,40 +41,48 @@ class MockCategoriesRepository extends _i1.Mock
   @override
   _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>> getAllCategories() =>
       (super.noSuchMethod(
-            Invocation.method(#getAllCategories, []),
-            returnValue:
-                _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>.value(
-                  _i6.dummyValue<_i4.Result<_i5.CategoriesResponseEntity>>(
-                    this,
-                    Invocation.method(#getAllCategories, []),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>);
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i5.CategoriesResponseEntity>>(
+          this,
+          Invocation.method(
+            #getAllCategories,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>);
 
   @override
-  _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>
-  getSpecificCategory(String? categoryId) =>
+  _i3.Future<
+      _i4.Result<_i7.SpecificCategoriesResponseEntity>> getSpecificCategory(
+          String? categoryId) =>
       (super.noSuchMethod(
-            Invocation.method(#getSpecificCategory, [categoryId]),
-            returnValue: _i3.Future<
-              _i4.Result<_i7.SpecificCategoriesResponseEntity>
-            >.value(
-              _i6.dummyValue<_i4.Result<_i7.SpecificCategoriesResponseEntity>>(
-                this,
-                Invocation.method(#getSpecificCategory, [categoryId]),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>);
+        Invocation.method(
+          #getSpecificCategory,
+          [categoryId],
+        ),
+        returnValue: _i3
+            .Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i7.SpecificCategoriesResponseEntity>>(
+          this,
+          Invocation.method(
+            #getSpecificCategory,
+            [categoryId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>);
 
   @override
   _i3.Future<List<_i7.ProductsEntity>> search(String? query) =>
       (super.noSuchMethod(
-            Invocation.method(#search, [query]),
-            returnValue: _i3.Future<List<_i7.ProductsEntity>>.value(
-              <_i7.ProductsEntity>[],
-            ),
-          )
-          as _i3.Future<List<_i7.ProductsEntity>>);
+        Invocation.method(
+          #search,
+          [query],
+        ),
+        returnValue:
+            _i3.Future<List<_i7.ProductsEntity>>.value(<_i7.ProductsEntity>[]),
+      ) as _i3.Future<List<_i7.ProductsEntity>>);
 }

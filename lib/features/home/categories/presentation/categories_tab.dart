@@ -6,7 +6,7 @@ import 'package:flower_app/features/home/categories/presentation/manager/categor
 import 'package:flower_app/features/home/categories/presentation/widget/custom_search_categories.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/widgets/custom_diaolg.dart';
-import 'package:flower_app/di/injectable_initializer.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -33,14 +33,12 @@ class CategoriesTab extends StatelessWidget {
   ],
   child: BlocConsumer<CategoriesViewModel, CategoriesState>(
         listener: (context, state) {
-          if (state is CategoriesErrorState ||
-              state is SpecificCategoriesErrorState) {
+          if (state is CategoriesErrorState || state is SpecificCategoriesErrorState) {
             DialogUtils.showMessage(
               context: context,
-              message:
-                  (state is CategoriesErrorState)
-                      ? state.errMessage
-                      : (state as SpecificCategoriesErrorState).errMessage,
+              message: (state is CategoriesErrorState)
+                  ? state.errMessage
+                  : (state as SpecificCategoriesErrorState).errMessage,
               title: "Error",
               negativeActionName: "Cancel",
             );
@@ -62,13 +60,14 @@ class CategoriesTab extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: height * 0.015),
-
+                // Show tabs if categories are loaded and available.
                 if (state is CategoriesLoadingState)
                   const Center(child: CircularProgressIndicator())
                 else if (viewModel.categories.isNotEmpty)
                   DefaultTabController(
                     length: viewModel.categories.length,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TabBar(
@@ -82,38 +81,31 @@ class CategoriesTab extends StatelessWidget {
                           labelColor: AppColors.primaryColor,
                           unselectedLabelColor: AppColors.greyColor,
                           indicatorColor: AppColors.primaryColor,
-                          tabs:
-                              viewModel.categories
-                                  .map((category) => Tab(text: category.name))
-                                  .toList(),
+                          tabs: viewModel.categories
+                              .map((category) => Tab(text: category.name))
+                              .toList(),
                         ),
                       ],
                     ),
                   ),
-
                 SizedBox(height: height * 0.02),
-
-                if (state is LoadingSearchState ||
-                    state is SpecificCategoriesLoadingState)
+                // Show product lists or empty states.
+                if (state is LoadingSearchState || state is SpecificCategoriesLoadingState)
                   Skeletonizer(
                     enabled: true,
                     containersColor: AppColors.whiteColor,
-                    child: _buildProductsList([], 5),
+                    child: _buildProductsList(viewModel.products, 5),
                   )
-                else if (state is SuccessfulSearchState &&
-                    viewModel.isSearching)
+                else if (state is SuccessfulSearchState && viewModel.isSearching)
                   state.products.isNotEmpty
-                      ? _buildProductsList(
-                        state.products,
-                        state.products.length,
-                      )
-                      : const Center(child: Text("No products found"))
+                      ? _buildProductsList(state.products, state.products.length)
+                      : _buildEmptyState("No products found")
                 else if (state is SpecificCategoriesSuccessState &&
-                    state.products.isNotEmpty &&
-                    !viewModel.isSearching)
-                  _buildProductsList(state.products, state.products.length)
-                else
-                  const Center(child: Text("No products found")),
+                      state.products.isNotEmpty &&
+                      !viewModel.isSearching)
+                    _buildProductsList(state.products, state.products.length)
+                  else
+                    _buildEmptyState("No products found"),
               ],
             ),
           );
@@ -122,9 +114,10 @@ class CategoriesTab extends StatelessWidget {
 );
   }
 
+  /// Builds the product list grid.
   Widget _buildProductsList(List products, int length) {
     if (products.isEmpty || length == 0) {
-      return const Center(child: Text("No products available"));
+      return _buildEmptyState("No products available");
     }
 
     return GridView.builder(
@@ -142,7 +135,6 @@ class CategoriesTab extends StatelessWidget {
         if (index >= products.length) {
           return const SizedBox();
         }
-
         final product = products[index];
         return InkWell(
           onTap: () {
@@ -182,6 +174,22 @@ class CategoriesTab extends StatelessWidget {
 ),
         );
       },
+    );
+  }
+
+  /// A helper widget to show empty state messages.
+  Widget _buildEmptyState(String message) {
+    return Center(
+      child: Text(
+        message,
+        style: const TextStyle(
+          fontSize: 18,
+          color: AppColors.blackColor,
+          // fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.normal,
+          decoration: TextDecoration.none,
+        ),
+      ),
     );
   }
 }

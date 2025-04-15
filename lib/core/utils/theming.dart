@@ -1,14 +1,15 @@
+import 'package:flutter/material.dart';
 import 'package:flower_app/core/services/screen_size_service.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
-import 'package:flutter/material.dart';
 
-ThemeData theme(BuildContext context) {
-  final double screenWidth = MediaQuery.of(context).size.width;
-  final double screenHeight = MediaQuery.of(context).size.height;
+ThemeData theme() {
+  final screenWidth = ScreenSizeService.width;
+  final screenHeight = ScreenSizeService.height;
+
   return ThemeData(
-    appBarTheme: AppBarTheme(
-      backgroundColor: Colors.white
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.white,
     ),
     scaffoldBackgroundColor: Colors.white,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -16,8 +17,8 @@ ThemeData theme(BuildContext context) {
       elevation: 0,
       type: BottomNavigationBarType.fixed,
       selectedItemColor: AppColors.primaryColor,
-     unselectedLabelStyle: AppTextStyles.inter400_12,
-      selectedLabelStyle: AppTextStyles.inter400_12
+      unselectedLabelStyle: AppTextStyles.inter400_12,
+      selectedLabelStyle: AppTextStyles.inter400_12,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -31,26 +32,24 @@ ThemeData theme(BuildContext context) {
         ),
       ),
     ),
-
     inputDecorationTheme: InputDecorationTheme(
       floatingLabelBehavior: FloatingLabelBehavior.always,
-      hintStyle: AppTextStyles.roboto400_14.copyWith(color: Color(0xffA6A6A6)),
-      labelStyle: AppTextStyles.roboto400_12.copyWith(color: Color(0xff535353)),
-      contentPadding: EdgeInsets.fromLTRB(
+      hintStyle: AppTextStyles.roboto400_14.copyWith(color: const Color(0xffA6A6A6)),
+      labelStyle: AppTextStyles.roboto400_12.copyWith(color: const Color(0xff535353)),
+      contentPadding: EdgeInsetsDirectional.fromSTEB(
         (16 / ScreenSizeService.baseWidth) * screenWidth,
         (4 / ScreenSizeService.baseHeight) * screenHeight,
         0,
         (4 / ScreenSizeService.baseHeight) * screenHeight,
       ),
-      focusedBorder: textFiledInputBorderFocus(),
-      enabledBorder: textFiledInputBorder(),
-      border: textFiledInputBorder(),
+      focusedBorder: textFieldInputBorderFocus(),
+      enabledBorder: textFieldInputBorder(),
+      border: textFieldInputBorder(),
       filled: true,
       fillColor: Colors.transparent,
       errorMaxLines: 2,
       errorStyle: AppTextStyles.roboto400_12.copyWith(color: Colors.red),
     ),
-
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: AppColors.primaryColor,
@@ -67,9 +66,8 @@ ThemeData theme(BuildContext context) {
   );
 }
 
-OutlineInputBorder textFiledInputBorder() {
+OutlineInputBorder textFieldInputBorder() {
   final screenWidth = ScreenSizeService.width;
-
   double responsiveRadius = (4 / 375.0) * screenWidth;
   double responsiveBorderWidth = (1 / 375.0) * screenWidth;
 
@@ -82,9 +80,8 @@ OutlineInputBorder textFiledInputBorder() {
   );
 }
 
-OutlineInputBorder textFiledInputBorderFocus() {
+OutlineInputBorder textFieldInputBorderFocus() {
   final screenWidth = ScreenSizeService.width;
-
   double responsiveRadius = (4 / 375.0) * screenWidth;
   double responsiveBorderWidth = (1 / 375.0) * screenWidth;
 
@@ -96,5 +93,3 @@ OutlineInputBorder textFiledInputBorderFocus() {
     borderSide: BorderSide(color: Colors.black, width: responsiveBorderWidth),
   );
 }
-
-

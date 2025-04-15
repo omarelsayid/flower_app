@@ -1,4 +1,3 @@
-import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -10,11 +9,9 @@ import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../di/injectable_initializer.dart';
 import '../../features/auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
-import '../../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import '../widgets/test_screen.dart';
 
 class RoutesGenerator {
@@ -62,15 +59,13 @@ class RoutesGenerator {
 
       case PagesRoutes.productDetails:
         return MaterialPageRoute(
-          builder:
-              (context) => ProductsDetailsView(),
+          builder: (context) => ProductsDetailsView(),
           settings: settings,
         );
 
       case PagesRoutes.categoriesScreen:
         return MaterialPageRoute(
-          builder:
-              (context) => CategoriesTab(),
+          builder: (context) => CategoriesTab(),
           settings: settings,
         );
 
@@ -93,6 +88,20 @@ class RoutesGenerator {
         );
         return MaterialPageRoute(
           builder: (_) => ResetPassword(),
+          settings: settings,
+        );
+      case PagesRoutes.changePasswordScreen:
+        return MaterialPageRoute(
+          builder: (_) =>
+              BlocProvider(
+                create: (context) => getIt.get<ChangePasswordViewModel>(),
+                child: ChangePasswordScreen(),
+              ),
+          settings: settings,
+        );
+      case PagesRoutes.editProfileScreen:
+        return MaterialPageRoute(
+          builder: (context) => EditProfileView(),
           settings: settings,
         );
       default:

@@ -1,7 +1,7 @@
 abstract class PagesRoutes {
   // static const String splashScreen = "/";
   static const String signUpScreen = "signup";
-  static const String signInScreen = "signin";
+  static const String signInScreen = "/";
   static const String layOutScreen = "layOut";
   static const String emailVerification = "email_verification";
   static const String forgetPassword = "forget_password";
@@ -11,4 +11,6 @@ abstract class PagesRoutes {
   static const String occasionScreen = "occasion_screen";
   static const String productDetails = "product_details";
   static const String categoriesScreen = "categories_screen";
+  static const String editProfileScreen = "edit_profile_screen";
+  static const String changePasswordScreen = "change_password_screen";
 }

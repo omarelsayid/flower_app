@@ -2,6 +2,7 @@ const String imagePath="assets/images";
 const String iconPath="assets/icons";
 
 abstract class ImageAssets{
+  static const String profileImage="$imagePath/profile_example.jpg";
 }
 abstract class IconAssets{
   static const String homeIcon="$iconPath/homeIcon.png";
@@ -13,10 +14,10 @@ abstract class IconAssets{
   static const String filterIcon="$iconPath/filterIcon.png";
   static const String deleteIcon = "$imagePath/deleteIcon.png";
 
+  static const String notificationIcon="$iconPath/notification_icon.png";
+  static const String editIcon="$iconPath/edit_icon.png";
+
 }
 abstract class SvgImages{
-
   static const String logo="$imagePath/Logo.svg";
-
-
 }
