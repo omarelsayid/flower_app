@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flower_app/features/auth/data/model/forget_response_password_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/reset_password_response_entity.dart';
 import 'package:flower_app/features/auth/domain/entity/verify_email_response_entity.dart';
-import 'package:flower_app/core/api/api_execute.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:retrofit/dio.dart';

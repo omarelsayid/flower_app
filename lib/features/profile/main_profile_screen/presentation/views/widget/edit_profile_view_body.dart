@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/di/injectable_initializer.dart';
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/constans.dart';
@@ -17,7 +18,10 @@ import 'package:flower_app/features/profile/main_profile_screen/presentation/vie
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+
+import '../../cubit/profile_view_model.dart';
 
 enum Gender { male, female }
 
@@ -236,18 +240,17 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               SizedBox(height: resposiveHeight(32)),
               BlocConsumer<EditProfileViewModel, EditProfileState>(
                 bloc: widget.editProfileViewModel,
-                listener: (context, state) {
+                listener: (context, state) async{
                   switch (state) {
                     case EditProfileLoadingState():
                       log('loading');
-                      EasyLoading.show();
                     case EditProfileSuccessState():
                       log('success');
-                      EasyLoading.dismiss();
                       EasyLoading.showSuccess("Profile Edit successfully");
+                      Navigator.pop(context);
+
                     case EditProfileErrorState():
                       log('error');
-                      EasyLoading.dismiss();
                       EasyLoading.showError(state.message);
                     default:
                   }
