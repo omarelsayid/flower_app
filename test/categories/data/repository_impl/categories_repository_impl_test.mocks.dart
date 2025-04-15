@@ -41,30 +41,37 @@ class MockCategoriesRemoteDataSource extends _i1.Mock
   @override
   _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>> getAllCategories() =>
       (super.noSuchMethod(
-            Invocation.method(#getAllCategories, []),
-            returnValue:
-                _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>.value(
-                  _i6.dummyValue<_i4.Result<_i5.CategoriesResponseEntity>>(
-                    this,
-                    Invocation.method(#getAllCategories, []),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>);
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i5.CategoriesResponseEntity>>(
+          this,
+          Invocation.method(
+            #getAllCategories,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i5.CategoriesResponseEntity>>);
 
   @override
-  _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>
-  getSpecificCategory(String? categoryId) =>
+  _i3.Future<
+      _i4.Result<_i7.SpecificCategoriesResponseEntity>> getSpecificCategory(
+          String? categoryId) =>
       (super.noSuchMethod(
-            Invocation.method(#getSpecificCategory, [categoryId]),
-            returnValue: _i3.Future<
-              _i4.Result<_i7.SpecificCategoriesResponseEntity>
-            >.value(
-              _i6.dummyValue<_i4.Result<_i7.SpecificCategoriesResponseEntity>>(
-                this,
-                Invocation.method(#getSpecificCategory, [categoryId]),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>);
+        Invocation.method(
+          #getSpecificCategory,
+          [categoryId],
+        ),
+        returnValue: _i3
+            .Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i7.SpecificCategoriesResponseEntity>>(
+          this,
+          Invocation.method(
+            #getSpecificCategory,
+            [categoryId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>);
 }

@@ -4,8 +4,11 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
+import 'dart:io' as _i8;
 
 import 'package:flower_app/core/common/result.dart' as _i4;
+import 'package:flower_app/features/profile/main_profile_screen/domain/entity/edit_profile_response_entity.dart'
+    as _i7;
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart'
     as _i5;
 import 'package:flower_app/features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
@@ -38,27 +41,69 @@ class MockProfileRepository extends _i1.Mock implements _i2.ProfileRepository {
   @override
   _i3.Future<_i4.Result<_i5.ProfileResponseEntity>> getProfileData() =>
       (super.noSuchMethod(
-            Invocation.method(#getProfileData, []),
-            returnValue:
-                _i3.Future<_i4.Result<_i5.ProfileResponseEntity>>.value(
-                  _i6.dummyValue<_i4.Result<_i5.ProfileResponseEntity>>(
-                    this,
-                    Invocation.method(#getProfileData, []),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.Result<_i5.ProfileResponseEntity>>);
+        Invocation.method(
+          #getProfileData,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i5.ProfileResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i5.ProfileResponseEntity>>(
+          this,
+          Invocation.method(
+            #getProfileData,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i5.ProfileResponseEntity>>);
 
   @override
-  _i3.Future<_i4.Result<void>> logout() =>
+  _i3.Future<_i4.Result<_i7.EditProfileResponseEntity>> editProfile(
+          Map<String, dynamic>? data) =>
       (super.noSuchMethod(
-            Invocation.method(#logout, []),
-            returnValue: _i3.Future<_i4.Result<void>>.value(
-              _i6.dummyValue<_i4.Result<void>>(
-                this,
-                Invocation.method(#logout, []),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.Result<void>>);
+        Invocation.method(
+          #editProfile,
+          [data],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<_i7.EditProfileResponseEntity>>.value(
+                _i6.dummyValue<_i4.Result<_i7.EditProfileResponseEntity>>(
+          this,
+          Invocation.method(
+            #editProfile,
+            [data],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.EditProfileResponseEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<String?>> uploadPhoto(_i8.File? photo) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #uploadPhoto,
+          [photo],
+        ),
+        returnValue: _i3.Future<_i4.Result<String?>>.value(
+            _i6.dummyValue<_i4.Result<String?>>(
+          this,
+          Invocation.method(
+            #uploadPhoto,
+            [photo],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<String?>>);
+
+  @override
+  _i3.Future<_i4.Result<void>> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue:
+            _i3.Future<_i4.Result<void>>.value(_i6.dummyValue<_i4.Result<void>>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<void>>);
 }

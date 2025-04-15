@@ -1,17 +1,16 @@
-
 import 'package:dio/dio.dart';
+
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
 import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
-import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../features/home/home_tab/data/model/category_response_dto.dart';
-
 
 import '../../features/home/categories/data/model/categories_response_model.dart';
 import '../../features/home/categories/data/model/specific_categories_response_model.dart';
@@ -28,7 +27,6 @@ abstract class ApiClient {
   // @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
-
   @GET("/api/v1/auth/profile-data")
   Future<ProfileResponseDTO> getProfileData();
 
@@ -42,13 +40,13 @@ abstract class ApiClient {
     @Body() Map<String, dynamic> data,
   );
 
-
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
 
-
   @PUT("/api/v1/auth/resetPassword")
-  Future<ResetPasswordResponseDTO> resetPassword(@Body() Map<String, dynamic> data);
+  Future<ResetPasswordResponseDTO> resetPassword(
+    @Body() Map<String, dynamic> data,
+  );
 
   @GET("/api/v1/best-seller")
   Future<HttpResponse<BestSellerProductsModel>> getBestSeller();
@@ -59,14 +57,14 @@ abstract class ApiClient {
   @GET("/api/v1/occasions")
   Future<OccasionResponseDTO> getOccasion();
 
-
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();
   // @GET('/api/v1/occasions/{id}')
   // Future<SpecificOccasionsResponseDTO> getSpecificOccasion(@Path("id") String occasionId);
   @GET('/api/v1/products')
-  Future<ProductsResponseDTO> getProductsByOccasion(@Query("occasion") String occasionId);
-
+  Future<ProductsResponseDTO> getProductsByOccasion(
+    @Query("occasion") String occasionId,
+  );
 
   @GET("/api/v1/products/{id}")
   Future<HttpResponse<ProductsDetailsModels>> getProductDetails(
@@ -77,14 +75,25 @@ abstract class ApiClient {
 
   @GET("/api/v1/products")
   Future<SpecificCategoriesResponseModel> getSpecificCategory(
-      @Query("category") String categoryId,
-      );
+    @Query("category") String categoryId,
+  );
 
   @GET("/api/v1/auth/logout")
   Future<HttpResponse<void>> logout();
 
 
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
+
+  @PUT("/api/v1/auth/editProfile")
+  Future<HttpResponse<EditProfileResponseDTO>> editProfile(
+    // @Body() EditProfileRequest data,
+    @Body() Map<String, dynamic> data,
+  );
+
+  @PUT("/api/v1/auth/upload-photo")
+  @MultiPart()
+  Future<String?> uploadPhoto(
+    @Header("Authorization") String token,
+    @Body() FormData formData,
+  );
 }
-
-
