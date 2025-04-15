@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flower_app/core/api/api_execute.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart';
-import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_request.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/edit_profile_response_entity.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
@@ -26,7 +25,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
 
   @override
   Future<Result<EditProfileResponseEntity>> editProfile(
-      Map<String,dynamic> data,
+    Map<String, dynamic> data,
   ) async {
     return await executeApi(() async {
       EditProfileResponseDTO response = await _profileRemoteDataSource
@@ -36,11 +35,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
   }
 
   @override
-  Future<Result<dynamic>> uploadPhoto(File photo, String description)async {
-    return await executeApi(() async {
-      dynamic response = await _profileRemoteDataSource
-          .uploadPhoto(photo, description);
-      return response;
-    });
+  Future<Result<String?>> uploadPhoto(File photo) {
+    return _profileRemoteDataSource.uploadPhoto(photo);
   }
 }

@@ -29,14 +29,24 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeOccasionsResponseDTO_0 extends _i1.SmartFake
     implements _i2.OccasionsResponseDTO {
-  _FakeOccasionsResponseDTO_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeOccasionsResponseDTO_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 class _FakeProductsResponseDTO_1 extends _i1.SmartFake
     implements _i3.ProductsResponseDTO {
-  _FakeProductsResponseDTO_1(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeProductsResponseDTO_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [OccasionRemoteDataSource].
@@ -49,28 +59,35 @@ class MockOccasionRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i5.Future<_i2.OccasionsResponseDTO> getOccasion() =>
-      (super.noSuchMethod(
-            Invocation.method(#getOccasion, []),
-            returnValue: _i5.Future<_i2.OccasionsResponseDTO>.value(
-              _FakeOccasionsResponseDTO_0(
-                this,
-                Invocation.method(#getOccasion, []),
-              ),
-            ),
-          )
-          as _i5.Future<_i2.OccasionsResponseDTO>);
+  _i5.Future<_i2.OccasionsResponseDTO> getOccasion() => (super.noSuchMethod(
+        Invocation.method(
+          #getOccasion,
+          [],
+        ),
+        returnValue: _i5.Future<_i2.OccasionsResponseDTO>.value(
+            _FakeOccasionsResponseDTO_0(
+          this,
+          Invocation.method(
+            #getOccasion,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i2.OccasionsResponseDTO>);
 
   @override
   _i5.Future<_i3.ProductsResponseDTO> getOccasionDetails(String? occasionId) =>
       (super.noSuchMethod(
-            Invocation.method(#getOccasionDetails, [occasionId]),
-            returnValue: _i5.Future<_i3.ProductsResponseDTO>.value(
-              _FakeProductsResponseDTO_1(
-                this,
-                Invocation.method(#getOccasionDetails, [occasionId]),
-              ),
-            ),
-          )
-          as _i5.Future<_i3.ProductsResponseDTO>);
+        Invocation.method(
+          #getOccasionDetails,
+          [occasionId],
+        ),
+        returnValue: _i5.Future<_i3.ProductsResponseDTO>.value(
+            _FakeProductsResponseDTO_1(
+          this,
+          Invocation.method(
+            #getOccasionDetails,
+            [occasionId],
+          ),
+        )),
+      ) as _i5.Future<_i3.ProductsResponseDTO>);
 }

@@ -1,20 +1,24 @@
 import 'dart:developer';
-
-import 'package:flower_app/core/services/shared_preference_services.dart';
+import 'dart:io';
+import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/constans.dart';
-import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/core/utils/extensions.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/core/widgets/custom_validate.dart';
-import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_request.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/edit_profile_cubit/edit_profile_state.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/edit_profile_cubit/edit_profile_view_model.dart';
-import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/profile_app_bar_widget.dart';
+import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_state.dart';
+import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_view_model.dart';
+import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/pick_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:image_picker/image_picker.dart';
+
+import '../../../../../../di/injectable_initializer.dart';
 
 enum Gender { male, female }
 
@@ -22,9 +26,11 @@ class EditProfileViewBody extends StatefulWidget {
   const EditProfileViewBody({
     super.key,
     required this.editProfileViewModel,
+    required this.uploadPhotoViewModel,
     required this.userData,
   });
   final EditProfileViewModel editProfileViewModel;
+  final UploadPhotoViewModel uploadPhotoViewModel;
   final UserEntity userData;
 
   @override
@@ -50,6 +56,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   AutovalidateMode validateMode = AutovalidateMode.always;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String? selectedGender;
+  File? imageFile;
+  ProfileRemoteDataSource profileRemoteDataSourceImpl =
+      getIt<ProfileRemoteDataSource>();
   @override
   void initState() {
     selectedGender = widget.userData.gender!;
@@ -76,10 +85,40 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
           autovalidateMode: validateMode,
           child: Column(
             children: [
-              SizedBox(height: 24),
-              ProfileAppBarWidget(),
-              SizedBox(height: 24),
-              SizedBox(height: 24),
+              SizedBox(height: resposiveHeight(24)),
+              BlocListener<UploadPhotoViewModel, UploadPhotoState>(
+                bloc: widget.uploadPhotoViewModel,
+                listener: (context, state) {
+                  switch (state) {
+                    case UploadPhotoLoadingState():
+                      log('loading');
+                      EasyLoading.show();
+                    case UploadPhotoSuccessState():
+                      log('success');
+                      EasyLoading.dismiss();
+                      EasyLoading.showSuccess("Upload photo successfully");
+                    case UploadPhotoErrorState():
+                      log('error');
+                      EasyLoading.dismiss();
+                      EasyLoading.showError(state.message);
+                    default:
+                  }
+                },
+                child: PickImageWidget(
+                  isImageUploaded: widget.userData.photo != null ? true : false,
+                  imagePath: widget.userData.photo,
+                  imageFile: imageFile,
+                  onPressed: () async {
+                    imageFile = await pickImage();
+                    setState(() {});
+                    if (imageFile != null) {
+                      widget.uploadPhotoViewModel.uploadPhoto(imageFile!);
+                    }
+                  },
+                ),
+              ),
+
+              SizedBox(height: resposiveHeight(24)),
               Row(
                 children: [
                   Expanded(
@@ -98,7 +137,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       },
                     ),
                   ),
-                  SizedBox(width: 17),
+                  SizedBox(width: resposiveWidth(16)),
                   Expanded(
                     child: TextFormField(
                       autovalidateMode: validateMode,
@@ -117,7 +156,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                   ),
                 ],
               ),
-              SizedBox(height: 24),
+              SizedBox(height: resposiveHeight(24)),
               TextFormField(
                 autovalidateMode: validateMode,
                 controller: _emailController,
@@ -135,8 +174,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                   checkValidateForTextField();
                 },
               ),
-
-              SizedBox(height: 24),
+              SizedBox(height: resposiveHeight(24)),
               TextFormField(
                 autovalidateMode: validateMode,
                 controller: _phoneController,
@@ -146,7 +184,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                   checkValidateForTextField();
                 },
               ),
-              SizedBox(height: 24),
+              SizedBox(height: resposiveHeight(24)),
               TextFormField(
                 controller: _passwordController,
                 obscuringCharacter: '★',
@@ -167,7 +205,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                   labelText: 'Password',
                 ),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: resposiveHeight(24)),
               Row(
                 children: [
                   Text("Gender", style: AppTextStyles.inter500_18),
@@ -177,9 +215,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     activeColor: AppColors.primaryColor,
                     groupValue: selectedGender,
                     onChanged: (value) {
-                      setState(() {
-                        selectedGender = value;
-                      });
+                      // setState(() {
+                      //   selectedGender = value;
+                      // });
                     },
                   ),
                   Text("Female", style: AppTextStyles.inter400_14),
@@ -188,15 +226,15 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     activeColor: AppColors.primaryColor,
                     groupValue: selectedGender,
                     onChanged: (value) {
-                      setState(() {
-                        selectedGender = value;
-                      });
+                      // setState(() {
+                      //   selectedGender = value;
+                      // });
                     },
                   ),
                   Text("Male", style: AppTextStyles.inter400_14),
                 ],
               ),
-              SizedBox(height: 8),
+              SizedBox(height: resposiveHeight(32)),
               BlocConsumer<EditProfileViewModel, EditProfileState>(
                 bloc: widget.editProfileViewModel,
                 listener: (context, state) {
@@ -288,6 +326,18 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
       setState(() {
         validateMode = AutovalidateMode.always;
       });
+    }
+  }
+
+  static Future<File?> pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      final File imageFile = File(image.path);
+      log('pick');
+      return imageFile;
+    } else {
+      return null;
     }
   }
 }

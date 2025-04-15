@@ -11,9 +11,9 @@ class UploadPhotoViewModel extends Cubit<UploadPhotoState> {
   final UploadPhotoUseCase _uploadPhotoUseCase;
   UploadPhotoViewModel(this._uploadPhotoUseCase)
     : super(UploadPhotoInitialState());
-  void uploadPhoto(File photo, String description) async {
+  void uploadPhoto(File photo) async {
     emit(UploadPhotoLoadingState());
-    final result = await _uploadPhotoUseCase.execute(photo, description);
+    final result = await _uploadPhotoUseCase.execute(photo);
     switch (result) {
       case Success():
         emit(UploadPhotoSuccessState());

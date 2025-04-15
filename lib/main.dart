@@ -40,6 +40,7 @@ class MainApp extends StatelessWidget {
           token != null && (rememberMe ?? false)
               ? PagesRoutes.layOutScreen
               : PagesRoutes.signInScreen,
+      // home: TestUploadImage(),
       // initialRoute: PagesRoutes.bestSellerScreen,
       // initialRoute:
       //     token != null && (rememberMe ?? false)

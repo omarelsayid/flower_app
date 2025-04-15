@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/edit_profile_response_entity.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart';
@@ -11,7 +12,7 @@ class UploadPhotoUseCase {
 
   UploadPhotoUseCase(this._profileRepository);
 
-  Future<Result<dynamic>> execute(File photo, String description) async {
-    return await _profileRepository.uploadPhoto(photo, description);
+  Future<Result<String?>> execute(File photo) async {
+    return await _profileRepository.uploadPhoto(photo);
   }
 }

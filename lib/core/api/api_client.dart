@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
+
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
@@ -20,7 +19,6 @@ import '../../features/auth/data/model/forget_response_password_dto.dart';
 import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';
 import '../../features/auth/domain/entity/sign_up_request.dart';
-import '../../features/profile/main_profile_screen/data/model/edit_profile_request.dart';
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
@@ -89,8 +87,9 @@ abstract class ApiClient {
   );
 
   @PUT("/api/v1/auth/upload-photo")
-  Future<HttpResponse> uploadPhoto(
-    @Part(name: "photo") File file,
-    @Part(name: "Description") String description,
+  @MultiPart()
+  Future<String?> uploadPhoto(
+    @Header("Authorization") String token,
+    @Body() FormData formData,
   );
 }

@@ -19,6 +19,10 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
     }
   } catch (ex) {
     if (ex is DioException) {
+      print(ex.response?.statusCode.toString());
+      print(ex.response?.data.toString());
+      log(ex.message.toString());
+      log(ex.error.toString());
       log('error 1');
       log(ServerFailure.fromDioException(ex).errorMessage);
       return Error(ServerFailure.fromDioException(ex).errorMessage);
