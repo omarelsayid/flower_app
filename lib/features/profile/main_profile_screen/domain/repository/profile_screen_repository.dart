@@ -4,4 +4,7 @@ import '../../../../../core/common/result.dart';
 abstract class ProfileRepository {
   Future<Result<ProfileResponseEntity>> getProfileData();
   Future<Result<void>> logout();
+
+  Future<String?> getToken();
+  Future<void> deleteToken();
 }

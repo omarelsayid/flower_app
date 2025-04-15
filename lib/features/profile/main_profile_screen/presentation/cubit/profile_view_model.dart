@@ -1,21 +1,23 @@
 import 'dart:developer';
 
-import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
-import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/profile_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/common/result.dart';
-import '../../../../../core/services/shared_preference_services.dart';
-import '../../../../../core/utils/constant_manager.dart';
 import '../../domain/use_case/profile_screen_use_case.dart';
-
+import '../../domain/entity/profile_response_entity.dart';
+import '../cubit/profile_state.dart';
+import '../../data/data_source/profile_local_data_source.dart';
 
 @injectable
 class ProfileViewModel extends Cubit<ProfileState> {
-  ProfileViewModel(this._profileUseCase) : super(LoadingProfileState());
+  ProfileViewModel(
+      this._profileUseCase,
+      this._localDataSource,
+      ) : super(LoadingProfileState());
 
   final ProfileUseCase _profileUseCase;
+  final ProfileLocalDataSource _localDataSource;
 
   void doIntent(ProfileIntent profileIntent) {
     switch (profileIntent) {
@@ -32,10 +34,9 @@ class ProfileViewModel extends Cubit<ProfileState> {
   Future<void> _getProfile() async {
     emit(LoadingProfileState());
 
-    final tokenRaw = await SharedPreferenceServices.getData(AppConstants.token);
-    final token = tokenRaw is String ? tokenRaw : null;// instead of use as String direct
+    final token = await _localDataSource.getToken();
 
-    //as guest
+    // Guest Mode
     if (token == null || token.isEmpty) {
       final guestUser = UserEntity(
         firstName: 'Guest User',
@@ -47,7 +48,7 @@ class ProfileViewModel extends Cubit<ProfileState> {
       return;
     }
 
-    // as user
+    // Logged-in user
     final result = await _profileUseCase.execute();
 
     switch (result) {
@@ -57,12 +58,12 @@ class ProfileViewModel extends Cubit<ProfileState> {
           emit(SuccessProfileState(profile.user));
           log("Fetched successfully: ${profile.user?.firstName}");
         } else {
-          emit(ErrorProfileState(profile!.message.toString()));
+          emit(ErrorProfileState("No user data found"));
         }
         break;
 
       case Error():
-        emit(ErrorProfileState(result.exception.toString()));
+        emit(ErrorProfileState("Profile API Error: ${result.exception}"));
         log("Profile API Error: ${result.exception}");
         break;
     }
@@ -75,22 +76,21 @@ class ProfileViewModel extends Cubit<ProfileState> {
 
     switch (result) {
       case Success():
-        await SharedPreferenceServices.deleteData(AppConstants.token);
+        await _localDataSource.deleteToken();
         emit(LogoutSuccessState());
         log("User logged out successfully");
         break;
 
       case Error():
-        emit(ErrorProfileState("Logout failed: ${result.exception.toString()}"));
+        emit(ErrorProfileState("Logout failed: ${result.exception}"));
         log("Logout error: ${result.exception}");
         break;
     }
   }
-
 }
 
 sealed class ProfileIntent {}
 
 class ProfileClickedIntent extends ProfileIntent {}
-class LogoutClickedIntent extends ProfileIntent {}
 
+class LogoutClickedIntent extends ProfileIntent {}

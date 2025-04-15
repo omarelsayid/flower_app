@@ -62,8 +62,6 @@ abstract class ApiClient {
 
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();
-  // @GET('/api/v1/occasions/{id}')
-  // Future<SpecificOccasionsResponseDTO> getSpecificOccasion(@Path("id") String occasionId);
   @GET('/api/v1/products')
   Future<ProductsResponseDTO> getProductsByOccasion(@Query("occasion") String occasionId);
 
@@ -83,8 +81,6 @@ abstract class ApiClient {
   @GET("/api/v1/auth/logout")
   Future<HttpResponse<void>> logout();
 
-
-  // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
 }
 
 

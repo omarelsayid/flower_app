@@ -9,6 +9,8 @@ import '../../../../../core/common/get_resposive_height_and_width.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
 import '../../../../../core/di/injectable_initializer.dart';
+import '../../data/data_source/profile_local_data_source.dart';
+import '../../domain/use_case/profile_screen_use_case.dart';
 import '../cubit/profile_state.dart';
 import '../cubit/profile_view_model.dart';
 import 'widget/profile_app_bar_widget.dart';
@@ -22,7 +24,10 @@ class ProfileTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-      ProfileViewModel(getIt())..doIntent(ProfileClickedIntent()),
+      ProfileViewModel(
+        getIt<ProfileUseCase>(),
+        getIt<ProfileLocalDataSource>(),
+      )..doIntent(ProfileClickedIntent()),
       child: SafeArea(
         child: BlocListener<ProfileViewModel, ProfileState>(
           listener: (context, state) {

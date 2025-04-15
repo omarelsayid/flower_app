@@ -14,6 +14,7 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i973;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../features/auth/data/data_source/auth_remote_data_source.dart'
     as _i182;
@@ -86,6 +87,8 @@ import '../../features/home/products_details/domain/repositories/get_product_det
     as _i798;
 import '../../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
     as _i8;
+import '../../features/profile/main_profile_screen/data/data_source/profile_local_data_source.dart'
+    as _i678;
 import '../../features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
     as _i428;
 import '../../features/profile/main_profile_screen/data/repository_imp/profile_screen_repository_imp.dart'
@@ -134,6 +137,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i330.BestSellerRepo>(
       () => _i174.BestSellerRepoImpl(gh<_i550.BestSellerRemoteDataSource>()),
     );
+    gh.factory<_i678.ProfileLocalDataSource>(
+      () => _i678.ProfileLocalDataSourceImpl(gh<_i460.SharedPreferences>()),
+    );
     gh.factory<_i480.BestSellerUseCase>(
       () => _i480.BestSellerUseCase(gh<_i330.BestSellerRepo>()),
     );
@@ -160,6 +166,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i428.ProfileRemoteDataSource>(
       () => _i428.ProfileRemoteDataSourceImpl(gh<_i277.ApiClient>()),
     );
+    gh.factory<_i152.ProfileRepository>(
+      () => _i62.ProfileRepositoryImpl(
+        gh<_i428.ProfileRemoteDataSource>(),
+        gh<_i678.ProfileLocalDataSource>(),
+      ),
+    );
     gh.factory<_i961.AuthRepository>(
       () => _i62.AuthRepositoryImpl(
         gh<_i182.AuthRemoteDataSource>(),
@@ -174,14 +186,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i920.OccasionRepository>(
       () => _i710.OccasionRepositoryImpl(gh<_i425.OccasionRemoteDataSource>()),
     );
+    gh.factory<_i929.ProfileUseCase>(
+      () => _i929.ProfileUseCase(gh<_i152.ProfileRepository>()),
+    );
     gh.factory<_i352.HomeRepo>(
       () => _i20.HomeRepositoryImpl(
         gh<_i246.HomeDataSource>(),
         gh<_i973.InternetConnectionChecker>(),
       ),
-    );
-    gh.factory<_i152.ProfileRepository>(
-      () => _i62.ProfileRepositoryImpl(gh<_i428.ProfileRemoteDataSource>()),
     );
     gh.factory<_i701.AuthUseCase>(
       () => _i701.AuthUseCase(gh<_i961.AuthRepository>()),
@@ -210,6 +222,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i306.SignUpViewModel>(
       () => _i306.SignUpViewModel(gh<_i701.AuthUseCase>()),
     );
+    gh.factory<_i513.ProfileViewModel>(
+      () => _i513.ProfileViewModel(
+        gh<_i929.ProfileUseCase>(),
+        gh<_i678.ProfileLocalDataSource>(),
+      ),
+    );
     gh.factory<_i347.SignInViewModel>(
       () => _i347.SignInViewModel(gh<_i489.SignInUseCase>()),
     );
@@ -227,12 +245,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i602.OccasionViewModel>(
       () => _i602.OccasionViewModel(gh<_i66.OccasionUseCase>()),
-    );
-    gh.factory<_i929.ProfileUseCase>(
-      () => _i929.ProfileUseCase(gh<_i152.ProfileRepository>()),
-    );
-    gh.factory<_i513.ProfileViewModel>(
-      () => _i513.ProfileViewModel(gh<_i929.ProfileUseCase>()),
     );
     return this;
   }
