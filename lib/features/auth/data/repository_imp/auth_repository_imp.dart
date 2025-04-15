@@ -23,12 +23,8 @@ import '../model/sign_up_response_dto.dart';
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _authRemoteDataSource;
-  final InternetConnectionChecker internetConnectionChecker;
 
-  AuthRepositoryImpl(
-    this._authRemoteDataSource,
-    this.internetConnectionChecker,
-  );
+  AuthRepositoryImpl(this._authRemoteDataSource);
 
   @override
   Future<Result<SignUpResponseEntity>> signUp(SignUpRequest data) async {
@@ -75,7 +71,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<SignUpResponseEntity>> signIn(SignInRequest data) async {
     try {
-      bool isConnected = await internetConnectionChecker.hasConnection;
+      bool isConnected = await InternetConnectionChecker.instance.hasConnection;
       if (isConnected) {
         final HttpResponse<SignUpResponseDTO> response =
             await _authRemoteDataSource.signIn(data);

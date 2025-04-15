@@ -1,16 +1,15 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flower_app/core/services/internet_connection_check.dart';
 import 'package:flower_app/core/utils/constant_manager.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 import '../common/result.dart';
 import '../error/failures.dart';
 
 Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
-    bool isConnected =
-        await DataModule.getInternetConnectionCheck().hasConnection;
+    bool isConnected = await InternetConnectionChecker.instance.hasConnection;
     if (isConnected) {
       var result = await apiCall.call();
       return Success(result);
