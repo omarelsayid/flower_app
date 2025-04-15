@@ -34,7 +34,9 @@ abstract class ApiClient {
 
 
   @GET("/api/v1/auth/profile-data")
-  Future<ProfileResponseDTO> getProfileData();
+  Future<ProfileResponseDTO> getProfileData(
+      @Header("Authorization") String token,
+      );
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -95,18 +97,19 @@ abstract class ApiClient {
 Future<ChangePasswordModel> changePassword(
       @Body() ChangePasswordRequestModel data,
       @Header("Authorization") String token,);
-}
-
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
-    // @Body() EditProfileRequest data,
-    @Body() Map<String, dynamic> data,
-  );
+      // @Body() EditProfileRequest data,
+      @Body() Map<String, dynamic> data,
+      );
 
   @PUT("/api/v1/auth/upload-photo")
   @MultiPart()
   Future<String?> uploadPhoto(
-    @Header("Authorization") String token,
-    @Body() FormData formData,
-  );
+      @Header("Authorization") String token,
+      @Body() FormData formData,
+      );
 }
+
+
+

@@ -6,7 +6,6 @@ import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/core/widgets/custom_validate.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_state.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -49,7 +48,7 @@ class ChangePasswordScreen extends StatelessWidget {
               EasyLoading.dismiss();
               EasyLoading.showSuccess("Password changed successfully");
               SharedPreferenceServices.deleteData(AppConstants.token);
-              Navigator.pushReplacementNamed(context, PagesRoutes.signInScreen);
+              Navigator.pushNamedAndRemoveUntil(context, PagesRoutes.signInScreen,(route) => false,);
             }
             if (state is ChangePasswordLoadingState) {
               EasyLoading.show();
