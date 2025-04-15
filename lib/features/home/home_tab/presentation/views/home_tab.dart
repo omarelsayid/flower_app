@@ -72,9 +72,11 @@ class HomeTab extends StatelessWidget {
                 child: Row(
                   children: [
                     Image.asset(IconAssets.LocationIcon),
-                    Text(
-                      " Deliver to 2XVP+XC - Sheikh Zayed",
-                      style: AppTextStyles.inter400_14,
+                    Flexible(
+                      child: Text(
+                        " Deliver to 2XVP+XC - Sheikh Zayed",
+                        style: AppTextStyles.inter400_14,
+                      ),
                     ),
                     IconButton(
                       onPressed: () async {

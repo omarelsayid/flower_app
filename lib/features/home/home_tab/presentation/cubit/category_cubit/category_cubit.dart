@@ -16,6 +16,8 @@ class CategoryCubit extends Cubit<CategoryState> {
 
 
   Future<void> fetchCategories()async{
+    if(isClosed)
+      return;
     emit(CategoryLoading());
 
     final result = await getCategoriesUseCase.executeCategory();
@@ -24,10 +26,14 @@ class CategoryCubit extends Cubit<CategoryState> {
       case Success():
         if(result.data != null)
           {
+            if(isClosed)
+              return;
             emit(CategoriesLoaded(result.data!));
           }
 
       case Error():
+        if(isClosed)
+          return;
         emit(CategoriesError(result.exception.toString()));
     }
   }

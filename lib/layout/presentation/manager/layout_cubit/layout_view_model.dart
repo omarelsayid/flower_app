@@ -1,14 +1,19 @@
 import 'package:flower_app/features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
-import 'package:flower_app/features/home/home_tab/presentation/views/home_tab.dart';
 import 'package:flower_app/layout/presentation/manager/layout_cubit/layout_state.dart';
+import 'package:flower_app/features/home/home_tab/presentation/views/home_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/di/injectable_initializer.dart';
-import '../../../../features/home/categories/presentation/categories_tab.dart';
+import '../../../../features/cart/presentation/cubit/delete_cubit/delete_specific_item_cubit/delete_specific_item_cubit.dart';
+import '../../../../features/cart/presentation/cubit/update_quantity_cubit/update_quantity_cubit.dart';
+import '../../../../features/cart/presentation/views/cart_tab.dart';
 import '../../../../features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart';
+import '../../../../features/home/occasions/presentation/views/occasion_screen.dart';
+import '../../../../features/home/categories/presentation/categories_tab.dart';
 import '../../../../features/profile/main_profile_screen/presentation/views/profile_tab.dart';
-import '../../tabs/cart_tab.dart';
+import '../../tabs/profile_tab.dart';
 
 
 class LayoutViewModel extends Cubit <LayoutState> {
@@ -21,7 +26,7 @@ class LayoutViewModel extends Cubit <LayoutState> {
     }
   }
 List<Widget>tabs=[
-   MultiBlocProvider(
+  MultiBlocProvider(
   providers: [
     BlocProvider(
   create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
@@ -35,9 +40,20 @@ List<Widget>tabs=[
   ],
   child: HomeTab(),
 ),
-
-  const CategoriesTab(),
-  const CartTab(),
+  // OccasionsScreen(),
+  // const HomeTab(),
+   CategoriesTab(),
+   MultiBlocProvider(
+  providers: [
+    BlocProvider(
+  create: (context) => getIt.get<DeleteSpecificItemCubit>(),
+),
+    BlocProvider(
+      create: (context) => getIt.get<UpdateQuantityCubit>(),
+    ),
+  ],
+  child: CartTab(),
+),
   const ProfileTab(),
 ];
   void _changeBottomNav(int index) {

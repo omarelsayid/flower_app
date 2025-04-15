@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:flower_app/features/home/categories/presentation/manager/categories_state.dart';
 import 'package:flower_app/features/home/categories/presentation/manager/categories_view_model.dart';
 import 'package:flower_app/features/home/categories/presentation/widget/custom_search_categories.dart';
@@ -8,6 +9,7 @@ import 'package:flower_app/core/widgets/custom_diaolg.dart';
 import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/common/get_resposive_height_and_width.dart';
@@ -22,9 +24,14 @@ class CategoriesTab extends StatelessWidget {
     final viewModel = getIt.get<CategoriesViewModel>();
     final height = MediaQuery.of(context).size.height;
 
-    return BlocProvider(
+    return MultiBlocProvider(
+  providers: [
+    BlocProvider(
       create: (_) => viewModel..doIntent(GetAllCategoriesIntent()),
-      child: BlocConsumer<CategoriesViewModel, CategoriesState>(
+),
+
+  ],
+  child: BlocConsumer<CategoriesViewModel, CategoriesState>(
         listener: (context, state) {
           if (state is CategoriesErrorState || state is SpecificCategoriesErrorState) {
             DialogUtils.showMessage(
@@ -104,7 +111,7 @@ class CategoriesTab extends StatelessWidget {
           );
         },
       ),
-    );
+);
   }
 
   /// Builds the product list grid.
@@ -137,13 +144,34 @@ class CategoriesTab extends StatelessWidget {
               arguments: product.id,
             );
           },
-          child: FlowerCard(
+          child: BlocConsumer<AddToCartCubit, AddToCartState>(
+  listener: (context, state) {
+      if(state is AddToCartSuccess && state.id==product.id)
+        {
+          EasyLoading.showSuccess(state.message);
+        }
+      else if(state is AddToCartError && state.id == product.id)
+        {
+          EasyLoading.showError(state.error);
+        }
+
+  },
+  builder: (context, state) {
+    final isLoading = state is AddToCartLoading && state.id==product.id;
+    return FlowerCard(
             name: product.title.toString(),
             beforeDiscount: "${product.discount}",
             discountRate: "${product.priceAfterDiscount}%",
             cost: '${product.price}',
             imageUrl: '${product.imgCover}',
-          ),
+           id: "${product.id}",
+      isLoading: isLoading,
+      onAddToCart:() {
+        context.read<AddToCartCubit>().AddToCart(productId:product.id , quantity: 1);
+      },
+          );
+  },
+),
         );
       },
     );

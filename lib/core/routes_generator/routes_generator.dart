@@ -5,8 +5,6 @@ import 'package:flower_app/features/auth/presentation/views/sign_in_screen.dart'
 import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/products_details_view.dart';
 import 'package:flower_app/features/home/occasions/presentation/views/occasion_screen.dart';
-import 'package:flower_app/features/profile/main_profile_screen/presentation/views/change_password_screen.dart';
-import 'package:flower_app/features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +12,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
+import '../../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
+import '../../features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
 import '../../features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
+import '../../features/profile/main_profile_screen/presentation/views/change_password_screen.dart';
+import '../../features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
 import '../di/injectable_initializer.dart';
 import '../widgets/test_screen.dart';
 
@@ -33,7 +35,20 @@ class RoutesGenerator {
         );
       case PagesRoutes.layOutScreen:
         return MaterialPageRoute(
-          builder: (context) => LayoutScreen(),
+          builder:
+              (context) =>
+
+              MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => getIt.get<AddToCartCubit>(),
+                  ),
+                  BlocProvider(
+                    create: (context) => getIt.get<GetUserCartCubit>(),
+                  ),
+                ],
+                child: LayoutScreen(),
+              ),
           settings: settings,
         );
 
@@ -50,7 +65,11 @@ class RoutesGenerator {
 
       case PagesRoutes.productDetails:
         return MaterialPageRoute(
-          builder: (context) => ProductsDetailsView(),
+          builder: (context) =>
+              BlocProvider(
+                create: (context) => getIt.get<AddToCartCubit>(),
+                child: ProductsDetailsView(),
+              ),
           settings: settings,
         );
 
@@ -69,9 +88,8 @@ class RoutesGenerator {
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(
-          builder: (_) => ResetPassword(),
-          settings: settings,
-        );
+            builder: (_) => ResetPassword(), settings: settings);
+
 
       case PagesRoutes.bestSellerScreen:
         return MaterialPageRoute(

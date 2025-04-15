@@ -12,6 +12,7 @@ abstract class IconAssets{
   static const String LocationIcon="$iconPath/location_icon.png";
 
   static const String filterIcon="$iconPath/filterIcon.png";
+  static const String deleteIcon = "$imagePath/deleteIcon.png";
 
   static const String notificationIcon="$iconPath/notification_icon.png";
   static const String editIcon="$iconPath/edit_icon.png";

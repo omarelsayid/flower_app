@@ -81,6 +81,8 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
   }
 
   Future<void> _getSpecificCategory(String categoryId) async {
+    if(isClosed)
+      return;
     emit(SpecificCategoriesLoadingState());
     var result = await _categoriesUseCase.call(categoryId);
 
@@ -90,12 +92,18 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         if (data!.message == "success") {
           allProducts = data.products ?? [];
           log("Products Count: ${allProducts.length}");
+          if(isClosed)
+            return;
           emit(SpecificCategoriesSuccessState(data.products ?? []));
         } else {
+          if(isClosed)
+            return;
           emit(SpecificCategoriesErrorState(data.message!));
         }
         break;
       case Error():
+        if(isClosed)
+          return;
         emit(SpecificCategoriesErrorState(result.exception!));
         break;
     }
