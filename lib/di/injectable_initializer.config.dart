@@ -40,12 +40,16 @@ import '../features/cart/domain/repo/cart_repo.dart' as _i329;
 import '../features/cart/domain/use_case/add_to_cart_use_case.dart' as _i18;
 import '../features/cart/domain/use_case/delete_use_case.dart' as _i893;
 import '../features/cart/domain/use_case/get_user_cart_use_case.dart' as _i582;
+import '../features/cart/domain/use_case/update_quantity_use_case.dart'
+    as _i362;
 import '../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart'
     as _i742;
 import '../features/cart/presentation/cubit/delete_cubit/delete_specific_item_cubit/delete_specific_item_cubit.dart'
     as _i567;
 import '../features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart'
     as _i188;
+import '../features/cart/presentation/cubit/update_quantity_cubit/update_quantity_cubit.dart'
+    as _i275;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
     as _i481;
 import '../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
@@ -177,6 +181,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i893.DeleteUseCase>(
       () => _i893.DeleteUseCase(gh<_i329.CartRepository>()),
     );
+    gh.factory<_i362.UpdateCartQuantityUseCase>(
+      () => _i362.UpdateCartQuantityUseCase(gh<_i329.CartRepository>()),
+    );
     gh.factory<_i742.AddToCartCubit>(
       () => _i742.AddToCartCubit(gh<_i18.AddToCartUseCase>()),
     );
@@ -227,6 +234,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i137.OccasionCubit>(
       () => _i137.OccasionCubit(gh<_i770.HomeUseCase>()),
+    );
+    gh.factory<_i275.UpdateQuantityCubit>(
+      () => _i275.UpdateQuantityCubit(gh<_i362.UpdateCartQuantityUseCase>()),
     );
     gh.factory<_i287.CategoriesViewModel>(
       () => _i287.CategoriesViewModel(gh<_i402.CategoriesUseCase>()),

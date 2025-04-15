@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/cart/presentation/cubit/delete_cubit/delete_specific_item_cubit/delete_specific_item_cubit.dart';
 import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
+import 'package:flower_app/features/cart/presentation/cubit/update_quantity_cubit/update_quantity_cubit.dart';
 import 'package:flower_app/features/cart/presentation/views/widgets/cart_widget.dart';
 import 'package:flower_app/features/cart/presentation/views/widgets/summery_row_widget.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _CartTabState extends State<CartTab> {
     super.initState();
     context.read<GetUserCartCubit>().GetUserCart();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<DeleteSpecificItemCubit, DeleteSpecificItemState>(
@@ -49,115 +51,210 @@ class _CartTabState extends State<CartTab> {
             );
           } else if (state is GetUserCartError) {
             EasyLoading.showError(state.error);
-          } else if (state is GetUserCartSuccess) {
-            final userCart = state.userCartEntity;
-            final cartItems = userCart.cart;
-
-            double subTotal = cartItems.cartItems.fold<double>(
-              0,
-                  (previousValue, element) =>
-              previousValue + (element.product.price * element.quantity),
-            );
-            double deliveryFee = 10.0;
-            double total = subTotal + deliveryFee;
-
             return Scaffold(
               appBar: AppBar(
-                title: Row(
-                  children: [
-                    Text("Cart", style: AppTextStyles.inter500_20),
-                    const SizedBox(width: 2),
-                    Text(
-                      "(${cartItems.cartItems.length} items)",
-                      style: AppTextStyles.inter500_16.copyWith(color: AppColors.greyColor),
-                    ),
-                  ],
-                ),
+                title: Text("Cart", style: AppTextStyles.inter500_20),
               ),
-              body: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: resposiveWidth(16),
-                  vertical: resposiveHeight(10),
-                ),
-                child: Column(
-                  children: [
-                    // Address Row
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: kVerticalHPadding),
-                      child: Row(
-                        children: [
-                          Image.asset(IconAssets.LocationIcon),
-                          Flexible(
-                            child: Text(
-                              " Deliver to 2XVP+XC - Sheikh Zayed",
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: AppTextStyles.inter400_14,
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.keyboard_arrow_down_sharp,
-                              size: 35,
-                              color: AppColors.primaryColor,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    // Cart Items
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: cartItems.cartItems.length,
-                        itemBuilder: (context, index) {
-                          final cartItem = cartItems.cartItems[index];
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: CartItemWidget(
-                                  () {
-                                log("The Product Id is ${cartItem.id}");
-                                context
-                                    .read<DeleteSpecificItemCubit>()
-                                    .deleteSpecificItem(cartItem.id);
-                              },
-                                  () {
-                                // on increment
-                              },
-                                  () {
-                                // on decrement
-                              },
-                              cartItem,
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-
-                    // Summary & Total
-                    const Divider(thickness: 1.0),
-                    buildSummaryRow("Sub Total", "\$${subTotal.toStringAsFixed(2)}"),
-                    buildSummaryRow("Delivery Fee", "\$${deliveryFee.toStringAsFixed(2)}"),
-                    const Divider(thickness: 1.0),
-                    buildSummaryRow("Total", "\$${total.toStringAsFixed(2)}", isBold: true),
-                    const SizedBox(height: 8),
-
-                    // Checkout Button
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primaryColor,
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Continue',
-                        style: AppTextStyles.roboto500_16.copyWith(color: Colors.white),
-                      ),
-                    ),
-                  ],
+              body: Center(
+                child: Text(
+                  'Something went wrong',
+                  style: AppTextStyles.inter500_16,
                 ),
               ),
             );
+          } else if (state is GetUserCartSuccess) {
+            final userCart = state.userCartEntity;
+            if (userCart.cart.cartItems.isEmpty) {
+              return Scaffold(
+                appBar: AppBar(
+                  title: Text("Cart", style: AppTextStyles.inter500_20),
+                ),
+                body: Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: resposiveWidth(16),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.shopping_cart,
+                          size: 100,
+                          color: AppColors.greyColor,
+                        ),
+                        SizedBox(height: 16),
+                        Text(
+                          "Your cart is empty",
+                          style: AppTextStyles.inter500_20.copyWith(
+                            color: AppColors.greyColor,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          "you haven't added any items to your cart yet.",
+                          style: AppTextStyles.inter400_14.copyWith(
+                            color: AppColors.greyColor,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              final cart = userCart.cart;
+              double subTotal = cart.cartItems.fold<double>(
+                0,
+                (previousValue, element) =>
+                    previousValue + (element.product.price * element.quantity),
+              );
+              double deliveryFee = 10.0;
+              double total = subTotal + deliveryFee;
+
+              return Scaffold(
+                appBar: AppBar(
+                  title: Row(
+                    children: [
+                      Text("Cart", style: AppTextStyles.inter500_20),
+                      const SizedBox(width: 2),
+                      Text(
+                        "(${cart.cartItems.length} items)",
+                        style: AppTextStyles.inter500_16.copyWith(
+                          color: AppColors.greyColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                body: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: resposiveWidth(16),
+                    vertical: resposiveHeight(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: kVerticalHPadding,
+                        ),
+                        child: Row(
+                          children: [
+                            Image.asset(IconAssets.LocationIcon),
+                            Flexible(
+                              child: Text(
+                                " Deliver to 2XVP+XC - Sheikh Zayed",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: AppTextStyles.inter400_14,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.keyboard_arrow_down_sharp,
+                                size: 35,
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      // Cart Items
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: cart.cartItems.length,
+                          itemBuilder: (context, index) {
+                            final cartItem = cart.cartItems[index];
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: BlocConsumer<
+                                UpdateQuantityCubit,
+                                UpdateQuantityState
+                              >(
+                                listener: (context, state) {
+                                  if(state is UpdateQuantitySuccess)
+                                    {
+
+                                      EasyLoading.showSuccess(state.message);
+                                      context.read<GetUserCartCubit>().GetUserCart();
+                                    }
+
+                                  else if(state is UpdateQuantityError)
+                                    {
+                                      EasyLoading.showError(state.error);
+                                    }
+
+                                },
+                                builder: (context, state) {
+                                  final isUpdated =state is UpdateQuantityLoading;
+                                  return CartItemWidget(
+                                    () {
+                                      log("The Product Id is ${cartItem.id}");
+                                      context
+                                          .read<DeleteSpecificItemCubit>()
+                                          .deleteSpecificItem(
+                                            cartItem.product.id,
+                                          );
+                                    },
+                                    () {
+
+                                      final newQuantity = cartItem.quantity+1;
+                                      context.read<UpdateQuantityCubit>().updateQuantity(cartItem.product.id, newQuantity);
+                                    },
+                                    () {
+                                      // on decrement
+                                      final newQuantity = cartItem.quantity - 1;
+                                      if (newQuantity < 1) {
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                          const SnackBar(content: Text('Minimum quantity reached')),
+                                        );
+                                        return;
+                                      }
+                                      context.read<UpdateQuantityCubit>().updateQuantity(cartItem.product.id, newQuantity);
+                                    },
+                                    cartItem,
+                                  );
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      const Divider(thickness: 1.0),
+                      buildSummaryRow(
+                        "Sub Total",
+                        "\$${subTotal.toStringAsFixed(2)}",
+                      ),
+                      buildSummaryRow(
+                        "Delivery Fee",
+                        "\$${deliveryFee.toStringAsFixed(2)}",
+                      ),
+                      const Divider(thickness: 1.0),
+                      buildSummaryRow(
+                        "Total",
+                        "\$${total.toStringAsFixed(2)}",
+                        isBold: true,
+                      ),
+                      const SizedBox(height: 8),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppColors.primaryColor,
+                        ),
+                        onPressed: () {},
+                        child: Text(
+                          'Continue',
+                          style: AppTextStyles.roboto500_16.copyWith(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            }
           }
 
           return const SizedBox.shrink();
@@ -165,6 +262,4 @@ class _CartTabState extends State<CartTab> {
       ),
     );
   }
-
-
 }

@@ -14,41 +14,36 @@ class GetUserCartCubit extends Cubit<GetUserCartState> {
   GetUserCartCubit(this.getUserCartUseCase) : super(GetUserCartInitial());
   final GetUserCartUseCase getUserCartUseCase;
 
-  Future<void> GetUserCart()async{
-
+  Future<void> GetUserCart() async {
     emit(GetUserCartLoading());
 
-    log("i am in get user cart function ");
-    try{
+    log("I am in get user cart function");
+    try {
       final result = await getUserCartUseCase.getUserCart();
 
-      if(result is Success<UserCartEntity>){
-        if(result.data !=null)
-          {
-            final cartData= result.data!;
-            log("The Data of User Cart is");
-            log("${cartData.numOfCartItems}");
-            log("${cartData.cart.user}");
-            log("Total Items in the cart");
-            log("${cartData.cart.cartItems.length}");
-            log("${cartData.cart.cartItems[0].product.title}");
-            emit(GetUserCartSuccess(cartData));
+      if (result is Success<UserCartEntity>) {
+        if (result.data != null) {
+          final cartData = result.data!;
+          log("Number of Cart Items: ${cartData.numOfCartItems}");
+          log("User: ${cartData.cart.user}");
+          log("Total Items in the cart: ${cartData.cart.cartItems.length}");
+
+          // Safely log the first item's product title (if there is an item)
+          if (cartData.cart.cartItems.isNotEmpty) {
+            log("First Product Title: ${cartData.cart.cartItems[0].product.title}");
+          } else {
+            log("Cart is empty, no product to log.");
           }
-        else {
-          log("i am in error ");
+          emit(GetUserCartSuccess(cartData));
+        } else {
+          log("Data is null");
           emit(GetUserCartError("Empty"));
         }
+      } else if (result is Error<UserCartEntity>) {
+        log("Error in get cart: ${result.exception!}");
+        emit(GetUserCartError(result.exception!));
       }
-
-      else if(result is Error<UserCartEntity>)
-        {
-          log("i am in error 2");
-          log(result.exception!);
-          emit(GetUserCartError(result.exception!));
-        }
-
-    }catch(e)
-    {
+    } catch (e) {
       emit(GetUserCartError(e.toString()));
     }
   }

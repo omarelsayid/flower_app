@@ -24,6 +24,10 @@ import 'package:flower_app/features/cart/data/models/create_cart_request.dart'
     as _i21;
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart'
     as _i22;
+import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_request.dart'
+    as _i24;
+import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart'
+    as _i23;
 import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart'
     as _i13;
 import 'package:flower_app/features/home/best_seller_products/data/model/BestSellerProductsModel.dart'
@@ -375,4 +379,24 @@ class MockApiClient extends _i1.Mock implements _i14.ApiClient {
                 ),
           )
           as _i15.Future<_i3.HttpResponse<_i22.DeleteCartResponseDTO>>);
+
+  @override
+  _i15.Future<_i3.HttpResponse<_i23.UpdateCartQuantityResponseDTO>>
+  updateCartQuantity(
+    String? token,
+    String? id,
+    _i24.UpdateCartQuantityRequest? request,
+  ) =>
+      (super.noSuchMethod(
+            Invocation.method(#updateCartQuantity, [token, id, request]),
+            returnValue: _i15.Future<
+              _i3.HttpResponse<_i23.UpdateCartQuantityResponseDTO>
+            >.value(
+              _FakeHttpResponse_1<_i23.UpdateCartQuantityResponseDTO>(
+                this,
+                Invocation.method(#updateCartQuantity, [token, id, request]),
+              ),
+            ),
+          )
+          as _i15.Future<_i3.HttpResponse<_i23.UpdateCartQuantityResponseDTO>>);
 }

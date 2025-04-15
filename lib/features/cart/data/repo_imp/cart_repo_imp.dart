@@ -25,35 +25,69 @@ class CartRepositoryImpl implements CartRepository {
         quantity,
       );
       return message;
+    } on DioException catch (dioError) {
+      throw ServerFailure.fromDioException(dioError);
     } catch (e) {
-      throw Exception(e);
+      throw ServerFailure(errorMessage: e.toString());
     }
   }
 
   @override
   Future<Result<UserCartEntity>> getUserCart() async {
     try {
-     final String token = await SharedPreferenceServices.getData(
+      final String token = await SharedPreferenceServices.getData(
         AppConstants.token,
       ).toString();
       final model = await _cartRemoteDataSource.getUserCart(token);
       final entity = MapUserCartToEntity.mapToEntity(model);
       return Success<UserCartEntity>(entity);
-    } catch (error) {
-      return Error<UserCartEntity>(error.toString());
+    } on DioException catch (dioError) {
+      final failure = ServerFailure.fromDioException(dioError);
+      return Error<UserCartEntity>(failure.errorMessage);
+    } catch (e) {
+      return Error<UserCartEntity>(e.toString());
     }
   }
 
   @override
-  Future<Result<String>> deleteCartItem( String id) async{
-    try{
+  Future<Result<String>> deleteCartItem(String id) async {
+    try {
       final String token = await SharedPreferenceServices.getData(
         AppConstants.token,
       ).toString();
       final responseDto = await _cartRemoteDataSource.deleteCArtItem(token, id);
       return Success<String>(responseDto.message);
-    } catch(e){
+    } on DioException catch (dioError) {
+      final failure = ServerFailure.fromDioException(dioError);
+      return Error<String>(failure.errorMessage);
+    } catch (e) {
       return Error<String>(e.toString());
     }
   }
+
+  @override
+  Future<Result<String>> updateCartQuantity(String id, int newQuantity)async {
+
+    try{
+      final String token = await SharedPreferenceServices.getData(
+        AppConstants.token,
+      ).toString();
+
+      final responseDTO = await _cartRemoteDataSource.updateCArtQuantity(token, id,newQuantity);
+      return Success<String>(responseDTO.message);
+    }catch(e){
+
+      if(e is DioException){
+        final failure = ServerFailure.fromDioException(e);
+        return Error<String>(failure.errorMessage);
+      }
+      return Error<String>(e.toString());
+    }
+
+
+
+
+
+  }
 }
+

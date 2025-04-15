@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
+import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart';
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
@@ -12,6 +13,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/cart/data/models/create_cart_request.dart';
+import '../../features/cart/data/models/update_product_quantity/update_cart_quantity_request.dart';
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../features/home/home_tab/data/model/category_response_dto.dart';
 
@@ -99,8 +101,12 @@ abstract class ApiClient {
       @Path("id") String id,
        );
   
-  
-
+  @PUT("/api/v1/cart/{id}")
+  Future<HttpResponse<UpdateCartQuantityResponseDTO>> updateCartQuantity(
+      @Header("Authorization") String token,
+      @Path("id") String id,
+      @Body() UpdateCartQuantityRequest request,
+      );
 }
 
 

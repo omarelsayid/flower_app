@@ -16,6 +16,5 @@ class DeleteUseCase{
 
     return _cartRepository.deleteCartItem(id);
 
-
   }
 }

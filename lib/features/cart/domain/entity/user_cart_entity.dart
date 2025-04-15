@@ -11,7 +11,7 @@ class UserCartEntity {
 }
 
 class CartEntity {
-  final String id;
+  final String? id;
   final String? user;
   final List<CartItemEntity> cartItems;
   final int discount;

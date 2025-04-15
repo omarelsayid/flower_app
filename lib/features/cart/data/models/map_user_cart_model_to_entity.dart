@@ -4,11 +4,11 @@ import 'package:flower_app/features/cart/domain/entity/user_cart_entity.dart';
 class MapUserCartToEntity {
   static UserCartEntity mapToEntity(UserCartResponseModel model) {
     return UserCartEntity(
-      message: model.message, // assuming message is always provided
+      message: model.message,
       numOfCartItems: model.numOfCartItems,
       cart: CartEntity(
-        id: model.cart.id,
-        user: model.cart.user ?? '', // provide an empty string if null
+        id: model.cart.id ?? '',         // Provide a default empty string if null
+        user: model.cart.user ?? '',       // Provide a default empty string if null
         discount: model.cart.discount,
         totalPrice: model.cart.totalPrice,
         totalPriceAfterDiscount: model.cart.totalPriceAfterDiscount,
@@ -16,11 +16,11 @@ class MapUserCartToEntity {
           return CartItemEntity(
             product: ProductEntity(
               id: item.product.id,
-              title: item.product.title ?? 'No title',  // default value if null
+              title: item.product.title ?? 'No title',
               slug: item.product.slug ?? '',
               description: item.product.description ?? '',
               imgCover: item.product.imgCover ?? '',
-              images: item.product.images ?? [],        // default empty list if null
+              images: item.product.images ?? [],
               price: item.product.price,
               priceAfterDiscount: item.product.priceAfterDiscount,
               quantity: item.product.quantity,
@@ -40,3 +40,4 @@ class MapUserCartToEntity {
     );
   }
 }
+
