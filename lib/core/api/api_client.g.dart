@@ -501,10 +501,11 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<HttpResponse<void>> logout() async {
+  Future<HttpResponse<void>> logout(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<void>>(Options(
       method: 'GET',
@@ -567,10 +568,13 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
-      Map<String, dynamic> data) async {
+    String token,
+    Map<String, dynamic> data,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(data);
     final _options =

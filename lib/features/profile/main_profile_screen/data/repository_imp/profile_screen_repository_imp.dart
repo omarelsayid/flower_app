@@ -15,7 +15,6 @@ class ProfileRepositoryImpl implements ProfileRepository {
   final ProfileRemoteDataSource _profileRemoteDataSource;
   final ProfileLocalDataSource _profileLocalDataSource;
 
-  ProfileRepositoryImpl(this._profileRemoteDataSource);
   ProfileRepositoryImpl(this._profileRemoteDataSource,this._profileLocalDataSource);
 
   @override

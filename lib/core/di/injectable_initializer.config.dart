@@ -12,6 +12,7 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../features/auth/data/data_source/auth_remote_data_source.dart'
     as _i182;
@@ -86,6 +87,8 @@ import '../../features/home/products_details/presentation/cubits/product_details
     as _i8;
 import '../../features/profile/main_profile_screen/data/data_source/change_pasword_data_source.dart'
     as _i584;
+import '../../features/profile/main_profile_screen/data/data_source/profile_local_data_source.dart'
+    as _i678;
 import '../../features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
     as _i428;
 import '../../features/profile/main_profile_screen/data/repository_imp/change_password_repositoy_impl.dart'
@@ -151,6 +154,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i701.AuthUseCase(gh<_i961.AuthRepository>()));
     gh.factory<_i489.SignInUseCase>(
         () => _i489.SignInUseCase(gh<_i961.AuthRepository>()));
+    gh.factory<_i678.ProfileLocalDataSource>(
+        () => _i678.ProfileLocalDataSourceImpl(gh<_i460.SharedPreferences>()));
     gh.factory<_i480.BestSellerUseCase>(
         () => _i480.BestSellerUseCase(gh<_i330.BestSellerRepo>()));
     gh.factory<_i237.BestSellerViewModel>(
@@ -175,6 +180,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i425.OccasionRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i428.ProfileRemoteDataSource>(
         () => _i428.ProfileRemoteDataSourceImpl(gh<_i277.ApiClient>()));
+    gh.factory<_i152.ProfileRepository>(() => _i62.ProfileRepositoryImpl(
+          gh<_i428.ProfileRemoteDataSource>(),
+          gh<_i678.ProfileLocalDataSource>(),
+        ));
     gh.factory<_i357.VerifyEmailVewModel>(
         () => _i357.VerifyEmailVewModel(gh<_i701.AuthUseCase>()));
     gh.factory<_i922.ChangePasswordUseCase>(() =>
@@ -183,8 +192,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i332.ProductsDetailsRemoteDataScource>()));
     gh.factory<_i920.OccasionRepository>(() =>
         _i710.OccasionRepositoryImpl(gh<_i425.OccasionRemoteDataSource>()));
-    gh.factory<_i152.ProfileRepository>(
-        () => _i62.ProfileRepositoryImpl(gh<_i428.ProfileRemoteDataSource>()));
+    gh.factory<_i929.ProfileUseCase>(
+        () => _i929.ProfileUseCase(gh<_i152.ProfileRepository>()));
+    gh.factory<_i295.EditProfileUseCase>(
+        () => _i295.EditProfileUseCase(gh<_i152.ProfileRepository>()));
+    gh.factory<_i801.UploadPhotoUseCase>(
+        () => _i801.UploadPhotoUseCase(gh<_i152.ProfileRepository>()));
     gh.factory<_i352.HomeRepo>(
         () => _i20.HomeRepositoryImpl(gh<_i246.HomeDataSource>()));
     gh.factory<_i378.ChangePasswordViewModel>(
@@ -197,24 +210,20 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i66.OccasionUseCase(gh<_i920.OccasionRepository>()));
     gh.factory<_i423.HomeUseCase>(
         () => _i423.HomeUseCase(gh<_i352.HomeRepo>()));
+    gh.factory<_i513.ProfileViewModel>(() => _i513.ProfileViewModel(
+          gh<_i929.ProfileUseCase>(),
+          gh<_i678.ProfileLocalDataSource>(),
+        ));
     gh.factory<_i737.CategoryCubit>(
         () => _i737.CategoryCubit(gh<_i423.HomeUseCase>()));
     gh.factory<_i9.OccasionCubit>(
         () => _i9.OccasionCubit(gh<_i423.HomeUseCase>()));
+    gh.factory<_i177.EditProfileViewModel>(
+        () => _i177.EditProfileViewModel(gh<_i295.EditProfileUseCase>()));
     gh.factory<_i720.CategoriesViewModel>(
         () => _i720.CategoriesViewModel(gh<_i723.CategoriesUseCase>()));
     gh.factory<_i602.OccasionViewModel>(
         () => _i602.OccasionViewModel(gh<_i66.OccasionUseCase>()));
-    gh.factory<_i295.EditProfileUseCase>(
-        () => _i295.EditProfileUseCase(gh<_i152.ProfileRepository>()));
-    gh.factory<_i929.ProfileUseCase>(
-        () => _i929.ProfileUseCase(gh<_i152.ProfileRepository>()));
-    gh.factory<_i801.UploadPhotoUseCase>(
-        () => _i801.UploadPhotoUseCase(gh<_i152.ProfileRepository>()));
-    gh.factory<_i513.ProfileViewModel>(
-        () => _i513.ProfileViewModel(gh<_i929.ProfileUseCase>()));
-    gh.factory<_i177.EditProfileViewModel>(
-        () => _i177.EditProfileViewModel(gh<_i295.EditProfileUseCase>()));
     gh.factory<_i480.UploadPhotoViewModel>(
         () => _i480.UploadPhotoViewModel(gh<_i801.UploadPhotoUseCase>()));
     return this;
