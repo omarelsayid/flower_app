@@ -6,6 +6,7 @@ import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart'
 import 'package:flower_app/features/home/products_details/presentation/views/products_details_view.dart';
 import 'package:flower_app/features/home/occasions/presentation/views/occasion_screen.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/change_password_screen.dart';
+import 'package:flower_app/features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,6 +60,7 @@ class RoutesGenerator {
           settings: settings,
         );
 
+
       case PagesRoutes.occasionScreen:
         return MaterialPageRoute(
           builder: (context) => OccasionsScreen(),
@@ -87,6 +89,11 @@ class RoutesGenerator {
                 create: (context) => getIt.get<ChangePasswordViewModel>(),
                 child: ChangePasswordScreen(),
               ),
+          settings: settings,
+        );
+      case PagesRoutes.editProfileScreen:
+        return MaterialPageRoute(
+          builder: (context) => EditProfileView(),
           settings: settings,
         );
       default:

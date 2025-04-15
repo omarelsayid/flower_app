@@ -40,30 +40,35 @@ class MockOccasionUseCase extends _i1.Mock implements _i2.OccasionUseCase {
   @override
   _i3.Future<_i4.Result<_i5.OccasionsResponseEntity>> execute() =>
       (super.noSuchMethod(
-            Invocation.method(#execute, []),
-            returnValue:
-                _i3.Future<_i4.Result<_i5.OccasionsResponseEntity>>.value(
-                  _i6.dummyValue<_i4.Result<_i5.OccasionsResponseEntity>>(
-                    this,
-                    Invocation.method(#execute, []),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.Result<_i5.OccasionsResponseEntity>>);
+        Invocation.method(
+          #execute,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i5.OccasionsResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i5.OccasionsResponseEntity>>(
+          this,
+          Invocation.method(
+            #execute,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i5.OccasionsResponseEntity>>);
 
   @override
   _i3.Future<_i4.Result<_i7.ProductsResponseEntity>> executeSpecific(
-    String? occasionId,
-  ) =>
+          String? occasionId) =>
       (super.noSuchMethod(
-            Invocation.method(#executeSpecific, [occasionId]),
-            returnValue:
-                _i3.Future<_i4.Result<_i7.ProductsResponseEntity>>.value(
-                  _i6.dummyValue<_i4.Result<_i7.ProductsResponseEntity>>(
-                    this,
-                    Invocation.method(#executeSpecific, [occasionId]),
-                  ),
-                ),
-          )
-          as _i3.Future<_i4.Result<_i7.ProductsResponseEntity>>);
+        Invocation.method(
+          #executeSpecific,
+          [occasionId],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i7.ProductsResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i7.ProductsResponseEntity>>(
+          this,
+          Invocation.method(
+            #executeSpecific,
+            [occasionId],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.ProductsResponseEntity>>);
 }

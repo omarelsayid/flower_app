@@ -27,8 +27,13 @@ import 'package:mockito/mockito.dart' as _i1;
 
 class _FakeProductsDetailsModels_0 extends _i1.SmartFake
     implements _i2.ProductsDetailsModels {
-  _FakeProductsDetailsModels_0(Object parent, Invocation parentInvocation)
-    : super(parent, parentInvocation);
+  _FakeProductsDetailsModels_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
 }
 
 /// A class which mocks [ProductsDetailsRemoteDataScource].
@@ -43,13 +48,17 @@ class MockProductsDetailsRemoteDataScource extends _i1.Mock
   @override
   _i4.Future<_i2.ProductsDetailsModels> getProductDetails(String? id) =>
       (super.noSuchMethod(
-            Invocation.method(#getProductDetails, [id]),
-            returnValue: _i4.Future<_i2.ProductsDetailsModels>.value(
-              _FakeProductsDetailsModels_0(
-                this,
-                Invocation.method(#getProductDetails, [id]),
-              ),
-            ),
-          )
-          as _i4.Future<_i2.ProductsDetailsModels>);
+        Invocation.method(
+          #getProductDetails,
+          [id],
+        ),
+        returnValue: _i4.Future<_i2.ProductsDetailsModels>.value(
+            _FakeProductsDetailsModels_0(
+          this,
+          Invocation.method(
+            #getProductDetails,
+            [id],
+          ),
+        )),
+      ) as _i4.Future<_i2.ProductsDetailsModels>);
 }
