@@ -18,57 +18,54 @@ class UserInformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CircleAvatar(
-          backgroundColor: AppColors.lightPinkColor,
-          radius: 50,
-          backgroundImage:
-              userData.photo == null || userData.photo!.isEmpty
-                  ? AssetImage(ImageAssets.profileImage)
-                  : NetworkImage(userData.photo!),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            top: resposiveHeight(16),
-            bottom: resposiveHeight(24),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: resposiveWidth(16),
+        vertical: resposiveHeight(8),
+      ),
+      child: Column(
+        children: [
+          CircleAvatar(
+            backgroundColor: AppColors.lightPinkColor,
+            radius: 50,
+            backgroundImage:
+            userData.photo == null || userData.photo!.isEmpty
+                ? AssetImage(ImageAssets.profileImage)
+                : NetworkImage(userData.photo!),
           ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    userData.firstName ?? '',
-                    style: AppTextStyles.inter500_18,
-                  ),
-                  SizedBox(width: resposiveWidth(8)),
-                  SizedBox(
-                    width: resposiveWidth(24),
-                    height: resposiveHeight(24),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          PagesRoutes.editProfileScreen,
-                          arguments: userData,
-                        );
-                      },
-                      child: ImageIcon(AssetImage(IconAssets.editIcon)),
+          Padding(
+            padding: EdgeInsets.only(top:resposiveHeight(16),bottom: resposiveHeight(24)),
+            child: Column(
+              children: [
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(userData.firstName ?? '',style: AppTextStyles.inter500_18),
+                    SizedBox(width: resposiveWidth(8),),
+                    SizedBox(
+                      width: resposiveWidth(24),
+                      height: resposiveHeight(24),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            PagesRoutes.editProfileScreen,
+                            arguments: userData,
+                          );
+                        },
+                        child: ImageIcon(AssetImage(IconAssets.editIcon)),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Text(
-                userData.email ?? '',
-                style: AppTextStyles.inter500_18.copyWith(
-                  color: AppColors.greyDarkColor,
+                  ],
                 ),
-              ),
-            ],
+                Text(userData.email ?? '',style: AppTextStyles.inter500_18.copyWith(color: AppColors.greyDarkColor),)
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
+

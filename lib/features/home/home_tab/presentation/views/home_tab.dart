@@ -12,6 +12,7 @@ import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cu
 import 'package:flower_app/features/home/home_tab/presentation/views/widgets/custom_card_widget.dart';
 import 'package:flower_app/features/home/home_tab/presentation/views/widgets/category_widget.dart';
 import 'package:flower_app/features/home/home_tab/presentation/views/widgets/row_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -42,11 +43,18 @@ class HomeTab extends StatelessWidget {
                   Expanded(
                     child: TextFormField(
                       decoration: InputDecoration(
-                        hintText: "Search",
+                        prefixIconConstraints: BoxConstraints(
+                          maxHeight: resposiveHeight(40),
+                          maxWidth: resposiveWidth(30),
+                        ),
+                        hintText: S.of(context).search,
                         hintStyle: AppTextStyles.inter400_14.copyWith(
                           color: AppColors.greyColor,
                         ),
-                        prefix: Icon(Icons.search, color: AppColors.greyColor),
+                        prefixIcon: IconButton(
+                          icon: Icon(Icons.search, color: AppColors.greyColor),
+                          onPressed: null,
+                        ),
                         filled: true,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30),
@@ -89,20 +97,28 @@ class HomeTab extends StatelessWidget {
               // category
               Column(
                 children: [
-                 RowWidget(txt: "Categories", leading_text:"View all", onPressed: (){
-                   Navigator.pushNamed(context, PagesRoutes.categoriesScreen,);
-                 }),
+                  RowWidget(
+                    txt: S.of(context).categories,
+                    leading_text: S.of(context).viewAll,
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        PagesRoutes.categoriesScreen,
+                      );
+                    },
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       BlocBuilder<CategoryCubit, CategoryState>(
                         builder: (context, state) {
-                          if(state is CategoryLoading){
-                            return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
-
-                          }
-                          else if(state is CategoriesLoaded)
-                          {
+                          if (state is CategoryLoading) {
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              ),
+                            );
+                          } else if (state is CategoriesLoaded) {
                             log("${state.categories.length}");
                             log(state.categories[1].name);
 
@@ -110,25 +126,25 @@ class HomeTab extends StatelessWidget {
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
-                                  children: state.categories.map((cat) {
-                                    return CategoryWidget(imgUrl: cat.image, name: cat.name);
-                                  },).toList(),
+                                  children:
+                                      state.categories.map((cat) {
+                                        return CategoryWidget(
+                                          imgUrl: cat.image,
+                                          name: cat.name,
+                                        );
+                                      }).toList(),
                                 ),
                               ),
                             );
-
-                          }
-                          else if (state is CategoriesError && !state.message.contains("internet"))
-                          {
-                            return  Center(child: Text(state.message));
-                          }
-                          else if(state is CategoriesError && state.message.contains("internet")){
-
+                          } else if (state is CategoriesError &&
+                              !state.message.contains("internet")) {
+                            return Center(child: Text(state.message));
+                          } else if (state is CategoriesError &&
+                              state.message.contains("internet")) {
                             EasyLoading.showError(state.message);
                           }
 
                           return const SizedBox.shrink();
-
                         },
                       ),
                     ],
@@ -138,20 +154,28 @@ class HomeTab extends StatelessWidget {
               // SizedBox(height:16 ,),
               Column(
                 children: [
-                 RowWidget(txt: "Best seller", leading_text:"View all", onPressed: (){
-                   Navigator.pushNamed(context, PagesRoutes.bestSellerScreen);
-                 }),
+                  RowWidget(
+                    txt: S.of(context).BestSellers,
+                    leading_text: S.of(context).viewAll,
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        PagesRoutes.bestSellerScreen,
+                      );
+                    },
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       BlocBuilder<BestSellerCubit, BestSellerState>(
                         builder: (context, state) {
-                          if(state is BestSellerLoading){
-                            return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
-
-                          }
-                          else if(state is BestSellerSuccess)
-                          {
+                          if (state is BestSellerLoading) {
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              ),
+                            );
+                          } else if (state is BestSellerSuccess) {
                             log("${state.products.length}");
                             log(state.products[1].title!);
 
@@ -159,25 +183,26 @@ class HomeTab extends StatelessWidget {
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
-                                  children: state.products.map((cat) {
-                                    return CustomCardWidget(name: cat.title!,price: cat.price!,imgUrl:cat.imgCover! ,);
-                                  },).toList(),
+                                  children:
+                                      state.products.map((cat) {
+                                        return CustomCardWidget(
+                                          name: cat.title!,
+                                          price: cat.price!,
+                                          imgUrl: cat.imgCover!,
+                                        );
+                                      }).toList(),
                                 ),
                               ),
                             );
-
-                          }
-                          else if (state is BestSellerError && !state.error.contains("internet"))
-                          {
-                            return  Center(child: Text(state.error));
-                          }
-                          else if(state is BestSellerError && state.error.contains("internet")){
-
+                          } else if (state is BestSellerError &&
+                              !state.error.contains("internet")) {
+                            return Center(child: Text(state.error));
+                          } else if (state is BestSellerError &&
+                              state.error.contains("internet")) {
                             EasyLoading.showError(state.error);
                           }
 
                           return const SizedBox.shrink();
-
                         },
                       ),
                     ],
@@ -186,58 +211,60 @@ class HomeTab extends StatelessWidget {
               ),
 
               // SizedBox(height:16 ,),
-
-                Column(
-                  children: [
-                    RowWidget(txt: "Occasion", leading_text:"View all", onPressed: (){
+              Column(
+                children: [
+                  RowWidget(
+                    txt: S.of(context).occasions,
+                    leading_text: S.of(context).viewAll,
+                    onPressed: () {
                       Navigator.pushNamed(context, PagesRoutes.occasionScreen);
-                    }),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        BlocBuilder<OccasionCubit, OccasionState>(
-                          builder: (context, state) {
-                            if(state is OccasionLoading){
-                              return Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),);
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      BlocBuilder<OccasionCubit, OccasionState>(
+                        builder: (context, state) {
+                          if (state is OccasionLoading) {
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              ),
+                            );
+                          } else if (state is OccasionSuccess) {
+                            log("${state.occasions.length}");
+                            log(state.occasions[1].name);
 
-                            }
-                            else if(state is OccasionSuccess)
-                            {
-                              log("${state.occasions.length}");
-                              log(state.occasions[1].name);
-
-                              return Expanded(
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
-                                  child: Row(
-                                    children: state.occasions.map((cat) {
-                                      return CustomCardWidget(name: cat.name,imgUrl:cat.image,price: null, );
-                                    },).toList(),
-                                  ),
+                            return Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children:
+                                      state.occasions.map((cat) {
+                                        return CustomCardWidget(
+                                          name: cat.name,
+                                          imgUrl: cat.image,
+                                          price: null,
+                                        );
+                                      }).toList(),
                                 ),
-                              );
+                              ),
+                            );
+                          } else if (state is OccasionError &&
+                              !state.message.contains("internet")) {
+                            return Center(child: Text(state.message));
+                          } else if (state is OccasionError &&
+                              state.message.contains("internet")) {
+                            EasyLoading.showError(state.message);
+                          }
 
-                            }
-                            else if (state is OccasionError && !state.message.contains("internet"))
-                            {
-                              return  Center(child: Text(state.message));
-                            }
-                            else if(state is OccasionError && state.message.contains("internet")){
-
-                              EasyLoading.showError(state.message);
-                            }
-
-                            return const SizedBox.shrink();
-
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-
-
-
+                          return const SizedBox.shrink();
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ],
           ),
         ),

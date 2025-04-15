@@ -10,4 +10,5 @@ abstract class ProfileRepository {
     Map<String, dynamic> data,
   );
   Future<Result<String?>> uploadPhoto(File photo);
+  Future<Result<void>> logout();
 }

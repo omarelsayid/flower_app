@@ -9,13 +9,19 @@ class ProfileAppBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SvgPicture.asset(SvgImages.logo),
-        SizedBox(width: resposiveWidth(16)),
-        ImageIcon(AssetImage(IconAssets.notificationIcon,),size: 24,),//I want to add width and height 24
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: resposiveWidth(16),
+        vertical: resposiveHeight(8),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SvgPicture.asset(SvgImages.logo),
+          SizedBox(width: resposiveWidth(16)),
+          ImageIcon(AssetImage(IconAssets.notificationIcon,),size: 24,),//I want to add width and height 24
+        ],
+      ),
     );
   }
 }

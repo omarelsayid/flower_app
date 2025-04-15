@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 extension StringExtensions on String {
   bool get isValidEmail {
     final bool emailValid = RegExp(
@@ -17,4 +19,8 @@ extension StringExtensions on String {
     final bool phoneValid = RegExp(r'^\+(\d{1,4})\d{7,10}$').hasMatch(this);
     return phoneValid;
   }
+}
+
+extension LocaleExtensions on BuildContext {
+  bool get isRtl => Directionality.of(this) == TextDirection.rtl;
 }

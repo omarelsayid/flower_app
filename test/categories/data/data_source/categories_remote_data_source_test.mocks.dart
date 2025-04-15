@@ -113,68 +113,38 @@ class _FakeVerifyEmailResponseDto_4 extends _i1.SmartFake
 
 class _FakeResetPasswordResponseDTO_5 extends _i1.SmartFake
     implements _i7.ResetPasswordResponseDTO {
-  _FakeResetPasswordResponseDTO_5(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeResetPasswordResponseDTO_5(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeCategoryResponseDTO_6 extends _i1.SmartFake
     implements _i8.CategoryResponseDTO {
-  _FakeCategoryResponseDTO_6(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeCategoryResponseDTO_6(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeOccasionResponseDTO_7 extends _i1.SmartFake
     implements _i9.OccasionResponseDTO {
-  _FakeOccasionResponseDTO_7(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeOccasionResponseDTO_7(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeOccasionsResponseDTO_8 extends _i1.SmartFake
     implements _i10.OccasionsResponseDTO {
-  _FakeOccasionsResponseDTO_8(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeOccasionsResponseDTO_8(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeProductsResponseDTO_9 extends _i1.SmartFake
     implements _i11.ProductsResponseDTO {
-  _FakeProductsResponseDTO_9(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeProductsResponseDTO_9(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeCategoriesResponseModel_10 extends _i1.SmartFake
     implements _i12.CategoriesResponseModel {
-  _FakeCategoriesResponseModel_10(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  _FakeCategoriesResponseModel_10(Object parent, Invocation parentInvocation)
+    : super(parent, parentInvocation);
 }
 
 class _FakeSpecificCategoriesResponseModel_11 extends _i1.SmartFake
@@ -182,10 +152,7 @@ class _FakeSpecificCategoriesResponseModel_11 extends _i1.SmartFake
   _FakeSpecificCategoriesResponseModel_11(
     Object parent,
     Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
+  ) : super(parent, parentInvocation);
 }
 
 /// A class which mocks [ApiClient].
@@ -197,91 +164,76 @@ class MockApiClient extends _i1.Mock implements _i14.ApiClient {
   }
 
   @override
-  _i15.Future<_i2.ProfileResponseDTO> getProfileData() => (super.noSuchMethod(
-        Invocation.method(
-          #getProfileData,
-          [],
-        ),
-        returnValue:
-            _i15.Future<_i2.ProfileResponseDTO>.value(_FakeProfileResponseDTO_0(
-          this,
-          Invocation.method(
-            #getProfileData,
-            [],
-          ),
-        )),
-      ) as _i15.Future<_i2.ProfileResponseDTO>);
+  _i15.Future<_i2.ProfileResponseDTO> getProfileData() =>
+      (super.noSuchMethod(
+            Invocation.method(#getProfileData, []),
+            returnValue: _i15.Future<_i2.ProfileResponseDTO>.value(
+              _FakeProfileResponseDTO_0(
+                this,
+                Invocation.method(#getProfileData, []),
+              ),
+            ),
+          )
+          as _i15.Future<_i2.ProfileResponseDTO>);
 
   @override
   _i15.Future<_i3.SignUpResponseDTO> signUp(_i16.SignUpRequest? data) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #signUp,
-          [data],
-        ),
-        returnValue:
-            _i15.Future<_i3.SignUpResponseDTO>.value(_FakeSignUpResponseDTO_1(
-          this,
-          Invocation.method(
-            #signUp,
-            [data],
-          ),
-        )),
-      ) as _i15.Future<_i3.SignUpResponseDTO>);
+            Invocation.method(#signUp, [data]),
+            returnValue: _i15.Future<_i3.SignUpResponseDTO>.value(
+              _FakeSignUpResponseDTO_1(
+                this,
+                Invocation.method(#signUp, [data]),
+              ),
+            ),
+          )
+          as _i15.Future<_i3.SignUpResponseDTO>);
 
   @override
   _i15.Future<_i4.HttpResponse<_i3.SignUpResponseDTO>> signIn(
-          _i17.SignInRequest? data) =>
+    _i17.SignInRequest? data,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #signIn,
-          [data],
-        ),
-        returnValue: _i15.Future<_i4.HttpResponse<_i3.SignUpResponseDTO>>.value(
-            _FakeHttpResponse_2<_i3.SignUpResponseDTO>(
-          this,
-          Invocation.method(
-            #signIn,
-            [data],
-          ),
-        )),
-      ) as _i15.Future<_i4.HttpResponse<_i3.SignUpResponseDTO>>);
+            Invocation.method(#signIn, [data]),
+            returnValue:
+                _i15.Future<_i4.HttpResponse<_i3.SignUpResponseDTO>>.value(
+                  _FakeHttpResponse_2<_i3.SignUpResponseDTO>(
+                    this,
+                    Invocation.method(#signIn, [data]),
+                  ),
+                ),
+          )
+          as _i15.Future<_i4.HttpResponse<_i3.SignUpResponseDTO>>);
 
   @override
   _i15.Future<_i5.ForgetResponsePasswordDto> forgetPassword(
-          Map<String, dynamic>? data) =>
+    Map<String, dynamic>? data,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #forgetPassword,
-          [data],
-        ),
-        returnValue: _i15.Future<_i5.ForgetResponsePasswordDto>.value(
-            _FakeForgetResponsePasswordDto_3(
-          this,
-          Invocation.method(
-            #forgetPassword,
-            [data],
-          ),
-        )),
-      ) as _i15.Future<_i5.ForgetResponsePasswordDto>);
+            Invocation.method(#forgetPassword, [data]),
+            returnValue: _i15.Future<_i5.ForgetResponsePasswordDto>.value(
+              _FakeForgetResponsePasswordDto_3(
+                this,
+                Invocation.method(#forgetPassword, [data]),
+              ),
+            ),
+          )
+          as _i15.Future<_i5.ForgetResponsePasswordDto>);
 
   @override
   _i15.Future<_i6.VerifyEmailResponseDto> verifyEmail(
-          Map<String, String>? code) =>
+    Map<String, String>? code,
+  ) =>
       (super.noSuchMethod(
-        Invocation.method(
-          #verifyEmail,
-          [code],
-        ),
-        returnValue: _i15.Future<_i6.VerifyEmailResponseDto>.value(
-            _FakeVerifyEmailResponseDto_4(
-          this,
-          Invocation.method(
-            #verifyEmail,
-            [code],
-          ),
-        )),
-      ) as _i15.Future<_i6.VerifyEmailResponseDto>);
+            Invocation.method(#verifyEmail, [code]),
+            returnValue: _i15.Future<_i6.VerifyEmailResponseDto>.value(
+              _FakeVerifyEmailResponseDto_4(
+                this,
+                Invocation.method(#verifyEmail, [code]),
+              ),
+            ),
+          )
+          as _i15.Future<_i6.VerifyEmailResponseDto>);
 
   @override
   _i15.Future<_i7.ResetPasswordResponseDTO> resetPassword(
@@ -425,6 +377,26 @@ class MockApiClient extends _i1.Mock implements _i14.ApiClient {
   _i15.Future<_i13.SpecificCategoriesResponseModel> getSpecificCategory(
           String? categoryId) =>
       (super.noSuchMethod(
+            Invocation.method(#getSpecificCategory, [categoryId]),
+            returnValue:
+                _i15.Future<_i13.SpecificCategoriesResponseModel>.value(
+                  _FakeSpecificCategoriesResponseModel_11(
+                    this,
+                    Invocation.method(#getSpecificCategory, [categoryId]),
+                  ),
+                ),
+          )
+          as _i15.Future<_i13.SpecificCategoriesResponseModel>);
+
+  @override
+  _i15.Future<_i4.HttpResponse<void>> logout() =>
+      (super.noSuchMethod(
+            Invocation.method(#logout, []),
+            returnValue: _i15.Future<_i4.HttpResponse<void>>.value(
+              _FakeHttpResponse_2<void>(this, Invocation.method(#logout, [])),
+            ),
+          )
+          as _i15.Future<_i4.HttpResponse<void>>);
         Invocation.method(
           #getSpecificCategory,
           [categoryId],

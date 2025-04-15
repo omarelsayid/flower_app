@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -94,121 +95,144 @@ import '../features/profile/main_profile_screen/data/repository_imp/profile_scre
     as _i442;
 import '../features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
     as _i758;
-import '../features/profile/main_profile_screen/domain/use_case/edit_profile_use_case.dart'
-    as _i22;
 import '../features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart'
     as _i526;
-import '../features/profile/main_profile_screen/domain/use_case/upload_photo_use_case.dart'
-    as _i253;
-import '../features/profile/main_profile_screen/presentation/cubit/edit_profile_cubit/edit_profile_view_model.dart'
-    as _i339;
 import '../features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart'
     as _i961;
-import '../features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_view_model.dart'
-    as _i269;
 
 extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final dataModule = _$DataModule();
     final networkModule = _$NetworkModule();
     gh.singleton<_i973.InternetConnectionChecker>(
-        () => _i697.DataModule.getInternetConnectionCheck());
+      () => dataModule.getInternetConnectionCheck(),
+    );
     gh.lazySingleton<_i552.AuthInterceptor>(
-        () => networkModule.authInterceptor);
+      () => networkModule.authInterceptor,
+    );
     gh.lazySingleton<_i361.Dio>(
-        () => networkModule.dio(gh<_i552.AuthInterceptor>()));
+      () => networkModule.dio(gh<_i552.AuthInterceptor>()),
+    );
     gh.lazySingleton<_i424.ApiClient>(
-        () => networkModule.apiClient(gh<_i361.Dio>()));
+      () => networkModule.apiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i481.BestSellerRemoteDataSource>(
-        () => _i1016.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()));
+      () => _i1016.BestSellerRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i702.CategoriesRemoteDataSource>(
-        () => _i702.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()));
+      () => _i702.CategoriesRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i366.AuthRemoteDataSource>(
-        () => _i366.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()));
+      () => _i366.AuthRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i84.BestSellerRepo>(
-        () => _i601.BestSellerRepoImpl(gh<_i481.BestSellerRemoteDataSource>()));
+      () => _i601.BestSellerRepoImpl(gh<_i481.BestSellerRemoteDataSource>()),
+    );
     gh.factory<_i215.BestSellerUseCase>(
-        () => _i215.BestSellerUseCase(gh<_i84.BestSellerRepo>()));
+      () => _i215.BestSellerUseCase(gh<_i84.BestSellerRepo>()),
+    );
     gh.factory<_i543.BestSellerViewModel>(
-        () => _i543.BestSellerViewModel(gh<_i215.BestSellerUseCase>()));
+      () => _i543.BestSellerViewModel(gh<_i215.BestSellerUseCase>()),
+    );
     gh.factory<_i672.BestSellerCubit>(
-        () => _i672.BestSellerCubit(gh<_i215.BestSellerUseCase>()));
+      () => _i672.BestSellerCubit(gh<_i215.BestSellerUseCase>()),
+    );
     gh.factory<_i530.ProductsDetailsRemoteDataScource>(
-        () => _i890.ProductsDetailsRemoteDataScourceImp(gh<_i424.ApiClient>()));
+      () => _i890.ProductsDetailsRemoteDataScourceImp(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i235.HomeDataSource>(
-        () => _i235.CategoryDataSourceImp(gh<_i424.ApiClient>()));
-    gh.factory<_i799.CategoriesRepository>(() =>
-        _i1059.CategoriesRepositoryImpl(
-            gh<_i702.CategoriesRemoteDataSource>()));
+      () => _i235.CategoryDataSourceImp(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i799.CategoriesRepository>(
+      () => _i1059.CategoriesRepositoryImpl(
+        gh<_i702.CategoriesRemoteDataSource>(),
+      ),
+    );
     gh.factory<_i1007.OccasionRemoteDataSource>(
-        () => _i1007.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()));
+      () => _i1007.OccasionRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
     gh.factory<_i808.ProfileRemoteDataSource>(
-        () => _i808.ProfileRemoteDataSourceImpl(gh<_i424.ApiClient>()));
-    gh.factory<_i267.AuthRepository>(() => _i1042.AuthRepositoryImpl(
-          gh<_i366.AuthRemoteDataSource>(),
-          gh<_i973.InternetConnectionChecker>(),
-        ));
-    gh.factory<_i652.GetProductDetailsRepo>(() => _i647.ProductsDetailRepoImp(
-        gh<_i530.ProductsDetailsRemoteDataScource>()));
-    gh.factory<_i238.OccasionRepository>(() =>
-        _i141.OccasionRepositoryImpl(gh<_i1007.OccasionRemoteDataSource>()));
-    gh.factory<_i971.HomeRepo>(() => _i637.HomeRepositoryImpl(
-          gh<_i235.HomeDataSource>(),
-          gh<_i973.InternetConnectionChecker>(),
-        ));
+      () => _i808.ProfileRemoteDataSourceImpl(gh<_i424.ApiClient>()),
+    );
+    gh.factory<_i267.AuthRepository>(
+      () => _i1042.AuthRepositoryImpl(
+        gh<_i366.AuthRemoteDataSource>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
+    gh.factory<_i652.GetProductDetailsRepo>(
+      () => _i647.ProductsDetailRepoImp(
+        gh<_i530.ProductsDetailsRemoteDataScource>(),
+      ),
+    );
+    gh.factory<_i238.OccasionRepository>(
+      () => _i141.OccasionRepositoryImpl(gh<_i1007.OccasionRemoteDataSource>()),
+    );
+    gh.factory<_i971.HomeRepo>(
+      () => _i637.HomeRepositoryImpl(
+        gh<_i235.HomeDataSource>(),
+        gh<_i973.InternetConnectionChecker>(),
+      ),
+    );
     gh.factory<_i758.ProfileRepository>(
-        () => _i442.ProfileRepositoryImpl(gh<_i808.ProfileRemoteDataSource>()));
+      () => _i442.ProfileRepositoryImpl(gh<_i808.ProfileRemoteDataSource>()),
+    );
     gh.factory<_i546.AuthUseCase>(
-        () => _i546.AuthUseCase(gh<_i267.AuthRepository>()));
+      () => _i546.AuthUseCase(gh<_i267.AuthRepository>()),
+    );
     gh.factory<_i28.SignInUseCase>(
-        () => _i28.SignInUseCase(gh<_i267.AuthRepository>()));
+      () => _i28.SignInUseCase(gh<_i267.AuthRepository>()),
+    );
     gh.factory<_i83.ProductsDetailCubit>(
-        () => _i83.ProductsDetailCubit(gh<_i652.GetProductDetailsRepo>()));
+      () => _i83.ProductsDetailCubit(gh<_i652.GetProductDetailsRepo>()),
+    );
     gh.factory<_i402.CategoriesUseCase>(
-        () => _i402.CategoriesUseCase(gh<_i799.CategoriesRepository>()));
+      () => _i402.CategoriesUseCase(gh<_i799.CategoriesRepository>()),
+    );
     gh.factory<_i518.OccasionUseCase>(
-        () => _i518.OccasionUseCase(gh<_i238.OccasionRepository>()));
+      () => _i518.OccasionUseCase(gh<_i238.OccasionRepository>()),
+    );
     gh.factory<_i770.HomeUseCase>(
-        () => _i770.HomeUseCase(gh<_i971.HomeRepo>()));
+      () => _i770.HomeUseCase(gh<_i971.HomeRepo>()),
+    );
     gh.factory<_i229.ForgetPasswordViewModel>(
-        () => _i229.ForgetPasswordViewModel(gh<_i546.AuthUseCase>()));
+      () => _i229.ForgetPasswordViewModel(gh<_i546.AuthUseCase>()),
+    );
     gh.factory<_i205.ResetPasswordViewModel>(
-        () => _i205.ResetPasswordViewModel(gh<_i546.AuthUseCase>()));
+      () => _i205.ResetPasswordViewModel(gh<_i546.AuthUseCase>()),
+    );
     gh.factory<_i965.SignUpViewModel>(
-        () => _i965.SignUpViewModel(gh<_i546.AuthUseCase>()));
+      () => _i965.SignUpViewModel(gh<_i546.AuthUseCase>()),
+    );
     gh.factory<_i803.SignInViewModel>(
-        () => _i803.SignInViewModel(gh<_i28.SignInUseCase>()));
+      () => _i803.SignInViewModel(gh<_i28.SignInUseCase>()),
+    );
     gh.factory<_i851.CategoryCubit>(
-        () => _i851.CategoryCubit(gh<_i770.HomeUseCase>()));
+      () => _i851.CategoryCubit(gh<_i770.HomeUseCase>()),
+    );
     gh.factory<_i137.OccasionCubit>(
-        () => _i137.OccasionCubit(gh<_i770.HomeUseCase>()));
+      () => _i137.OccasionCubit(gh<_i770.HomeUseCase>()),
+    );
     gh.factory<_i287.CategoriesViewModel>(
-        () => _i287.CategoriesViewModel(gh<_i402.CategoriesUseCase>()));
+      () => _i287.CategoriesViewModel(gh<_i402.CategoriesUseCase>()),
+    );
     gh.factory<_i882.VerifyEmailVewModel>(
-        () => _i882.VerifyEmailVewModel(gh<_i546.AuthUseCase>()));
+      () => _i882.VerifyEmailVewModel(gh<_i546.AuthUseCase>()),
+    );
     gh.factory<_i512.OccasionViewModel>(
-        () => _i512.OccasionViewModel(gh<_i518.OccasionUseCase>()));
-    gh.factory<_i22.EditProfileUseCase>(
-        () => _i22.EditProfileUseCase(gh<_i758.ProfileRepository>()));
+      () => _i512.OccasionViewModel(gh<_i518.OccasionUseCase>()),
+    );
     gh.factory<_i526.ProfileUseCase>(
-        () => _i526.ProfileUseCase(gh<_i758.ProfileRepository>()));
-    gh.factory<_i253.UploadPhotoUseCase>(
-        () => _i253.UploadPhotoUseCase(gh<_i758.ProfileRepository>()));
+      () => _i526.ProfileUseCase(gh<_i758.ProfileRepository>()),
+    );
     gh.factory<_i961.ProfileViewModel>(
-        () => _i961.ProfileViewModel(gh<_i526.ProfileUseCase>()));
-    gh.factory<_i339.EditProfileViewModel>(
-        () => _i339.EditProfileViewModel(gh<_i22.EditProfileUseCase>()));
-    gh.factory<_i269.UploadPhotoViewModel>(
-        () => _i269.UploadPhotoViewModel(gh<_i253.UploadPhotoUseCase>()));
+      () => _i961.ProfileViewModel(gh<_i526.ProfileUseCase>()),
+    );
     return this;
   }
 }
