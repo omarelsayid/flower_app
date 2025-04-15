@@ -198,10 +198,15 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     onPressed: () {
                       //navigate to change password screen
                     },
-                    child: Text(
-                      'change',
-                      style: AppTextStyles.inter400_12.copyWith(
-                        color: AppColors.primaryColor,
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, PagesRoutes.changePasswordScreen);
+                      },
+                      child: Text(
+                        'change',
+                        style: AppTextStyles.inter400_12.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
                       ),
                     ),
                   ),

@@ -1,16 +1,19 @@
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
 import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/change_password_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
+import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../features/home/home_tab/data/model/category_response_dto.dart';
+
 
 import '../../features/home/categories/data/model/categories_response_model.dart';
 import '../../features/home/categories/data/model/specific_categories_response_model.dart';
@@ -19,16 +22,21 @@ import '../../features/auth/data/model/forget_response_password_dto.dart';
 import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';
 import '../../features/auth/domain/entity/sign_up_request.dart';
+import '../../features/profile/main_profile_screen/data/model/change_password_request_model.dart';
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
-// @singleton
+@singleton
+@injectable
 abstract class ApiClient {
-  // @factoryMethod
+  @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
+
   @GET("/api/v1/auth/profile-data")
-  Future<ProfileResponseDTO> getProfileData();
+  Future<ProfileResponseDTO> getProfileData(
+      @Header("Authorization") String token,
+      );
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -40,8 +48,10 @@ abstract class ApiClient {
     @Body() Map<String, dynamic> data,
   );
 
+
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
+
 
   @PUT("/api/v1/auth/resetPassword")
   Future<ResetPasswordResponseDTO> resetPassword(
@@ -56,6 +66,7 @@ abstract class ApiClient {
 
   @GET("/api/v1/occasions")
   Future<OccasionResponseDTO> getOccasion();
+
 
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();
@@ -82,17 +93,23 @@ abstract class ApiClient {
   Future<HttpResponse<void>> logout();
 
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
-
+  @PATCH("/api/v1/auth/change-password")
+Future<ChangePasswordModel> changePassword(
+      @Body() ChangePasswordRequestModel data,
+      @Header("Authorization") String token,);
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
-    // @Body() EditProfileRequest data,
-    @Body() Map<String, dynamic> data,
-  );
+      // @Body() EditProfileRequest data,
+      @Body() Map<String, dynamic> data,
+      );
 
   @PUT("/api/v1/auth/upload-photo")
   @MultiPart()
   Future<String?> uploadPhoto(
-    @Header("Authorization") String token,
-    @Body() FormData formData,
-  );
+      @Header("Authorization") String token,
+      @Body() FormData formData,
+      );
 }
+
+
+
