@@ -47,6 +47,12 @@ class ServerFailure extends Failure {
         switch (message) {
           case '"email" must be a valid email':
             return ServerFailure(errorMessage: 'Not a valid email format');
+          case 'email not found':
+            return ServerFailure(errorMessage: 'Email not found');
+          case 'password not found':
+            return ServerFailure(errorMessage: 'Password not found');
+          case "current password is incorrect":
+            return ServerFailure(errorMessage: 'Current password is incorrect');
           case 'incorrect email or password':
             return ServerFailure(errorMessage: 'Incorrect email or password');
           default:

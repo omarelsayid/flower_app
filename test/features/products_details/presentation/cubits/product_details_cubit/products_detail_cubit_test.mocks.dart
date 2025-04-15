@@ -38,16 +38,19 @@ class MockGetProductDetailsRepo extends _i1.Mock
 
   @override
   _i3.Future<_i4.Result<_i5.ProductDetailsEntity>> getProductDetails(
-    String? id,
-  ) =>
+          String? id) =>
       (super.noSuchMethod(
-            Invocation.method(#getProductDetails, [id]),
-            returnValue: _i3.Future<_i4.Result<_i5.ProductDetailsEntity>>.value(
-              _i6.dummyValue<_i4.Result<_i5.ProductDetailsEntity>>(
-                this,
-                Invocation.method(#getProductDetails, [id]),
-              ),
-            ),
-          )
-          as _i3.Future<_i4.Result<_i5.ProductDetailsEntity>>);
+        Invocation.method(
+          #getProductDetails,
+          [id],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i5.ProductDetailsEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i5.ProductDetailsEntity>>(
+          this,
+          Invocation.method(
+            #getProductDetails,
+            [id],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i5.ProductDetailsEntity>>);
 }

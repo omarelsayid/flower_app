@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flower_app/features/auth/data/model/forget_response_password_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/reset_password_response_entity.dart';
 import 'package:flower_app/features/auth/domain/entity/verify_email_response_entity.dart';
-import 'package:flower_app/core/api/api_execute.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:retrofit/dio.dart';
@@ -23,12 +22,8 @@ import '../model/sign_up_response_dto.dart';
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _authRemoteDataSource;
-  final InternetConnectionChecker internetConnectionChecker;
 
-  AuthRepositoryImpl(
-    this._authRemoteDataSource,
-    this.internetConnectionChecker,
-  );
+  AuthRepositoryImpl(this._authRemoteDataSource);
 
   @override
   Future<Result<SignUpResponseEntity>> signUp(SignUpRequest data) async {
@@ -75,7 +70,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<Result<SignUpResponseEntity>> signIn(SignInRequest data) async {
     try {
-      bool isConnected = await internetConnectionChecker.hasConnection;
+      bool isConnected = await InternetConnectionChecker.instance.hasConnection;
       if (isConnected) {
         final HttpResponse<SignUpResponseDTO> response =
             await _authRemoteDataSource.signIn(data);
@@ -84,10 +79,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
         if (response.response.statusCode! >= 200 &&
             response.response.statusCode! < 300) {
-          // await SharedPreferenceServices.saveData(
-          //   AppConstants.token,
-          //   response.data.token!,
-          // );
+          await SharedPreferenceServices.saveData(
+            AppConstants.token,
+            response.data.token!,
+          );
           log('status code: ${response.data.user!.email}');
           log('status code: ${response.data.user!.firstName}');
           log('status code: ${response.data.token}');

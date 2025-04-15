@@ -106,9 +106,10 @@ class ProfileTab extends StatelessWidget {
                       const ProfileAppBarWidget(),
                       SizedBox(height: resposiveHeight(32)),
                       UserInformationWidget(
-                        name: state.user?.firstName ?? '',
-                        email: state.user?.email ?? '',
-                        image: state.user?.photo,
+                        userData: state.user!,
+                        // name: state.user?.firstName ?? '',
+                        // email: state.user?.email ?? '',
+                        // image: state.user?.photo,
                       ),
                       BodyWidget(
                         text: S.of(context).myOrders,
@@ -155,3 +156,4 @@ class ProfileTab extends StatelessWidget {
     );
   }
 }
+
