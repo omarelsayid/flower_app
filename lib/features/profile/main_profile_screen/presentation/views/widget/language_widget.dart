@@ -25,8 +25,10 @@ class LanguageWidget extends StatelessWidget {
             isScrollControlled: true,
             builder: (context) {
               return Container(
-                // margin: const EdgeInsets.only(top: 50),
-                padding: const EdgeInsets.all(16),
+                padding: EdgeInsets.symmetric(
+                  vertical: resposiveHeight(16),
+                  horizontal: resposiveWidth(16),
+                ),
                 height: resposiveHeight(220),
                 width: resposiveWidth(375),
                 decoration: BoxDecoration(
@@ -35,30 +37,32 @@ class LanguageWidget extends StatelessWidget {
                     topRight: Radius.circular(32),
                   ),
                 ),
-                child: Column(
-                  spacing: resposiveHeight(16),
-                  children: [
-                    DragIndicatorBar(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          S.of(context).language,
-                          style: AppTextStyles.outfit700_20.copyWith(
-                            color: AppColors.primaryColor,
+                child: SingleChildScrollView(
+                  child: Column(
+                    spacing: resposiveHeight(16),
+                    children: [
+                      DragIndicatorBar(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            S.of(context).language,
+                            style: AppTextStyles.outfit700_20.copyWith(
+                              color: AppColors.primaryColor,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    LanguageTileWidget(
-                      title: S.of(context).english,
-                      value: 'en',
-                    ),
-                    LanguageTileWidget(
-                      title: S.of(context).arabic,
-                      value: 'ar',
-                    ),
-                  ],
+                        ],
+                      ),
+                      LanguageTileWidget(
+                        title: S.of(context).english,
+                        value: 'en',
+                      ),
+                      LanguageTileWidget(
+                        title: S.of(context).arabic,
+                        value: 'ar',
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

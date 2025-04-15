@@ -11,4 +11,7 @@ abstract class ProfileRepository {
   );
   Future<Result<String?>> uploadPhoto(File photo);
   Future<Result<void>> logout();
+
+  Future<String?> getToken();
+  Future<void> deleteToken();
 }

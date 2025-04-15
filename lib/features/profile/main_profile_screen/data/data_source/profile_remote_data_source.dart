@@ -39,13 +39,15 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<EditProfileResponseDTO> editProfile(Map<String, dynamic> data) async {
+    var token=  SharedPreferenceServices.getData(AppConstants.token.toString());
     HttpResponse<EditProfileResponseDTO> response = await _apiClient
-        .editProfile(data);
+        .editProfile("Bearer $token",data,);
     return response.data;
   }
   @override
   Future<void> logout() async {
-    await _apiClient.logout();
+    var token=  SharedPreferenceServices.getData(AppConstants.token.toString());
+    await _apiClient.logout("Bearer $token");
   }
 
   @override
@@ -67,10 +69,6 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     });
   }
 }
-
-
-
-
 
 
 

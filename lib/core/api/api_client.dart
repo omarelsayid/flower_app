@@ -90,7 +90,9 @@ abstract class ApiClient {
   );
 
   @GET("/api/v1/auth/logout")
-  Future<HttpResponse<void>> logout();
+  Future<HttpResponse<void>> logout(
+      @Header("Authorization") String token,
+      );
 
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
   @PATCH("/api/v1/auth/change-password")
@@ -99,6 +101,7 @@ Future<ChangePasswordModel> changePassword(
       @Header("Authorization") String token,);
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
+      @Header("Authorization") String token,
       // @Body() EditProfileRequest data,
       @Body() Map<String, dynamic> data,
       );

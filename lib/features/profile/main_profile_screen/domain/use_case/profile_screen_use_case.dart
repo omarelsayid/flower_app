@@ -19,4 +19,12 @@ class ProfileUseCase {
   return _profileRepository.logout();
  }
 
+ Future<String?> getToken() async {
+  return _profileRepository.getToken();
+ }
+
+ Future<void> deleteToken() async {
+  await _profileRepository.deleteToken();
+ }
+
 }

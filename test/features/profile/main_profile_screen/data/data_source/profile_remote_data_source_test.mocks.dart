@@ -456,17 +456,18 @@ class MockApiClient extends _i1.Mock implements _i15.ApiClient {
       ) as _i16.Future<_i13.SpecificCategoriesResponseModel>);
 
   @override
-  _i16.Future<_i4.HttpResponse<void>> logout() => (super.noSuchMethod(
+  _i16.Future<_i4.HttpResponse<void>> logout(String? token) =>
+      (super.noSuchMethod(
         Invocation.method(
           #logout,
-          [],
+          [token],
         ),
         returnValue:
             _i16.Future<_i4.HttpResponse<void>>.value(_FakeHttpResponse_2<void>(
           this,
           Invocation.method(
             #logout,
-            [],
+            [token],
           ),
         )),
       ) as _i16.Future<_i4.HttpResponse<void>>);
@@ -499,11 +500,16 @@ class MockApiClient extends _i1.Mock implements _i15.ApiClient {
 
   @override
   _i16.Future<_i4.HttpResponse<_i22.EditProfileResponseDTO>> editProfile(
-          Map<String, dynamic>? data) =>
+    String? token,
+    Map<String, dynamic>? data,
+  ) =>
       (super.noSuchMethod(
         Invocation.method(
           #editProfile,
-          [data],
+          [
+            token,
+            data,
+          ],
         ),
         returnValue:
             _i16.Future<_i4.HttpResponse<_i22.EditProfileResponseDTO>>.value(
@@ -511,7 +517,10 @@ class MockApiClient extends _i1.Mock implements _i15.ApiClient {
           this,
           Invocation.method(
             #editProfile,
-            [data],
+            [
+              token,
+              data,
+            ],
           ),
         )),
       ) as _i16.Future<_i4.HttpResponse<_i22.EditProfileResponseDTO>>);
