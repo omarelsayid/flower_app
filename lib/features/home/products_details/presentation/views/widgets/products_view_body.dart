@@ -1,10 +1,15 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/home/products_details/presentation/cubits/product_details_cubit/products_detail_states.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/widgets/collpased_sliver_app_bar_widget.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/widgets/products_details_image_view_widget.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/widgets/review_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+
+import '../../../../../cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 
 class ProductsDetailsViewBody extends StatelessWidget {
   const ProductsDetailsViewBody({
@@ -19,6 +24,7 @@ class ProductsDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product=state.productDetailsEntity;
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -41,9 +47,9 @@ class ProductsDetailsViewBody extends StatelessWidget {
 
               return FlexibleSpaceBar(
                 title:
-                    isCollapsed
-                        ? CollapsedSliverAppBarWidget(state: state)
-                        : null,
+                isCollapsed
+                    ? CollapsedSliverAppBarWidget(state: state)
+                    : null,
                 background: ProductsDetailsImageViewWidget(
                   pageController: _pageController,
                   state: state,
@@ -78,12 +84,12 @@ class ProductsDetailsViewBody extends StatelessWidget {
                           TextSpan(
                             text: 'Status: ',
                             style:
-                                AppTextStyles
-                                    .inter500_16, // Bold style for "Status:"
+                            AppTextStyles
+                                .inter500_16, // Bold style for "Status:"
                           ),
                           TextSpan(
                             text:
-                                '${state.productDetailsEntity.quantity} in stock',
+                            '${state.productDetailsEntity.quantity} in stock',
                             style: AppTextStyles.inter400_14,
                           ),
                         ],
@@ -101,7 +107,8 @@ class ProductsDetailsViewBody extends StatelessWidget {
                 ),
 
                 SizedBox(height: resposiveHeight(8)),
-                Text('${state.productDetailsEntity.slug}', style: AppTextStyles.inter500_16),
+                Text('${state.productDetailsEntity.slug}',
+                    style: AppTextStyles.inter500_16),
 
                 SizedBox(height: resposiveHeight(16)),
 
@@ -116,14 +123,31 @@ class ProductsDetailsViewBody extends StatelessWidget {
 
                 ReviewTextWidget(state: state),
                 SizedBox(height: resposiveHeight(35)),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Add to cart',
-                    style: AppTextStyles.inter500_16.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
+                BlocConsumer<AddToCartCubit, AddToCartState>(
+                  bloc: getIt.get<AddToCartCubit>(),
+                  listener: (context, state) {
+                    if (state is AddToCartSuccess) {
+                      EasyLoading.showSuccess(duration: Duration(seconds: 2),state.message);
+                    }
+                    else if (state is AddToCartError) {
+                      EasyLoading.showError(state.error);
+                    }
+                  },
+                  builder: (context, state) {
+                    return ElevatedButton(
+                      onPressed: () {
+
+                        BlocProvider.of<AddToCartCubit>(context).AddToCart(
+                            productId: product.id!, quantity: 1);
+                      },
+                      child: Text(
+                        'Add to cart',
+                        style: AppTextStyles.inter500_16.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  },
                 ),
 
                 // * this containers for test the scrolling
@@ -133,7 +157,8 @@ class ProductsDetailsViewBody extends StatelessWidget {
             ),
           ),
         ),
-      ],
+      ]
+      ,
     );
   }
 }

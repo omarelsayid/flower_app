@@ -12,6 +12,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
+import '../../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
+import '../../features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
+import '../../features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
+import '../../features/profile/main_profile_screen/presentation/views/change_password_screen.dart';
+import '../../features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
+import '../di/injectable_initializer.dart';
 import '../widgets/test_screen.dart';
 
 class RoutesGenerator {
@@ -59,7 +65,11 @@ class RoutesGenerator {
 
       case PagesRoutes.productDetails:
         return MaterialPageRoute(
-          builder: (context) => ProductsDetailsView(),
+          builder: (context) =>
+              BlocProvider(
+                create: (context) => getIt.get<AddToCartCubit>(),
+                child: ProductsDetailsView(),
+              ),
           settings: settings,
         );
 

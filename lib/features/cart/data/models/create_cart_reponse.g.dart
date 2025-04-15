@@ -7,7 +7,11 @@ part of 'create_cart_reponse.dart';
 // **************************************************************************
 
 CreateCartResponse _$CreateCartResponseFromJson(Map<String, dynamic> json) =>
-    CreateCartResponse(message: json['message'] as String);
+    CreateCartResponse(
+      message: json['message'] as String,
+    );
 
 Map<String, dynamic> _$CreateCartResponseToJson(CreateCartResponse instance) =>
-    <String, dynamic>{'message': instance.message};
+    <String, dynamic>{
+      'message': instance.message,
+    };
