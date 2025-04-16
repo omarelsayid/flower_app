@@ -8,9 +8,7 @@ ThemeData theme() {
   final screenHeight = ScreenSizeService.height;
 
   return ThemeData(
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.white,
-    ),
+    appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
     scaffoldBackgroundColor: Colors.white,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
@@ -34,8 +32,12 @@ ThemeData theme() {
     ),
     inputDecorationTheme: InputDecorationTheme(
       floatingLabelBehavior: FloatingLabelBehavior.always,
-      hintStyle: AppTextStyles.roboto400_14.copyWith(color: const Color(0xffA6A6A6)),
-      labelStyle: AppTextStyles.roboto400_12.copyWith(color: const Color(0xff535353)),
+      hintStyle: AppTextStyles.roboto400_14.copyWith(
+        color: const Color(0xffA6A6A6),
+      ),
+      labelStyle: AppTextStyles.roboto400_12.copyWith(
+        color: const Color(0xff535353),
+      ),
       contentPadding: EdgeInsetsDirectional.fromSTEB(
         (16 / ScreenSizeService.baseWidth) * screenWidth,
         (4 / ScreenSizeService.baseHeight) * screenHeight,
@@ -72,11 +74,11 @@ OutlineInputBorder textFieldInputBorder() {
   double responsiveBorderWidth = (1 / 375.0) * screenWidth;
 
   return OutlineInputBorder(
-    borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(responsiveRadius),
-      topRight: Radius.circular(responsiveRadius),
+    borderRadius: BorderRadius.all(Radius.circular(responsiveRadius)),
+    borderSide: BorderSide(
+      color: AppColors.greyColor,
+      width: responsiveBorderWidth,
     ),
-    borderSide: BorderSide(color: AppColors.greyColor, width: responsiveBorderWidth),
   );
 }
 
@@ -86,10 +88,7 @@ OutlineInputBorder textFieldInputBorderFocus() {
   double responsiveBorderWidth = (1 / 375.0) * screenWidth;
 
   return OutlineInputBorder(
-    borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(responsiveRadius),
-      topRight: Radius.circular(responsiveRadius),
-    ),
+    borderRadius: BorderRadius.all(Radius.circular(responsiveRadius)),
     borderSide: BorderSide(color: Colors.black, width: responsiveBorderWidth),
   );
 }
