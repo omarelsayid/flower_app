@@ -12,6 +12,7 @@ class AuthInterceptor extends Interceptor {
     return handler.next(options);
   }
 }
+
 // class AuthInterceptor extends Interceptor {
 //   @override
 //   void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {

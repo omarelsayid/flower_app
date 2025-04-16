@@ -14,6 +14,16 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../features/address_details/data/data_source/address_details_data_scource.dart'
+    as _i953;
+import '../../features/address_details/data/data_source/address_details_data_source_imp.dart'
+    as _i541;
+import '../../features/address_details/data/repository/address_details_repo_imp.dart'
+    as _i460;
+import '../../features/address_details/domain/repository/addres_details_repo.dart'
+    as _i288;
+import '../../features/address_details/presentation/cubit/addres_details_cubit.dart'
+    as _i551;
 import '../../features/auth/data/data_source/auth_remote_data_source.dart'
     as _i182;
 import '../../features/auth/data/repository_imp/auth_repository_imp.dart'
@@ -134,6 +144,7 @@ import '../../features/profile/main_profile_screen/presentation/cubit/profile_vi
 import '../../features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_view_model.dart'
     as _i480;
 import '../api/api_client.dart' as _i277;
+import '../api/geocoding_client.dart' as _i40;
 import '../api/network_factory.dart' as _i1013;
 import '../network/auth_interceptor.dart' as _i908;
 
@@ -170,6 +181,10 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i584.ChangePasswordDataSource>()));
     gh.factory<_i330.BestSellerRepo>(
         () => _i174.BestSellerRepoImpl(gh<_i550.BestSellerRemoteDataSource>()));
+    gh.singleton<_i40.GeocodeApi>(() => _i40.GeocodeApi(
+          gh<_i361.Dio>(),
+          baseUrl: gh<String>(),
+        ));
     gh.factory<_i701.AuthUseCase>(
         () => _i701.AuthUseCase(gh<_i961.AuthRepository>()));
     gh.factory<_i489.SignInUseCase>(
@@ -202,6 +217,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i425.OccasionRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i428.ProfileRemoteDataSource>(
         () => _i428.ProfileRemoteDataSourceImpl(gh<_i277.ApiClient>()));
+    gh.factory<_i953.AddressDetailsDataScource>(
+        () => _i541.AddressDetailsDataSourceImp(gh<_i40.GeocodeApi>()));
     gh.factory<_i152.ProfileRepository>(() => _i62.ProfileRepositoryImpl(
           gh<_i428.ProfileRemoteDataSource>(),
           gh<_i678.ProfileLocalDataSource>(),
@@ -234,6 +251,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i632.GetUserCartCubit(gh<_i971.GetUserCartUseCase>()));
     gh.factory<_i352.HomeRepo>(
         () => _i20.HomeRepositoryImpl(gh<_i246.HomeDataSource>()));
+    gh.factory<_i288.AddressDetailsRepo>(() =>
+        _i460.AddressDetailsRepoImp(gh<_i953.AddressDetailsDataScource>()));
     gh.factory<_i378.ChangePasswordViewModel>(
         () => _i378.ChangePasswordViewModel(gh<_i922.ChangePasswordUseCase>()));
     gh.factory<_i8.ProductsDetailCubit>(
@@ -264,6 +283,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i602.OccasionViewModel(gh<_i66.OccasionUseCase>()));
     gh.factory<_i480.UploadPhotoViewModel>(
         () => _i480.UploadPhotoViewModel(gh<_i801.UploadPhotoUseCase>()));
+    gh.factory<_i551.AddresDetailsCubit>(
+        () => _i551.AddresDetailsCubit(gh<_i288.AddressDetailsRepo>()));
     return this;
   }
 }

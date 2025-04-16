@@ -1,4 +1,4 @@
-import 'package:flower_app/features/address_details/presentation/view/address_details_view.dart';
+import 'package:flower_app/features/address_details/presentation/view/address_details_view_body.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -115,7 +115,9 @@ class RoutesGenerator {
         );
 
       case PagesRoutes.addressScreen:
-        return MaterialPageRoute(builder: (context) => AddressDetailsView());
+        return MaterialPageRoute(
+          builder: (context) => AddressDetailsViewBody(),
+        );
 
       default:
         return unDefinedRoute();
