@@ -22,4 +22,5 @@ abstract class IconAssets {
 abstract class SvgImages {
   static const String logo = "$imagePath/Logo.svg";
   static const String dropDownIcon = "$iconPath/drop_down_icon.svg";
+  static const String locationMarker = "$iconPath/marker.svg";
 }

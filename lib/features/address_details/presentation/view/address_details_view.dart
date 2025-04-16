@@ -42,6 +42,13 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
     locationService = LocationService();
   }
 
+  void initMapStyle() async {
+    var mapStyle = await DefaultAssetBundle.of(
+      context,
+    ).loadString('assets/map_styles/map_style.json');
+    mapController.setMapStyle(mapStyle);
+  }
+
   Future<void> getUserLocation() async {
     try {
       final locationData = await locationService.getUserLocation();
@@ -56,7 +63,6 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
       final placemarks = await placemarkFromCoordinates(
         latLng.latitude,
         latLng.longitude,
-        
       );
       if (placemarks.isNotEmpty) {
         final place = placemarks.first;
@@ -96,9 +102,10 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
                   height: resposiveHeight(145),
                   child: GoogleMap(
                     markers: markers,
-                    onMapCreated: (controller) {
+                    onMapCreated: (controller) async {
                       mapController = controller;
                       getUserLocation();
+                      initMapStyle();
                     },
                     initialCameraPosition: initialCameraPosition,
                     zoomControlsEnabled: false,
