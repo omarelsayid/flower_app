@@ -24,16 +24,20 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "بإنشاء حساب، فإنك توافق على",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "area": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
     ),
+    "cairo": MessageLookupByLibrary.simpleMessage("القاهرة"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
+    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
@@ -52,12 +56,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "التحقق من البريد الإلكتروني",
     ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+    "enterAddress": MessageLookupByLibrary.simpleMessage("أدخل عنوانك"),
     "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال الرمز المرسل إلى بريدك الإلكتروني",
     ),
     "enterFirstName": MessageLookupByLibrary.simpleMessage("أدخل الاسم الأول"),
     "enterLastName": MessageLookupByLibrary.simpleMessage("أدخل اسم العائلة"),
     "enterPhoneNumber": MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
+    "enterRecipientName": MessageLookupByLibrary.simpleMessage(
+      "أدخل اسم المستلم",
+    ),
     "enterYourEmail": MessageLookupByLibrary.simpleMessage(
       "أدخل بريدك الإلكتروني",
     ),
@@ -85,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "occasions": MessageLookupByLibrary.simpleMessage("المناسبات"),
+    "october": MessageLookupByLibrary.simpleMessage("أكتوبر"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "يجب أن تحتوي كلمة المرور على حرف كبير ورقم على الأقل",
@@ -96,8 +105,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "يجب ألا تقل كلمة المرور عن 8 أحرف",
     ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "recipientName": MessageLookupByLibrary.simpleMessage("اسم المستلم"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
+    "saveAddress": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),

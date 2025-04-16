@@ -3,7 +3,9 @@ import 'dart:developer';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/services/location_service.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
+import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/core/widgets/custom_app_bar.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
@@ -54,16 +56,13 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
       final placemarks = await placemarkFromCoordinates(
         latLng.latitude,
         latLng.longitude,
+        
       );
-
       if (placemarks.isNotEmpty) {
         final place = placemarks.first;
         _addressController.text = place.locality!;
         _cityController.text = place.administrativeArea!;
         _areaController.text = place.subAdministrativeArea!;
-        String address =
-            "${place.name}, ${place.street}, ${place.locality}, "
-            "${place.administrativeArea}, ${place.country}";
       }
       markers.add(Marker(markerId: const MarkerId("1"), position: latLng));
       setState(() {});
@@ -80,7 +79,7 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildCustomAppBar(
-        title: "Address",
+        title: S.of(context).address,
         isVisible: true,
         context: context,
       ),
@@ -108,25 +107,25 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
               ),
               TextFormField(
                 controller: _addressController,
-                decoration: const InputDecoration(
-                  hintText: "enter your address",
-                  labelText: "address",
+                decoration: InputDecoration(
+                  hintText: S.of(context).enterAddress,
+                  labelText: S.of(context).address,
                 ),
               ),
 
               TextFormField(
                 controller: _phoneNumberController,
-                decoration: const InputDecoration(
-                  hintText: "Enter your phone number",
-                  labelText: "phone number",
+                decoration: InputDecoration(
+                  hintText: S.of(context).enterPhoneNumber,
+                  labelText: S.of(context).phoneNumber,
                 ),
               ),
 
               TextFormField(
                 controller: _receipentNameController,
-                decoration: const InputDecoration(
-                  hintText: "enter the recipient name",
-                  labelText: "Recipient name",
+                decoration: InputDecoration(
+                  hintText: S.of(context).enterRecipientName,
+                  labelText: S.of(context).recipientName,
                 ),
               ),
               Row(
@@ -141,8 +140,8 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
                           height: resposiveHeight(16),
                           fit: BoxFit.scaleDown,
                         ),
-                        hintText: "cairo",
-                        labelText: "city",
+                        hintText: S.of(context).cairo,
+                        labelText: S.of(context).city,
                       ),
                     ),
                   ),
@@ -158,8 +157,8 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
                           fit: BoxFit.scaleDown,
                         ),
 
-                        hintText: "October",
-                        labelText: "Area",
+                        hintText: S.of(context).october,
+                        labelText: S.of(context).area,
                       ),
                     ),
                   ),
@@ -167,7 +166,15 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
               ),
 
               SizedBox(height: resposiveHeight(24)),
-              ElevatedButton(onPressed: () {}, child: Text('')),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  S.of(context).saveAddress,
+                  style: AppTextStyles.roboto500_16.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

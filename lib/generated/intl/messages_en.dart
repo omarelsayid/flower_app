@@ -24,16 +24,20 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "area": MessageLookupByLibrary.simpleMessage("Area"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "Bloom with our exquisite best sellers",
     ),
+    "cairo": MessageLookupByLibrary.simpleMessage("Cairo"),
     "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "city": MessageLookupByLibrary.simpleMessage("City"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("confirm logout"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
@@ -54,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Email verification",
     ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterAddress": MessageLookupByLibrary.simpleMessage("Enter your address"),
     "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter the code sent to your email address",
     ),
@@ -61,6 +66,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterLastName": MessageLookupByLibrary.simpleMessage("Enter last name"),
     "enterPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "Enter phone number",
+    ),
+    "enterRecipientName": MessageLookupByLibrary.simpleMessage(
+      "Enter the recipient name",
     ),
     "enterYourEmail": MessageLookupByLibrary.simpleMessage("Enter your Email"),
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
@@ -89,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "occasions": MessageLookupByLibrary.simpleMessage("Occasions"),
+    "october": MessageLookupByLibrary.simpleMessage("October"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "Password must contain at least one uppercase letter and one number",
@@ -100,8 +109,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password must be at least 8 characters long",
     ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+    "recipientName": MessageLookupByLibrary.simpleMessage("Recipient name"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
+    "saveAddress": MessageLookupByLibrary.simpleMessage("Save address"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),

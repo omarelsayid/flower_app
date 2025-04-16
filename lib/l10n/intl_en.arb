@@ -53,7 +53,14 @@
   "viewAll": "View all",
   "confirmLogout": "confirm logout",
   "cancel": "cancel",
-  "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers"
-
-
+  "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers",
+    "address": "Address",
+    "enterAddress": "Enter your address",
+    "recipientName": "Recipient name",
+    "enterRecipientName": "Enter the recipient name",
+    "city": "City",
+    "cairo": "Cairo",
+    "area": "Area",
+    "october": "October",
+    "saveAddress": "Save address"
 }

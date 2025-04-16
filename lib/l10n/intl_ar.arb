@@ -53,5 +53,14 @@
   "viewAll": "اعرض الكل",
   "confirmLogout": "تأكيد تسجيل الخروج",
   "cancel": "إلغاء",
-  "bloomwithourexquisitebestsellers": "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا"
+  "bloomwithourexquisitebestsellers": "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
+  "address": "العنوان",
+  "enterAddress": "أدخل عنوانك",
+  "recipientName": "اسم المستلم",
+  "enterRecipientName": "أدخل اسم المستلم",
+  "city": "المدينة",
+  "cairo": "القاهرة",
+  "area": "المنطقة",
+  "october": "أكتوبر",
+  "saveAddress": "حفظ العنوان"
 }
