@@ -135,7 +135,6 @@ import '../../features/profile/main_profile_screen/presentation/cubit/upload_pho
     as _i480;
 import '../api/api_client.dart' as _i277;
 import '../api/network_factory.dart' as _i1013;
-import '../network/auth_interceptor.dart' as _i908;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -149,9 +148,9 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioProvider = _$DioProvider();
-    gh.factory<_i908.AuthInterceptor>(() => dioProvider.authInterceptor);
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
+    gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));
     gh.factory<_i550.BestSellerRemoteDataSource>(
         () => _i1001.BestSellerRemoteDataSourceImpl(gh<_i277.ApiClient>()));
