@@ -6,50 +6,66 @@
 .pub-cache/
 .pub/
 build/
+.idea/
+*.iml
+
+# Environment files
+.env
+.env.*
 
 # Android related
-**/android/**/gradle-wrapper.jar
-**/android/.gradle/
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
-**/android/local.properties
-**/android/**/GeneratedPluginRegistrant.java
-**/android/key.properties
-*.jks
+/android/.gradle/
+/android/local.properties
+/android/gradlew
+/android/gradlew.bat
+/android/key.properties
+**/*.jks
+**/*.keystore
+**/GeneratedPluginRegistrant.java
+**/captures/
+**/gradle-wrapper.jar
 
-# iOS/XCode related
-**/ios/**/*.mode1v3
-**/ios/**/*.mode2v3
-**/ios/**/*.moved-aside
-**/ios/**/*.pbxuser
-**/ios/**/*.perspectivev3
-**/ios/**/*sync/
-**/ios/**/.sconsign.dblite
-**/ios/**/.tags*
-**/ios/**/.vagrant/
-**/ios/**/DerivedData/
-**/ios/**/Icon?
-**/ios/**/Pods/
-**/ios/**/.symlinks/
-**/ios/**/profile
-**/ios/**/xcuserdata
-**/ios/.generated/
-**/ios/Flutter/.last_build_id
-**/ios/Flutter/App.framework
-**/ios/Flutter/Flutter.framework
-**/ios/Flutter/Flutter.podspec
-**/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/ephemeral
-**/ios/Flutter/app.flx
-**/ios/Flutter/app.zip
-**/ios/Flutter/flutter_assets/
-**/ios/Flutter/flutter_export_environment.sh
-**/ios/ServiceDefinitions.json
-**/ios/Runner/GeneratedPluginRegistrant.*
+# iOS/Xcode related
+/ios/Pods/
+/ios/.symlinks/
+/ios/Flutter/.last_build_id
+/ios/Flutter/ephemeral
+/ios/Flutter/App.framework
+/ios/Flutter/Flutter.framework
+/ios/Flutter/flutter_export_environment.sh
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/app.flx
+/ios/Flutter/app.zip
+/ios/Flutter/flutter_assets/
+/ios/ServiceDefinitions.json
+/ios/Runner/GeneratedPluginRegistrant.*
+**/*.mode1v3
+**/*.mode2v3
+**/*.pbxuser
+**/*.perspectivev3
+**/*.xcworkspace
+**/xcuserdata/
+**/*.moved-aside
+**/*sync/
+**/.sconsign.dblite
+**/.tags*
+**/.vagrant/
+**/DerivedData/
+**/Icon?
 
 # macOS
-**/macos/Flutter/GeneratedPluginRegistrant.swift
+/macos/Flutter/GeneratedPluginRegistrant.swift
+/macos/Flutter/ephemeral
+
+# Linux
+/linux/Flutter/ephemeral
+
+# Web
+/web/.dart_tool/
+/web/build/
+
+# Windows
+/windows/Flutter/ephemeral
 
 # Coverage
 coverage/
@@ -57,7 +73,10 @@ coverage/
 # Symbols
 app.*.symbols
 
-# Exceptions to above rules.
+# VS Code
+.vscode/
+
+# Exceptions to ignore rules
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
