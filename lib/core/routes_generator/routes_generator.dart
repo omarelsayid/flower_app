@@ -1,4 +1,4 @@
-import 'package:flower_app/features/address_details/presentation/view/address_details_view_body.dart';
+import 'package:flower_app/features/address_details/presentation/view/address_detail_view.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -9,7 +9,6 @@ import 'package:flower_app/features/home/occasions/presentation/views/occasion_s
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
@@ -19,7 +18,6 @@ import '../../features/profile/main_profile_screen/presentation/cubit/change_pas
 import '../../features/profile/main_profile_screen/presentation/views/change_password_screen.dart';
 import '../../features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
 import '../di/injectable_initializer.dart';
-import '../widgets/test_screen.dart';
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -116,7 +114,7 @@ class RoutesGenerator {
 
       case PagesRoutes.addressScreen:
         return MaterialPageRoute(
-          builder: (context) => AddressDetailsViewBody(),
+          builder: (context) => AddressDetailsView(),
         );
 
       default:
