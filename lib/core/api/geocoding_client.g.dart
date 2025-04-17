@@ -28,7 +28,7 @@ class _GeocodeApi implements GeocodeApi {
     required String latlng,
     String resultType = "street_address",
     String locationType = "ROOFTOP",
-    required String apiKey,
+    String apiKey = "AIzaSyDTfammkGjt7pCFRQnMA_KOdl6Zwx6rWFE",
   }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{

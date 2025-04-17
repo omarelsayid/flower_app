@@ -1,0 +1,2 @@
+D:/projects/flower_app/android/app/.cxx/RelWithDebInfo/5t6d153n/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/projects/flower_app/android/app/.cxx/RelWithDebInfo/5t6d153n/armeabi-v7a/CMakeFiles/rebuild_cache.dir

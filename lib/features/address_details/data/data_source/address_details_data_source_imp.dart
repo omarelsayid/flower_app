@@ -13,7 +13,7 @@ class AddressDetailsDataSourceImp implements AddressDetailsDataScource {
   Future<AddressDetailsModel> getAddressDetails(String latlng) async {
     AddressDetailsModel addressDetailsModel = await _geocodeApi.getAddress(
       latlng: latlng,
-      apiKey: 'AIzaSyDTfammkGjt7pCFRQnMA_KOdl6Zwx6rWFE',
+    
     );
     return addressDetailsModel;
   }
