@@ -17,6 +17,6 @@ abstract class GeocodeApi {
     @Query("latlng") required String latlng,
     @Query("result_type") String resultType = "street_address",
     @Query("location_type") String locationType = "ROOFTOP",
-    @Query("key") String apiKey = "AIzaSyDTfammkGjt7pCFRQnMA_KOdl6Zwx6rWFE",
+    @Query("key") required String apiKey,
   });
 }
