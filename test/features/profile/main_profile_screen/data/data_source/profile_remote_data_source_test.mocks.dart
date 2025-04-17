@@ -31,6 +31,8 @@ import 'package:flower_app/features/cart/data/models/update_product_quantity/upd
     as _i28;
 import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart'
     as _i15;
+import 'package:flower_app/features/checkout/data/model/addresses_response_dto.dart'
+    as _i30;
 import 'package:flower_app/features/home/best_seller_products/data/model/BestSellerProductsModel.dart'
     as _i20;
 import 'package:flower_app/features/home/categories/data/model/categories_response_model.dart'
@@ -665,4 +667,23 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
           ),
         )),
       ) as _i17.Future<_i4.HttpResponse<_i28.UpdateCartQuantityResponseDTO>>);
+
+  @override
+  _i17.Future<_i4.HttpResponse<_i30.AddressesResponseDTO>> getAddresses(
+          String? token) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAddresses,
+          [token],
+        ),
+        returnValue:
+            _i17.Future<_i4.HttpResponse<_i30.AddressesResponseDTO>>.value(
+                _FakeHttpResponse_2<_i30.AddressesResponseDTO>(
+          this,
+          Invocation.method(
+            #getAddresses,
+            [token],
+          ),
+        )),
+      ) as _i17.Future<_i4.HttpResponse<_i30.AddressesResponseDTO>>);
 }
