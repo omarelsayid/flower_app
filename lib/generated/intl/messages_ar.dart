@@ -25,11 +25,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+    "addressRequired": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال العنوان",
+    ),
+    "addressSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم حفظ العنوان بنجاح",
+    ),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "بإنشاء حساب، فإنك توافق على",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "area": MessageLookupByLibrary.simpleMessage("المنطقة"),
+    "areaRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المنطقة"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
     ),
@@ -38,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "cityRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المدينة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
@@ -105,7 +113,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "يجب ألا تقل كلمة المرور عن 8 أحرف",
     ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phoneNumberRequired": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رقم الهاتف",
+    ),
     "recipientName": MessageLookupByLibrary.simpleMessage("اسم المستلم"),
+    "recipientNameRequired": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال اسم المستلم",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
     "saveAddress": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),

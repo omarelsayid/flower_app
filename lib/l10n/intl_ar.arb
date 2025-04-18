@@ -1,5 +1,5 @@
 {
-    "signIn": "تسجيل الدخول",
+  "signIn": "تسجيل الدخول",
   "signUp": "إنشاء حساب",
   "login": "تسجيل الدخول",
   "email": "البريد الإلكتروني",
@@ -34,7 +34,7 @@
   "enterCodeSentToEmail": "يرجى إدخال الرمز المرسل إلى بريدك الإلكتروني",
   "resendIn": "إعادة الإرسال خلال",
   "didNotReceiveCode": "لم يصلك الرمز؟",
-  "confirm": "تأكيد", 
+  "confirm": "تأكيد",
   "forgetPasswordDescription": "يرجى إدخال البريد الإلكتروني المرتبط بحسابك",
   "guestUser": "زائر",
   "myOrders": "طلباتي",
@@ -62,5 +62,11 @@
   "cairo": "القاهرة",
   "area": "المنطقة",
   "october": "أكتوبر",
-  "saveAddress": "حفظ العنوان"
+  "saveAddress": "حفظ العنوان",
+  "addressRequired": "يرجى إدخال العنوان",
+  "phoneNumberRequired": "يرجى إدخال رقم الهاتف",
+  "recipientNameRequired": "يرجى إدخال اسم المستلم",
+  "cityRequired": "يرجى إدخال المدينة",
+  "areaRequired": "يرجى إدخال المنطقة",
+  "addressSavedSuccessfully": "تم حفظ العنوان بنجاح"
 }

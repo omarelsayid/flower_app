@@ -7,6 +7,8 @@ import 'dart:async' as _i17;
 
 import 'package:dio/dio.dart' as _i24;
 import 'package:flower_app/core/api/api_client.dart' as _i16;
+import 'package:flower_app/features/address_details/data/models/address_details_model.dart'
+    as _i30;
 import 'package:flower_app/features/auth/data/model/forget_response_password_dto.dart'
     as _i5;
 import 'package:flower_app/features/auth/data/model/reset_password_dto.dart'
@@ -665,4 +667,21 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
           ),
         )),
       ) as _i17.Future<_i4.HttpResponse<_i28.UpdateCartQuantityResponseDTO>>);
+
+  @override
+  _i17.Future<void> saveUserAddress(
+    String? token,
+    _i30.AddressDetailsModel? addressDetailsModel,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveUserAddress,
+          [
+            token,
+            addressDetailsModel,
+          ],
+        ),
+        returnValue: _i17.Future<void>.value(),
+        returnValueForMissingStub: _i17.Future<void>.value(),
+      ) as _i17.Future<void>);
 }

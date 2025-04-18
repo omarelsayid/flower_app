@@ -95,7 +95,7 @@ void main() {
 
   setUp(() {
     mockProfileUseCase = MockProfileUseCase();
-    profileViewModel = ProfileViewModel(mockProfileUseCase);
+    profileViewModel = ProfileViewModel(mockProfileUseCase, );
   });
 
   group('ProfileViewModel Tests', () {

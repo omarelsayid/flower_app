@@ -534,6 +534,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Please enter an address`
+  String get addressRequired {
+    return Intl.message(
+      'Please enter an address',
+      name: 'addressRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a phone number`
+  String get phoneNumberRequired {
+    return Intl.message(
+      'Please enter a phone number',
+      name: 'phoneNumberRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a recipient name`
+  String get recipientNameRequired {
+    return Intl.message(
+      'Please enter a recipient name',
+      name: 'recipientNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a city`
+  String get cityRequired {
+    return Intl.message(
+      'Please enter a city',
+      name: 'cityRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter an area`
+  String get areaRequired {
+    return Intl.message(
+      'Please enter an area',
+      name: 'areaRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address saved successfully`
+  String get addressSavedSuccessfully {
+    return Intl.message(
+      'Address saved successfully',
+      name: 'addressSavedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

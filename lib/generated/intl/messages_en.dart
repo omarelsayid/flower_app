@@ -25,11 +25,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "addressRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter an address",
+    ),
+    "addressSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Address saved successfully",
+    ),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "area": MessageLookupByLibrary.simpleMessage("Area"),
+    "areaRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter an area",
+    ),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "Bloom with our exquisite best sellers",
     ),
@@ -38,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
+    "cityRequired": MessageLookupByLibrary.simpleMessage("Please enter a city"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("confirm logout"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
@@ -109,7 +119,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "Password must be at least 8 characters long",
     ),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+    "phoneNumberRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter a phone number",
+    ),
     "recipientName": MessageLookupByLibrary.simpleMessage("Recipient name"),
+    "recipientNameRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter a recipient name",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
     "saveAddress": MessageLookupByLibrary.simpleMessage("Save address"),
