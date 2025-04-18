@@ -425,6 +425,23 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
       ) as _i17.Future<_i11.ProductsResponseDTO>);
 
   @override
+  _i17.Future<_i11.ProductsResponseDTO> getProductsByFilter(String? sort) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getProductsByFilter,
+          [sort],
+        ),
+        returnValue: _i17.Future<_i11.ProductsResponseDTO>.value(
+            _FakeProductsResponseDTO_9(
+          this,
+          Invocation.method(
+            #getProductsByFilter,
+            [sort],
+          ),
+        )),
+      ) as _i17.Future<_i11.ProductsResponseDTO>);
+
+  @override
   _i17.Future<_i4.HttpResponse<_i21.ProductsDetailsModels>> getProductDetails(
           String? id) =>
       (super.noSuchMethod(

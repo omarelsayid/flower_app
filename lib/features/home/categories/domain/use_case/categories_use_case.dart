@@ -4,6 +4,8 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/common/result.dart';
 import '../entity/categories_response_entity.dart';
 import '../entity/specific_category_response_entity.dart';
+import '../../../categories//domain/entity/products_response_entity.dart';
+
 
 @injectable
 class CategoriesUseCase {
@@ -23,4 +25,9 @@ class CategoriesUseCase {
   Future<List<ProductsEntity>> invoke(String search) {
     return _categoriesRepository.search(search);
   }
+  Future<Result<ProductsResponseEntity>> executeFilter(String sort) async{
+    return await _categoriesRepository.getFilterDetails(sort);
+
+  }
+
 }

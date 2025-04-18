@@ -19,6 +19,7 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
   List<ProductsEntity> products = [];
   int currentIndex = 0;
   bool isSearching = false;
+  bool isFiltered=false ;
 
   void doIntent(CategoriesIntent intent) {
     switch (intent) {

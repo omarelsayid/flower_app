@@ -42,3 +42,24 @@ class SuccessfulSearchState extends CategoriesState{
   List<ProductsEntity> products;
   SuccessfulSearchState(this.products);
 }
+
+
+class FilterCategoriesSuccessState extends CategoriesState {
+  List<ProductsEntity> products;
+
+  FilterCategoriesSuccessState (this.products);
+}
+class FilterCategoriesIndexState extends CategoriesState{}
+class LoadingFilterState extends CategoriesState{
+
+}
+class FailedFilterState extends CategoriesState{
+  String errMessage;
+  FailedFilterState(this.errMessage);
+}
+class SuccessfulFilterState extends CategoriesState{
+  List<ProductsEntity> products;
+  SuccessfulFilterState(this.products);
+}
+
+

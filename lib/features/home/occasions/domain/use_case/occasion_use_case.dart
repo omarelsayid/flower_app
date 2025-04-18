@@ -17,6 +17,9 @@ class OccasionUseCase {
  }
  Future<Result<ProductsResponseEntity>> executeSpecific(String occasionId) async{
   return await _occasionRepository.getSpecificOccasion(occasionId);
+
  }
+
+
 
 }
