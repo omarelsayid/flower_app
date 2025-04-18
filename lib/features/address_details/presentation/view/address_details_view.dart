@@ -1,6 +1,5 @@
 import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/core/widgets/custom_app_bar.dart';
-import 'package:flower_app/features/address_details/domain/repository/address_details_repo.dart';
 import 'package:flower_app/features/address_details/presentation/cubit/address_details_cubit.dart';
 import 'package:flower_app/features/address_details/presentation/view/widgets/address_details_view_body.dart';
 import 'package:flower_app/generated/l10n.dart';
