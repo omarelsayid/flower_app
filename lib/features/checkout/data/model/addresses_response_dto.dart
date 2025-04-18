@@ -1,3 +1,4 @@
+import 'package:flower_app/features/checkout/domain/entites/addresses_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'addresses_response_dto.g.dart';
@@ -36,8 +37,22 @@ class Address {
     this.id,
   });
 
+
+
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
 
   Map<String, dynamic> toJson() => _$AddressToJson(this);
+
+  AddressEntity toEntity() {
+    return AddressEntity(
+      street: street,
+      phone: phone,
+      city: city,
+      lat: lat,
+      long: long,
+      username: username,
+      id: id,
+    );
+  }
 }
