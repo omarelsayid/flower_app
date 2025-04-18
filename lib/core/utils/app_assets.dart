@@ -17,6 +17,7 @@ abstract class IconAssets {
 
   static const String notificationIcon = "$iconPath/notification_icon.png";
   static const String editIcon = "$iconPath/edit_icon.png";
+  static const String markerIcon= "$iconPath/marker_icon.png";
 }
 
 abstract class SvgImages {

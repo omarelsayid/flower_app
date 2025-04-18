@@ -36,6 +36,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   final AddressDetailsModel addressDetailsModel = AddressDetailsModel();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final AutovalidateMode validateMode = AutovalidateMode.disabled;
+  late AssetMapBitmap assetMapBitmap;
   Set<Marker> _markers = {};
 
   @override
@@ -46,6 +47,14 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       zoom: 4,
     );
     _locationService = LocationService();
+    customMarker();
+  }
+
+  customMarker() async {
+    assetMapBitmap = await BitmapDescriptor.asset(
+      ImageConfiguration(),
+      IconAssets.markerIcon,
+    );
   }
 
   Future<void> _initMapStyle() async {
@@ -80,7 +89,11 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       }
 
       _markers = {
-        Marker(markerId: const MarkerId('selected'), position: target),
+        Marker(
+          markerId: const MarkerId('selected'),
+          position: target,
+          icon: assetMapBitmap,
+        ),
       };
       setState(() {});
     } catch (e) {
