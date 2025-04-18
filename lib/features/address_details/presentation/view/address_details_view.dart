@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/services/location_service.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
@@ -10,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
 
 class AddressDetailsView extends StatefulWidget {
   const AddressDetailsView({super.key});
@@ -20,64 +18,74 @@ class AddressDetailsView extends StatefulWidget {
 }
 
 class _AddressDetailsViewState extends State<AddressDetailsView> {
-  @override
-  late CameraPosition initialCameraPosition;
-  late LocationService locationService;
-  late GoogleMapController mapController;
+  late CameraPosition _initialCameraPosition;
+  late LocationService _locationService;
+  late GoogleMapController _mapController;
+
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _areaController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _receipentNameController =
-      TextEditingController();
-  Set<Marker> markers = {};
+  final TextEditingController _recipientController = TextEditingController();
+
+  Set<Marker> _markers = {};
+
+  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    initialCameraPosition = CameraPosition(
-      target: LatLng(30.760183897535462, 27.20908716756562),
+    _initialCameraPosition = const CameraPosition(
+      target: LatLng(23.580902573252857, 32.01367325581865),
       zoom: 4,
     );
-
-    locationService = LocationService();
+    _locationService = LocationService();
   }
 
-  void initMapStyle() async {
-    var mapStyle = await DefaultAssetBundle.of(
+  Future<void> _initMapStyle() async {
+    final style = await DefaultAssetBundle.of(
       context,
     ).loadString('assets/map_styles/map_style.json');
-    mapController.setMapStyle(mapStyle);
+    _mapController.setMapStyle(style);
   }
 
-  Future<void> getUserLocation() async {
+  Future<void> _moveToAndPopulate(LatLng target) async {
     try {
-      final locationData = await locationService.getUserLocation();
-      final latLng = LatLng(locationData.latitude!, locationData.longitude!);
-
-      mapController.animateCamera(
+      await _mapController.animateCamera(
         CameraUpdate.newCameraPosition(
-          CameraPosition(target: latLng, zoom: 13),
+          CameraPosition(target: target, zoom: 16),
         ),
       );
 
       final placemarks = await placemarkFromCoordinates(
-        latLng.latitude,
-        latLng.longitude,
+        target.latitude,
+        target.longitude,
       );
       if (placemarks.isNotEmpty) {
-        final place = placemarks.first;
-        _addressController.text = place.locality!;
-        _cityController.text = place.administrativeArea!;
-        _areaController.text = place.subAdministrativeArea!;
+        final place = placemarks.length > 1 ? placemarks[1] : placemarks.first;
+
+        _addressController.text = '${place.street ?? ''},';
+        _cityController.text = place.administrativeArea ?? '';
+        _areaController.text = place.subAdministrativeArea ?? '';
       }
-      markers.add(Marker(markerId: const MarkerId("1"), position: latLng));
+      _markers = {
+        Marker(markerId: const MarkerId('selected'), position: target),
+      };
       setState(() {});
-    } on LocationServiceException catch (e) {
-      log("Location service error: $e");
-    } on LocationPermissionException catch (e) {
-      log("Location permission error: $e");
     } catch (e) {
-      log("Unknown error getting location: $e");
+      log('Error in moveToAndPopulate: $e');
+    }
+  }
+
+  Future<void> _getUserLocation() async {
+    try {
+      final locData = await _locationService.getUserLocation();
+      final latLng = LatLng(locData.latitude!, locData.longitude!);
+      await _moveToAndPopulate(latLng);
+    } on LocationServiceException catch (e) {
+      log('Location service error: $e');
+    } on LocationPermissionException catch (e) {
+      log('Location permission error: $e');
+    } catch (e) {
+      log('Unknown error getting location: $e');
     }
   }
 
@@ -101,14 +109,15 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
                   width: resposiveWidth(343),
                   height: resposiveHeight(145),
                   child: GoogleMap(
-                    markers: markers,
-                    onMapCreated: (controller) async {
-                      mapController = controller;
-                      getUserLocation();
-                      initMapStyle();
-                    },
-                    initialCameraPosition: initialCameraPosition,
+                    initialCameraPosition: _initialCameraPosition,
+                    markers: _markers,
                     zoomControlsEnabled: false,
+                    onMapCreated: (controller) {
+                      _mapController = controller;
+                      _getUserLocation();
+                      _initMapStyle();
+                    },
+                    onTap: _moveToAndPopulate,
                   ),
                 ),
               ),
@@ -119,17 +128,16 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
                   labelText: S.of(context).address,
                 ),
               ),
-
               TextFormField(
                 controller: _phoneNumberController,
+                keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
                   hintText: S.of(context).enterPhoneNumber,
                   labelText: S.of(context).phoneNumber,
                 ),
               ),
-
               TextFormField(
-                controller: _receipentNameController,
+                controller: _recipientController,
                 decoration: InputDecoration(
                   hintText: S.of(context).enterRecipientName,
                   labelText: S.of(context).recipientName,
@@ -163,7 +171,6 @@ class _AddressDetailsViewState extends State<AddressDetailsView> {
                           height: resposiveHeight(16),
                           fit: BoxFit.scaleDown,
                         ),
-
                         hintText: S.of(context).october,
                         labelText: S.of(context).area,
                       ),
