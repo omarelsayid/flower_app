@@ -5,7 +5,9 @@ import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/features/checkout/data/data_source/checkout_remote_data_source.dart';
 import 'package:flower_app/features/checkout/domain/entites/addresses_response_entity.dart';
 import 'package:flower_app/features/checkout/domain/repo/get_addresses_repo.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: GetAddressesRepo)
 class GetAddressesRepoImpl implements GetAddressesRepo {
   final CheckoutRemoteDataSource _checkoutRemoteDataSource;
   GetAddressesRepoImpl(this._checkoutRemoteDataSource);
