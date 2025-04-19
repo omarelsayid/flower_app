@@ -1,3 +1,4 @@
+import 'package:flower_app/features/checkout/presentation/views/checkout_view.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -112,6 +113,10 @@ class RoutesGenerator {
       case PagesRoutes.editProfileScreen:
         return MaterialPageRoute(
           builder: (context) => EditProfileView(),
+          settings: settings,
+        );case PagesRoutes.checkoutScreen:
+        return MaterialPageRoute(
+          builder: (context) => CheckoutView(),
           settings: settings,
         );
       default:

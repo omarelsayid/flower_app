@@ -48,6 +48,17 @@ import '../../features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart
     as _i632;
 import '../../features/cart/presentation/cubit/update_quantity_cubit/update_quantity_cubit.dart'
     as _i710;
+import '../../features/checkout/data/data_source/checkout_remote_data_source.dart'
+    as _i575;
+import '../../features/checkout/data/data_source/checkout_remote_data_source_impl.dart'
+    as _i642;
+import '../../features/checkout/data/repo_impl/get_addresses_repo_impl.dart'
+    as _i223;
+import '../../features/checkout/domain/repo/get_addresses_repo.dart' as _i383;
+import '../../features/checkout/domain/use_case/get_addreses_use_case.dart'
+    as _i506;
+import '../../features/checkout/presentation/cubits/get_addresses_cubit/get_addresses_view_model.dart'
+    as _i588;
 import '../../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
     as _i550;
 import '../../features/home/best_seller_products/data/data_source/best_seller_remote_data_source_impl.dart'
@@ -194,6 +205,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i347.SignInViewModel(gh<_i489.SignInUseCase>()));
     gh.factory<_i379.CartRepository>(
         () => _i1066.CartRepositoryImpl(gh<_i1026.CartRemoteDataSource>()));
+    gh.factory<_i575.CheckoutRemoteDataSource>(
+        () => _i642.CheckoutRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i246.HomeDataSource>(
         () => _i246.CategoryDataSourceImp(gh<_i277.ApiClient>()));
     gh.factory<_i129.CategoriesRepository>(() => _i913.CategoriesRepositoryImpl(
@@ -210,6 +223,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i357.VerifyEmailVewModel(gh<_i701.AuthUseCase>()));
     gh.factory<_i922.ChangePasswordUseCase>(() =>
         _i922.ChangePasswordUseCase(gh<_i890.ChangePasswordRepository>()));
+    gh.factory<_i383.GetAddressesRepo>(
+        () => _i223.GetAddressesRepoImpl(gh<_i575.CheckoutRemoteDataSource>()));
     gh.factory<_i798.GetProductDetailsRepo>(() => _i29.ProductsDetailRepoImp(
         gh<_i332.ProductsDetailsRemoteDataScource>()));
     gh.factory<_i920.OccasionRepository>(() =>
@@ -248,6 +263,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i929.ProfileUseCase>(),
           gh<_i678.ProfileLocalDataSource>(),
         ));
+    gh.factory<_i506.GetAddressesUseCase>(
+        () => _i506.GetAddressesUseCase(gh<_i383.GetAddressesRepo>()));
     gh.factory<_i1024.DeleteSpecificItemCubit>(
         () => _i1024.DeleteSpecificItemCubit(gh<_i486.DeleteUseCase>()));
     gh.factory<_i737.CategoryCubit>(
@@ -260,6 +277,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i177.EditProfileViewModel(gh<_i295.EditProfileUseCase>()));
     gh.factory<_i720.CategoriesViewModel>(
         () => _i720.CategoriesViewModel(gh<_i723.CategoriesUseCase>()));
+    gh.factory<_i588.GetAddressesViewModel>(
+        () => _i588.GetAddressesViewModel(gh<_i506.GetAddressesUseCase>()));
     gh.factory<_i602.OccasionViewModel>(
         () => _i602.OccasionViewModel(gh<_i66.OccasionUseCase>()));
     gh.factory<_i480.UploadPhotoViewModel>(

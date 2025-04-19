@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("confirm logout"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
