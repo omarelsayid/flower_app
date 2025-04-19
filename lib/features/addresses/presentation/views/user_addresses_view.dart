@@ -1,7 +1,7 @@
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/app_icons.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
-import 'package:flower_app/features/addresses/presentation/views/widgets/user_addresses_consumer.dart';
+import 'package:flower_app/features/addresses/presentation/views/widgets/user_addresses_builder.dart';
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +30,7 @@ class UserAddressesView extends StatelessWidget {
                 Text(S.of(context).savedAddress,style: AppTextStyles.inter500_20.copyWith(color: AppColors.blackColor,decoration: TextDecoration.none),)
               ],
             ),
-            Expanded(child:  UserAddressesConsumer())
+            Expanded(child:  UserAddressesBuilder())
           ],
         ),
       ),

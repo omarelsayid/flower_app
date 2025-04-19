@@ -63,7 +63,9 @@ class AddressCard extends StatelessWidget {
                       SizedBox(
                         width: resposiveWidth(24),
                         height: resposiveHeight(24),
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                            strokeWidth:2
+                        ),
                       )
                     else ...[
                       InkWell(
