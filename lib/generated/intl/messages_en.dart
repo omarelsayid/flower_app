@@ -24,14 +24,17 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+    "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
+    "arriveBy": MessageLookupByLibrary.simpleMessage("Arrive by"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "Bloom with our exquisite best sellers",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
+    "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on delivery"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
@@ -41,6 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "continueAsGuest": MessageLookupByLibrary.simpleMessage(
       "Continue as guest",
     ),
+    "creditCard": MessageLookupByLibrary.simpleMessage("Credit card"),
+    "deliveryAddress": MessageLookupByLibrary.simpleMessage("Delivery Address"),
+    "deliveryFee": MessageLookupByLibrary.simpleMessage("Delivery Fee"),
+    "deliveryTime": MessageLookupByLibrary.simpleMessage("Delivery time"),
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage(
       "Didn\'t receive code?",
     ),
@@ -64,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter phone number",
     ),
     "enterYourEmail": MessageLookupByLibrary.simpleMessage("Enter your Email"),
+    "enterYourName": MessageLookupByLibrary.simpleMessage("Enter your name"),
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
       "Enter your Password",
     ),
@@ -78,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "instant": MessageLookupByLibrary.simpleMessage("Instant"),
+    "itIsAGift": MessageLookupByLibrary.simpleMessage("It is a gift"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -85,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "myOrders": MessageLookupByLibrary.simpleMessage("My orders"),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
     "noAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -100,17 +111,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordTooShort": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 8 characters long",
     ),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment method"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
+    "placeOrder": MessageLookupByLibrary.simpleMessage("Place order"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
+    "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "subTotal": MessageLookupByLibrary.simpleMessage("Sub Total"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("Total"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
   };
 }

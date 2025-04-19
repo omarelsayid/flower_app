@@ -9,7 +9,8 @@ class AddressCardWidget extends StatelessWidget {
     super.key,
     required this.selectedValue,
     required this.onChanged,
-    required this.value, required this.addressEntity,
+    required this.value,
+    required this.addressEntity,
   });
 
   final int selectedValue;
@@ -47,11 +48,17 @@ class AddressCardWidget extends StatelessWidget {
                     groupValue: selectedValue,
                     onChanged: onChanged,
                   ),
-                  Text(addressEntity.city ?? '', style: AppTextStyles.inter500_16),
+                  Text(
+                    addressEntity.city ?? '',
+                    style: AppTextStyles.inter500_16,
+                  ),
                 ],
               ),
               SizedBox(height: resposiveHeight(2)),
-              Text(addressEntity.street ?? '', style: AppTextStyles.roboto400_14),
+              Text(
+                addressEntity.street ?? '',
+                style: AppTextStyles.roboto400_14,
+              ),
             ],
           ),
           IconButton(

@@ -24,14 +24,19 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "addNew": MessageLookupByLibrary.simpleMessage("أضف جديد"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "بإنشاء حساب، فإنك توافق على",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
+    "arriveBy": MessageLookupByLibrary.simpleMessage("الوصول بحلول"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
     ),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "cashOnDelivery": MessageLookupByLibrary.simpleMessage(
+      "الدفع عند الاستلام",
+    ),
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "checkout": MessageLookupByLibrary.simpleMessage("ادفع"),
@@ -41,6 +46,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "تأكيد كلمة المرور",
     ),
     "continueAsGuest": MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
+    "creditCard": MessageLookupByLibrary.simpleMessage("بطاقة إئتمان"),
+    "deliveryAddress": MessageLookupByLibrary.simpleMessage("عنوان التسليم"),
+    "deliveryFee": MessageLookupByLibrary.simpleMessage("رسوم التوصيل"),
+    "deliveryTime": MessageLookupByLibrary.simpleMessage("وقت التسليم"),
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage("لم يصلك الرمز؟"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
@@ -62,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourEmail": MessageLookupByLibrary.simpleMessage(
       "أدخل بريدك الإلكتروني",
     ),
+    "enterYourName": MessageLookupByLibrary.simpleMessage("أدخل الاسم"),
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور",
     ),
@@ -76,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
     "guestUser": MessageLookupByLibrary.simpleMessage("زائر"),
     "haveAccount": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+    "instant": MessageLookupByLibrary.simpleMessage("فوري"),
+    "itIsAGift": MessageLookupByLibrary.simpleMessage("إنها هدية"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -83,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "occasions": MessageLookupByLibrary.simpleMessage("المناسبات"),
@@ -96,16 +109,21 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordTooShort": MessageLookupByLibrary.simpleMessage(
       "يجب ألا تقل كلمة المرور عن 8 أحرف",
     ),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "placeOrder": MessageLookupByLibrary.simpleMessage("اطلب"),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
+    "schedule": MessageLookupByLibrary.simpleMessage("مجدولة"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "subTotal": MessageLookupByLibrary.simpleMessage("المجموع"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "viewAll": MessageLookupByLibrary.simpleMessage("اعرض الكل"),
   };
 }

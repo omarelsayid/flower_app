@@ -54,6 +54,24 @@
   "confirmLogout": "تأكيد تسجيل الخروج",
   "cancel": "إلغاء",
   "bloomwithourexquisitebestsellers": "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
-  "checkout" : "ادفع"
+  "checkout" : "ادفع",
+  "deliveryTime" : "وقت التسليم",
+  "schedule" : "مجدولة",
+  "instant" : "فوري",
+  "arriveBy" : "الوصول بحلول",
+  "deliveryAddress" : "عنوان التسليم",
+  "addNew" : "أضف جديد",
+  "paymentMethod" : "طريقة الدفع",
+  "cashOnDelivery" : "الدفع عند الاستلام",
+  "creditCard" : "بطاقة إئتمان",
+  "itIsAGift" : "إنها هدية",
+  "name" : "الاسم",
+  "enterYourName" : "أدخل الاسم",
+  "subTotal" : "المجموع",
+  "deliveryFee" : "رسوم التوصيل",
+  "total" : "الإجمالي",
+  "placeOrder" : "اطلب"
+
+
 
 }

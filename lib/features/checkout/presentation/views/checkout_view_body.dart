@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
@@ -9,8 +11,10 @@ import 'package:flower_app/features/checkout/presentation/views/widgets/delivery
 import 'package:flower_app/features/checkout/presentation/views/widgets/payment_option_card_widget.dart';
 import 'package:flower_app/features/checkout/presentation/views/widgets/space_grey_widget.dart';
 import 'package:flower_app/features/checkout/presentation/views/widgets/summary_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class CheckoutViewBody extends StatefulWidget {
   const CheckoutViewBody({
@@ -61,11 +65,18 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                       children: [
                         SizedBox(height: resposiveHeight(16)),
                         Text(
-                          "Delivery Address",
+                          S.of(context).deliveryAddress,
                           style: AppTextStyles.inter500_18,
                         ),
                         SizedBox(height: resposiveHeight(8)),
-                        BlocBuilder<GetAddressesViewModel, GetAddressesStates>(
+                        BlocConsumer<GetAddressesViewModel, GetAddressesStates>(
+                          listener: (context, state) {
+                            if (state is GetAddressesErrorState) {
+                              log('error');
+                              EasyLoading.dismiss();
+                              EasyLoading.showError(state.error);
+                            }
+                          },
                           builder: (context, state) {
                             if (state is GetAddressesSuccessState) {
                               if (state.addresses.isEmpty) {
@@ -76,19 +87,24 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                                   ),
                                 );
                               } else {
-                                return ListView.builder(
+                                return ListView.separated(
                                   shrinkWrap: true,
                                   itemCount: state.addresses.length,
                                   itemBuilder: (context, index) {
                                     return AddressCardWidget(
                                       onChanged: (value) {
                                         setState(() {
-                                          selectedPaymentMethod = value!;
+                                          selectedAddress = value!;
                                         });
                                       },
-                                      value: value[index],
-                                      selectedValue: selectedPaymentMethod,
+                                      value: index,
+                                      selectedValue: selectedAddress,
                                       addressEntity: state.addresses[index],
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) {
+                                    return SizedBox(
+                                      height: resposiveHeight(10),
                                     );
                                   },
                                 );
@@ -118,7 +134,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                               children: [
                                 Icon(Icons.add, color: AppColors.primaryColor),
                                 Text(
-                                  "  Add new",
+                                  "  ${S.of(context).addNew}",
                                   style: AppTextStyles.inter500_14.copyWith(
                                     color: AppColors.primaryColor,
                                   ),
@@ -142,27 +158,27 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Payment method",
+                          S.of(context).paymentMethod,
                           style: AppTextStyles.inter500_18,
                         ),
                         SizedBox(height: resposiveHeight(16)),
                         PaymentOptionCardWidget(
-                          title: "Cash on delivery",
+                          title: S.of(context).cashOnDelivery,
                           onChanged: (value) {
                             setState(() {
-                              selectedAddress = value!;
+                              selectedPaymentMethod = value!;
                             });
                           },
                           value: value[0],
-                          selectedValue: selectedAddress,
+                          selectedValue: selectedPaymentMethod,
                         ),
                         SizedBox(height: resposiveHeight(8)),
                         PaymentOptionCardWidget(
-                          title: "Credit card",
-                          selectedValue: selectedAddress,
+                          title: S.of(context).creditCard,
+                          selectedValue: selectedPaymentMethod,
                           onChanged: (value) {
                             setState(() {
-                              selectedAddress = value!;
+                              selectedPaymentMethod = value!;
                             });
                           },
                           value: value[1],
@@ -174,7 +190,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                 ),
                 const SpaceGreyWidget(),
                 SizedBox(height: resposiveHeight(16)),
-                if (selectedAddress == 1)
+                if (selectedPaymentMethod == 1)
                   Padding(
                     padding: EdgeInsets.symmetric(
                       horizontal: resposiveWidth(16),
@@ -199,7 +215,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                                 inactiveTrackColor: AppColors.greyColor,
                               ),
                               Text(
-                                "It is a gift",
+                                S.of(context).itIsAGift,
                                 style: AppTextStyles.inter500_18,
                               ),
                             ],
@@ -211,16 +227,16 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                                 TextFormField(
                                   controller: nameController,
                                   decoration: InputDecoration(
-                                    labelText: 'Name',
-                                    hintText: 'Enter the name',
+                                    labelText: S.of(context).name,
+                                    hintText: S.of(context).enterYourName,
                                   ),
                                 ),
                                 SizedBox(height: resposiveHeight(16)),
                                 TextFormField(
                                   controller: phoneController,
                                   decoration: InputDecoration(
-                                    labelText: 'Phone Number',
-                                    hintText: 'Enter the Phone Number',
+                                    labelText: S.of(context).phoneNumber,
+                                    hintText: S.of(context).enterPhoneNumber,
                                   ),
                                   validator: (value) {
                                     AppValidate.validateMobile(value);
@@ -252,7 +268,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                   ElevatedButton(
                     onPressed: () {},
                     child: Text(
-                      'Place order',
+                      S.of(context).placeOrder,
                       style: AppTextStyles.inter500_16.copyWith(
                         color: AppColors.whiteColor,
                       ),

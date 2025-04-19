@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class SummaryWidget extends StatelessWidget {
@@ -17,7 +16,7 @@ class SummaryWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Sub Total",
+              S.of(context).subTotal,
               style: AppTextStyles.roboto400_16.copyWith(
                 color: AppColors.greyColor,
               ),
@@ -35,7 +34,7 @@ class SummaryWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "Delivery Fee",
+              S.of(context).deliveryFee,
               style: AppTextStyles.roboto400_16.copyWith(
                 color: AppColors.greyColor,
               ),
@@ -53,7 +52,7 @@ class SummaryWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Total", style: AppTextStyles.roboto500_18),
+            Text(S.of(context).total, style: AppTextStyles.roboto500_18),
             Text(
               "\$${total[0].toStringAsFixed(2)}",
               style: AppTextStyles.roboto500_18,

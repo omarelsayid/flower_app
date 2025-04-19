@@ -1,6 +1,7 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryTimeWidget extends StatelessWidget {
@@ -14,10 +15,13 @@ class DeliveryTimeWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text("Delivery time", style: AppTextStyles.inter500_18),
+              Text(
+                S.of(context).deliveryTime,
+                style: AppTextStyles.inter500_18,
+              ),
               const Spacer(),
               Text(
-                "Schedule",
+                S.of(context).schedule,
                 style: AppTextStyles.inter600_18.copyWith(
                   color: AppColors.primaryColor,
                 ),
@@ -30,10 +34,10 @@ class DeliveryTimeWidget extends StatelessWidget {
               Icon(Icons.watch_later_outlined),
               SizedBox(width: resposiveWidth(4)),
 
-              Text("Instant,", style: AppTextStyles.inter500_18),
+              Text(S.of(context).instant, style: AppTextStyles.inter500_18),
               SizedBox(width: resposiveWidth(4)),
               Text(
-                "Arrive by 03 Sep 2024, 11:00 AM",
+                "${S.of(context).arriveBy} 03 Sep 2024, 11:00 AM",
                 style: AppTextStyles.inter500_14.copyWith(
                   color: Color(0xFF0CB359),
                 ),

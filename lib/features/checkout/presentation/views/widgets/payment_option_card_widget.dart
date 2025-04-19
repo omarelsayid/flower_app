@@ -8,7 +8,8 @@ class PaymentOptionCardWidget extends StatelessWidget {
     super.key,
     required this.selectedValue,
     this.onChanged,
-    required this.value, required this.title,
+    required this.value,
+    required this.title,
   });
   final int selectedValue;
   final void Function(int?)? onChanged;
