@@ -31,7 +31,7 @@ class UserAddressesViewModel extends Cubit<UserAddressesState> {
       case Success():
         emit(SuccessUserAddressesState(result.data!.addresses ?? []));
       case Error():
-        emit(ErrorUserAddressesState(result.exception!));
+        emit(ErrorUserAddressesState(result.exception!.toString()));
     }
   }
 
@@ -49,7 +49,7 @@ class UserAddressesViewModel extends Cubit<UserAddressesState> {
         emit(SuccessUserAddressesState(updated));
       case Error():
         emit(SuccessUserAddressesState(current));
-        emit(ErrorUserAddressesState(result.exception!));
+        emit(ErrorUserAddressesState(result.exception.toString()));
     }
   }
 

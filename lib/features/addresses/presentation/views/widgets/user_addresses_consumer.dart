@@ -1,4 +1,6 @@
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
+import 'package:flower_app/core/utils/app_colors.dart';
+import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/addresses/presentation/views/widgets/add_address_button.dart';
 import 'package:flower_app/features/addresses/presentation/views/widgets/user_address_card.dart';
 import 'package:flower_app/generated/l10n.dart';
@@ -33,7 +35,7 @@ class UserAddressesConsumer extends StatelessWidget {
             itemBuilder: (context, index) {
               if (addresses.isEmpty) {
                 if (index == 0) {
-                  return Center(child: Text(S.of(context).no_address_found));
+                  return Center(child: Text(S.of(context).no_address_found,style: AppTextStyles.inter500_18.copyWith(color: AppColors.blackColor,decoration: TextDecoration.none),));
                 } else {
                   return AddAddressButton(
                     onPressed: () {
