@@ -1,4 +1,5 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -17,14 +18,20 @@ class UserAddressesCardDetailsWidget extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: resposiveHeight(300),
-        margin: EdgeInsets.all(16),
-        padding: EdgeInsets.all(16),
+        margin: EdgeInsets.symmetric(
+          horizontal: resposiveWidth(16),
+          vertical: resposiveHeight(16),
+        ),
+        padding: EdgeInsets.symmetric(
+          horizontal: resposiveWidth(16),
+          vertical: resposiveHeight(16),
+        ),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black,
+              color: AppColors.blackColor,
               blurRadius: 1,
               offset: Offset(0, 1),
             ),
@@ -38,11 +45,11 @@ class UserAddressesCardDetailsWidget extends StatelessWidget {
             Divider(),
             Text('${tr.city}: ${address.city}'),
             Text('${tr.street}: ${address.street}'),
-
             Text('lat: ${address.lat}'),
             Text('long: ${address.long}'),
           ],
         ),
       ),
     );
-  }}
+  }
+}

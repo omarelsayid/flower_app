@@ -147,7 +147,7 @@ Future<ChangePasswordModel> changePassword(
   @GET(ApiEndPoints.getUserAddressesEndPoint)
   Future<UserAddressesDTO> getUserAddresses();
 
-  @DELETE("/api/v1/addresses/{id}")
+  @DELETE(ApiEndPoints.deleteSavedAddressEndPoint)
   Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(
       @Path("id") String id,
       );

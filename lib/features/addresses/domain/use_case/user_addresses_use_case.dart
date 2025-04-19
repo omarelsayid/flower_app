@@ -13,8 +13,8 @@ class UserAddressesUseCase {
   Future<Result<UserAddressesEntity>> execute() async{
     return await _userAddressesRepository.getUserAddresses();
   }
-  Future<Result<UserAddressesEntity>> executeDeletion(String id) {
-    return _userAddressesRepository.deleteUserAddress(id);
+  Future<Result<UserAddressesEntity>> executeDeletion(String id) async{
+    return await _userAddressesRepository.deleteUserAddress(id);
   }
 
 }

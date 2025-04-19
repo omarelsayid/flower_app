@@ -16,7 +16,7 @@ class UserAddressesRepositoryImpl implements UserAddressesRepository {
 
   @override
   Future<Result<UserAddressesEntity>> getUserAddresses() async{
-    return executeApi(
+    return await executeApi(
       () async{
         var result=await _userAddressesRemoteDataSource.getUserAddresses();
         return result;
@@ -25,7 +25,7 @@ class UserAddressesRepositoryImpl implements UserAddressesRepository {
   }
 
   @override
-  Future<Result<UserAddressesEntity>> deleteUserAddress(String id) {
+  Future<Result<UserAddressesEntity>> deleteUserAddress(String id) async{
     return executeApi(
           () async {
         final result = await _userAddressesRemoteDataSource.deleteUserAddress(id);
