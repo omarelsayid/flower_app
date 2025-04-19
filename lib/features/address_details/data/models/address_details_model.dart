@@ -13,6 +13,7 @@ class AddressDetailsModel {
   @JsonKey(includeToJson: false, name: '_id')
   String? id;
   AddressDetailsModel({
+    this.userName,
     this.street,
     this.city,
     this.phone,

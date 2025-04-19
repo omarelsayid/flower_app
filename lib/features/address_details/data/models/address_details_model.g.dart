@@ -8,14 +8,13 @@ part of 'address_details_model.dart';
 
 AddressDetailsModel _$AddressDetailsModelFromJson(Map<String, dynamic> json) =>
     AddressDetailsModel(
+      userName: json['username'] as String?,
       street: json['street'] as String?,
       city: json['city'] as String?,
       phone: json['phone'] as String?,
       lat: json['lat'] as String?,
       long: json['long'] as String?,
-    )
-      ..userName = json['username'] as String?
-      ..id = json['_id'] as String?;
+    )..id = json['_id'] as String?;
 
 Map<String, dynamic> _$AddressDetailsModelToJson(
         AddressDetailsModel instance) =>
