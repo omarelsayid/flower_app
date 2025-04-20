@@ -4,7 +4,6 @@ import 'package:json_annotation/json_annotation.dart';
 part 'user_addresses_dto.g.dart';
 
 @JsonSerializable()
-@JsonSerializable()
 class UserAddressesDTO extends UserAddressesEntity {
   // @JsonKey(name: 'address'
   @JsonKey(name: 'addresses')
