@@ -1,6 +1,3 @@
-/// message : "success"
-/// addresses : []
-
 class UserAddressesEntity {
   final String? message;
   final List<Address>? addresses;
