@@ -3,9 +3,6 @@ import 'package:flower_app/features/home/categories/domain/entity/categories_res
 import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../../../core/api/api_execute.dart';
-import '../../../occasions/domain/entity/products_response_entity.dart';
 import '../../domain/entity/specific_category_response_entity.dart';
 import '../../domain/repository/categories_repository.dart';
 import '../../presentation/manager/categories_view_model.dart';
@@ -43,14 +40,28 @@ class CategoriesRepositoryImpl implements CategoriesRepository {
         .toList();
 
   }
+
   @override
-  Future<Result<ProductsResponseEntity>> getFilterDetails(String sort) {
-    return executeApi(
-          () async {
-        var data = await _categoriesRemoteDataSource.getFilterDetails(sort);
-        return data;
-      },
-    );
+
+  Future<Result<SpecificCategoriesResponseEntity>> getFiltered(
+      String sort,
+      )  {
+    return _categoriesRemoteDataSource.getFiltered(sort);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 

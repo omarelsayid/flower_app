@@ -84,7 +84,7 @@ abstract class ApiClient {
       @Query("occasion") String occasionId,
   );
   @GET('/api/v1/products')
-  Future<ProductsResponseDTO> getProductsByFilter(
+  Future<SpecificCategoriesResponseModel> getProductsByFilter(
 
       @Query("sort") String sort,
       );

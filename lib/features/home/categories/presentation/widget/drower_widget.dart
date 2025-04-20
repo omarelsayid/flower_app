@@ -9,11 +9,10 @@ import '../../../../../core/utils/text_styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class DrawerWidget extends StatefulWidget {
-
-  const DrawerWidget({super. key,
-
-  });
-
+  //void Function(String)? onChanged;
+   DrawerWidget({super.key, required this. onChanged}
+  );
+  void Function(String) onChanged;
   @override
   State<DrawerWidget> createState() => _DrawerWidgetState();
 }
@@ -24,7 +23,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   bool newDate = false;
   bool old = false;
   bool discount = false;
-  RangeValues currentRangeValues = const RangeValues(10, 80);
+  String filter = '0';
+   RangeValues currentRangeValues =  RangeValues(200, 500);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -72,33 +72,62 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     style: AppTextStyles.inter700_20.copyWith(color: AppColors.primaryColor),
                   ),
                   FilterWidget(value: lowBrice, onChanged:(value){
+
                     setState(() {
                       lowBrice= value!;
-                     if (lowBrice==true){highBrice=false;}
+                     if (lowBrice==true){
+                       filter= "price";
+                       newDate=false;
+                       old=false;
+                       discount=false;
+                       highBrice=false;
+                     }
                     });
                   } , sort:S.of(context).lowes_Price ),
                   FilterWidget(value: highBrice, onChanged:(value){
                     setState(() {
                       highBrice= value!;
-                      if (highBrice==true){lowBrice=false;}
+                      if (highBrice==true){
+                        filter="-price";
+                        lowBrice=false;}
                     });
                   } , sort:S.of(context).highest_Price ),
                   FilterWidget(value: newDate, onChanged:(value){
                     setState(() {
                       newDate= value!;
-                      if (newDate==true){old=false;}
+                      if (newDate==true){
+                        filter="new";
+                       // newDate=false;
+                        old=false;
+                        discount=false;
+                        highBrice=false;
+                        old=false;
+                      }
                     });
                   } , sort:S.of(context).newDate ),
                   FilterWidget(value: old, onChanged:(value){
                     setState(() {
                       old= value!;
-                      if (old==true){newDate=false;}
+                      if (old==true){
+                        filter="old";
+                        newDate=false;
+                        //old=false;
+                        discount=false;
+                        highBrice=false;
+                       // old=false;
+                      }
                     });
                   } , sort:S.of(context).old ),
                   FilterWidget(value: discount, onChanged:(value){
                     setState(() {
                       discount= value!;
-
+                      if (old==true){
+                        filter='discount';
+                        newDate=false;
+                        old=false;
+                       // discount=false;
+                        highBrice=false;
+                        old=false;}
                     });
                   } , sort:S.of(context).discount ),
 
@@ -122,7 +151,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           //   '\$${currentRangeValues.end.round()}',
                           //
                           // ),
-                          min: 50,
+                          min: 0,
                           max: 999,
                           divisions: 100,
                           onChanged: (RangeValues values){
@@ -147,8 +176,14 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           backgroundColor:AppColors.primaryColor,
 
                           onPressed: () {
+                            if(filter=="0"){
+                              Navigator.pop(context);
+                              print('Floating Action Button Pressed!');
+                            }else{
+                            widget.onChanged (filter);
                            // showFilters(context);
-                            print('Floating Action Button Pressed!');
+                            Navigator.pop(context);
+                            print('Floating Action Button Pressed!');}
                           },
 
                           child: Row(

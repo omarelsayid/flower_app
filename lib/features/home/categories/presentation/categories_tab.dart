@@ -14,6 +14,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/common/get_resposive_height_and_width.dart';
+import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constans.dart';
 import '../../../../core/utils/text_styles.dart';
@@ -45,7 +46,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
         ],
         child: BlocConsumer<CategoriesViewModel, CategoriesState>(
           listener: (context, state) {
-            if (state is CategoriesErrorState || state is SpecificCategoriesErrorState) {
+            if (state is CategoriesErrorState || state is SpecificCategoriesErrorState || state is FailedFilterState) {
               DialogUtils.showMessage(
                 context: context,
                 message: (state is CategoriesErrorState)
@@ -62,14 +63,53 @@ class _CategoriesTabState extends State<CategoriesTab> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   SizedBox(height: height * 0.05),
-                  CustomSearchCategories(
-                    onChanged: (value) {
-                      if (value.trim().isNotEmpty) {
-                        viewModel.doIntent(SearchIntent(value.trim()));
-                      } else {
-                        viewModel.doIntent(GetAllCategoriesIntent());
-                      }
-                    },
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: resposiveHeight(8),
+                      horizontal: resposiveWidth(16),
+                    ),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: Row(
+
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: CustomSearchCategories(
+                              onChanged: (value) {
+                                if (value.trim().isNotEmpty) {
+                                  viewModel.doIntent(SearchIntent(value.trim()));
+                                } else {
+                                  viewModel.doIntent(GetAllCategoriesIntent());
+                                }
+                              },
+                            ),
+                          ),
+                          SizedBox(width: resposiveWidth(8)),
+                          Expanded(
+                            flex: 1,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                minimumSize: Size(resposiveWidth(64), resposiveHeight(48)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                              onPressed: () {
+                                showFilters(context,
+                                      (value) {
+                                    viewModel.doIntent(
+                                      FilterIntent(value),
+                                    );
+                                  },
+                                );
+                              },
+                              child: ImageIcon(AssetImage(IconAssets.filterIcon)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   SizedBox(height: height * 0.015),
                   // Show tabs if categories are loaded and available.
@@ -102,7 +142,8 @@ class _CategoriesTabState extends State<CategoriesTab> {
                     ),
                   SizedBox(height: height * 0.02),
                   // Show product lists or empty states.
-                  if (state is LoadingSearchState || state is SpecificCategoriesLoadingState)
+                  if (state is LoadingSearchState || state is SpecificCategoriesLoadingState||
+                      state is LoadingFilterState)
                     Skeletonizer(
                       enabled: true,
                       containersColor: AppColors.whiteColor,
@@ -116,6 +157,10 @@ class _CategoriesTabState extends State<CategoriesTab> {
                         state.products.isNotEmpty &&
                         !viewModel.isSearching)
                       _buildProductsList(state.products, state.products.length)
+                    else if (state is SuccessfulFilterState &&
+                          state.products.isNotEmpty &&
+                          !viewModel.isSearching)
+                        _buildProductsList(state.products, state.products.length)
                     else
                       _buildEmptyState("No products found"),
 
@@ -139,7 +184,14 @@ class _CategoriesTabState extends State<CategoriesTab> {
             backgroundColor:AppColors.primaryColor,
 
           onPressed: () {
-            showFilters(context);
+            showFilters(context,
+                  (value) {
+                viewModel.doIntent(
+                  FilterIntent(value),
+                );
+              },
+            );
+
             print('Floating Action Button Pressed!');
           },
 
@@ -211,9 +263,12 @@ class _CategoriesTabState extends State<CategoriesTab> {
     final isLoading = state is AddToCartLoading && state.id==product.id;
     return FlowerCard(
             name: product.title.toString(),
-            beforeDiscount: "${product.discount}",
-            discountRate: "${product.priceAfterDiscount}%",
-            cost: '${product.price}',
+           // beforeDiscount: "${product.discount}",
+            beforeDiscount: "${product.price}",
+            discountRate: "${product.discount}%",
+           // discountRate: "${product.priceAfterDiscount}%",
+            cost: '${product.priceAfterDiscount}',
+          //  cost: '${product.price}',
             imageUrl: '${product.imgCover}',
            id: "${product.id}",
       isLoading: isLoading,
@@ -247,9 +302,9 @@ class _CategoriesTabState extends State<CategoriesTab> {
 
 
 
-  showFilters( BuildContext context  ){
+  showFilters( BuildContext context ,  Function(String) gitFilter  ) async {
     showModalBottomSheet(context: context, builder: (BuildContext context) {
-       return DrawerWidget();
+       return DrawerWidget(onChanged : gitFilter );
 
     },);
   }

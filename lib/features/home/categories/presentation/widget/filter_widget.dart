@@ -29,6 +29,7 @@ required this.sort
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+
               Text(
                 sort,
                 style: AppTextStyles.inter500_16.copyWith(color: AppColors.blackColor),

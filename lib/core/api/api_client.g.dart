@@ -398,12 +398,13 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<ProductsResponseDTO> getProductsByFilter(String sort) async {
+  Future<SpecificCategoriesResponseModel> getProductsByFilter(
+      String sort) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'sort': sort};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ProductsResponseDTO>(Options(
+    final _options = _setStreamType<SpecificCategoriesResponseModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -420,9 +421,9 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ProductsResponseDTO _value;
+    late SpecificCategoriesResponseModel _value;
     try {
-      _value = ProductsResponseDTO.fromJson(_result.data!);
+      _value = SpecificCategoriesResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

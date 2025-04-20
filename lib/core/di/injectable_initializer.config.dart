@@ -165,8 +165,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1026.CartRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i961.AuthRepository>(
         () => _i62.AuthRepositoryImpl(gh<_i182.AuthRemoteDataSource>()));
-    gh.factory<_i920.OccasionRepository>(() =>
-        _i710.OccasionRepositoryImpl(gh<_i425.OccasionRemoteDataSource>()));
     gh.factory<_i890.ChangePasswordRepository>(() =>
         _i782.ChangePasswordRepositoryImp(
             gh<_i584.ChangePasswordDataSource>()));
@@ -184,8 +182,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i237.BestSellerViewModel(gh<_i480.BestSellerUseCase>()));
     gh.factory<_i85.BestSellerCubit>(
         () => _i85.BestSellerCubit(gh<_i480.BestSellerUseCase>()));
-    gh.factory<_i66.OccasionUseCase>(
-        () => _i66.OccasionUseCase(gh<_i920.OccasionRepository>()));
     gh.factory<_i332.ProductsDetailsRemoteDataScource>(
         () => _i382.ProductsDetailsRemoteDataScourceImp(gh<_i277.ApiClient>()));
     gh.factory<_i614.ForgetPasswordViewModel>(
@@ -202,6 +198,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i246.CategoryDataSourceImp(gh<_i277.ApiClient>()));
     gh.factory<_i129.CategoriesRepository>(() => _i913.CategoriesRepositoryImpl(
         gh<_i1070.CategoriesRemoteDataSource>()));
+    gh.factory<_i425.OccasionRemoteDataSource>(
+        () => _i425.OccasionRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i428.ProfileRemoteDataSource>(
         () => _i428.ProfileRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i152.ProfileRepository>(() => _i62.ProfileRepositoryImpl(
@@ -212,10 +210,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i357.VerifyEmailVewModel(gh<_i701.AuthUseCase>()));
     gh.factory<_i922.ChangePasswordUseCase>(() =>
         _i922.ChangePasswordUseCase(gh<_i890.ChangePasswordRepository>()));
-    gh.factory<_i602.OccasionViewModel>(
-        () => _i602.OccasionViewModel(gh<_i66.OccasionUseCase>()));
     gh.factory<_i798.GetProductDetailsRepo>(() => _i29.ProductsDetailRepoImp(
         gh<_i332.ProductsDetailsRemoteDataScource>()));
+    gh.factory<_i920.OccasionRepository>(() =>
+        _i710.OccasionRepositoryImpl(gh<_i425.OccasionRemoteDataSource>()));
     gh.factory<_i295.EditProfileUseCase>(
         () => _i295.EditProfileUseCase(gh<_i152.ProfileRepository>()));
     gh.factory<_i929.ProfileUseCase>(
@@ -242,6 +240,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i8.ProductsDetailCubit(gh<_i798.GetProductDetailsRepo>()));
     gh.factory<_i723.CategoriesUseCase>(
         () => _i723.CategoriesUseCase(gh<_i129.CategoriesRepository>()));
+    gh.factory<_i66.OccasionUseCase>(
+        () => _i66.OccasionUseCase(gh<_i920.OccasionRepository>()));
     gh.factory<_i423.HomeUseCase>(
         () => _i423.HomeUseCase(gh<_i352.HomeRepo>()));
     gh.factory<_i513.ProfileViewModel>(() => _i513.ProfileViewModel(
@@ -260,6 +260,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i177.EditProfileViewModel(gh<_i295.EditProfileUseCase>()));
     gh.factory<_i720.CategoriesViewModel>(
         () => _i720.CategoriesViewModel(gh<_i723.CategoriesUseCase>()));
+    gh.factory<_i602.OccasionViewModel>(
+        () => _i602.OccasionViewModel(gh<_i66.OccasionUseCase>()));
     gh.factory<_i480.UploadPhotoViewModel>(
         () => _i480.UploadPhotoViewModel(gh<_i801.UploadPhotoUseCase>()));
     return this;

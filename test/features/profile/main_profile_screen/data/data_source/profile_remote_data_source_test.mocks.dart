@@ -34,9 +34,9 @@ import 'package:flower_app/features/cart/data/models/user_cart_response/user_car
 import 'package:flower_app/features/home/best_seller_products/data/model/BestSellerProductsModel.dart'
     as _i20;
 import 'package:flower_app/features/home/categories/data/model/categories_response_model.dart'
-    as _i12;
-import 'package:flower_app/features/home/categories/data/model/specific_categories_response_model.dart'
     as _i13;
+import 'package:flower_app/features/home/categories/data/model/specific_categories_response_model.dart'
+    as _i12;
 import 'package:flower_app/features/home/home_tab/data/model/category_response_dto.dart'
     as _i8;
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart'
@@ -182,9 +182,9 @@ class _FakeProductsResponseDTO_9 extends _i1.SmartFake
         );
 }
 
-class _FakeCategoriesResponseModel_10 extends _i1.SmartFake
-    implements _i12.CategoriesResponseModel {
-  _FakeCategoriesResponseModel_10(
+class _FakeSpecificCategoriesResponseModel_10 extends _i1.SmartFake
+    implements _i12.SpecificCategoriesResponseModel {
+  _FakeSpecificCategoriesResponseModel_10(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -193,9 +193,9 @@ class _FakeCategoriesResponseModel_10 extends _i1.SmartFake
         );
 }
 
-class _FakeSpecificCategoriesResponseModel_11 extends _i1.SmartFake
-    implements _i13.SpecificCategoriesResponseModel {
-  _FakeSpecificCategoriesResponseModel_11(
+class _FakeCategoriesResponseModel_11 extends _i1.SmartFake
+    implements _i13.CategoriesResponseModel {
+  _FakeCategoriesResponseModel_11(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -425,21 +425,22 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
       ) as _i17.Future<_i11.ProductsResponseDTO>);
 
   @override
-  _i17.Future<_i11.ProductsResponseDTO> getProductsByFilter(String? sort) =>
+  _i17.Future<_i12.SpecificCategoriesResponseModel> getProductsByFilter(
+          String? sort) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProductsByFilter,
           [sort],
         ),
-        returnValue: _i17.Future<_i11.ProductsResponseDTO>.value(
-            _FakeProductsResponseDTO_9(
+        returnValue: _i17.Future<_i12.SpecificCategoriesResponseModel>.value(
+            _FakeSpecificCategoriesResponseModel_10(
           this,
           Invocation.method(
             #getProductsByFilter,
             [sort],
           ),
         )),
-      ) as _i17.Future<_i11.ProductsResponseDTO>);
+      ) as _i17.Future<_i12.SpecificCategoriesResponseModel>);
 
   @override
   _i17.Future<_i4.HttpResponse<_i21.ProductsDetailsModels>> getProductDetails(
@@ -461,39 +462,39 @@ class MockApiClient extends _i1.Mock implements _i16.ApiClient {
       ) as _i17.Future<_i4.HttpResponse<_i21.ProductsDetailsModels>>);
 
   @override
-  _i17.Future<_i12.CategoriesResponseModel> getAllCategories() =>
+  _i17.Future<_i13.CategoriesResponseModel> getAllCategories() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllCategories,
           [],
         ),
-        returnValue: _i17.Future<_i12.CategoriesResponseModel>.value(
-            _FakeCategoriesResponseModel_10(
+        returnValue: _i17.Future<_i13.CategoriesResponseModel>.value(
+            _FakeCategoriesResponseModel_11(
           this,
           Invocation.method(
             #getAllCategories,
             [],
           ),
         )),
-      ) as _i17.Future<_i12.CategoriesResponseModel>);
+      ) as _i17.Future<_i13.CategoriesResponseModel>);
 
   @override
-  _i17.Future<_i13.SpecificCategoriesResponseModel> getSpecificCategory(
+  _i17.Future<_i12.SpecificCategoriesResponseModel> getSpecificCategory(
           String? categoryId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getSpecificCategory,
           [categoryId],
         ),
-        returnValue: _i17.Future<_i13.SpecificCategoriesResponseModel>.value(
-            _FakeSpecificCategoriesResponseModel_11(
+        returnValue: _i17.Future<_i12.SpecificCategoriesResponseModel>.value(
+            _FakeSpecificCategoriesResponseModel_10(
           this,
           Invocation.method(
             #getSpecificCategory,
             [categoryId],
           ),
         )),
-      ) as _i17.Future<_i13.SpecificCategoriesResponseModel>);
+      ) as _i17.Future<_i12.SpecificCategoriesResponseModel>);
 
   @override
   _i17.Future<_i4.HttpResponse<void>> logout(String? token) =>

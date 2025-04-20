@@ -7,12 +7,13 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/api/api_client.dart';
 import '../../../../../core/api/api_execute.dart';
 import '../../../occasions/data/model/products_response_dto.dart';
+import '../../../occasions/domain/entity/products_response_entity.dart';
 import '../../domain/entity/specific_category_response_entity.dart';
 
 abstract class CategoriesRemoteDataSource {
   Future<Result<CategoriesResponseEntity>> getAllCategories();
   Future<Result<SpecificCategoriesResponseEntity>>getSpecificCategory(String categoryId);
-  Future<ProductsResponseDTO> getFilterDetails(String sort);
+  Future<Result<SpecificCategoriesResponseEntity>>getFiltered(String sort);
 
 }
 @Injectable(as: CategoriesRemoteDataSource)
@@ -41,8 +42,15 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   }
 
   @override
-  Future<ProductsResponseDTO> getFilterDetails(String sort) async {
-
-    return await _apiClient.getProductsByFilter(sort);
+  Future<Result<SpecificCategoriesResponseEntity>> getFiltered(String sort) {
+    return executeApi(
+          () async {
+        var response= await _apiClient.getProductsByFilter(sort);
+        log("response ${response.message}");
+        return response;
+      },
+    );
   }
+
+
 }
