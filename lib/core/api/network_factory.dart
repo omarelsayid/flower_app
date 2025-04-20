@@ -3,9 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import '../network/auth_interceptor.dart';
-import '../services/shared_preference_services.dart';
-import '../utils/constant_manager.dart';
 import '../services/shared_preference_services.dart';
 import '../utils/constant_manager.dart';
 
@@ -39,17 +36,6 @@ abstract class DioProvider {
       maxWidth: 90,
       enabled: kDebugMode,
     );
-  }
-}
-@lazySingleton
-class AuthInterceptor extends Interceptor {
-  @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
-    final token = SharedPreferenceServices.getData(AppConstants.token);
-    if (token != null) {
-      options.headers["Authorization"] = "Bearer $token";
-    }
-    return handler.next(options);
   }
 }
 @lazySingleton
