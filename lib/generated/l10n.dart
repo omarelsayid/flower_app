@@ -460,11 +460,191 @@ class S {
     return Intl.message('cancel', name: 'cancel', desc: '', args: []);
   }
 
+  /// `Saved Addresses`
+  String get saved_addresses {
+    return Intl.message(
+      'Saved Addresses',
+      name: 'saved_addresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Address`
+  String get add_new_addresses {
+    return Intl.message(
+      'Add New Address',
+      name: 'add_new_addresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No address found.`
+  String get no_address_found {
+    return Intl.message(
+      'No address found.',
+      name: 'no_address_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message('Name', name: 'name', desc: '', args: []);
+  }
+
+  /// `Address Details`
+  String get address_details {
+    return Intl.message(
+      'Address Details',
+      name: 'address_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message('City', name: 'city', desc: '', args: []);
+  }
+
+  /// `Street`
+  String get street {
+    return Intl.message('Street', name: 'street', desc: '', args: []);
+  }
+
   /// `Bloom with our exquisite best sellers`
   String get bloomwithourexquisitebestsellers {
     return Intl.message(
       'Bloom with our exquisite best sellers',
       name: 'bloomwithourexquisitebestsellers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get address {
+    return Intl.message('Address', name: 'address', desc: '', args: []);
+  }
+
+  /// `Enter your address`
+  String get enterAddress {
+    return Intl.message(
+      'Enter your address',
+      name: 'enterAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipient name`
+  String get recipientName {
+    return Intl.message(
+      'Recipient name',
+      name: 'recipientName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the recipient name`
+  String get enterRecipientName {
+    return Intl.message(
+      'Enter the recipient name',
+      name: 'enterRecipientName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message('City', name: 'city', desc: '', args: []);
+  }
+
+  /// `Cairo`
+  String get cairo {
+    return Intl.message('Cairo', name: 'cairo', desc: '', args: []);
+  }
+
+  /// `Area`
+  String get area {
+    return Intl.message('Area', name: 'area', desc: '', args: []);
+  }
+
+  /// `October`
+  String get october {
+    return Intl.message('October', name: 'october', desc: '', args: []);
+  }
+
+  /// `Save address`
+  String get saveAddress {
+    return Intl.message(
+      'Save address',
+      name: 'saveAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter an address`
+  String get addressRequired {
+    return Intl.message(
+      'Please enter an address',
+      name: 'addressRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a phone number`
+  String get phoneNumberRequired {
+    return Intl.message(
+      'Please enter a phone number',
+      name: 'phoneNumberRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a recipient name`
+  String get recipientNameRequired {
+    return Intl.message(
+      'Please enter a recipient name',
+      name: 'recipientNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a city`
+  String get cityRequired {
+    return Intl.message(
+      'Please enter a city',
+      name: 'cityRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter an area`
+  String get areaRequired {
+    return Intl.message(
+      'Please enter an area',
+      name: 'areaRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address saved successfully`
+  String get addressSavedSuccessfully {
+    return Intl.message(
+      'Address saved successfully',
+      name: 'addressSavedSuccessfully',
       desc: '',
       args: [],
     );

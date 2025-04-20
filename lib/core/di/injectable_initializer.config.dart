@@ -14,6 +14,26 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../features/address_details/data/data_source/address_details_data_source.dart'
+    as _i355;
+import '../../features/address_details/data/data_source/address_details_data_source_imp.dart'
+    as _i541;
+import '../../features/address_details/data/repository/address_details_repo_imp.dart'
+    as _i460;
+import '../../features/address_details/domain/repository/address_details_repo.dart'
+    as _i538;
+import '../../features/address_details/presentation/cubit/address_details_cubit.dart'
+    as _i312;
+import '../../features/addresses/data/data_source/user_addresses_remote_data_source.dart'
+    as _i31;
+import '../../features/addresses/data/repository_imp/user_addresses_repository_imp.dart'
+    as _i630;
+import '../../features/addresses/domain/repository/user_addresses_repository.dart'
+    as _i953;
+import '../../features/addresses/domain/use_case/user_addresses_use_case.dart'
+    as _i138;
+import '../../features/addresses/presentation/cubit/user_addresses_cubit/user_addresses_view_model.dart'
+    as _i25;
 import '../../features/auth/data/data_source/auth_remote_data_source.dart'
     as _i182;
 import '../../features/auth/data/repository_imp/auth_repository_imp.dart'
@@ -152,6 +172,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i31.UserAddressesRemoteDataSource>(
+        () => _i31.UserAddressesRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i550.BestSellerRemoteDataSource>(
         () => _i1001.BestSellerRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i584.ChangePasswordDataSource>(
@@ -173,6 +195,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i701.AuthUseCase(gh<_i961.AuthRepository>()));
     gh.factory<_i489.SignInUseCase>(
         () => _i489.SignInUseCase(gh<_i961.AuthRepository>()));
+    gh.factory<_i355.AddressDetailsDataSource>(
+        () => _i541.AddressDetailsDataSourceImp(gh<_i277.ApiClient>()));
     gh.factory<_i678.ProfileLocalDataSource>(
         () => _i678.ProfileLocalDataSourceImpl(gh<_i460.SharedPreferences>()));
     gh.factory<_i480.BestSellerUseCase>(
@@ -189,6 +213,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i931.ResetPasswordViewModel(gh<_i701.AuthUseCase>()));
     gh.factory<_i306.SignUpViewModel>(
         () => _i306.SignUpViewModel(gh<_i701.AuthUseCase>()));
+    gh.factory<_i953.UserAddressesRepository>(() =>
+        _i630.UserAddressesRepositoryImpl(
+            gh<_i31.UserAddressesRemoteDataSource>()));
     gh.factory<_i347.SignInViewModel>(
         () => _i347.SignInViewModel(gh<_i489.SignInUseCase>()));
     gh.factory<_i379.CartRepository>(
@@ -201,6 +228,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i425.OccasionRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i428.ProfileRemoteDataSource>(
         () => _i428.ProfileRemoteDataSourceImpl(gh<_i277.ApiClient>()));
+    gh.factory<_i538.AddressDetailsRepo>(() =>
+        _i460.AddressDetailsRepoImp(gh<_i355.AddressDetailsDataSource>()));
     gh.factory<_i152.ProfileRepository>(() => _i62.ProfileRepositoryImpl(
           gh<_i428.ProfileRemoteDataSource>(),
           gh<_i678.ProfileLocalDataSource>(),
@@ -229,6 +258,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i464.UpdateCartQuantityUseCase(gh<_i379.CartRepository>()));
     gh.factory<_i1066.AddToCartCubit>(
         () => _i1066.AddToCartCubit(gh<_i956.AddToCartUseCase>()));
+    gh.factory<_i312.AddressDetailsCubit>(
+        () => _i312.AddressDetailsCubit(gh<_i538.AddressDetailsRepo>()));
     gh.factory<_i632.GetUserCartCubit>(
         () => _i632.GetUserCartCubit(gh<_i971.GetUserCartUseCase>()));
     gh.factory<_i352.HomeRepo>(
@@ -237,6 +268,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i378.ChangePasswordViewModel(gh<_i922.ChangePasswordUseCase>()));
     gh.factory<_i8.ProductsDetailCubit>(
         () => _i8.ProductsDetailCubit(gh<_i798.GetProductDetailsRepo>()));
+    gh.factory<_i138.UserAddressesUseCase>(
+        () => _i138.UserAddressesUseCase(gh<_i953.UserAddressesRepository>()));
     gh.factory<_i723.CategoriesUseCase>(
         () => _i723.CategoriesUseCase(gh<_i129.CategoriesRepository>()));
     gh.factory<_i66.OccasionUseCase>(
@@ -247,6 +280,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i929.ProfileUseCase>(),
           gh<_i678.ProfileLocalDataSource>(),
         ));
+    gh.factory<_i25.UserAddressesViewModel>(
+        () => _i25.UserAddressesViewModel(gh<_i138.UserAddressesUseCase>()));
     gh.factory<_i1024.DeleteSpecificItemCubit>(
         () => _i1024.DeleteSpecificItemCubit(gh<_i486.DeleteUseCase>()));
     gh.factory<_i737.CategoryCubit>(

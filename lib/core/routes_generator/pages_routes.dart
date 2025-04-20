@@ -13,4 +13,7 @@ abstract class PagesRoutes {
   static const String categoriesScreen = "categories_screen";
   static const String editProfileScreen = "edit_profile_screen";
   static const String changePasswordScreen = "change_password_screen";
+  static const String userAddressesDetailsScreen = "user_addresses_details";
+  static const String userAddressesScreen = "user_addresses";
+  static const String addressScreen = "address_screen";
 }
