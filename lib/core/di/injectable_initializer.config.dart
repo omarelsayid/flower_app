@@ -24,6 +24,16 @@ import '../../features/address_details/domain/repository/address_details_repo.da
     as _i538;
 import '../../features/address_details/presentation/cubit/address_details_cubit.dart'
     as _i312;
+import '../../features/addresses/data/data_source/user_addresses_remote_data_source.dart'
+    as _i31;
+import '../../features/addresses/data/repository_imp/user_addresses_repository_imp.dart'
+    as _i630;
+import '../../features/addresses/domain/repository/user_addresses_repository.dart'
+    as _i953;
+import '../../features/addresses/domain/use_case/user_addresses_use_case.dart'
+    as _i138;
+import '../../features/addresses/presentation/cubit/user_addresses_cubit/user_addresses_view_model.dart'
+    as _i25;
 import '../../features/auth/data/data_source/auth_remote_data_source.dart'
     as _i182;
 import '../../features/auth/data/repository_imp/auth_repository_imp.dart'
@@ -145,7 +155,6 @@ import '../../features/profile/main_profile_screen/presentation/cubit/upload_pho
     as _i480;
 import '../api/api_client.dart' as _i277;
 import '../api/network_factory.dart' as _i1013;
-import '../network/auth_interceptor.dart' as _i908;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -159,10 +168,12 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioProvider = _$DioProvider();
-    gh.factory<_i908.AuthInterceptor>(() => dioProvider.authInterceptor);
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
+    gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i31.UserAddressesRemoteDataSource>(
+        () => _i31.UserAddressesRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i550.BestSellerRemoteDataSource>(
         () => _i1001.BestSellerRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i584.ChangePasswordDataSource>(
@@ -202,6 +213,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i931.ResetPasswordViewModel(gh<_i701.AuthUseCase>()));
     gh.factory<_i306.SignUpViewModel>(
         () => _i306.SignUpViewModel(gh<_i701.AuthUseCase>()));
+    gh.factory<_i953.UserAddressesRepository>(() =>
+        _i630.UserAddressesRepositoryImpl(
+            gh<_i31.UserAddressesRemoteDataSource>()));
     gh.factory<_i347.SignInViewModel>(
         () => _i347.SignInViewModel(gh<_i489.SignInUseCase>()));
     gh.factory<_i379.CartRepository>(
@@ -254,6 +268,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i378.ChangePasswordViewModel(gh<_i922.ChangePasswordUseCase>()));
     gh.factory<_i8.ProductsDetailCubit>(
         () => _i8.ProductsDetailCubit(gh<_i798.GetProductDetailsRepo>()));
+    gh.factory<_i138.UserAddressesUseCase>(
+        () => _i138.UserAddressesUseCase(gh<_i953.UserAddressesRepository>()));
     gh.factory<_i723.CategoriesUseCase>(
         () => _i723.CategoriesUseCase(gh<_i129.CategoriesRepository>()));
     gh.factory<_i66.OccasionUseCase>(
@@ -264,6 +280,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i929.ProfileUseCase>(),
           gh<_i678.ProfileLocalDataSource>(),
         ));
+    gh.factory<_i25.UserAddressesViewModel>(
+        () => _i25.UserAddressesViewModel(gh<_i138.UserAddressesUseCase>()));
     gh.factory<_i1024.DeleteSpecificItemCubit>(
         () => _i1024.DeleteSpecificItemCubit(gh<_i486.DeleteUseCase>()));
     gh.factory<_i737.CategoryCubit>(

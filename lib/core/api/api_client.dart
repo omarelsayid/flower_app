@@ -1,4 +1,7 @@
+
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/utils/end_points.dart';
+import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
 import 'package:flower_app/features/address_details/data/models/address_details_model.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
@@ -14,10 +17,13 @@ import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
+
 import '../../features/cart/data/models/create_cart_request.dart';
 import '../../features/cart/data/models/update_product_quantity/update_cart_quantity_request.dart';
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../features/home/home_tab/data/model/category_response_dto.dart';
+
+
 import '../../features/home/categories/data/model/categories_response_model.dart';
 import '../../features/home/categories/data/model/specific_categories_response_model.dart';
 import '../../features/home/occasions/data/model/products_response_dto.dart';
@@ -40,6 +46,7 @@ abstract class ApiClient {
     @Header("Authorization") String token,
   );
 
+
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
 
@@ -50,8 +57,10 @@ abstract class ApiClient {
     @Body() Map<String, dynamic> data,
   );
 
+
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
+
 
   @PUT("/api/v1/auth/resetPassword")
   Future<ResetPasswordResponseDTO> resetPassword(
@@ -66,6 +75,7 @@ abstract class ApiClient {
 
   @GET("/api/v1/occasions")
   Future<OccasionResponseDTO> getOccasion();
+
 
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();
@@ -90,8 +100,12 @@ abstract class ApiClient {
 
   @GET("/api/v1/auth/logout")
   Future<HttpResponse<void>> logout(@Header("Authorization") String token);
+  Future<HttpResponse<void>> logout();
 
-  // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
+
+  @GET(ApiEndPoints.getProfileDataEndPoint)
+  Future<ProfileResponseDTO> getProfileData();
+
   @PATCH("/api/v1/auth/change-password")
   Future<ChangePasswordModel> changePassword(
     @Body() ChangePasswordRequestModel data,
@@ -132,6 +146,20 @@ abstract class ApiClient {
 
   @PUT("/api/v1/cart/{id}")
   Future<HttpResponse<UpdateCartQuantityResponseDTO>> updateCartQuantity(
+      @Header("Authorization") String token,
+      @Path("id") String id,
+      @Body() UpdateCartQuantityRequest request,
+      );
+  ////////////////////////User addresses//////////////////
+  @GET(ApiEndPoints.getUserAddressesEndPoint)
+  Future<UserAddressesDTO> getUserAddresses();
+
+  @DELETE(ApiEndPoints.deleteSavedAddressEndPoint)
+  Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(
+      @Path("id") String id,
+      );
+
+}
     @Header("Authorization") String token,
     @Path("id") String id,
     @Body() UpdateCartQuantityRequest request,

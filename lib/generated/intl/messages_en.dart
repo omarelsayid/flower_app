@@ -24,6 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+    "add_new_addresses": MessageLookupByLibrary.simpleMessage(
+      "Add New Address",
+    ),
+    "address_details": MessageLookupByLibrary.simpleMessage("Address Details"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "addressRequired": MessageLookupByLibrary.simpleMessage(
       "Please enter an address",
@@ -46,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "city": MessageLookupByLibrary.simpleMessage("City"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
     "cityRequired": MessageLookupByLibrary.simpleMessage("Please enter a city"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
@@ -102,8 +107,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "myOrders": MessageLookupByLibrary.simpleMessage("My orders"),
+    "name": MessageLookupByLibrary.simpleMessage("Name"),
     "noAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
+    ),
+    "no_address_found": MessageLookupByLibrary.simpleMessage(
+      "No address found.",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "occasions": MessageLookupByLibrary.simpleMessage("Occasions"),
@@ -130,10 +139,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
     "saveAddress": MessageLookupByLibrary.simpleMessage("Save address"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
+    "saved_addresses": MessageLookupByLibrary.simpleMessage("Saved Addresses"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "street": MessageLookupByLibrary.simpleMessage("Street"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
     ),

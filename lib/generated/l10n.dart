@@ -460,6 +460,61 @@ class S {
     return Intl.message('cancel', name: 'cancel', desc: '', args: []);
   }
 
+  /// `Saved Addresses`
+  String get saved_addresses {
+    return Intl.message(
+      'Saved Addresses',
+      name: 'saved_addresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add New Address`
+  String get add_new_addresses {
+    return Intl.message(
+      'Add New Address',
+      name: 'add_new_addresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No address found.`
+  String get no_address_found {
+    return Intl.message(
+      'No address found.',
+      name: 'no_address_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message('Name', name: 'name', desc: '', args: []);
+  }
+
+  /// `Address Details`
+  String get address_details {
+    return Intl.message(
+      'Address Details',
+      name: 'address_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message('City', name: 'city', desc: '', args: []);
+  }
+
+  /// `Street`
+  String get street {
+    return Intl.message('Street', name: 'street', desc: '', args: []);
+  }
+
   /// `Bloom with our exquisite best sellers`
   String get bloomwithourexquisitebestsellers {
     return Intl.message(

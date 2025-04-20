@@ -1,3 +1,4 @@
+import 'package:flower_app/features/addresses/presentation/views/widgets/user_addresses_card_details_widget.dart';
 import 'package:flower_app/features/address_details/presentation/view/address_details_view.dart';
 import 'package:flower_app/features/address_details/presentation/view/widgets/address_details_view_body.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
@@ -11,6 +12,7 @@ import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/addresses/presentation/views/user_addresses_view.dart';
 import '../../features/auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/reset_password/reset_password.dart';
@@ -79,6 +81,7 @@ class RoutesGenerator {
           settings: settings,
         );
 
+
       case PagesRoutes.occasionScreen:
         return MaterialPageRoute(
           builder: (context) => OccasionsScreen(),
@@ -114,6 +117,12 @@ class RoutesGenerator {
           builder: (context) => EditProfileView(),
           settings: settings,
         );
+      case PagesRoutes.userAddressesDetailsScreen:
+        return MaterialPageRoute(
+            builder: (_) => UserAddressesCardDetailsWidget(), settings: settings);
+      case PagesRoutes.userAddressesScreen:
+        return MaterialPageRoute(
+            builder: (_) => UserAddressesView(), settings: settings);
 
       case PagesRoutes.addressScreen:
         return MaterialPageRoute(builder: (context) => AddressDetailsView());

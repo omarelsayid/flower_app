@@ -3,6 +3,7 @@ import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
+import 'package:flower_app/features/home/occasions/presentation/views/widgets/occasion_screen_consumer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -80,9 +81,7 @@ class _OccasionsScreenState extends State<OccasionsScreen>
             if (occasions.isEmpty) {
               return const Scaffold(
                 body: Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primaryColor,
-                  ),
+                  child: CircularProgressIndicator(),
                 ),
               );
             }
@@ -124,11 +123,8 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                 builder: (context, state) {
                   if (state is LoadingOccasionState) {
                     return Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primaryColor,
-                      ),
+                      child: CircularProgressIndicator(),
                     );
-                    debugPrint("Loading..........");
                   } else if (state is SuccessSpecificOccasionState) {
                     final products = state.specificOccasion;
                     return GridView.builder(
@@ -152,60 +148,10 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                               arguments: product.id.toString(),
                             );
                           },
-                          child: BlocConsumer<AddToCartCubit, AddToCartState>(
-                            listener: (context, state) {
-                              if (state is AddToCartSuccess &&
-                                  state.id == product.id) {
-                                EasyLoading.showSuccess(state.message);
-                              }
-                              else if(state is AddToCartError && state.id==product.id)
-                              {
-                                EasyLoading.showError(state.error);
-                              }
-                            },
-                            builder: (context, state) {
-                              final isLoading = state is AddToCartLoading && state.id==product.id;
-                              return FlowerCard(
-                                isLoading: isLoading,
-                                onAddToCart: () {
-                                  context.read<AddToCartCubit>().AddToCart(productId: product.id!, quantity: 1);
-                                },
-                                name: product.title.toString(),
-                                beforeDiscount: "${product.discount}",
-                                discountRate: "${product.priceAfterDiscount}%",
-                                cost: '${product.price}',
-                                imageUrl: '${product.imgCover}',
-                                id: "${product.id}",
-                              );
-                            },
-                          ),
+                          child: OccasionScreenConsumer(product: product,),
                         );
                       },
                     );
-
-                    // return ListView.builder(
-                    //   itemCount: products.length,
-                    //   itemBuilder: (context, index) {
-                    //     final product = products[index];
-                    //     print('Product: ${product.title}, Discount: ${product.discount}');
-                    //     return OccasionWidget(flowers: [
-                    //       {
-                    //         "name":product.title.toString(),
-                    //         "discount": "${product.discount}",
-                    //         "discountRate": "${product.priceAfterDiscount}",
-                    //         "cost": '${product.price}',
-                    //         "imageUrl": '${product.imgCover}'
-                    //       },
-                    //     ],);
-                    //     // return ListTile(
-                    //     //   leading: product.imgCover != null
-                    //     //       ? Image.network(product.imgCover!)
-                    //     //       : const Icon(Icons.image),
-                    //     //   title: Text(product.title ?? "No Title"),
-                    //     //   subtitle: Text(product.slug ?? ""),
-                    //     // );
-                    //   },
-                    // );
                   } else if (state is ErrorOccasionState) {
                     return Center(child: Text(state.message));
                   }
