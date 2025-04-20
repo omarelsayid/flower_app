@@ -1,3 +1,4 @@
+
 import 'package:dio/dio.dart';
 import 'package:flower_app/core/utils/end_points.dart';
 import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
@@ -51,16 +52,16 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/forgotPassword")
   Future<ForgetResponsePasswordDto> forgetPassword(
-    @Body() Map<String, dynamic> data,
-  );
+      @Body() Map<String, dynamic> data,
+      );
 
   @POST("/api/v1/auth/verifyResetCode")
   Future<VerifyEmailResponseDto> verifyEmail(@Body() Map<String, String> code);
 
   @PUT("/api/v1/auth/resetPassword")
   Future<ResetPasswordResponseDTO> resetPassword(
-    @Body() Map<String, dynamic> data,
-  );
+      @Body() Map<String, dynamic> data,
+      );
 
   @GET("/api/v1/best-seller")
   Future<HttpResponse<BestSellerProductsModel>> getBestSeller();
@@ -76,117 +77,114 @@ abstract class ApiClient {
 
   @GET('/api/v1/products')
   Future<ProductsResponseDTO> getProductsByOccasion(
-    @Query("occasion") String occasionId,
-  );
+      @Query("occasion") String occasionId,
+      );
   @GET('/api/v1/products')
   Future<SpecificCategoriesResponseModel> getProductsByFilter(
-    @Query("sort") String sort,
-  );
+      @Query("sort") String sort,
+      );
 
   @GET("/api/v1/products/{id}")
   Future<HttpResponse<ProductsDetailsModels>> getProductDetails(
-    @Path("id") String id,
-  );
+      @Path("id") String id,
+      );
 
   @GET("/api/v1/categories")
   Future<CategoriesResponseModel> getAllCategories();
 
   @GET("/api/v1/products")
   Future<SpecificCategoriesResponseModel> getSpecificCategory(
-    @Query("category") String categoryId,
-  );
+      @Query("category") String categoryId,
+      );
 
   @GET("/api/v1/auth/logout")
   Future<HttpResponse<void>> logout();
 
-  // Future<HttpResponse<void>> logout(@Header("Authorization") String token);
-
-  // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
   @PATCH("/api/v1/auth/change-password")
   Future<ChangePasswordModel> changePassword(
-    @Body() ChangePasswordRequestModel data,
-    @Header("Authorization") String token,
-  );
+      @Body() ChangePasswordRequestModel data,
+      @Header("Authorization") String token,
+      );
 
-  // Future<ChangePasswordModel> changePassword(
-  //   @Body() ChangePasswordRequestModel data,
-  //   @Header("Authorization") String token,
-  // );
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
-    @Header("Authorization") String token,
-    // @Body() EditProfileRequest data,
-    @Body() Map<String, dynamic> data,
-  );
+      @Header("Authorization") String token,
+      // @Body() EditProfileRequest data,
+      @Body() Map<String, dynamic> data,
+      );
 
   @PUT("/api/v1/auth/upload-photo")
   @MultiPart()
   Future<String?> uploadPhoto(
-    @Header("Authorization") String token,
-    @Body() FormData formData,
-  );
+      @Header("Authorization") String token,
+      @Body() FormData formData,
+      );
+  //========================================================================
+  //==========================Cart Api======================================
+
   //========================================================================
   //==========================Cart Api======================================
 
   @POST("/api/v1/cart")
   Future<HttpResponse<CreateCartResponse>> addProductToCart(
-    @Header("Authorization") String token,
-    @Body() CreateCartRequest request,
-  );
+      @Header("Authorization") String token,
+      @Body() CreateCartRequest request,
+      );
 
   @GET("/api/v1/cart")
   Future<UserCartResponseModel> getUserCart(
-    @Header("Authorization") String token,
-  );
+      @Header("Authorization") String token,
+      );
 
   @DELETE("/api/v1/cart/{id}")
   Future<HttpResponse<DeleteCartResponseDTO>> deleteCartItem(
-    @Header("Authorization") String token,
-    @Path("id") String id,
-  );
+      @Header("Authorization") String token,
+      @Path("id") String id,
+      );
 
   @PUT("/api/v1/cart/{id}")
   Future<HttpResponse<UpdateCartQuantityResponseDTO>> updateCartQuantity(
-    @Header("Authorization") String token,
-    @Path("id") String id,
-    @Body() UpdateCartQuantityRequest request,
-  );
+      @Header("Authorization") String token,
+      @Path("id") String id,
+      @Body() UpdateCartQuantityRequest request,
+      );
   /////////////////////////////////////////
   @GET(ApiEndPoints.getUserAddressesEndPoint)
   Future<UserAddressesDTO> getUserAddresses();
 
   @GET("/api/v1/addresses")
   Future<HttpResponse<AddressesResponseDTO>> getAddresses(
-    @Header("Authorization") String token,
-  );
+      @Header("Authorization") String token,
+      );
   @DELETE(ApiEndPoints.deleteSavedAddressEndPoint)
   Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(
-    @Path("id") String id,
-  );
+      @Path("id") String id,
+      );
 
   @PATCH('/api/v1/addresses')
   Future<void> saveUserAddress(
       @Header("Authorization") String token,
       // @Body() AddressDTO addressDetailsModel,
       @Body() Map<String, dynamic> addressJson,
-  );
+      );
+
   @POST("/api/v1/orders/checkout?url=http://localhost:3000")
   Future<CreditCardResponseModel> checkoutCredit(
-    @Body() CreditCardRequestModel data,
-    @Header("Authorization") String token,
-  );
+      @Body() CreditCardRequestModel data,
+      @Header("Authorization") String token,
+      );
 
   @POST("/api/v1/orders")
   Future<CheckoutCashResponseModel> checkoutCash(
-    @Body() CreditCardRequestModel data,
-    @Header("Authorization") String token,
-  );
+      @Body() CreditCardRequestModel data,
+      @Header("Authorization") String token,
+      );
 
   @PATCH("/api/v1/addresses/{id}")
   Future<UserAddressesDTO> updateAddress(
-    @Path("id") String id,
-    @Body() Map<String, dynamic> address,
-  );
+      @Path("id") String id,
+      @Body() Map<String, dynamic> address,
+      );
 
   @GET("/api/v1/auth/profile-data")
   Future<ProfileResponseDTO> getProfileData();
