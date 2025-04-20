@@ -1,5 +1,5 @@
 {
-"signIn": "Sign In",
+  "signIn": "Sign In",
   "signUp": "Sign up",
   "login": "Login",
   "email": "Email",
@@ -61,4 +61,22 @@
   "city": "City",
   "street": "Street",
   "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers"
+  "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers",
+  "address": "Address",
+  "enterAddress": "Enter your address",
+  "recipientName": "Recipient name",
+  "enterRecipientName": "Enter the recipient name",
+  "city": "City",
+  "cairo": "Cairo",
+  "area": "Area",
+  "october": "October",
+  "saveAddress": "Save address",
+  "addressRequired": "Please enter an address",
+  "phoneNumberRequired": "Please enter a phone number",
+  "recipientNameRequired": "Please enter a recipient name",
+  "cityRequired": "Please enter a city",
+  "areaRequired": "Please enter an area",
+  "addressSavedSuccessfully":"Address saved successfully"
+
+
 }

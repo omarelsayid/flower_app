@@ -23,7 +23,6 @@ void main() async {
   ConfigLoading().showLoading();
   await SharedPreferenceServices.init();
 
-
   String? token =
       SharedPreferenceServices.getData(AppConstants.token) as String?;
   bool? rememberMe =
@@ -65,7 +64,6 @@ class MainAppContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final localeProvider = context.watch<LocaleProvider>();
 
     return MaterialApp(
@@ -80,13 +78,13 @@ class MainAppContent extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute:
-          (SharedPreferenceServices.getData(AppConstants.token) != null &&
-                  (SharedPreferenceServices.getData(AppConstants.rememberMe)
-                          as bool? ??
-                      false))
-              ? PagesRoutes.layOutScreen
-              : PagesRoutes.signInScreen,
+      initialRoute: PagesRoutes.addressScreen,
+      // (SharedPreferenceServices.getData(AppConstants.token) != null &&
+      //         (SharedPreferenceServices.getData(AppConstants.rememberMe)
+      //                 as bool? ??
+      //             false))
+      //     ? PagesRoutes.layOutScreen
+      //     : PagesRoutes.signInScreen,
       builder: (context, child) => child!,
     );
   }

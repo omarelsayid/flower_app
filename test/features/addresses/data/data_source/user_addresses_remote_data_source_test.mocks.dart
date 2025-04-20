@@ -5,6 +5,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i18;
 
+import 'package:dio/dio.dart' as _i24;
+import 'package:flower_app/core/api/api_client.dart' as _i16;
+import 'package:flower_app/features/address_details/data/models/address_details_model.dart'
+    as _i30;
 import 'package:dio/dio.dart' as _i25;
 import 'package:flower_app/core/api/api_client.dart' as _i17;
 import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart'
@@ -675,6 +679,24 @@ class MockApiClient extends _i1.Mock implements _i17.ApiClient {
             ],
           ),
         )),
+      ) as _i17.Future<_i4.HttpResponse<_i28.UpdateCartQuantityResponseDTO>>);
+
+  @override
+  _i17.Future<void> saveUserAddress(
+    String? token,
+    _i30.AddressDetailsModel? addressDetailsModel,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveUserAddress,
+          [
+            token,
+            addressDetailsModel,
+          ],
+        ),
+        returnValue: _i17.Future<void>.value(),
+        returnValueForMissingStub: _i17.Future<void>.value(),
+      ) as _i17.Future<void>);
       ) as _i18.Future<_i3.HttpResponse<_i29.UpdateCartQuantityResponseDTO>>);
 
   @override
