@@ -24,6 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "add_new_addresses": MessageLookupByLibrary.simpleMessage(
+      "إضافة عنوان جديد",
+    ),
+    "address_details": MessageLookupByLibrary.simpleMessage("تفاصيل العنوان"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "بإنشاء حساب، فإنك توافق على",
     ),
@@ -34,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
+    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
@@ -82,7 +87,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "no_address_found": MessageLookupByLibrary.simpleMessage("لا يوجد عنوان."),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "occasions": MessageLookupByLibrary.simpleMessage("المناسبات"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -99,9 +106,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
+    "saved_addresses": MessageLookupByLibrary.simpleMessage(
+      "العناوين المحفوظة",
+    ),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+    "street": MessageLookupByLibrary.simpleMessage("الشارع"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام",
     ),

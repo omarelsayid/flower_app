@@ -8,6 +8,7 @@ ThemeData theme() {
   final screenHeight = ScreenSizeService.height;
 
   return ThemeData(
+    primaryColor: AppColors.primaryColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
     ),
@@ -62,6 +63,10 @@ ThemeData theme() {
     ),
     radioTheme: RadioThemeData(
       fillColor: WidgetStateProperty.all(AppColors.primaryColor),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.primaryColor,
+      // circularTrackColor: AppColors.greyColor
     ),
   );
 }

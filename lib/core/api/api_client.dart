@@ -1,5 +1,7 @@
 
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/utils/end_points.dart';
+import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
@@ -38,11 +40,6 @@ abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
-
-  @GET("/api/v1/auth/profile-data")
-  Future<ProfileResponseDTO> getProfileData(
-      @Header("Authorization") String token,
-      );
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -96,11 +93,12 @@ abstract class ApiClient {
   );
 
   @GET("/api/v1/auth/logout")
-  Future<HttpResponse<void>> logout(
-      @Header("Authorization") String token,
-      );
+  Future<HttpResponse<void>> logout();
 
-  // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
+
+  @GET(ApiEndPoints.getProfileDataEndPoint)
+  Future<ProfileResponseDTO> getProfileData();
+
   @PATCH("/api/v1/auth/change-password")
 Future<ChangePasswordModel> changePassword(
       @Body() ChangePasswordRequestModel data,
@@ -145,7 +143,13 @@ Future<ChangePasswordModel> changePassword(
       @Path("id") String id,
       @Body() UpdateCartQuantityRequest request,
       );
+  ////////////////////////User addresses//////////////////
+  @GET(ApiEndPoints.getUserAddressesEndPoint)
+  Future<UserAddressesDTO> getUserAddresses();
+
+  @DELETE(ApiEndPoints.deleteSavedAddressEndPoint)
+  Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(
+      @Path("id") String id,
+      );
+
 }
-
-
-
