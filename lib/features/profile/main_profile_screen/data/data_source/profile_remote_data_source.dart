@@ -33,8 +33,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<ProfileResponseDTO> getProfileData() async {
-    var token=  SharedPreferenceServices.getData(AppConstants.token.toString());
-    return await _apiClient.getProfileData("Bearer $token");
+    return await _apiClient.getProfileData();
   }
 
   @override
@@ -46,8 +45,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   }
   @override
   Future<void> logout() async {
-    var token=  SharedPreferenceServices.getData(AppConstants.token.toString());
-    await _apiClient.logout("Bearer $token");
+    await _apiClient.logout();
   }
 
   @override

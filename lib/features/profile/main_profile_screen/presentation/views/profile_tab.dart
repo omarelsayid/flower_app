@@ -118,6 +118,9 @@ class ProfileTab extends StatelessWidget {
                       BodyWidget(
                         text: S.of(context).savedAddress,
                         icon: Icons.place_outlined,
+                        onTap:   () {
+                Navigator.pushNamed(context, PagesRoutes.userAddressesScreen);
+                },
                       ),
                       const Divider(color: AppColors.greyColor),
                       const NotificationWidget(),
@@ -126,7 +129,6 @@ class ProfileTab extends StatelessWidget {
                       BodyWidget(
                         text: S.of(context).aboutUs,
                         onTap: () {
-                          print("About us tapped");
                         },
                       ),
                       BodyWidget(text: S.of(context).termsAndConditions),

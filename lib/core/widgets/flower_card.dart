@@ -4,12 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
-import '../services/shared_preference_services.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_colors.dart';
-import '../utils/constans.dart';
 
 class FlowerCard extends StatelessWidget {
   FlowerCard({

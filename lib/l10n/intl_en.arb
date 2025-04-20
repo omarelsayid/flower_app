@@ -53,7 +53,12 @@
   "viewAll": "View all",
   "confirmLogout": "confirm logout",
   "cancel": "cancel",
+  "saved_addresses": "Saved Addresses",
+  "add_new_addresses": "Add New Address",
+  "no_address_found": "No address found.",
+  "name": "Name",
+  "address_details": "Address Details",
+  "city": "City",
+  "street": "Street",
   "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers"
-
-
 }
