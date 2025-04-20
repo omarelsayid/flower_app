@@ -8,7 +8,6 @@ import '../utils/constant_manager.dart';
 
 @module
 abstract class DioProvider {
-    AuthInterceptor get authInterceptor => AuthInterceptor();
   @lazySingleton
   Dio dioProvider() {
     final Dio dio = Dio(

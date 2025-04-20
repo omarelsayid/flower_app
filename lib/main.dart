@@ -78,7 +78,7 @@ class MainAppContent extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.addressScreen,
+      initialRoute: PagesRoutes.signInScreen,
       // (SharedPreferenceServices.getData(AppConstants.token) != null &&
       //         (SharedPreferenceServices.getData(AppConstants.rememberMe)
       //                 as bool? ??

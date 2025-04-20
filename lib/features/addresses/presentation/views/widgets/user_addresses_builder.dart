@@ -68,7 +68,7 @@ class UserAddressesBuilder extends StatelessWidget {
 
               return AddAddressButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, PagesRoutes.signInScreen);
+                  Navigator.pushNamed(context, PagesRoutes.addressScreen);
                 },
               );
             },
