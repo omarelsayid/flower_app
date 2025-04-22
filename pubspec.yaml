@@ -54,6 +54,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/map_styles/
+    - assets/
   fonts:
     - family: IM FELL English
       fonts:

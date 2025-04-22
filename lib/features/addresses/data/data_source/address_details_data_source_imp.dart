@@ -17,8 +17,8 @@ class AddressDetailsDataSourceImp implements AddressDetailsDataSource {
 
     if (addressDetailsModel.id != null) {
       await apiClient.updateAddress(
-          addressDetailsModel.id!,
-          addressDetailsModel.toJson(),
+        addressDetailsModel.id!,
+        addressDetailsModel.toJson(),
       );
     } else {
       await apiClient.saveUserAddress("Bearer $token", addressDetailsModel.toJson());
@@ -29,8 +29,8 @@ class AddressDetailsDataSourceImp implements AddressDetailsDataSource {
   Future<UserAddressesDTO> updateAddressDetails(AddressDTO addressDetailsModel) async {
 
     return await apiClient.updateAddress(
-        addressDetailsModel.id!,
-        addressDetailsModel.toJson(),
+      addressDetailsModel.id!,
+      addressDetailsModel.toJson(),
     );
   }
 }

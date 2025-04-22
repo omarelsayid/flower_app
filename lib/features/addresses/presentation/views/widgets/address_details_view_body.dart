@@ -49,19 +49,19 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
 
   @override
   void initState() {
-      super.initState();
-      addressDetailsModel = widget.initialAddress;
-      _streetController = TextEditingController(text: addressDetailsModel.street);
-      _phoneNumberController = TextEditingController(text: addressDetailsModel.phone);
-      _recipientController = TextEditingController(text: addressDetailsModel.username);
-      _cityController = TextEditingController(text: addressDetailsModel.city);
-      _areaController = TextEditingController();
-      _initialCameraPosition = const CameraPosition(
-        target: LatLng(23.580902573252857, 32.01367325581865),
-        zoom: 4,
-      );
-      _locationService = LocationService();
-      _loadMarkerIcon();
+    super.initState();
+    addressDetailsModel = widget.initialAddress;
+    _streetController = TextEditingController(text: addressDetailsModel.street);
+    _phoneNumberController = TextEditingController(text: addressDetailsModel.phone);
+    _recipientController = TextEditingController(text: addressDetailsModel.username);
+    _cityController = TextEditingController(text: addressDetailsModel.city);
+    _areaController = TextEditingController();
+    _initialCameraPosition = const CameraPosition(
+      target: LatLng(23.580902573252857, 32.01367325581865),
+      zoom: 4,
+    );
+    _locationService = LocationService();
+    _loadMarkerIcon();
 
   }
   Future<void> _loadMarkerIcon() async {

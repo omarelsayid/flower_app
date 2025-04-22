@@ -90,7 +90,12 @@
   "subTotal" : "Sub Total",
   "deliveryFee" : "Delivery Fee",
   "total" : "Total",
-  "placeOrder" : "Place order"
-
-
+  "filter" :"Filter",
+  "placeOrder" : "Place order",
+  "discount": "Discount",
+  "old":"Old",
+  "newDate": "New",
+  "highest_Price":"Highest Prise",
+  "sort_py":"Sort By",
+  "lowes_Price": "Lower Price"
 }

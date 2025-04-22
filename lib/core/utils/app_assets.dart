@@ -27,5 +27,5 @@ abstract class SvgImages {
   static const String dropDownIcon = "$iconPath/drop_down_icon.svg";
   static const String locationMarker = "$iconPath/marker.svg";
   static const String deleteIcon="$svgPath/deleteIcon.svg";
-  static const String deleteIcon = "$svgPath/deleteIcon.svg";
+
 }

@@ -56,14 +56,14 @@ class UserAddressesBuilder extends StatelessWidget {
                   isDeleting: isDeleting,
                   onTap:
                       () => Navigator.pushNamed(
-                        context,
-                        PagesRoutes.userAddressesDetailsScreen,
-                        arguments: address,
-                      ),
+                    context,
+                    PagesRoutes.userAddressesDetailsScreen,
+                    arguments: address,
+                  ),
                   onDelete:
                       () => context.read<UserAddressesViewModel>().doIntent(
-                        DeleteUserAddressClickedIntent(address.id!),
-                      ),
+                    DeleteUserAddressClickedIntent(address.id!),
+                  ),
                   onEdit: () async {
                     final Address entity = address;
                     final AddressDTO dto = AddressDTO.fromEntity(entity);

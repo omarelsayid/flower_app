@@ -28,7 +28,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<ProfileResponseDTO> getProfileData() async {
-    return await _apiClient.getProfileData(AppConstants.token.toString());
+    return await _apiClient.getProfileData();
   }
 
   @override
@@ -40,7 +40,7 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
   }
   @override
   Future<void> logout() async {
-    await _apiClient.logout(AppConstants.token.toString());
+    await _apiClient.logout();
   }
 
   @override

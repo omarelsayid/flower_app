@@ -1,8 +1,6 @@
-
 import 'package:dio/dio.dart';
 import 'package:flower_app/core/utils/end_points.dart';
 import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
-import 'package:flower_app/features/address_details/data/models/address_details_model.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
@@ -27,7 +25,6 @@ import '../../features/checkout/data/model/credit_card_request_model.dart';
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../features/home/home_tab/data/model/category_response_dto.dart';
 
-
 import '../../features/home/categories/data/model/categories_response_model.dart';
 import '../../features/home/categories/data/model/specific_categories_response_model.dart';
 import '../../features/home/occasions/data/model/products_response_dto.dart';
@@ -45,12 +42,6 @@ part 'api_client.g.dart';
 abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
-
-
-  // @GET("/api/v1/auth/profile-data")
-  // Future<ProfileResponseDTO> getProfileData(
-  //     @Header("Authorization") String token,
-  //     );
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -83,18 +74,14 @@ abstract class ApiClient {
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();
 
-  // @GET('/api/v1/occasions/{id}')
-  // Future<SpecificOccasionsResponseDTO> getSpecificOccasion(@Path("id") String occasionId);
   @GET('/api/v1/products')
   Future<ProductsResponseDTO> getProductsByOccasion(
-
-      @Query("occasion") String occasionId,
+    @Query("occasion") String occasionId,
   );
   @GET('/api/v1/products')
   Future<SpecificCategoriesResponseModel> getProductsByFilter(
-
-      @Query("sort") String sort,
-      );
+    @Query("sort") String sort,
+  );
 
   @GET("/api/v1/products/{id}")
   Future<HttpResponse<ProductsDetailsModels>> getProductDetails(
@@ -110,8 +97,6 @@ abstract class ApiClient {
   );
 
   @GET("/api/v1/auth/logout")
-  Future<HttpResponse<void>> logout(@Header("Authorization") String token);
-  // Future<HttpResponse<void>> logout();
   Future<HttpResponse<void>> logout();
 
   // Future<HttpResponse<void>> logout(@Header("Authorization") String token);
@@ -143,9 +128,6 @@ abstract class ApiClient {
   //========================================================================
   //==========================Cart Api======================================
 
-  //========================================================================
-  //==========================Cart Api======================================
-
   @POST("/api/v1/cart")
   Future<HttpResponse<CreateCartResponse>> addProductToCart(
     @Header("Authorization") String token,
@@ -169,6 +151,7 @@ abstract class ApiClient {
     @Path("id") String id,
     @Body() UpdateCartQuantityRequest request,
   );
+  /////////////////////////////////////////
   @GET(ApiEndPoints.getUserAddressesEndPoint)
   Future<UserAddressesDTO> getUserAddresses();
 
@@ -178,19 +161,14 @@ abstract class ApiClient {
   );
   @DELETE(ApiEndPoints.deleteSavedAddressEndPoint)
   Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(
-      @Path("id") String id,
-      );
-
-// }
-  //   @Header("Authorization") String token,
-  //   @Path("id") String id,
-  //   @Body() UpdateCartQuantityRequest request,
-  // );
+    @Path("id") String id,
+  );
 
   @PATCH('/api/v1/addresses')
   Future<void> saveUserAddress(
-    @Header("Authorization") String token,
-    @Body() AddressDetailsModel addressDetailsModel,
+      @Header("Authorization") String token,
+      // @Body() AddressDTO addressDetailsModel,
+      @Body() Map<String, dynamic> addressJson,
   );
   @POST("/api/v1/orders/checkout?url=http://localhost:3000")
   Future<CreditCardResponseModel> checkoutCredit(
@@ -203,18 +181,13 @@ abstract class ApiClient {
     @Body() CreditCardRequestModel data,
     @Header("Authorization") String token,
   );
-}
-      @Header("Authorization") String token,
-      // @Body() AddressDTO addressDetailsModel,
-      @Body() Map<String, dynamic> addressJson,
-      );
 
   @PATCH("/api/v1/addresses/{id}")
   Future<UserAddressesDTO> updateAddress(
-      @Path("id") String id,
-      @Body() Map<String, dynamic> address,
+    @Path("id") String id,
+    @Body() Map<String, dynamic> address,
+  );
 
-      );
-
-
+  @GET("/api/v1/auth/profile-data")
+  Future<ProfileResponseDTO> getProfileData();
 }
