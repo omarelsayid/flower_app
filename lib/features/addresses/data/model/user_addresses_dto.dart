@@ -5,17 +5,14 @@ part 'user_addresses_dto.g.dart';
 
 @JsonSerializable()
 class UserAddressesDTO extends UserAddressesEntity {
-  // @JsonKey(name: 'address'
   @JsonKey(name: 'addresses')
   final List<AddressDTO>? address;
 
-  UserAddressesDTO({
-    String? message,
-    this.address,
-  }) : super(
-    message: message,
-    addresses: address,
-  );
+  UserAddressesDTO({String? message, this.address})
+    : super(
+        message: message,
+        addresses: address?.map((e) => e.toEntity()).toList(),
+      );
 
   factory UserAddressesDTO.fromJson(Map<String, dynamic> json) =>
       _$UserAddressesDTOFromJson(json);
@@ -24,23 +21,81 @@ class UserAddressesDTO extends UserAddressesEntity {
 }
 
 @JsonSerializable()
-class AddressDTO extends Address {
+class AddressDTO {
   @JsonKey(name: '_id')
-  @override
   final String? id;
+  final String? street;
+  final String? phone;
+  final String? city;
+  final String? lat;
+  final String? long;
+  final String? username;
 
   AddressDTO({
-    super.street,
-    super.phone,
-    super.city,
-    super.lat,
-    super.long,
-    super.username,
     this.id,
+    this.street,
+    this.phone,
+    this.city,
+    this.lat,
+    this.long,
+    this.username,
   });
 
   factory AddressDTO.fromJson(Map<String, dynamic> json) =>
       _$AddressDTOFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AddressDTOToJson(this);
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{
+      'street': street,
+      'phone': phone,
+      'city': city,
+      'lat': lat,
+      'long': long,
+      'username': username,
+    };
+    return data;
+  }
+
+  Address toEntity() {
+    return Address(
+      id: id,
+      street: street,
+      phone: phone,
+      city: city,
+      lat: lat,
+      long: long,
+      username: username,
+    );
+  }
+
+  factory AddressDTO.fromEntity(Address entity) {
+    return AddressDTO(
+      id: entity.id,
+      street: entity.street,
+      phone: entity.phone,
+      city: entity.city,
+      lat: entity.lat,
+      long: entity.long,
+      username: entity.username,
+    );
+  }
+  AddressDTO copyWith({
+    String? id,
+    String? street,
+    String? phone,
+    String? city,
+    String? lat,
+    String? long,
+    String? username,
+  }) {
+    return AddressDTO(
+      id: id ?? this.id,
+      street: street ?? this.street,
+      phone: phone ?? this.phone,
+      city: city ?? this.city,
+      lat: lat ?? this.lat,
+      long: long ?? this.long,
+      username: username ?? this.username,
+    );
+  }
 }

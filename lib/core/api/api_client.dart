@@ -2,7 +2,6 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/core/utils/end_points.dart';
 import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
-import 'package:flower_app/features/address_details/data/models/address_details_model.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
@@ -156,7 +155,15 @@ abstract class ApiClient {
   @PATCH('/api/v1/addresses')
   Future<void> saveUserAddress(
       @Header("Authorization") String token,
-      @Body() AddressDetailsModel addressDetailsModel,
+      // @Body() AddressDTO addressDetailsModel,
+      @Body() Map<String, dynamic> addressJson,
+      );
+
+  @PATCH("/api/v1/addresses/{id}")
+  Future<UserAddressesDTO> updateAddress(
+      @Path("id") String id,
+      @Body() Map<String, dynamic> address,
+
       );
 
 }

@@ -6,9 +6,11 @@
 import 'dart:async' as _i3;
 
 import 'package:flower_app/core/common/result.dart' as _i4;
-import 'package:flower_app/features/address_details/data/models/address_details_model.dart'
+import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart'
     as _i5;
-import 'package:flower_app/features/address_details/domain/repository/address_details_repo.dart'
+import 'package:flower_app/features/addresses/domain/entity/user_addresses_entity.dart'
+    as _i7;
+import 'package:flower_app/features/addresses/domain/repository/address_details_repo.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
@@ -38,7 +40,7 @@ class MockAddressDetailsRepo extends _i1.Mock
 
   @override
   _i3.Future<_i4.Result<dynamic>> saveAddressDetails(
-          _i5.AddressDetailsModel? addressDetailsModel) =>
+          _i5.AddressDTO? addressDetailsModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAddressDetails,
@@ -53,4 +55,22 @@ class MockAddressDetailsRepo extends _i1.Mock
           ),
         )),
       ) as _i3.Future<_i4.Result<dynamic>>);
+
+  @override
+  _i3.Future<_i4.Result<_i7.UserAddressesEntity>> updateAddressDetails(
+          _i5.AddressDTO? addressDetailsModel) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateAddressDetails,
+          [addressDetailsModel],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i7.UserAddressesEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i7.UserAddressesEntity>>(
+          this,
+          Invocation.method(
+            #updateAddressDetails,
+            [addressDetailsModel],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.UserAddressesEntity>>);
 }

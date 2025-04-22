@@ -865,14 +865,14 @@ class _ApiClient implements ApiClient {
   @override
   Future<void> saveUserAddress(
     String token,
-    AddressDetailsModel addressDetailsModel,
+    Map<String, dynamic> addressJson,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    _data.addAll(addressDetailsModel.toJson());
+    _data.addAll(addressJson);
     final _options = _setStreamType<void>(Options(
       method: 'PATCH',
       headers: _headers,
@@ -890,6 +890,43 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<UserAddressesDTO> updateAddress(
+    String id,
+    Map<String, dynamic> address,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(address);
+    final _options = _setStreamType<UserAddressesDTO>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/addresses/${id}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late UserAddressesDTO _value;
+    try {
+      _value = UserAddressesDTO.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

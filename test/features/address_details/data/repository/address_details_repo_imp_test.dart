@@ -5,9 +5,9 @@ import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'package:flower_app/core/api/api_execute.dart';
 import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/features/address_details/data/data_source/address_details_data_source.dart';
+import 'package:flower_app/features/addresses/data/data_source/address_details_data_source.dart';
 import 'package:flower_app/features/address_details/data/models/address_details_model.dart';
-import 'package:flower_app/features/address_details/data/repository/address_details_repo_imp.dart';
+import 'package:flower_app/features/addresses/data/repository_imp/address_details_repo_imp.dart';
 import 'address_details_repo_imp_test.mocks.dart';
 
 // -----------------------

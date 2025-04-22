@@ -7,8 +7,6 @@ import 'dart:async' as _i18;
 
 import 'package:dio/dio.dart' as _i25;
 import 'package:flower_app/core/api/api_client.dart' as _i17;
-import 'package:flower_app/features/address_details/data/models/address_details_model.dart'
-    as _i31;
 import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart'
     as _i16;
 import 'package:flower_app/features/auth/data/model/forget_response_password_dto.dart'
@@ -716,17 +714,43 @@ class MockApiClient extends _i1.Mock implements _i17.ApiClient {
   @override
   _i18.Future<void> saveUserAddress(
     String? token,
-    _i31.AddressDetailsModel? addressDetailsModel,
+    Map<String, dynamic>? addressJson,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveUserAddress,
           [
             token,
-            addressDetailsModel,
+            addressJson,
           ],
         ),
         returnValue: _i18.Future<void>.value(),
         returnValueForMissingStub: _i18.Future<void>.value(),
       ) as _i18.Future<void>);
+
+  @override
+  _i18.Future<_i16.UserAddressesDTO> updateAddress(
+    String? id,
+    Map<String, dynamic>? address,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateAddress,
+          [
+            id,
+            address,
+          ],
+        ),
+        returnValue:
+            _i18.Future<_i16.UserAddressesDTO>.value(_FakeUserAddressesDTO_14(
+          this,
+          Invocation.method(
+            #updateAddress,
+            [
+              id,
+              address,
+            ],
+          ),
+        )),
+      ) as _i18.Future<_i16.UserAddressesDTO>);
 }

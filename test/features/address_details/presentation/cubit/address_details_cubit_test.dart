@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:flower_app/features/address_details/presentation/cubit/address_details_cubit.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/address_details_cubit.dart';
 import 'package:flower_app/features/address_details/presentation/cubit/address_details_states.dart';
-import 'package:flower_app/features/address_details/domain/repository/address_details_repo.dart';
+import 'package:flower_app/features/addresses/domain/repository/address_details_repo.dart';
 import 'package:flower_app/features/address_details/data/models/address_details_model.dart';
 import 'package:flower_app/core/common/result.dart';
 

@@ -3,12 +3,12 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
-import 'package:flower_app/features/address_details/data/data_source/address_details_data_source.dart'
+import 'package:flower_app/features/addresses/data/data_source/address_details_data_source.dart'
+    as _i3;
+import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart'
     as _i2;
-import 'package:flower_app/features/address_details/data/models/address_details_model.dart'
-    as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -25,24 +25,52 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
+class _FakeUserAddressesDTO_0 extends _i1.SmartFake
+    implements _i2.UserAddressesDTO {
+  _FakeUserAddressesDTO_0(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [AddressDetailsDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAddressDetailsDataSource extends _i1.Mock
-    implements _i2.AddressDetailsDataSource {
+    implements _i3.AddressDetailsDataSource {
   MockAddressDetailsDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<void> saveAddressDetails(
-          _i4.AddressDetailsModel? addressDetailsModel) =>
+  _i4.Future<void> saveAddressDetails(_i2.AddressDTO? addressDetailsModel) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAddressDetails,
           [addressDetailsModel],
         ),
-        returnValue: _i3.Future<void>.value(),
-        returnValueForMissingStub: _i3.Future<void>.value(),
-      ) as _i3.Future<void>);
+        returnValue: _i4.Future<void>.value(),
+        returnValueForMissingStub: _i4.Future<void>.value(),
+      ) as _i4.Future<void>);
+
+  @override
+  _i4.Future<_i2.UserAddressesDTO> updateAddressDetails(
+          _i2.AddressDTO? addressDetailsModel) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateAddressDetails,
+          [addressDetailsModel],
+        ),
+        returnValue:
+            _i4.Future<_i2.UserAddressesDTO>.value(_FakeUserAddressesDTO_0(
+          this,
+          Invocation.method(
+            #updateAddressDetails,
+            [addressDetailsModel],
+          ),
+        )),
+      ) as _i4.Future<_i2.UserAddressesDTO>);
 }
