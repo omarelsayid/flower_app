@@ -17,6 +17,7 @@ class Assets {
   static const String iconsNotificationIcon = 'assets/icons/notification_icon.png';
   static const String iconsProfileIcon = 'assets/icons/profileIcon.png';
   static const String imageImage = 'assets/image/Image.png';
+  static const String imagesDeleteIcon = 'assets/images/deleteIcon.png';
   static const String imagesLogo = 'assets/images/Logo.svg';
   static const String imagesProfileExample = 'assets/images/profile_example.jpg';
   static const String translationsAr = 'assets/translations/ar.json';
