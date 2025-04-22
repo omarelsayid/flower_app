@@ -140,6 +140,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
                         ],
                       ),
                     ),
+
                   SizedBox(height: height * 0.02),
                   // Show product lists or empty states.
                   if (state is LoadingSearchState || state is SpecificCategoriesLoadingState||
