@@ -459,6 +459,29 @@ class S {
   String get cancel {
     return Intl.message('cancel', name: 'cancel', desc: '', args: []);
   }
+  String get filter {
+    return Intl.message('Filter', name: 'filter', desc: '', args: []);
+  }
+  String get sort_py {
+    return Intl.message('Sort by', name: 'Sortby', desc: '', args: []);
+  }
+  String get lowes_Price {
+    return Intl.message('Lowes Price', name: 'Lowes Price', desc: '', args: []);
+  }
+  String get newDate {
+    return Intl.message('New', name: 'New', desc: '', args: []);
+  }
+
+  String get highest_Price  {
+    return Intl.message('Highest Price ', name: 'Highest Price ', desc: '', args: []);
+  }
+  String get old {
+    return Intl.message('Old', name: 'Old', desc: '', args: []);
+  }
+  String get discount {
+    return Intl.message('Discount', name: 'Discount', desc: '', args: []);
+  }
+
 
   /// `Saved Addresses`
   String get saved_addresses {
