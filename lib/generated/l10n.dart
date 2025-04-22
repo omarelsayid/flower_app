@@ -599,12 +599,6 @@ class S {
   String get itIsAGift {
     return Intl.message('It is a gift', name: 'itIsAGift', desc: '', args: []);
   }
-
-  /// `Name`
-  String get name {
-    return Intl.message('Name', name: 'name', desc: '', args: []);
-  }
-
   /// `Enter your name`
   String get enterYourName {
     return Intl.message(

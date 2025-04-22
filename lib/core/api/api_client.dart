@@ -151,11 +151,6 @@ abstract class ApiClient {
     @Path("id") String id,
     @Body() UpdateCartQuantityRequest request,
   );
-      @Header("Authorization") String token,
-      @Path("id") String id,
-      @Body() UpdateCartQuantityRequest request,
-      );
-  ////////////////////////User addresses//////////////////
   @GET(ApiEndPoints.getUserAddressesEndPoint)
   Future<UserAddressesDTO> getUserAddresses();
 
@@ -180,4 +175,4 @@ abstract class ApiClient {
     @Header("Authorization") String token,
   );
 }
-}
+
