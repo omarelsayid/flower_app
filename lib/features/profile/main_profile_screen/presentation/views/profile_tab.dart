@@ -138,15 +138,16 @@ class ProfileTab extends StatelessWidget {
                           );
                         },
                       ),
-                      BodyWidget(text: S.of(context).termsAndConditions,
-                        onTap: () {
+                      BodyWidget(
+                          onTap: () {
 
-                          JsonContentBottomSheet.show(
-                            context,
-                            assetPath: 'assets/Flowery Terms and Conditions JSON with Arabic and English.json',
-                            rootKey: 'terms_and_conditions',
-                          );
-                        },),
+                            JsonContentBottomSheet.show(
+                              context,
+                              assetPath: 'assets/Flowery Terms and Conditions JSON with Arabic and English.json',
+                              rootKey: 'terms_and_conditions',
+                            );
+                          },
+                          text: S.of(context).termsAndConditions),
                       const Divider(color: AppColors.greyColor),
                       const LogoutWidget(),
                       Padding(
