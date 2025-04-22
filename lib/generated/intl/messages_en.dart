@@ -24,11 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+    "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
     "add_new_addresses": MessageLookupByLibrary.simpleMessage(
       "Add New Address",
     ),
-    "address_details": MessageLookupByLibrary.simpleMessage("Address Details"),
-    "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "addressRequired": MessageLookupByLibrary.simpleMessage(
       "Please enter an address",
@@ -36,15 +35,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "addressSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Address saved successfully",
     ),
+    "address_details": MessageLookupByLibrary.simpleMessage("Address Details"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
-    "arriveBy": MessageLookupByLibrary.simpleMessage("Arrive by"),
     "area": MessageLookupByLibrary.simpleMessage("Area"),
     "areaRequired": MessageLookupByLibrary.simpleMessage(
       "Please enter an area",
     ),
+    "arriveBy": MessageLookupByLibrary.simpleMessage("Arrive by"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "Bloom with our exquisite best sellers",
     ),
@@ -53,7 +53,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on delivery"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
-    "city": MessageLookupByLibrary.simpleMessage("City"),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
     "cityRequired": MessageLookupByLibrary.simpleMessage("Please enter a city"),
@@ -140,10 +139,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment method"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
-    "placeOrder": MessageLookupByLibrary.simpleMessage("Place order"),
     "phoneNumberRequired": MessageLookupByLibrary.simpleMessage(
       "Please enter a phone number",
     ),
+    "placeOrder": MessageLookupByLibrary.simpleMessage("Place order"),
     "recipientName": MessageLookupByLibrary.simpleMessage("Recipient name"),
     "recipientNameRequired": MessageLookupByLibrary.simpleMessage(
       "Please enter a recipient name",
@@ -152,17 +151,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
     "saveAddress": MessageLookupByLibrary.simpleMessage("Save address"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
-    "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
     "saved_addresses": MessageLookupByLibrary.simpleMessage("Saved Addresses"),
+    "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),
-    "subTotal": MessageLookupByLibrary.simpleMessage("Sub Total"),
     "street": MessageLookupByLibrary.simpleMessage("Street"),
+    "subTotal": MessageLookupByLibrary.simpleMessage("Sub Total"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("Total"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
   };
 }

@@ -24,6 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "addNew": MessageLookupByLibrary.simpleMessage("أضف جديد"),
+    "add_new_addresses": MessageLookupByLibrary.simpleMessage(
+      "إضافة عنوان جديد",
+    ),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "addressRequired": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال العنوان",
@@ -31,18 +35,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "addressSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم حفظ العنوان بنجاح",
     ),
-    "add_new_addresses": MessageLookupByLibrary.simpleMessage(
-      "إضافة عنوان جديد",
-    ),
     "address_details": MessageLookupByLibrary.simpleMessage("تفاصيل العنوان"),
-    "addNew": MessageLookupByLibrary.simpleMessage("أضف جديد"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "بإنشاء حساب، فإنك توافق على",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
-    "arriveBy": MessageLookupByLibrary.simpleMessage("الوصول بحلول"),
     "area": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "areaRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المنطقة"),
+    "arriveBy": MessageLookupByLibrary.simpleMessage("الوصول بحلول"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
     ),
@@ -53,7 +53,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
-    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "checkout": MessageLookupByLibrary.simpleMessage("ادفع"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "cityRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المدينة"),
@@ -134,10 +133,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
-    "placeOrder": MessageLookupByLibrary.simpleMessage("اطلب"),
     "phoneNumberRequired": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال رقم الهاتف",
     ),
+    "placeOrder": MessageLookupByLibrary.simpleMessage("اطلب"),
     "recipientName": MessageLookupByLibrary.simpleMessage("اسم المستلم"),
     "recipientNameRequired": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال اسم المستلم",
@@ -146,15 +145,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
     "saveAddress": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
-    "schedule": MessageLookupByLibrary.simpleMessage("مجدولة"),
     "saved_addresses": MessageLookupByLibrary.simpleMessage(
       "العناوين المحفوظة",
     ),
+    "schedule": MessageLookupByLibrary.simpleMessage("مجدولة"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
-    "subTotal": MessageLookupByLibrary.simpleMessage("المجموع"),
     "street": MessageLookupByLibrary.simpleMessage("الشارع"),
+    "subTotal": MessageLookupByLibrary.simpleMessage("المجموع"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام",
     ),
