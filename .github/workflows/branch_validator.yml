@@ -22,13 +22,7 @@ jobs:
           echo "Current branch: $branch_name"
           valid_pattern='^(main|develop|release\/[0-9]+\.[0-9]+\.[0-9]+|feature\/[A-Za-z0-9._-]+|hotfix\/[A-Za-z0-9._-]+)$'
           if [[ ! "$branch_name" =~ $valid_pattern ]]; then
-            echo "❌ Invalid branch name: $branch_name"
-            echo "Allowed patterns:"
-            echo "  - main"
-            echo "  - develop"
-            echo "  - release/x.y.z"
-            echo "  - feature/your-description"
-            echo "  - hotfix/your-description"
+            echo "Invalid branch name: $branch_name"
             exit 1
           else
             echo "✅ Branch name is valid"
