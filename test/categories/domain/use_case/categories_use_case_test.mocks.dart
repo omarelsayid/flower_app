@@ -85,4 +85,23 @@ class MockCategoriesRepository extends _i1.Mock
         returnValue:
             _i3.Future<List<_i7.ProductsEntity>>.value(<_i7.ProductsEntity>[]),
       ) as _i3.Future<List<_i7.ProductsEntity>>);
+
+  @override
+  _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>> getFiltered(
+          String? sort) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getFiltered,
+          [sort],
+        ),
+        returnValue: _i3
+            .Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>.value(
+            _i6.dummyValue<_i4.Result<_i7.SpecificCategoriesResponseEntity>>(
+          this,
+          Invocation.method(
+            #getFiltered,
+            [sort],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.SpecificCategoriesResponseEntity>>);
 }

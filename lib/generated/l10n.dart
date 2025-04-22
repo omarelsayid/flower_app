@@ -459,29 +459,6 @@ class S {
   String get cancel {
     return Intl.message('cancel', name: 'cancel', desc: '', args: []);
   }
-  String get filter {
-    return Intl.message('Filter', name: 'filter', desc: '', args: []);
-  }
-  String get sort_py {
-    return Intl.message('Sort by', name: 'Sortby', desc: '', args: []);
-  }
-  String get lowes_Price {
-    return Intl.message('Lowes Price', name: 'Lowes Price', desc: '', args: []);
-  }
-  String get newDate {
-    return Intl.message('New', name: 'New', desc: '', args: []);
-  }
-
-  String get highest_Price  {
-    return Intl.message('Highest Price ', name: 'Highest Price ', desc: '', args: []);
-  }
-  String get old {
-    return Intl.message('Old', name: 'Old', desc: '', args: []);
-  }
-  String get discount {
-    return Intl.message('Discount', name: 'Discount', desc: '', args: []);
-  }
-
 
   /// `Saved Addresses`
   String get saved_addresses {
@@ -773,9 +750,49 @@ class S {
     return Intl.message('Total', name: 'total', desc: '', args: []);
   }
 
+  /// `Filter`
+  String get filter {
+    return Intl.message('Filter', name: 'filter', desc: '', args: []);
+  }
+
   /// `Place order`
   String get placeOrder {
     return Intl.message('Place order', name: 'placeOrder', desc: '', args: []);
+  }
+
+  /// `Discount`
+  String get discount {
+    return Intl.message('Discount', name: 'discount', desc: '', args: []);
+  }
+
+  /// `Old`
+  String get old {
+    return Intl.message('Old', name: 'old', desc: '', args: []);
+  }
+
+  /// `New`
+  String get newDate {
+    return Intl.message('New', name: 'newDate', desc: '', args: []);
+  }
+
+  /// `Highest Prise`
+  String get highest_Price {
+    return Intl.message(
+      'Highest Prise',
+      name: 'highest_Price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sort By`
+  String get sort_py {
+    return Intl.message('Sort By', name: 'sort_py', desc: '', args: []);
+  }
+
+  /// `Lower Price`
+  String get lowes_Price {
+    return Intl.message('Lower Price', name: 'lowes_Price', desc: '', args: []);
   }
 }
 

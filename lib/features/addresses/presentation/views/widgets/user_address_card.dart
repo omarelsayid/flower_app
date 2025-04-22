@@ -93,18 +93,18 @@ class AddressCard extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: resposiveWidth(8)),
                   child: Row(
                     children: [
-                      Text(
-                        address.lat ?? '',
-                        style: AppTextStyles.inter500_13.copyWith(
-                          color: AppColors.greyDarkColor,
-                        ),
-                      ),
-                      Text(
-                        "+${address.long ?? ''} ",
-                        style: AppTextStyles.inter500_13.copyWith(
-                          color: AppColors.greyDarkColor,
-                        ),
-                      ),
+                      // Text(
+                      //   address.lat ?? '',
+                      //   style: AppTextStyles.inter500_13.copyWith(
+                      //     color: AppColors.greyDarkColor,
+                      //   ),
+                      // ),
+                      // Text(
+                      //   "+${address.long ?? ''} ",
+                      //   style: AppTextStyles.inter500_13.copyWith(
+                      //     color: AppColors.greyDarkColor,
+                      //   ),
+                      // ),
                       Text(
                         "- ${address.street ?? ''}",
                         style: AppTextStyles.inter500_13.copyWith(

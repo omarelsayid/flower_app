@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage(
       "Didn\'t receive code?",
     ),
+    "discount": MessageLookupByLibrary.simpleMessage("Discount"),
     "email": MessageLookupByLibrary.simpleMessage("Email"),
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid email",
@@ -98,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Enter your Password",
     ),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "firstName": MessageLookupByLibrary.simpleMessage("First name"),
     "forgetPassword": MessageLookupByLibrary.simpleMessage("Forget password?"),
     "forgetPasswordDescription": MessageLookupByLibrary.simpleMessage(
@@ -108,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "highest_Price": MessageLookupByLibrary.simpleMessage("Highest Prise"),
     "instant": MessageLookupByLibrary.simpleMessage("Instant"),
     "itIsAGift": MessageLookupByLibrary.simpleMessage("It is a gift"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -115,9 +118,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginLink": MessageLookupByLibrary.simpleMessage("Login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "lowes_Price": MessageLookupByLibrary.simpleMessage("Lower Price"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "myOrders": MessageLookupByLibrary.simpleMessage("My orders"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
+    "newDate": MessageLookupByLibrary.simpleMessage("New"),
     "noAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -127,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "occasions": MessageLookupByLibrary.simpleMessage("Occasions"),
     "october": MessageLookupByLibrary.simpleMessage("October"),
+    "old": MessageLookupByLibrary.simpleMessage("Old"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "Password must contain at least one uppercase letter and one number",
@@ -157,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),
+    "sort_py": MessageLookupByLibrary.simpleMessage("Sort By"),
     "street": MessageLookupByLibrary.simpleMessage("Street"),
     "subTotal": MessageLookupByLibrary.simpleMessage("Sub Total"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(

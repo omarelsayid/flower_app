@@ -8,6 +8,8 @@ import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/model/user_addresses_dto.dart';
+import '../../../domain/entity/user_addresses_entity.dart';
 import '../../cubit/user_addresses_cubit/user_addresses_state.dart';
 import '../../cubit/user_addresses_cubit/user_addresses_view_model.dart';
 
@@ -39,7 +41,7 @@ class UserAddressesBuilder extends StatelessWidget {
                 } else {
                   return AddAddressButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, PagesRoutes.signInScreen);
+                      Navigator.pushNamed(context, PagesRoutes.addressScreen);
                     },
                   );
                 }
@@ -54,21 +56,39 @@ class UserAddressesBuilder extends StatelessWidget {
                   isDeleting: isDeleting,
                   onTap:
                       () => Navigator.pushNamed(
-                        context,
-                        PagesRoutes.userAddressesDetailsScreen,
-                        arguments: address,
-                      ),
+                    context,
+                    PagesRoutes.userAddressesDetailsScreen,
+                    arguments: address,
+                  ),
                   onDelete:
                       () => context.read<UserAddressesViewModel>().doIntent(
-                        DeleteUserAddressClickedIntent(address.id!),
-                      ),
-                  onEdit: () {},
+                    DeleteUserAddressClickedIntent(address.id!),
+                  ),
+                  onEdit: () async {
+                    final Address entity = address;
+                    final AddressDTO dto = AddressDTO.fromEntity(entity);
+                    final result = await Navigator.pushNamed(
+                      context,
+                      PagesRoutes.addressScreen,
+                      arguments: dto,
+                    );
+
+                    if (result == true) {
+                      context.read<UserAddressesViewModel>()
+                          .doIntent(GetUserAddressesClickedIntent());
+                    }
+                  },
                 );
               }
 
               return AddAddressButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, PagesRoutes.signInScreen);
+                onPressed: () async {
+                  final result = await Navigator.pushNamed(context, PagesRoutes.addressScreen);
+
+                  if (result == true) {
+                    context.read<UserAddressesViewModel>()
+                        .doIntent(GetUserAddressesClickedIntent());
+                  }
                 },
               );
             },

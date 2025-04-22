@@ -90,5 +90,12 @@
   "recipientNameRequired": "يرجى إدخال اسم المستلم",
   "cityRequired": "يرجى إدخال المدينة",
   "areaRequired": "يرجى إدخال المنطقة",
-  "addressSavedSuccessfully": "تم حفظ العنوان بنجاح"
+  "filter" :"بحث",
+  "addressSavedSuccessfully": "تم حفظ العنوان بنجاح",
+  "discount": "الخصم",
+  "old":"قديم",
+  "newDate": "جديد",
+  "highest_Price":"اعلى سعر",
+  "sort_py":"حث ب ",
+  "lowes_Price": "اقل سعر"
 }
