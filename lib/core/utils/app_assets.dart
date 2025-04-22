@@ -3,6 +3,7 @@ const String iconPath="assets/icons";
 
 abstract class ImageAssets{
   static const String profileImage="$imagePath/profile_example.jpg";
+  static const String paymentSuccess="$imagePath/payment_success.png";
 }
 abstract class IconAssets{
   static const String homeIcon="$iconPath/homeIcon.png";

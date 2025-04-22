@@ -4,6 +4,8 @@ import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_
 import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart';
 import 'package:flower_app/features/checkout/data/model/addresses_response_dto.dart';
+import 'package:flower_app/features/checkout/data/model/checkout_cash_response_model.dart';
+import 'package:flower_app/features/checkout/data/model/credit_card_response_model.dart';
 import 'package:flower_app/features/home/home_tab/data/model/occasion_response_dto.dart';
 import 'package:flower_app/features/auth/data/model/sign_up_response_dto.dart';
 import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
@@ -17,6 +19,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/cart/data/models/create_cart_request.dart';
 import '../../features/cart/data/models/update_product_quantity/update_cart_quantity_request.dart';
+import '../../features/checkout/data/model/credit_card_request_model.dart';
 import '../../features/home/best_seller_products/data/model/BestSellerProductsModel.dart';
 import '../../features/home/home_tab/data/model/category_response_dto.dart';
 
@@ -28,6 +31,7 @@ import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';
 import '../../features/auth/domain/entity/sign_up_request.dart';
 import '../../features/profile/main_profile_screen/data/model/change_password_request_model.dart';
+
 part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://flower.elevateegy.com")
@@ -47,6 +51,7 @@ abstract class ApiClient {
 
   @POST("/api/v1/auth/signin")
   Future<HttpResponse<SignUpResponseDTO>> signIn(@Body() SignInRequest data);
+
   @POST("/api/v1/auth/forgotPassword")
   Future<ForgetResponsePasswordDto> forgetPassword(
     @Body() Map<String, dynamic> data,
@@ -71,6 +76,7 @@ abstract class ApiClient {
 
   @GET('/api/v1/occasions')
   Future<OccasionsResponseDTO> getOccasions();
+
   // @GET('/api/v1/occasions/{id}')
   // Future<SpecificOccasionsResponseDTO> getSpecificOccasion(@Path("id") String occasionId);
   @GET('/api/v1/products')
@@ -82,6 +88,7 @@ abstract class ApiClient {
   Future<HttpResponse<ProductsDetailsModels>> getProductDetails(
     @Path("id") String id,
   );
+
   @GET("/api/v1/categories")
   Future<CategoriesResponseModel> getAllCategories();
 
@@ -99,6 +106,7 @@ abstract class ApiClient {
     @Body() ChangePasswordRequestModel data,
     @Header("Authorization") String token,
   );
+
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
     @Header("Authorization") String token,
@@ -112,6 +120,7 @@ abstract class ApiClient {
     @Header("Authorization") String token,
     @Body() FormData formData,
   );
+
   //========================================================================
   //==========================Cart Api======================================
 
@@ -141,6 +150,18 @@ abstract class ApiClient {
 
   @GET("/api/v1/addresses")
   Future<HttpResponse<AddressesResponseDTO>> getAddresses(
+    @Header("Authorization") String token,
+  );
+
+  @POST("/api/v1/orders/checkout?url=http://localhost:3000")
+  Future<CreditCardResponseModel> checkoutCredit(
+    @Body() CreditCardRequestModel data,
+    @Header("Authorization") String token,
+  );
+
+  @POST("/api/v1/orders")
+  Future<CheckoutCashResponseModel> checkoutCash(
+    @Body() CreditCardRequestModel data,
     @Header("Authorization") String token,
   );
 }

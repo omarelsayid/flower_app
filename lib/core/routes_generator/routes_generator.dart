@@ -1,4 +1,5 @@
 import 'package:flower_app/features/checkout/presentation/views/checkout_view.dart';
+import 'package:flower_app/features/checkout/presentation/views/payment_screen.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -19,7 +20,6 @@ import '../../features/profile/main_profile_screen/presentation/cubit/change_pas
 import '../../features/profile/main_profile_screen/presentation/views/change_password_screen.dart';
 import '../../features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
 import '../di/injectable_initializer.dart';
-import '../widgets/test_screen.dart';
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -117,6 +117,11 @@ class RoutesGenerator {
         );case PagesRoutes.checkoutScreen:
         return MaterialPageRoute(
           builder: (context) => CheckoutView(),
+          settings: settings,
+        );
+      case PagesRoutes.paymentScreen:
+        return MaterialPageRoute(
+          builder: (context) => PaymentScreen(),
           settings: settings,
         );
       default:

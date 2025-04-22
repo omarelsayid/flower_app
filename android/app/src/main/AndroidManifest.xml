@@ -1,6 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Required Internet Permission -->
-    <uses-permission android:name="android.permission.INTERNET"/> 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.flower_app">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:label="flower_app"

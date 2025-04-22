@@ -52,11 +52,19 @@ import '../../features/checkout/data/data_source/checkout_remote_data_source.dar
     as _i575;
 import '../../features/checkout/data/data_source/checkout_remote_data_source_impl.dart'
     as _i642;
+import '../../features/checkout/data/repo_impl/checkout_credit_repo_impl.dart'
+    as _i338;
 import '../../features/checkout/data/repo_impl/get_addresses_repo_impl.dart'
     as _i223;
+import '../../features/checkout/domain/repo/checkout_credit_repo.dart'
+    as _i1063;
 import '../../features/checkout/domain/repo/get_addresses_repo.dart' as _i383;
+import '../../features/checkout/domain/use_case/checkout_credit_use_case.dart'
+    as _i164;
 import '../../features/checkout/domain/use_case/get_addreses_use_case.dart'
     as _i506;
+import '../../features/checkout/presentation/cubits/checkout_cubit/checkout_view_model.dart'
+    as _i396;
 import '../../features/checkout/presentation/cubits/get_addresses_cubit/get_addresses_view_model.dart'
     as _i588;
 import '../../features/home/best_seller_products/data/data_source/best_seller_remote_data_source.dart'
@@ -245,6 +253,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i464.UpdateCartQuantityUseCase(gh<_i379.CartRepository>()));
     gh.factory<_i1066.AddToCartCubit>(
         () => _i1066.AddToCartCubit(gh<_i956.AddToCartUseCase>()));
+    gh.factory<_i1063.CheckoutCreditRepo>(() =>
+        _i338.CheckoutCreditRepoImpl(gh<_i575.CheckoutRemoteDataSource>()));
     gh.factory<_i632.GetUserCartCubit>(
         () => _i632.GetUserCartCubit(gh<_i971.GetUserCartUseCase>()));
     gh.factory<_i352.HomeRepo>(
@@ -283,6 +293,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i602.OccasionViewModel(gh<_i66.OccasionUseCase>()));
     gh.factory<_i480.UploadPhotoViewModel>(
         () => _i480.UploadPhotoViewModel(gh<_i801.UploadPhotoUseCase>()));
+    gh.factory<_i164.CheckoutCreditUseCase>(
+        () => _i164.CheckoutCreditUseCase(gh<_i1063.CheckoutCreditRepo>()));
+    gh.factory<_i396.CheckoutViewModel>(
+        () => _i396.CheckoutViewModel(gh<_i164.CheckoutCreditUseCase>()));
     return this;
   }
 }
