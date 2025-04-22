@@ -1,0 +1,35 @@
+name: 'Check Branch Name'
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  validate-branch:
+    name: Validate Branch Name
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Validate branch name
+        run: |
+          branch_name=${GITHUB_REF#refs/heads/}
+          echo "Current branch: $branch_name"
+          valid_pattern='^(main|develop|release\/[0-9]+\.[0-9]+\.[0-9]+|feature\/[A-Za-z0-9._-]+|hotfix\/[A-Za-z0-9._-]+)$'
+          if [[ ! "$branch_name" =~ $valid_pattern ]]; then
+            echo "❌ Invalid branch name: $branch_name"
+            echo "Allowed patterns:"
+            echo "  - main"
+            echo "  - develop"
+            echo "  - release/x.y.z"
+            echo "  - feature/your-description"
+            echo "  - hotfix/your-description"
+            exit 1
+          else
+            echo "✅ Branch name is valid"
+          fi
