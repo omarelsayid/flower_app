@@ -29,20 +29,34 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "address_details": MessageLookupByLibrary.simpleMessage("Address Details"),
     "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "addressRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter an address",
+    ),
+    "addressSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Address saved successfully",
+    ),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "arriveBy": MessageLookupByLibrary.simpleMessage("Arrive by"),
+    "area": MessageLookupByLibrary.simpleMessage("Area"),
+    "areaRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter an area",
+    ),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "Bloom with our exquisite best sellers",
     ),
+    "cairo": MessageLookupByLibrary.simpleMessage("Cairo"),
     "cancel": MessageLookupByLibrary.simpleMessage("cancel"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on delivery"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
+    "city": MessageLookupByLibrary.simpleMessage("City"),
+    "cityRequired": MessageLookupByLibrary.simpleMessage("Please enter a city"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("confirm logout"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
@@ -67,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Email verification",
     ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterAddress": MessageLookupByLibrary.simpleMessage("Enter your address"),
     "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
       "Please enter the code sent to your email address",
     ),
@@ -74,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterLastName": MessageLookupByLibrary.simpleMessage("Enter last name"),
     "enterPhoneNumber": MessageLookupByLibrary.simpleMessage(
       "Enter phone number",
+    ),
+    "enterRecipientName": MessageLookupByLibrary.simpleMessage(
+      "Enter the recipient name",
     ),
     "enterYourEmail": MessageLookupByLibrary.simpleMessage("Enter your Email"),
     "enterYourName": MessageLookupByLibrary.simpleMessage("Enter your name"),
@@ -109,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "occasions": MessageLookupByLibrary.simpleMessage("Occasions"),
+    "october": MessageLookupByLibrary.simpleMessage("October"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "Password must contain at least one uppercase letter and one number",
@@ -122,8 +141,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment method"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
     "placeOrder": MessageLookupByLibrary.simpleMessage("Place order"),
+    "phoneNumberRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter a phone number",
+    ),
+    "recipientName": MessageLookupByLibrary.simpleMessage("Recipient name"),
+    "recipientNameRequired": MessageLookupByLibrary.simpleMessage(
+      "Please enter a recipient name",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("Remember me"),
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
+    "saveAddress": MessageLookupByLibrary.simpleMessage("Save address"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
     "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
     "saved_addresses": MessageLookupByLibrary.simpleMessage("Saved Addresses"),

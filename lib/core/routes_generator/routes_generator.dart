@@ -1,6 +1,8 @@
 import 'package:flower_app/features/checkout/presentation/views/checkout_view.dart';
 import 'package:flower_app/features/checkout/presentation/views/payment_screen.dart';
 import 'package:flower_app/features/addresses/presentation/views/widgets/user_addresses_card_details_widget.dart';
+import 'package:flower_app/features/address_details/presentation/view/address_details_view.dart';
+import 'package:flower_app/features/address_details/presentation/view/widgets/address_details_view_body.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -40,9 +42,7 @@ class RoutesGenerator {
       case PagesRoutes.layOutScreen:
         return MaterialPageRoute(
           builder:
-              (context) =>
-
-              MultiBlocProvider(
+              (context) => MultiBlocProvider(
                 providers: [
                   BlocProvider(
                     create: (context) => getIt.get<AddToCartCubit>(),
@@ -69,8 +69,8 @@ class RoutesGenerator {
 
       case PagesRoutes.productDetails:
         return MaterialPageRoute(
-          builder: (context) =>
-              BlocProvider(
+          builder:
+              (context) => BlocProvider(
                 create: (context) => getIt.get<AddToCartCubit>(),
                 child: ProductsDetailsView(),
               ),
@@ -92,18 +92,23 @@ class RoutesGenerator {
 
       case PagesRoutes.resetPassword:
         return MaterialPageRoute(
-            builder: (_) => ResetPassword(), settings: settings);
-
+          builder: (_) => ResetPassword(),
+          settings: settings,
+        );
 
       case PagesRoutes.bestSellerScreen:
         return MaterialPageRoute(
           builder: (context) => BestSellerView(),
           settings: settings,
         );
+        return MaterialPageRoute(
+          builder: (_) => ResetPassword(),
+          settings: settings,
+        );
       case PagesRoutes.changePasswordScreen:
         return MaterialPageRoute(
-          builder: (_) =>
-              BlocProvider(
+          builder:
+              (_) => BlocProvider(
                 create: (context) => getIt.get<ChangePasswordViewModel>(),
                 child: ChangePasswordScreen(),
               ),
@@ -129,6 +134,10 @@ class RoutesGenerator {
       case PagesRoutes.userAddressesScreen:
         return MaterialPageRoute(
             builder: (_) => UserAddressesView(), settings: settings);
+
+      case PagesRoutes.addressScreen:
+        return MaterialPageRoute(builder: (context) => AddressDetailsView());
+
       default:
         return unDefinedRoute();
     }

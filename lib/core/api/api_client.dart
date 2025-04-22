@@ -2,6 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/core/utils/end_points.dart';
 import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
+import 'package:flower_app/features/address_details/data/models/address_details_model.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
@@ -44,11 +45,16 @@ abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
-
   @GET("/api/v1/auth/profile-data")
   Future<ProfileResponseDTO> getProfileData(
-      @Header("Authorization") String token,
-      );
+    @Header("Authorization") String token,
+  );
+
+
+  // @GET("/api/v1/auth/profile-data")
+  // Future<ProfileResponseDTO> getProfileData(
+  //     @Header("Authorization") String token,
+  //     );
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -103,6 +109,9 @@ abstract class ApiClient {
 
   @GET("/api/v1/auth/logout")
   Future<HttpResponse<void>> logout(@Header("Authorization") String token);
+  // Future<HttpResponse<void>> logout();
+
+  // Future<HttpResponse<void>> logout(@Header("Authorization") String token);
 
   // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
   @PATCH("/api/v1/auth/change-password")
@@ -111,6 +120,10 @@ abstract class ApiClient {
     @Header("Authorization") String token,
   );
 
+  // Future<ChangePasswordModel> changePassword(
+  //   @Body() ChangePasswordRequestModel data,
+  //   @Header("Authorization") String token,
+  // );
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
     @Header("Authorization") String token,
@@ -124,6 +137,8 @@ abstract class ApiClient {
     @Header("Authorization") String token,
     @Body() FormData formData,
   );
+  //========================================================================
+  //==========================Cart Api======================================
 
   //========================================================================
   //==========================Cart Api======================================
@@ -163,6 +178,17 @@ abstract class ApiClient {
       @Path("id") String id,
       );
 
+// }
+  //   @Header("Authorization") String token,
+  //   @Path("id") String id,
+  //   @Body() UpdateCartQuantityRequest request,
+  // );
+
+  @PATCH('/api/v1/addresses')
+  Future<void> saveUserAddress(
+    @Header("Authorization") String token,
+    @Body() AddressDetailsModel addressDetailsModel,
+  );
   @POST("/api/v1/orders/checkout?url=http://localhost:3000")
   Future<CreditCardResponseModel> checkoutCredit(
     @Body() CreditCardRequestModel data,

@@ -17,4 +17,5 @@ abstract class PagesRoutes {
   static const String paymentScreen = "payment_screen";
   static const String userAddressesDetailsScreen = "user_addresses_details";
   static const String userAddressesScreen = "user_addresses";
+  static const String addressScreen = "address_screen";
 }

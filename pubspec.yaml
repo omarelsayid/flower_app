@@ -32,6 +32,9 @@ dependencies:
   path_provider: ^2.1.5
   mime: ^2.0.0
   url_launcher: ^6.2.5
+  google_maps_flutter: ^2.12.1
+  location: ^8.0.0
+  geocoding: ^3.0.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -50,6 +53,7 @@ flutter:
     - assets/translations/
     - assets/images/
     - assets/svg/
+    - assets/map_styles/
   fonts:
     - family: IM FELL English
       fonts:

@@ -633,6 +633,131 @@ class S {
   String get placeOrder {
     return Intl.message('Place order', name: 'placeOrder', desc: '', args: []);
   }
+
+  /// `Address`
+  String get address {
+    return Intl.message('Address', name: 'address', desc: '', args: []);
+  }
+
+  /// `Enter your address`
+  String get enterAddress {
+    return Intl.message(
+      'Enter your address',
+      name: 'enterAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recipient name`
+  String get recipientName {
+    return Intl.message(
+      'Recipient name',
+      name: 'recipientName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the recipient name`
+  String get enterRecipientName {
+    return Intl.message(
+      'Enter the recipient name',
+      name: 'enterRecipientName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City`
+  String get city {
+    return Intl.message('City', name: 'city', desc: '', args: []);
+  }
+
+  /// `Cairo`
+  String get cairo {
+    return Intl.message('Cairo', name: 'cairo', desc: '', args: []);
+  }
+
+  /// `Area`
+  String get area {
+    return Intl.message('Area', name: 'area', desc: '', args: []);
+  }
+
+  /// `October`
+  String get october {
+    return Intl.message('October', name: 'october', desc: '', args: []);
+  }
+
+  /// `Save address`
+  String get saveAddress {
+    return Intl.message(
+      'Save address',
+      name: 'saveAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter an address`
+  String get addressRequired {
+    return Intl.message(
+      'Please enter an address',
+      name: 'addressRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a phone number`
+  String get phoneNumberRequired {
+    return Intl.message(
+      'Please enter a phone number',
+      name: 'phoneNumberRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a recipient name`
+  String get recipientNameRequired {
+    return Intl.message(
+      'Please enter a recipient name',
+      name: 'recipientNameRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a city`
+  String get cityRequired {
+    return Intl.message(
+      'Please enter a city',
+      name: 'cityRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter an area`
+  String get areaRequired {
+    return Intl.message(
+      'Please enter an area',
+      name: 'areaRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address saved successfully`
+  String get addressSavedSuccessfully {
+    return Intl.message(
+      'Address saved successfully',
+      name: 'addressSavedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

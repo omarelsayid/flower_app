@@ -24,6 +24,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+    "addressRequired": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال العنوان",
+    ),
+    "addressSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم حفظ العنوان بنجاح",
+    ),
     "add_new_addresses": MessageLookupByLibrary.simpleMessage(
       "إضافة عنوان جديد",
     ),
@@ -34,9 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "arriveBy": MessageLookupByLibrary.simpleMessage("الوصول بحلول"),
+    "area": MessageLookupByLibrary.simpleMessage("المنطقة"),
+    "areaRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المنطقة"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
     ),
+    "cairo": MessageLookupByLibrary.simpleMessage("القاهرة"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage(
       "الدفع عند الاستلام",
@@ -45,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "checkout": MessageLookupByLibrary.simpleMessage("ادفع"),
+    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "cityRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المدينة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
@@ -67,12 +79,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "التحقق من البريد الإلكتروني",
     ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
+    "enterAddress": MessageLookupByLibrary.simpleMessage("أدخل عنوانك"),
     "enterCodeSentToEmail": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال الرمز المرسل إلى بريدك الإلكتروني",
     ),
     "enterFirstName": MessageLookupByLibrary.simpleMessage("أدخل الاسم الأول"),
     "enterLastName": MessageLookupByLibrary.simpleMessage("أدخل اسم العائلة"),
     "enterPhoneNumber": MessageLookupByLibrary.simpleMessage("أدخل رقم الهاتف"),
+    "enterRecipientName": MessageLookupByLibrary.simpleMessage(
+      "أدخل اسم المستلم",
+    ),
     "enterYourEmail": MessageLookupByLibrary.simpleMessage(
       "أدخل بريدك الإلكتروني",
     ),
@@ -105,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_address_found": MessageLookupByLibrary.simpleMessage("لا يوجد عنوان."),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "occasions": MessageLookupByLibrary.simpleMessage("المناسبات"),
+    "october": MessageLookupByLibrary.simpleMessage("أكتوبر"),
     "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordInvalid": MessageLookupByLibrary.simpleMessage(
       "يجب أن تحتوي كلمة المرور على حرف كبير ورقم على الأقل",
@@ -118,8 +135,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "placeOrder": MessageLookupByLibrary.simpleMessage("اطلب"),
+    "phoneNumberRequired": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال رقم الهاتف",
+    ),
+    "recipientName": MessageLookupByLibrary.simpleMessage("اسم المستلم"),
+    "recipientNameRequired": MessageLookupByLibrary.simpleMessage(
+      "يرجى إدخال اسم المستلم",
+    ),
     "rememberMe": MessageLookupByLibrary.simpleMessage("تذكرني"),
     "resendIn": MessageLookupByLibrary.simpleMessage("إعادة الإرسال خلال"),
+    "saveAddress": MessageLookupByLibrary.simpleMessage("حفظ العنوان"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("العناوين المحفوظة"),
     "schedule": MessageLookupByLibrary.simpleMessage("مجدولة"),
     "saved_addresses": MessageLookupByLibrary.simpleMessage(
