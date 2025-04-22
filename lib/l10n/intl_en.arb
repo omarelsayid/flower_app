@@ -56,11 +56,8 @@
   "saved_addresses": "Saved Addresses",
   "add_new_addresses": "Add New Address",
   "no_address_found": "No address found.",
-  "name": "Name",
   "address_details": "Address Details",
-  "city": "City",
   "street": "Street",
-  "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers"
   "bloomwithourexquisitebestsellers": "Bloom with our exquisite best sellers",
   "address": "Address",
   "enterAddress": "Enter your address",
@@ -76,7 +73,24 @@
   "recipientNameRequired": "Please enter a recipient name",
   "cityRequired": "Please enter a city",
   "areaRequired": "Please enter an area",
-  "addressSavedSuccessfully":"Address saved successfully"
+  "addressSavedSuccessfully":"Address saved successfully",
+  "checkout" : "Checkout",
+  "deliveryTime" : "Delivery time",
+  "schedule" : "Schedule",
+  "instant" : "Instant",
+  "arriveBy" : "Arrive by",
+  "deliveryAddress" : "Delivery Address",
+  "addNew" : "Add new",
+  "paymentMethod" : "Payment method",
+  "cashOnDelivery" : "Cash on delivery",
+  "creditCard" : "Credit card",
+  "itIsAGift" : "It is a gift",
+  "name" : "Name",
+  "enterYourName" : "Enter your name",
+  "subTotal" : "Sub Total",
+  "deliveryFee" : "Delivery Fee",
+  "total" : "Total",
+  "placeOrder" : "Place order"
 
 
 }

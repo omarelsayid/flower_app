@@ -1,3 +1,5 @@
+import 'package:flower_app/features/checkout/presentation/views/checkout_view.dart';
+import 'package:flower_app/features/checkout/presentation/views/payment_screen.dart';
 import 'package:flower_app/features/addresses/presentation/views/widgets/user_addresses_card_details_widget.dart';
 import 'package:flower_app/features/address_details/presentation/view/address_details_view.dart';
 import 'package:flower_app/features/address_details/presentation/view/widgets/address_details_view_body.dart';
@@ -115,6 +117,15 @@ class RoutesGenerator {
       case PagesRoutes.editProfileScreen:
         return MaterialPageRoute(
           builder: (context) => EditProfileView(),
+          settings: settings,
+        );case PagesRoutes.checkoutScreen:
+        return MaterialPageRoute(
+          builder: (context) => CheckoutView(),
+          settings: settings,
+        );
+      case PagesRoutes.paymentScreen:
+        return MaterialPageRoute(
+          builder: (context) => PaymentScreen(),
           settings: settings,
         );
       case PagesRoutes.userAddressesDetailsScreen:
