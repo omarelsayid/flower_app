@@ -1,4 +1,7 @@
+
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/utils/end_points.dart';
+import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
 import 'package:flower_app/features/cart/data/models/delet_cart_item_dto/delete_cart_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
@@ -41,10 +44,11 @@ abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
+
   @GET("/api/v1/auth/profile-data")
   Future<ProfileResponseDTO> getProfileData(
-    @Header("Authorization") String token,
-  );
+      @Header("Authorization") String token,
+      );
 
   @POST("/api/v1/auth/signup")
   Future<SignUpResponseDTO> signUp(@Body() SignUpRequest data);
@@ -147,11 +151,22 @@ abstract class ApiClient {
     @Path("id") String id,
     @Body() UpdateCartQuantityRequest request,
   );
+      @Header("Authorization") String token,
+      @Path("id") String id,
+      @Body() UpdateCartQuantityRequest request,
+      );
+  ////////////////////////User addresses//////////////////
+  @GET(ApiEndPoints.getUserAddressesEndPoint)
+  Future<UserAddressesDTO> getUserAddresses();
 
   @GET("/api/v1/addresses")
   Future<HttpResponse<AddressesResponseDTO>> getAddresses(
     @Header("Authorization") String token,
   );
+  @DELETE(ApiEndPoints.deleteSavedAddressEndPoint)
+  Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(
+      @Path("id") String id,
+      );
 
   @POST("/api/v1/orders/checkout?url=http://localhost:3000")
   Future<CreditCardResponseModel> checkoutCredit(
@@ -164,4 +179,5 @@ abstract class ApiClient {
     @Body() CreditCardRequestModel data,
     @Header("Authorization") String token,
   );
+}
 }

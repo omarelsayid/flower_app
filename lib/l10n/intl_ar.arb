@@ -74,4 +74,12 @@
 
 
 
+  "saved_addresses": "العناوين المحفوظة",
+  "add_new_addresses": "إضافة عنوان جديد",
+  "no_address_found": "لا يوجد عنوان.",
+  "name": "الاسم",
+  "address_details": "تفاصيل العنوان",
+  "city": "المدينة",
+  "street": "الشارع",
+  "bloomwithourexquisitebestsellers": "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا"
 }

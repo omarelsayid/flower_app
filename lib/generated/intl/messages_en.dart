@@ -24,6 +24,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+    "add_new_addresses": MessageLookupByLibrary.simpleMessage(
+      "Add New Address",
+    ),
+    "address_details": MessageLookupByLibrary.simpleMessage("Address Details"),
     "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
       "Creating an account, you agree to our",
@@ -37,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cashOnDelivery": MessageLookupByLibrary.simpleMessage("Cash on delivery"),
     "categories": MessageLookupByLibrary.simpleMessage("Categories"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "city": MessageLookupByLibrary.simpleMessage("City"),
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("confirm logout"),
@@ -99,6 +104,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "no_address_found": MessageLookupByLibrary.simpleMessage(
+      "No address found.",
+    ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "occasions": MessageLookupByLibrary.simpleMessage("Occasions"),
     "password": MessageLookupByLibrary.simpleMessage("Password"),
@@ -118,15 +126,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendIn": MessageLookupByLibrary.simpleMessage("Resend in"),
     "savedAddress": MessageLookupByLibrary.simpleMessage("Saved address"),
     "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
+    "saved_addresses": MessageLookupByLibrary.simpleMessage("Saved Addresses"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),
     "subTotal": MessageLookupByLibrary.simpleMessage("Sub Total"),
+    "street": MessageLookupByLibrary.simpleMessage("Street"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
     ),
-    "total": MessageLookupByLibrary.simpleMessage("Total"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
   };
 }
