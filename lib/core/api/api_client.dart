@@ -91,8 +91,14 @@ abstract class ApiClient {
   // Future<SpecificOccasionsResponseDTO> getSpecificOccasion(@Path("id") String occasionId);
   @GET('/api/v1/products')
   Future<ProductsResponseDTO> getProductsByOccasion(
-    @Query("occasion") String occasionId,
+
+      @Query("occasion") String occasionId,
   );
+  @GET('/api/v1/products')
+  Future<SpecificCategoriesResponseModel> getProductsByFilter(
+
+      @Query("sort") String sort,
+      );
 
   @GET("/api/v1/products/{id}")
   Future<HttpResponse<ProductsDetailsModels>> getProductDetails(
