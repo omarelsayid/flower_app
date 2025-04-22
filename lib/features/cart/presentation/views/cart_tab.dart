@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/cart/presentation/cubit/delete_cubit/delete_specific_item_cubit/delete_specific_item_cubit.dart';
 import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
@@ -174,21 +175,18 @@ class _CartTabState extends State<CartTab> {
                                 UpdateQuantityState
                               >(
                                 listener: (context, state) {
-                                  if(state is UpdateQuantitySuccess)
-                                    {
-
-                                      EasyLoading.showSuccess(state.message);
-                                      context.read<GetUserCartCubit>().GetUserCart();
-                                    }
-
-                                  else if(state is UpdateQuantityError)
-                                    {
-                                      EasyLoading.showError(state.error);
-                                    }
-
+                                  if (state is UpdateQuantitySuccess) {
+                                    EasyLoading.showSuccess(state.message);
+                                    context
+                                        .read<GetUserCartCubit>()
+                                        .GetUserCart();
+                                  } else if (state is UpdateQuantityError) {
+                                    EasyLoading.showError(state.error);
+                                  }
                                 },
                                 builder: (context, state) {
-                                  final isUpdated =state is UpdateQuantityLoading;
+                                  final isUpdated =
+                                      state is UpdateQuantityLoading;
                                   return CartItemWidget(
                                     () {
                                       log("The Product Id is ${cartItem.id}");
@@ -199,20 +197,35 @@ class _CartTabState extends State<CartTab> {
                                           );
                                     },
                                     () {
-
-                                      final newQuantity = cartItem.quantity+1;
-                                      context.read<UpdateQuantityCubit>().updateQuantity(cartItem.product.id, newQuantity);
+                                      final newQuantity = cartItem.quantity + 1;
+                                      context
+                                          .read<UpdateQuantityCubit>()
+                                          .updateQuantity(
+                                            cartItem.product.id,
+                                            newQuantity,
+                                          );
                                     },
                                     () {
                                       // on decrement
                                       final newQuantity = cartItem.quantity - 1;
                                       if (newQuantity < 1) {
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(content: Text('Minimum quantity reached')),
+                                        ScaffoldMessenger.of(
+                                          context,
+                                        ).showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Minimum quantity reached',
+                                            ),
+                                          ),
                                         );
                                         return;
                                       }
-                                      context.read<UpdateQuantityCubit>().updateQuantity(cartItem.product.id, newQuantity);
+                                      context
+                                          .read<UpdateQuantityCubit>()
+                                          .updateQuantity(
+                                            cartItem.product.id,
+                                            newQuantity,
+                                          );
                                     },
                                     cartItem,
                                   );
@@ -242,7 +255,13 @@ class _CartTabState extends State<CartTab> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.primaryColor,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            PagesRoutes.checkoutScreen,
+                            arguments: [total,deliveryFee,subTotal],
+                          );
+                        },
                         child: Text(
                           'Continue',
                           style: AppTextStyles.roboto500_16.copyWith(

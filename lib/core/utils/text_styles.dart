@@ -27,6 +27,10 @@ abstract class AppTextStyles {
     fontFamily: 'Inter',
     fontWeight: FontWeight.w400,
     fontSize: _responsiveFontSize(14),
+  ); static TextStyle get inter400_16 => TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w400,
+    fontSize: _responsiveFontSize(16),
   );
 
   static TextStyle get inter400_12 => TextStyle(
@@ -45,6 +49,11 @@ abstract class AppTextStyles {
     fontFamily: 'Inter',
     fontWeight: FontWeight.w600,
     fontSize: _responsiveFontSize(12),
+  );
+  static TextStyle get inter600_18 => TextStyle(
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w600,
+    fontSize: _responsiveFontSize(18),
   );
   static TextStyle get inter700_20 => TextStyle(
     fontFamily: 'Inter',
@@ -68,6 +77,10 @@ abstract class AppTextStyles {
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
     fontSize: _responsiveFontSize(14),
+  );  static TextStyle get roboto400_16 => TextStyle(
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.w400,
+    fontSize: _responsiveFontSize(16),
   );
 
   static TextStyle get roboto500_16 => TextStyle(

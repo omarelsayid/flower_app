@@ -24,6 +24,40 @@ class _ApiClient implements ApiClient {
   final ParseErrorLogger? errorLogger;
 
   @override
+  Future<ProfileResponseDTO> getProfileData(String token) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<ProfileResponseDTO>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/auth/profile-data',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProfileResponseDTO _value;
+    try {
+      _value = ProfileResponseDTO.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<SignUpResponseDTO> signUp(SignUpRequest data) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -364,6 +398,40 @@ class _ApiClient implements ApiClient {
   }
 
   @override
+  Future<SpecificCategoriesResponseModel> getProductsByFilter(
+      String sort) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'sort': sort};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<SpecificCategoriesResponseModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/products',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SpecificCategoriesResponseModel _value;
+    try {
+      _value = SpecificCategoriesResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
   Future<HttpResponse<ProductsDetailsModels>> getProductDetails(
       String id) async {
     final _extra = <String, dynamic>{};
@@ -467,10 +535,11 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<HttpResponse<void>> logout() async {
+  Future<HttpResponse<void>> logout(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<HttpResponse<void>>(Options(
       method: 'GET',
@@ -491,39 +560,6 @@ class _ApiClient implements ApiClient {
     final _result = await _dio.fetch<void>(_options);
     final httpResponse = HttpResponse(null, _result);
     return httpResponse;
-  }
-
-  @override
-  Future<ProfileResponseDTO> getProfileData() async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ProfileResponseDTO>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/api/v1/auth/profile-data',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ProfileResponseDTO _value;
-    try {
-      _value = ProfileResponseDTO.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
   }
 
   @override
@@ -829,6 +865,41 @@ class _ApiClient implements ApiClient {
   }
 
   @override
+  Future<HttpResponse<AddressesResponseDTO>> getAddresses(String token) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HttpResponse<AddressesResponseDTO>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/addresses',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AddressesResponseDTO _value;
+    try {
+      _value = AddressesResponseDTO.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    final httpResponse = HttpResponse(_value, _result);
+    return httpResponse;
+  }
+
+  @override
   Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -865,14 +936,14 @@ class _ApiClient implements ApiClient {
   @override
   Future<void> saveUserAddress(
     String token,
-    Map<String, dynamic> addressJson,
+    AddressDetailsModel addressDetailsModel,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    _data.addAll(addressJson);
+    _data.addAll(addressDetailsModel.toJson());
     final _options = _setStreamType<void>(Options(
       method: 'PATCH',
       headers: _headers,
@@ -893,23 +964,24 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<UserAddressesDTO> updateAddress(
-    String id,
-    Map<String, dynamic> address,
+  Future<CreditCardResponseModel> checkoutCredit(
+    CreditCardRequestModel data,
+    String token,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
-    _data.addAll(address);
-    final _options = _setStreamType<UserAddressesDTO>(Options(
-      method: 'PATCH',
+    _data.addAll(data.toJson());
+    final _options = _setStreamType<CreditCardResponseModel>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/api/v1/addresses/${id}',
+          '/api/v1/orders/checkout?url=http://localhost:3000',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -919,9 +991,47 @@ class _ApiClient implements ApiClient {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UserAddressesDTO _value;
+    late CreditCardResponseModel _value;
     try {
-      _value = UserAddressesDTO.fromJson(_result.data!);
+      _value = CreditCardResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CheckoutCashResponseModel> checkoutCash(
+    CreditCardRequestModel data,
+    String token,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(data.toJson());
+    final _options = _setStreamType<CheckoutCashResponseModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/api/v1/orders',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CheckoutCashResponseModel _value;
+    try {
+      _value = CheckoutCashResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

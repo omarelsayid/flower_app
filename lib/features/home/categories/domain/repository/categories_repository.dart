@@ -7,5 +7,6 @@ abstract class CategoriesRepository {
   Future<Result<CategoriesResponseEntity>> getAllCategories();
   Future<Result<SpecificCategoriesResponseEntity>> getSpecificCategory(String categoryId);
   Future<List<ProductsEntity>> search(String query);
+  Future<Result<SpecificCategoriesResponseEntity>>  getFiltered(String sort);
 }
 

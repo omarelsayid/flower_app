@@ -24,15 +24,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "addNew": MessageLookupByLibrary.simpleMessage("أضف جديد"),
+    "add_new_addresses": MessageLookupByLibrary.simpleMessage(
+      "إضافة عنوان جديد",
+    ),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "addressRequired": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال العنوان",
     ),
     "addressSavedSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم حفظ العنوان بنجاح",
-    ),
-    "add_new_addresses": MessageLookupByLibrary.simpleMessage(
-      "إضافة عنوان جديد",
     ),
     "address_details": MessageLookupByLibrary.simpleMessage("تفاصيل العنوان"),
     "agreeToTerms": MessageLookupByLibrary.simpleMessage(
@@ -41,14 +42,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "arabic": MessageLookupByLibrary.simpleMessage("العربية"),
     "area": MessageLookupByLibrary.simpleMessage("المنطقة"),
     "areaRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المنطقة"),
+    "arriveBy": MessageLookupByLibrary.simpleMessage("الوصول بحلول"),
     "bloomwithourexquisitebestsellers": MessageLookupByLibrary.simpleMessage(
       "ازدهر مع منتجاتنا الفاخرة الأكثر مبيعًا",
     ),
     "cairo": MessageLookupByLibrary.simpleMessage("القاهرة"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "cashOnDelivery": MessageLookupByLibrary.simpleMessage(
+      "الدفع عند الاستلام",
+    ),
     "categories": MessageLookupByLibrary.simpleMessage("التصنيفات"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
-    "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "checkout": MessageLookupByLibrary.simpleMessage("ادفع"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "cityRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المدينة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
@@ -57,6 +62,10 @@ class MessageLookup extends MessageLookupByLibrary {
       "تأكيد كلمة المرور",
     ),
     "continueAsGuest": MessageLookupByLibrary.simpleMessage("الدخول كضيف"),
+    "creditCard": MessageLookupByLibrary.simpleMessage("بطاقة إئتمان"),
+    "deliveryAddress": MessageLookupByLibrary.simpleMessage("عنوان التسليم"),
+    "deliveryFee": MessageLookupByLibrary.simpleMessage("رسوم التوصيل"),
+    "deliveryTime": MessageLookupByLibrary.simpleMessage("وقت التسليم"),
     "didNotReceiveCode": MessageLookupByLibrary.simpleMessage("لم يصلك الرمز؟"),
     "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailInvalid": MessageLookupByLibrary.simpleMessage(
@@ -82,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourEmail": MessageLookupByLibrary.simpleMessage(
       "أدخل بريدك الإلكتروني",
     ),
+    "enterYourName": MessageLookupByLibrary.simpleMessage("أدخل الاسم"),
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور",
     ),
@@ -96,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
     "guestUser": MessageLookupByLibrary.simpleMessage("زائر"),
     "haveAccount": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+    "instant": MessageLookupByLibrary.simpleMessage("فوري"),
+    "itIsAGift": MessageLookupByLibrary.simpleMessage("إنها هدية"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -119,10 +131,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordTooShort": MessageLookupByLibrary.simpleMessage(
       "يجب ألا تقل كلمة المرور عن 8 أحرف",
     ),
+    "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "phoneNumberRequired": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال رقم الهاتف",
     ),
+    "placeOrder": MessageLookupByLibrary.simpleMessage("اطلب"),
     "recipientName": MessageLookupByLibrary.simpleMessage("اسم المستلم"),
     "recipientNameRequired": MessageLookupByLibrary.simpleMessage(
       "يرجى إدخال اسم المستلم",
@@ -134,13 +148,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "saved_addresses": MessageLookupByLibrary.simpleMessage(
       "العناوين المحفوظة",
     ),
+    "schedule": MessageLookupByLibrary.simpleMessage("مجدولة"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "street": MessageLookupByLibrary.simpleMessage("الشارع"),
+    "subTotal": MessageLookupByLibrary.simpleMessage("المجموع"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "viewAll": MessageLookupByLibrary.simpleMessage("اعرض الكل"),
   };
 }

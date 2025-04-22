@@ -19,6 +19,7 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
   List<ProductsEntity> products = [];
   int currentIndex = 0;
   bool isSearching = false;
+  String filter= "" ;
 
   void doIntent(CategoriesIntent intent) {
     switch (intent) {
@@ -31,12 +32,14 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
       case ChangeCategoriesIndexIntent():
         _changeCategoryIndex(intent.index);
         break;
+      case FilterIntent():
+        _changeFilter(intent.filter);
+
       case SearchIntent():
         _search(query: intent.query);
         break;
     }
   }
-
   Future<void> _search({required String query}) async {
     try {
       emit(LoadingSearchState());
@@ -52,7 +55,6 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
       emit(FailedSearchState(e.toString()));
     }
   }
-
   Future<void> _getAllCategories() async {
     emit(CategoriesLoadingState());
     isSearching = false;
@@ -79,10 +81,10 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
     emit(ChangeCategoriesIndexState());
     _getSpecificCategory(categories[currentIndex].id.toString());
   }
-
   Future<void> _getSpecificCategory(String categoryId) async {
-    if(isClosed)
+    if(isClosed) {
       return;
+    }
     emit(SpecificCategoriesLoadingState());
     var result = await _categoriesUseCase.call(categoryId);
 
@@ -108,6 +110,40 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         break;
     }
   }
+  void _changeFilter(String sort) {
+    filter = sort ;
+    emit(FilterCategoriesState());
+    _getFilter(filter);
+  }
+  Future<void> _getFilter(String sort) async {
+    if(isClosed) {
+      return;
+    }
+    emit(LoadingFilterState());
+    var result = await _categoriesUseCase.executeFilter(sort);
+
+    switch (result) {
+      case Success():
+        var data = result.data;
+        if (data!.message == "success") {
+          allProducts = data.products ?? [];
+          log("Products Count: ${allProducts.length}");
+          if(isClosed)
+            return;
+          emit(SuccessfulFilterState(data.products ?? []));
+        } else {
+          if(isClosed)
+            return;
+          emit(FailedFilterState(data.message!));
+        }
+        break;
+      case Error():
+        if(isClosed)
+          return;
+        emit(FailedFilterState(result.exception!));
+        break;
+    }
+  }
 }
 
 
@@ -127,6 +163,12 @@ class ChangeCategoriesIndexIntent extends CategoriesIntent {
 
   ChangeCategoriesIndexIntent(this.index);
 }
+class FilterIntent extends CategoriesIntent {
+  final String filter;
+
+  FilterIntent (this.filter);
+}
+
 class SearchIntent extends CategoriesIntent{
   final String query;
   SearchIntent(this.query);

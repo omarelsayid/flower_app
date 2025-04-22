@@ -78,13 +78,13 @@ class MainAppContent extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute: PagesRoutes.signInScreen,
-      // (SharedPreferenceServices.getData(AppConstants.token) != null &&
-      //         (SharedPreferenceServices.getData(AppConstants.rememberMe)
-      //                 as bool? ??
-      //             false))
-      //     ? PagesRoutes.layOutScreen
-      //     : PagesRoutes.signInScreen,
+      // initialRoute: PagesRoutes.addressScreen,
+      initialRoute: (SharedPreferenceServices.getData(AppConstants.token) != null &&
+              (SharedPreferenceServices.getData(AppConstants.rememberMe)
+                      as bool? ??
+                  false))
+          ? PagesRoutes.layOutScreen
+          : PagesRoutes.signInScreen,
       builder: (context, child) => child!,
     );
   }
