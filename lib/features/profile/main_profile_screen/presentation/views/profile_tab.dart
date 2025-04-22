@@ -9,6 +9,7 @@ import '../../../../../core/common/get_resposive_height_and_width.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
 import '../../../../../core/di/injectable_initializer.dart';
+import '../../../../../core/widgets/json_content_widget.dart';
 import '../../data/data_source/profile_local_data_source.dart';
 import '../../domain/use_case/profile_screen_use_case.dart';
 import '../cubit/profile_state.dart';
@@ -129,9 +130,24 @@ class ProfileTab extends StatelessWidget {
                       BodyWidget(
                         text: S.of(context).aboutUs,
                         onTap: () {
+
+                          JsonContentBottomSheet.show(
+                            context,
+                            assetPath: 'assets/Flowery About Section JSON with Expanded Content.json',
+                            rootKey: 'about_app',
+                          );
                         },
                       ),
-                      BodyWidget(text: S.of(context).termsAndConditions),
+                      BodyWidget(
+                          onTap: () {
+
+                            JsonContentBottomSheet.show(
+                              context,
+                              assetPath: 'assets/Flowery Terms and Conditions JSON with Arabic and English.json',
+                              rootKey: 'terms_and_conditions',
+                            );
+                          },
+                          text: S.of(context).termsAndConditions),
                       const Divider(color: AppColors.greyColor),
                       const LogoutWidget(),
                       Padding(
