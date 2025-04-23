@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: ^9.1.0
   flutter_easyloading: null
   flutter_localization: ^0.3.2
+  flutter_nominatim: ^0.0.1+2
   flutter_svg: ^2.0.17
   geocoding: ^3.0.0
   get_it: null

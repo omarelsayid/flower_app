@@ -3,8 +3,11 @@ import 'dart:developer';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/services/location_service.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
+import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/features/addresses/data/model/auto_complete_model/suggestion.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_states.dart';
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,6 +46,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   late AssetMapBitmap assetMapBitmap;
   late BitmapDescriptor _markerBitmap;
   Set<Marker> _markers = {};
+  List<Suggestion> _suggestions = [];
 
   final _formKey = GlobalKey<FormState>();
 
@@ -78,9 +82,9 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   //   });
   // }
 
-  Future<void> _loadMarkerIcon() async {
+  void _loadMarkerIcon() async {
     // _markerBitmap = await BitmapDescriptor.Asset(
-    _markerBitmap = await BitmapDescriptor.fromAssetImage(
+    _markerBitmap = await BitmapDescriptor.asset(
       const ImageConfiguration(),
       IconAssets.markerIcon,
     );
@@ -118,14 +122,17 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
         );
       }
 
-      _markers = {
-        Marker(
-          markerId: const MarkerId('selected'),
-          position: target,
-          icon: assetMapBitmap,
-        ),
-      };
+      Marker marker = Marker(
+        markerId: const MarkerId('1'),
+        position: target,
+        icon: _markerBitmap, // ✅ Use the loaded bitmap
+      );
+      _markers.add(marker);
       setState(() {});
+      log(
+        _markers.length.toString() +
+            "#############################################",
+      );
     } catch (e) {
       log('Error in moveToAndPopulate: $e');
     }
@@ -158,19 +165,38 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                 ),
               ),
               SizedBox(height: resposiveHeight(24)),
-              _buildField(
-                onChanged: (p0) {
-                  if (p0.isNotEmpty) {
-                    context
-                        .read<GetAddressesSuggestioCubit>()
-                        .getAddressSuggestion(p0);
+              BlocListener<
+                GetAddressesSuggestioCubit,
+                GetAddressesSuggestioStates
+              >(
+                listener: (context, state) {
+                  if (state is GetAddressesSuggestioSuccessState) {
+                    _suggestions = state.data;
+                    setState(() {});
                   }
                 },
-                _streetController,
-                S.of(context).address,
-                S.of(context).enterAddress,
-                S.of(context).addressRequired,
+                child: _buildField(
+                  onChanged: (p0) {
+                    if (p0.isNotEmpty) {
+                      context
+                          .read<GetAddressesSuggestioCubit>()
+                          .getAddressSuggestion(p0);
+                      setState(() {});
+                    } else {
+                      _suggestions = [];
+                      setState(() {});
+                    }
+                  },
+                  _streetController,
+                  S.of(context).address,
+                  S.of(context).enterAddress,
+                  S.of(context).addressRequired,
+                ),
               ),
+              if (_suggestions.isNotEmpty)
+                _customSearchListView()
+              else
+                SizedBox.shrink(),
               SizedBox(height: resposiveHeight(24)),
               _buildField(
                 _phoneNumberController,
@@ -253,6 +279,32 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
         ),
       ),
     );
+  }
+
+  Container _customSearchListView() {
+    return Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final suggestion = _suggestions[index];
+                    return ListTile(
+                      leading: const Icon(
+                        Icons.location_pin,
+                        color: AppColors.primaryColor,
+                      ),
+                      title: Text(
+                        suggestion.placePrediction!.text!.text.toString(),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (context, index) => Divider(height: 0),
+                  itemCount: _suggestions.length,
+                ),
+              );
   }
 
   void _handleStates(AddressDetailsStates state) {
