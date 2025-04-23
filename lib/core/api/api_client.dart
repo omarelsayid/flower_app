@@ -41,10 +41,7 @@ abstract class ApiClient {
   @factoryMethod
   factory ApiClient(Dio dio) = _ApiClient;
 
-  @GET("/api/v1/auth/profile-data")
-  Future<ProfileResponseDTO> getProfileData(
-    @Header("Authorization") String token,
-  );
+
 
 
   @POST("/api/v1/auth/signup")
@@ -99,7 +96,7 @@ abstract class ApiClient {
   );
 
   @GET("/api/v1/auth/logout")
-  Future<HttpResponse<void>> logout(@Header("Authorization") String token);
+
   Future<HttpResponse<void>> logout();
 
 
@@ -158,16 +155,12 @@ abstract class ApiClient {
   Future<HttpResponse<UserAddressesDTO>> deleteUserAddress(
       @Path("id") String id,
       );
-
-}
-    @Header("Authorization") String token,
-    @Path("id") String id,
-    @Body() UpdateCartQuantityRequest request,
-  );
-
   @PATCH('/api/v1/addresses')
   Future<void> saveUserAddress(
-    @Header("Authorization") String token,
-    @Body() AddressDetailsModel addressDetailsModel,
-  );
+      @Header("Authorization") String token,
+      @Body() AddressDetailsModel addressDetailsModel,
+      );
+
 }
+
+

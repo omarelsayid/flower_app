@@ -560,10 +560,6 @@ class S {
     );
   }
 
-  /// `City`
-  String get city {
-    return Intl.message('City', name: 'city', desc: '', args: []);
-  }
 
   /// `Cairo`
   String get cairo {

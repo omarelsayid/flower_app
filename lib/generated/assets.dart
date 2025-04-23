@@ -8,17 +8,22 @@ class Assets {
   static const String fontsRobotoRegular = 'assets/fonts/Roboto-Regular.ttf';
   static const String iconsCartIcon = 'assets/icons/cartIcon.png';
   static const String iconsCategoryIcon = 'assets/icons/categoryIcon.png';
+  static const String iconsDropDownIcon = 'assets/icons/drop_down_icon.svg';
   static const String iconsEditIcon = 'assets/icons/edit_icon.png';
   static const String iconsFilterIcon = 'assets/icons/filterIcon.png';
   static const String iconsHomeIcon = 'assets/icons/homeIcon.png';
   static const String iconsList = 'assets/icons/list.png';
   static const String iconsLocation = 'assets/icons/location.png';
   static const String iconsLocationIcon = 'assets/icons/location_icon.png';
+  static const String iconsMarkerIcon = 'assets/icons/marker_icon.png';
   static const String iconsNotificationIcon = 'assets/icons/notification_icon.png';
   static const String iconsProfileIcon = 'assets/icons/profileIcon.png';
   static const String imageImage = 'assets/image/Image.png';
+  static const String imagesDeleteIcon = 'assets/images/deleteIcon.png';
   static const String imagesLogo = 'assets/images/Logo.svg';
   static const String imagesProfileExample = 'assets/images/profile_example.jpg';
+  static const String mapStylesMapStyle = 'assets/map_styles/map_style.json';
+  static const String svgDeleteIcon = 'assets/svg/deleteIcon.svg';
   static const String translationsAr = 'assets/translations/ar.json';
   static const String translationsEn = 'assets/translations/en.json';
 

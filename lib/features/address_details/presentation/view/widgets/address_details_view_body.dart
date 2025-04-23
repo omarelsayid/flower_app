@@ -27,7 +27,6 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   late CameraPosition _initialCameraPosition;
   late LocationService _locationService;
   late GoogleMapController _mapController;
-
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _areaController = TextEditingController();
