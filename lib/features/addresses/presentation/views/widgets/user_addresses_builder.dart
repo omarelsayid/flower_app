@@ -31,13 +31,24 @@ class UserAddressesBuilder extends StatelessWidget {
           final itemCount = addresses.isEmpty ? 2 : addresses.length + 1;
 
           return ListView.separated(
-            padding: EdgeInsets.symmetric(horizontal: resposiveWidth(16), vertical: resposiveHeight(16)),
+            padding: EdgeInsets.symmetric(
+              horizontal: resposiveWidth(16),
+              vertical: resposiveHeight(16),
+            ),
             itemCount: itemCount,
             separatorBuilder: (_, __) => SizedBox(height: resposiveHeight(16)),
             itemBuilder: (context, index) {
               if (addresses.isEmpty) {
                 if (index == 0) {
-                  return Center(child: Text(S.of(context).no_address_found,style: AppTextStyles.inter500_18.copyWith(color: AppColors.blackColor,decoration: TextDecoration.none),));
+                  return Center(
+                    child: Text(
+                      S.of(context).no_address_found,
+                      style: AppTextStyles.inter500_18.copyWith(
+                        color: AppColors.blackColor,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                  );
                 } else {
                   return AddAddressButton(
                     onPressed: () {
@@ -56,14 +67,14 @@ class UserAddressesBuilder extends StatelessWidget {
                   isDeleting: isDeleting,
                   onTap:
                       () => Navigator.pushNamed(
-                    context,
-                    PagesRoutes.userAddressesDetailsScreen,
-                    arguments: address,
-                  ),
+                        context,
+                        PagesRoutes.userAddressesDetailsScreen,
+                        arguments: address,
+                      ),
                   onDelete:
                       () => context.read<UserAddressesViewModel>().doIntent(
-                    DeleteUserAddressClickedIntent(address.id!),
-                  ),
+                        DeleteUserAddressClickedIntent(address.id!),
+                      ),
                   onEdit: () async {
                     final Address entity = address;
                     final AddressDTO dto = AddressDTO.fromEntity(entity);
@@ -74,8 +85,9 @@ class UserAddressesBuilder extends StatelessWidget {
                     );
 
                     if (result == true) {
-                      context.read<UserAddressesViewModel>()
-                          .doIntent(GetUserAddressesClickedIntent());
+                      context.read<UserAddressesViewModel>().doIntent(
+                        GetUserAddressesClickedIntent(),
+                      );
                     }
                   },
                 );
@@ -83,11 +95,15 @@ class UserAddressesBuilder extends StatelessWidget {
 
               return AddAddressButton(
                 onPressed: () async {
-                  final result = await Navigator.pushNamed(context, PagesRoutes.addressScreen);
+                  final result = await Navigator.pushNamed(
+                    context,
+                    PagesRoutes.addressScreen,
+                  );
 
                   if (result == true) {
-                    context.read<UserAddressesViewModel>()
-                        .doIntent(GetUserAddressesClickedIntent());
+                    context.read<UserAddressesViewModel>().doIntent(
+                      GetUserAddressesClickedIntent(),
+                    );
                   }
                 },
               );

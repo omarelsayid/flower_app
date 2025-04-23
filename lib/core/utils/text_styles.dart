@@ -27,7 +27,8 @@ abstract class AppTextStyles {
     fontFamily: 'Inter',
     fontWeight: FontWeight.w400,
     fontSize: _responsiveFontSize(14),
-  ); static TextStyle get inter400_16 => TextStyle(
+  );
+  static TextStyle get inter400_16 => TextStyle(
     fontFamily: 'Inter',
     fontWeight: FontWeight.w400,
     fontSize: _responsiveFontSize(16),
@@ -77,7 +78,8 @@ abstract class AppTextStyles {
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
     fontSize: _responsiveFontSize(14),
-  );  static TextStyle get roboto400_16 => TextStyle(
+  );
+  static TextStyle get roboto400_16 => TextStyle(
     fontFamily: 'Roboto',
     fontWeight: FontWeight.w400,
     fontSize: _responsiveFontSize(16),

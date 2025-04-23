@@ -7,19 +7,17 @@ import '../repository/occasion_repository.dart';
 
 @injectable
 class OccasionUseCase {
+  final OccasionRepository _occasionRepository;
 
- final OccasionRepository _occasionRepository;
+  OccasionUseCase(this._occasionRepository);
 
- OccasionUseCase(this._occasionRepository);
+  Future<Result<OccasionsResponseEntity>> execute() async {
+    return await _occasionRepository.getOccasion();
+  }
 
- Future<Result<OccasionsResponseEntity>> execute() async{
-  return await _occasionRepository.getOccasion();
- }
- Future<Result<ProductsResponseEntity>> executeSpecific(String occasionId) async{
-  return await _occasionRepository.getSpecificOccasion(occasionId);
-
- }
-
-
-
+  Future<Result<ProductsResponseEntity>> executeSpecific(
+    String occasionId,
+  ) async {
+    return await _occasionRepository.getSpecificOccasion(occasionId);
+  }
 }

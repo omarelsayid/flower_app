@@ -9,7 +9,8 @@ import 'address_details_states.dart';
 @injectable
 class AddressDetailsCubit extends Cubit<AddressDetailsStates> {
   AddressDetailsUseCase _addressDetailsUseCase;
-  AddressDetailsCubit(this._addressDetailsUseCase) : super(AddressDetailsInitial());
+  AddressDetailsCubit(this._addressDetailsUseCase)
+    : super(AddressDetailsInitial());
 
   Future<void> saveUserAddress(AddressDTO addressDetailsModel) async {
     emit(AddressDetailsLoading());
@@ -26,7 +27,9 @@ class AddressDetailsCubit extends Cubit<AddressDetailsStates> {
 
   Future<void> updateUserAddress(AddressDTO addressDetailsModel) async {
     emit(AddressDetailsLoading());
-    final result = await _addressDetailsUseCase.executeUpdate(addressDetailsModel);
+    final result = await _addressDetailsUseCase.executeUpdate(
+      addressDetailsModel,
+    );
     switch (result) {
       case Success():
         emit(AddressDetailsSuccess());

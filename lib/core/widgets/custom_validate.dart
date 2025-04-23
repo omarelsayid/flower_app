@@ -1,13 +1,13 @@
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
 
-
 class AppValidate {
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter an email ';
     }
     final regex = RegExp(
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
+    );
     if (!regex.hasMatch(value)) {
       return 'Please enter a valid email ';
     }

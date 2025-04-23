@@ -48,7 +48,11 @@ class ChangePasswordScreen extends StatelessWidget {
               EasyLoading.dismiss();
               EasyLoading.showSuccess("Password changed successfully");
               SharedPreferenceServices.deleteData(AppConstants.token);
-              Navigator.pushNamedAndRemoveUntil(context, PagesRoutes.signInScreen,(route) => false,);
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                PagesRoutes.signInScreen,
+                (route) => false,
+              );
             }
             if (state is ChangePasswordLoadingState) {
               EasyLoading.show();

@@ -1,24 +1,20 @@
 import 'package:equatable/equatable.dart';
 
 class OccasionsResponseEntity {
-  OccasionsResponseEntity({
-      this.message, 
-      this.metadata, 
-      this.occasions,});
+  OccasionsResponseEntity({this.message, this.metadata, this.occasions});
 
   String? message;
   Metadata? metadata;
   List<Occasion>? occasions;
-
 }
 
-class Occasion extends Equatable{
-   const Occasion({
-      this.id, 
-      this.name, 
-      this.slug, 
-      this.image,
-      this.productsCount,
+class Occasion extends Equatable {
+  const Occasion({
+    this.id,
+    this.name,
+    this.slug,
+    this.image,
+    this.productsCount,
   });
 
   final String? id;
@@ -28,19 +24,11 @@ class Occasion extends Equatable{
   final num? productsCount;
 
   @override
-  List<Object?> get props => [
-    id,
-    name,
-    slug,
-  ];
-
+  List<Object?> get props => [id, name, slug];
 }
+
 class Metadata {
-  Metadata({
-      this.currentPage, 
-      this.limit, 
-      this.totalPages, 
-      this.totalItems,});
+  Metadata({this.currentPage, this.limit, this.totalPages, this.totalItems});
 
   num? currentPage;
   num? limit;
@@ -55,5 +43,4 @@ class Metadata {
     map['totalItems'] = totalItems;
     return map;
   }
-
 }

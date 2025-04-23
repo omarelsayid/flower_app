@@ -339,7 +339,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                                         street:
                                             addresses[selectedAddress].street,
                                       ),
-                                    )
+                                    ),
                                   ),
                                 ),
                               };

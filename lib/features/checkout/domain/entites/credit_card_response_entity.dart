@@ -76,7 +76,11 @@ class SessionResponseEntity {
 }
 
 class TotalDetailsSessionEntity {
-  TotalDetailsSessionEntity({this.amountDiscount, this.amountShipping, this.amountTax});
+  TotalDetailsSessionEntity({
+    this.amountDiscount,
+    this.amountShipping,
+    this.amountTax,
+  });
 
   num? amountDiscount;
   num? amountShipping;
@@ -108,7 +112,13 @@ class PaymentMethodConfigurationDetailsEntity {
 }
 
 class SessionLocationEntity {
-  SessionLocationEntity({this.city, this.lat, this.long, this.phone, this.street});
+  SessionLocationEntity({
+    this.city,
+    this.lat,
+    this.long,
+    this.phone,
+    this.street,
+  });
 
   String? city;
   String? lat;

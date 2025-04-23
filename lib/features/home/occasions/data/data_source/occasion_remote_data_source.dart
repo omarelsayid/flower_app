@@ -7,8 +7,6 @@ import '../model/products_response_dto.dart';
 abstract class OccasionRemoteDataSource {
   Future<OccasionsResponseDTO> getOccasion();
   Future<ProductsResponseDTO> getOccasionDetails(String occasionId);
-
-
 }
 
 @Injectable(as: OccasionRemoteDataSource)
@@ -22,13 +20,7 @@ class OccasionRemoteDataSourceImpl implements OccasionRemoteDataSource {
   }
 
   @override
-  Future<ProductsResponseDTO> getOccasionDetails(String occasionId  ) async {
+  Future<ProductsResponseDTO> getOccasionDetails(String occasionId) async {
     return await _apiClient.getProductsByOccasion(occasionId);
-
   }
-
-
 }
-
-
-

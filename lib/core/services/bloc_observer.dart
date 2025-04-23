@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class MyBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {
@@ -39,5 +38,4 @@ class MyBlocObserver extends BlocObserver {
     super.onClose(bloc);
     log('onClose -- ${bloc.runtimeType}');
   }
-
 }

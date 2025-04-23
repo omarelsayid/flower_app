@@ -30,7 +30,9 @@ class GetUserCartCubit extends Cubit<GetUserCartState> {
 
           // Safely log the first item's product title (if there is an item)
           if (cartData.cart.cartItems.isNotEmpty) {
-            log("First Product Title: ${cartData.cart.cartItems[0].product.title}");
+            log(
+              "First Product Title: ${cartData.cart.cartItems[0].product.title}",
+            );
           } else {
             log("Cart is empty, no product to log.");
           }

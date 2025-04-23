@@ -7,10 +7,7 @@ class CreateCartRequest {
   final String product;
   final int quantity;
 
-  CreateCartRequest({
-    required this.product,
-    required this.quantity,
-  });
+  CreateCartRequest({required this.product, required this.quantity});
 
   factory CreateCartRequest.fromJson(Map<String, dynamic> json) =>
       _$CreateCartRequestFromJson(json);

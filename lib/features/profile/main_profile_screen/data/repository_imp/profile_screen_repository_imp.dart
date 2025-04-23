@@ -15,7 +15,10 @@ class ProfileRepositoryImpl implements ProfileRepository {
   final ProfileRemoteDataSource _profileRemoteDataSource;
   final ProfileLocalDataSource _profileLocalDataSource;
 
-  ProfileRepositoryImpl(this._profileRemoteDataSource,this._profileLocalDataSource);
+  ProfileRepositoryImpl(
+    this._profileRemoteDataSource,
+    this._profileLocalDataSource,
+  );
 
   @override
   Future<Result<ProfileResponseEntity>> getProfileData() async {
@@ -35,15 +38,15 @@ class ProfileRepositoryImpl implements ProfileRepository {
       return response.user!.toEntity();
     });
   }
+
   @override
   Future<Result<void>> logout() async {
-    return executeApi<void>(
-          () async {
-        await _profileRemoteDataSource.logout();
-        await _profileLocalDataSource.deleteToken();
-      },
-    );
+    return executeApi<void>(() async {
+      await _profileRemoteDataSource.logout();
+      await _profileLocalDataSource.deleteToken();
+    });
   }
+
   @override
   Future<String?> getToken() async {
     return await _profileLocalDataSource.getToken();
@@ -53,8 +56,6 @@ class ProfileRepositoryImpl implements ProfileRepository {
   Future<void> deleteToken() async {
     await _profileLocalDataSource.deleteToken();
   }
-
-
 
   @override
   Future<Result<String?>> uploadPhoto(File photo) {

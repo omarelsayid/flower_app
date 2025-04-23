@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/common/result.dart';
 import '../../../data/model/change_password_request_model.dart';
+
 @injectable
 class ChangePasswordViewModel extends Cubit<ChangePasswordState> {
   ChangePasswordViewModel(this._changePasswordUseCase)
@@ -14,7 +15,7 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordState> {
   var currentPasswordController = TextEditingController();
   var newPasswordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
- GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   void doIntent(ChangePasswordIntent intent) {
     switch (intent) {
       case ClickedChangePasswordIntent():
@@ -22,8 +23,9 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordState> {
         break;
     }
   }
-  String ? confirmPasswordValidator(String? value) {
-    if (value == null ||value.isEmpty) {
+
+  String? confirmPasswordValidator(String? value) {
+    if (value == null || value.isEmpty) {
       return 'Please confirm your password ';
     }
     if (value != newPasswordController.text) {
@@ -31,6 +33,7 @@ class ChangePasswordViewModel extends Cubit<ChangePasswordState> {
     }
     return null;
   }
+
   Future<void> _changePassword() async {
     emit(ChangePasswordLoadingState());
     var result = await _changePasswordUseCase.execute(

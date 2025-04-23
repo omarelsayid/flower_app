@@ -20,20 +20,20 @@ class Section {
   factory Section.fromJson(Map<String, dynamic> json) {
     return Section(
       section: json['section'] as String,
-      title: json['title'] != null
-          ? Map<String, dynamic>.from(json['title'])
-          : null,
+      title:
+          json['title'] != null
+              ? Map<String, dynamic>.from(json['title'])
+              : null,
       content: Map<String, dynamic>.from(json['content']),
-      style: Map<String, dynamic>.from(json['style'] is Map<String, dynamic>
-          ? json['style']
-          : json['style']['content']),
+      style: Map<String, dynamic>.from(
+        json['style'] is Map<String, dynamic>
+            ? json['style']
+            : json['style']['content'],
+      ),
     );
   }
 
-  static Future<List<Section>> load(
-      String assetPath,
-      String rootKey,
-      ) async {
+  static Future<List<Section>> load(String assetPath, String rootKey) async {
     final rawData = await rootBundle.loadString(assetPath);
     final jsonData = json.decode(rawData) as Map<String, dynamic>;
     final list = jsonData[rootKey] as List;
@@ -54,10 +54,10 @@ class JsonContentBottomSheet extends StatelessWidget {
   }) : super(key: key);
 
   static void show(
-      BuildContext context, {
-        required String assetPath,
-        required String rootKey,
-      }) {
+    BuildContext context, {
+    required String assetPath,
+    required String rootKey,
+  }) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -65,10 +65,8 @@ class JsonContentBottomSheet extends StatelessWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      builder: (_) => JsonContentBottomSheet(
-        assetPath: assetPath,
-        rootKey: rootKey,
-      ),
+      builder:
+          (_) => JsonContentBottomSheet(assetPath: assetPath, rootKey: rootKey),
     );
   }
 
@@ -103,10 +101,10 @@ class JsonContentBottomSheet extends StatelessWidget {
                 String pick(Map<String, dynamic> map) =>
                     (map[locale] ?? map['en']) as String;
 
-
                 final rawStyle = sec.style;
                 final nestedTitle = rawStyle['title'] is Map<String, dynamic>;
-                final nestedContent = rawStyle['content'] is Map<String, dynamic>;
+                final nestedContent =
+                    rawStyle['content'] is Map<String, dynamic>;
 
                 Map<String, dynamic> styleFor(bool isTitle) {
                   if (nestedTitle && nestedContent) {
@@ -119,20 +117,22 @@ class JsonContentBottomSheet extends StatelessWidget {
 
                 Widget buildText(String text, Map<String, dynamic> style) {
                   final fontSize = (style['fontSize'] as num).toDouble();
-                  final fontWeight = style['fontWeight'] == 'bold'
-                      ? FontWeight.bold
-                      : FontWeight.normal;
+                  final fontWeight =
+                      style['fontWeight'] == 'bold'
+                          ? FontWeight.bold
+                          : FontWeight.normal;
                   final color = Color(
                     int.parse(
-                      (style['color'] as String).substring(1),
-                      radix: 16,
-                    ) |
-                    0xFF000000,
+                          (style['color'] as String).substring(1),
+                          radix: 16,
+                        ) |
+                        0xFF000000,
                   );
-                  final alignStr = (style['textAlign'][locale] ??
-                      style['textAlign']['en']) as String;
+                  final alignStr =
+                      (style['textAlign'][locale] ?? style['textAlign']['en'])
+                          as String;
                   final textAlign = TextAlign.values.firstWhere(
-                        (t) => t.toString().endsWith(alignStr),
+                    (t) => t.toString().endsWith(alignStr),
                     orElse: () => TextAlign.left,
                   );
 
@@ -161,9 +161,10 @@ class JsonContentBottomSheet extends StatelessWidget {
                       buildText(contentRaw, styleFor(false))
                     else if (contentRaw is List)
                       ...contentRaw.map<Widget>((item) {
-                        final text = item is String
-                            ? item
-                            : (item[locale] ?? item['en']) as String;
+                        final text =
+                            item is String
+                                ? item
+                                : (item[locale] ?? item['en']) as String;
                         return buildText(text, styleFor(false));
                       }).toList(),
                   ],
@@ -176,5 +177,3 @@ class JsonContentBottomSheet extends StatelessWidget {
     );
   }
 }
-
-

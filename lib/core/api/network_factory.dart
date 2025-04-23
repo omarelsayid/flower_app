@@ -20,10 +20,9 @@ abstract class DioProvider {
         sendTimeout: const Duration(seconds: 60),
         receiveTimeout: const Duration(seconds: 60),
       ),
-
     );
     dio.interceptors.add(providePretty());
-    dio.interceptors.add(AuthInterceptor());//add it here
+    dio.interceptors.add(AuthInterceptor()); //add it here
     return dio;
   }
 
@@ -41,10 +40,14 @@ abstract class DioProvider {
     );
   }
 }
+
 @lazySingleton
 class AuthInterceptor extends Interceptor {
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  void onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     final token = SharedPreferenceServices.getData(AppConstants.token);
     if (token != null) {
       options.headers["Authorization"] = "Bearer $token";

@@ -2,8 +2,10 @@
 class Assets {
   Assets._();
 
-  static const String fontsIMFellEnglishRegular = 'assets/fonts/IMFellEnglish-Regular.ttf';
-  static const String fontsInter18ptRegular = 'assets/fonts/Inter_18pt-Regular.ttf';
+  static const String fontsIMFellEnglishRegular =
+      'assets/fonts/IMFellEnglish-Regular.ttf';
+  static const String fontsInter18ptRegular =
+      'assets/fonts/Inter_18pt-Regular.ttf';
   static const String fontsOutfitRegular = 'assets/fonts/Outfit-Regular.ttf';
   static const String fontsRobotoRegular = 'assets/fonts/Roboto-Regular.ttf';
   static const String iconsCartIcon = 'assets/icons/cartIcon.png';
@@ -14,13 +16,14 @@ class Assets {
   static const String iconsList = 'assets/icons/list.png';
   static const String iconsLocation = 'assets/icons/location.png';
   static const String iconsLocationIcon = 'assets/icons/location_icon.png';
-  static const String iconsNotificationIcon = 'assets/icons/notification_icon.png';
+  static const String iconsNotificationIcon =
+      'assets/icons/notification_icon.png';
   static const String iconsProfileIcon = 'assets/icons/profileIcon.png';
   static const String imageImage = 'assets/image/Image.png';
   static const String imagesDeleteIcon = 'assets/images/deleteIcon.png';
   static const String imagesLogo = 'assets/images/Logo.svg';
-  static const String imagesProfileExample = 'assets/images/profile_example.jpg';
+  static const String imagesProfileExample =
+      'assets/images/profile_example.jpg';
   static const String translationsAr = 'assets/translations/ar.json';
   static const String translationsEn = 'assets/translations/en.json';
-
 }

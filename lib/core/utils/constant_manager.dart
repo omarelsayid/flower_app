@@ -7,6 +7,5 @@ class AppConstants {
       "Please check your internet connection and try again later";
 
   static const String editProfile = "Edit Profile";
-  static const String locale="locale";
-
+  static const String locale = "locale";
 }

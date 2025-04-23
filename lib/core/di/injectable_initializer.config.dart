@@ -18,14 +18,22 @@ import '../../features/addresses/data/data_source/address_details_data_source.da
     as _i421;
 import '../../features/addresses/data/data_source/address_details_data_source_imp.dart'
     as _i902;
+import '../../features/addresses/data/data_source/get_addresses_suggestion_data_source.dart'
+    as _i848;
+import '../../features/addresses/data/data_source/get_addresses_suggestion_data_source_imp.dart'
+    as _i263;
 import '../../features/addresses/data/data_source/user_addresses_remote_data_source.dart'
     as _i31;
 import '../../features/addresses/data/repository_imp/address_details_repo_imp.dart'
     as _i133;
+import '../../features/addresses/data/repository_imp/get_addresses_suggestion_repo_imp.dart'
+    as _i688;
 import '../../features/addresses/data/repository_imp/user_addresses_repository_imp.dart'
     as _i630;
 import '../../features/addresses/domain/repository/address_details_repo.dart'
     as _i882;
+import '../../features/addresses/domain/repository/get_addresses_suggestion_repo.dart'
+    as _i516;
 import '../../features/addresses/domain/repository/user_addresses_repository.dart'
     as _i953;
 import '../../features/addresses/domain/use_case/address_details_use_case.dart'
@@ -34,6 +42,8 @@ import '../../features/addresses/domain/use_case/user_addresses_use_case.dart'
     as _i138;
 import '../../features/addresses/presentation/cubit/address_details_cubit.dart'
     as _i272;
+import '../../features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart'
+    as _i75;
 import '../../features/addresses/presentation/cubit/user_addresses_cubit/user_addresses_view_model.dart'
     as _i25;
 import '../../features/auth/data/data_source/auth_remote_data_source.dart'
@@ -175,6 +185,7 @@ import '../../features/profile/main_profile_screen/presentation/cubit/profile_vi
 import '../../features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_view_model.dart'
     as _i480;
 import '../api/api_client.dart' as _i277;
+import '../api/googel_maps_service.dart' as _i997;
 import '../api/network_factory.dart' as _i1013;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -189,10 +200,14 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioProvider = _$DioProvider();
+    gh.factory<_i997.GoogelMapsService>(() => _i997.GoogelMapsService());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));
+    gh.factory<_i848.GetAddressesSuggestionDataSource>(() =>
+        _i263.GetAddressesSuggestionDataSourceImp(
+            gh<_i997.GoogelMapsService>()));
     gh.factory<_i31.UserAddressesRemoteDataSource>(
         () => _i31.UserAddressesRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i550.BestSellerRemoteDataSource>(
@@ -226,6 +241,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i237.BestSellerViewModel(gh<_i480.BestSellerUseCase>()));
     gh.factory<_i85.BestSellerCubit>(
         () => _i85.BestSellerCubit(gh<_i480.BestSellerUseCase>()));
+    gh.factory<_i516.GetAddressesSuggestionRepo>(() =>
+        _i688.GetAddressesSuggestionRepoImp(
+            gh<_i848.GetAddressesSuggestionDataSource>()));
     gh.factory<_i332.ProductsDetailsRemoteDataScource>(
         () => _i382.ProductsDetailsRemoteDataScourceImp(gh<_i277.ApiClient>()));
     gh.factory<_i614.ForgetPasswordViewModel>(
@@ -287,6 +305,9 @@ extension GetItInjectableX on _i174.GetIt {
         _i338.CheckoutCreditRepoImpl(gh<_i575.CheckoutRemoteDataSource>()));
     gh.factory<_i632.GetUserCartCubit>(
         () => _i632.GetUserCartCubit(gh<_i971.GetUserCartUseCase>()));
+    gh.factory<_i75.GetAddressesSuggestioCubit>(() =>
+        _i75.GetAddressesSuggestioCubit(
+            gh<_i516.GetAddressesSuggestionRepo>()));
     gh.factory<_i352.HomeRepo>(
         () => _i20.HomeRepositoryImpl(gh<_i246.HomeDataSource>()));
     gh.factory<_i1001.AddressDetailsUseCase>(

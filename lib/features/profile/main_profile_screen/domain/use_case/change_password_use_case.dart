@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/common/result.dart';
 import '../entity/change_password_entity.dart';
+
 @injectable
 class ChangePasswordUseCase {
   final ChangePasswordRepository _changePasswordRepository;

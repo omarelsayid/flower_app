@@ -8,6 +8,4 @@ abstract class CartRepository {
 
   Future<Result<String>> deleteCartItem(String id);
   Future<Result<String>> updateCartQuantity(String id, int newQuantity);
-
-
 }

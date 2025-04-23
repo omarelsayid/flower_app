@@ -16,7 +16,7 @@ class FlowerCard extends StatelessWidget {
     required this.discountRate,
     required this.name,
     required this.id,
-    this.isLoading=false,
+    this.isLoading = false,
     required this.onAddToCart,
   });
   String imageUrl;
@@ -126,7 +126,7 @@ class FlowerCard extends StatelessWidget {
                 ),
                 SizedBox(
                   child: ElevatedButton(
-                    onPressed:isLoading?null : onAddToCart,
+                    onPressed: isLoading ? null : onAddToCart,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,
                       minimumSize: Size.fromHeight(resposiveHeight(40)),
@@ -136,22 +136,30 @@ class FlowerCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    child: isLoading?Center(child: CircularProgressIndicator(color: AppColors.primaryColor,),):Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        ImageIcon(
-                          AssetImage(IconAssets.cartIcon),
-                          size: MediaQuery.of(context).size.width * 0.04,
-                          color: AppColors.whiteColor,
-                        ),
-                        Text(
-                          "add to card",
-                          style: AppTextStyles.inter400_12.copyWith(
-                            color: AppColors.whiteColor,
-                          ),
-                        ),
-                      ],
-                    ),
+                    child:
+                        isLoading
+                            ? Center(
+                              child: CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              ),
+                            )
+                            : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ImageIcon(
+                                  AssetImage(IconAssets.cartIcon),
+                                  size:
+                                      MediaQuery.of(context).size.width * 0.04,
+                                  color: AppColors.whiteColor,
+                                ),
+                                Text(
+                                  "add to card",
+                                  style: AppTextStyles.inter400_12.copyWith(
+                                    color: AppColors.whiteColor,
+                                  ),
+                                ),
+                              ],
+                            ),
                   ),
                 ),
               ],

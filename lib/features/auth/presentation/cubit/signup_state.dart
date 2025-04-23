@@ -11,7 +11,6 @@ class SuccessSignUpState extends SignUpState {
   SuccessSignUpState(this.success, this.token);
 }
 
-
 class SignUpErrorState extends SignUpState {
   final String message;
   SignUpErrorState(this.message);

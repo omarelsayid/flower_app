@@ -17,14 +17,11 @@ void showLogoutDialog(BuildContext parentContext) {
           return AlertDialog(
             title: SizedBox(
               height: resposiveHeight(50),
-                child: Center(child: Text(S.of(parentContext).logout,))
+              child: Center(child: Text(S.of(parentContext).logout)),
             ),
             content: SizedBox(
               height: resposiveHeight(40),
-              child: Center(
-                 
-                  child: Text(  S.of(parentContext).confirmLogout,)
-              ),
+              child: Center(child: Text(S.of(parentContext).confirmLogout)),
             ),
             actions: [
               Row(
@@ -38,7 +35,9 @@ void showLogoutDialog(BuildContext parentContext) {
                       },
                       child: Text(
                         S.of(parentContext).cancel,
-                        style: AppTextStyles.inter500_14.copyWith(color: AppColors.blackColor),
+                        style: AppTextStyles.inter500_14.copyWith(
+                          color: AppColors.blackColor,
+                        ),
                       ),
                     ),
                   ),
@@ -55,18 +54,21 @@ void showLogoutDialog(BuildContext parentContext) {
                       ),
                       onPressed: () {
                         Navigator.of(innerContext).pop();
-                        BlocProvider.of<ProfileViewModel>(parentContext).doIntent(LogoutClickedIntent());
+                        BlocProvider.of<ProfileViewModel>(
+                          parentContext,
+                        ).doIntent(LogoutClickedIntent());
                       },
                       child: Text(
                         S.of(parentContext).logout,
-                        style: AppTextStyles.inter500_14.copyWith(color: AppColors.whiteColor),
+                        style: AppTextStyles.inter500_14.copyWith(
+                          color: AppColors.whiteColor,
+                        ),
                       ),
                     ),
                   ),
                 ],
-              )
+              ),
             ],
-
           );
         },
       );

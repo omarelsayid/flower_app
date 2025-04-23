@@ -29,20 +29,25 @@ class UserInformationWidget extends StatelessWidget {
             backgroundColor: AppColors.lightPinkColor,
             radius: 50,
             backgroundImage:
-            userData.photo == null || userData.photo!.isEmpty
-                ? AssetImage(ImageAssets.profileImage)
-                : NetworkImage(userData.photo!),
+                userData.photo == null || userData.photo!.isEmpty
+                    ? AssetImage(ImageAssets.profileImage)
+                    : NetworkImage(userData.photo!),
           ),
           Padding(
-            padding: EdgeInsets.only(top:resposiveHeight(16),bottom: resposiveHeight(24)),
+            padding: EdgeInsets.only(
+              top: resposiveHeight(16),
+              bottom: resposiveHeight(24),
+            ),
             child: Column(
               children: [
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(userData.firstName ?? '',style: AppTextStyles.inter500_18),
-                    SizedBox(width: resposiveWidth(8),),
+                    Text(
+                      userData.firstName ?? '',
+                      style: AppTextStyles.inter500_18,
+                    ),
+                    SizedBox(width: resposiveWidth(8)),
                     SizedBox(
                       width: resposiveWidth(24),
                       height: resposiveHeight(24),
@@ -59,7 +64,12 @@ class UserInformationWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(userData.email ?? '',style: AppTextStyles.inter500_18.copyWith(color: AppColors.greyDarkColor),)
+                Text(
+                  userData.email ?? '',
+                  style: AppTextStyles.inter500_18.copyWith(
+                    color: AppColors.greyDarkColor,
+                  ),
+                ),
               ],
             ),
           ),
@@ -68,4 +78,3 @@ class UserInformationWidget extends StatelessWidget {
     );
   }
 }
-

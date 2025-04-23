@@ -200,7 +200,10 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     },
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, PagesRoutes.changePasswordScreen);
+                        Navigator.pushNamed(
+                          context,
+                          PagesRoutes.changePasswordScreen,
+                        );
                       },
                       child: Text(
                         'change',
@@ -245,7 +248,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               SizedBox(height: resposiveHeight(32)),
               BlocConsumer<EditProfileViewModel, EditProfileState>(
                 bloc: widget.editProfileViewModel,
-                listener: (context, state) async{
+                listener: (context, state) async {
                   switch (state) {
                     case EditProfileLoadingState():
                       log('loading');

@@ -1,9 +1,9 @@
 class SpecificCategoriesResponseEntity {
   SpecificCategoriesResponseEntity({
-      this.message, 
-      // this.metadata,
-      this.products,});
-
+    this.message,
+    // this.metadata,
+    this.products,
+  });
 
   String? message;
   // Metadata? metadata;
@@ -12,22 +12,23 @@ class SpecificCategoriesResponseEntity {
 
 class ProductsEntity {
   ProductsEntity({
-      this.id, 
-      this.title, 
-      this.slug, 
-      this.description, 
-      this.imgCover, 
-      this.images, 
-      this.price, 
-      this.priceAfterDiscount, 
-      this.quantity, 
-      this.category, 
-      this.occasion,
-      this.v, 
-      this.discount, 
-      this.sold, 
-      this.rateAvg, 
-      this.rateCount,});
+    this.id,
+    this.title,
+    this.slug,
+    this.description,
+    this.imgCover,
+    this.images,
+    this.price,
+    this.priceAfterDiscount,
+    this.quantity,
+    this.category,
+    this.occasion,
+    this.v,
+    this.discount,
+    this.sold,
+    this.rateAvg,
+    this.rateCount,
+  });
 
   String? id;
   String? title;
@@ -45,8 +46,6 @@ class ProductsEntity {
   num? sold;
   num? rateAvg;
   num? rateCount;
-
-
 }
 
 // class Metadata {

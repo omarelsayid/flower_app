@@ -34,9 +34,7 @@ class PaymentScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              height: resposiveHeight(24),
-            ),
+            SizedBox(height: resposiveHeight(24)),
             Image.asset(
               ImageAssets.paymentSuccess,
               height: resposiveHeight(150),
@@ -48,16 +46,17 @@ class PaymentScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style: AppTextStyles.inter700_20.copyWith(fontSize: 26),
             ),
-            SizedBox(
-              height: resposiveHeight(40),
+            SizedBox(height: resposiveHeight(40)),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                "Track order",
+                style: AppTextStyles.inter700_20.copyWith(
+                  fontSize: 14,
+                  color: AppColors.whiteColor,
+                ),
+              ),
             ),
-            ElevatedButton(onPressed: () {
-              
-            }, child: Text("Track order",
-            style: AppTextStyles.inter700_20.copyWith(
-              fontSize: 14,
-              color: AppColors.whiteColor
-            ),))
           ],
         ),
       ),

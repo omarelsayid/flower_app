@@ -9,7 +9,7 @@ class SignUpRequest extends Equatable {
   final String phone;
   final String gender;
 
- const SignUpRequest({
+  const SignUpRequest({
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -39,7 +39,7 @@ class SignUpRequest extends Equatable {
       "password": password,
       "rePassword": rePassword,
       "phone": phone,
-      "gender": gender
+      "gender": gender,
     };
   }
 
@@ -51,7 +51,6 @@ class SignUpRequest extends Equatable {
     password,
     rePassword,
     phone,
-    gender
+    gender,
   ];
-
 }

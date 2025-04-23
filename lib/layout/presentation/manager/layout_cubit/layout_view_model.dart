@@ -13,55 +13,53 @@ import '../../../../features/home/home_tab/presentation/cubit/best_seller_cubit/
 import '../../../../features/home/categories/presentation/categories_tab.dart';
 import '../../../../features/profile/main_profile_screen/presentation/views/profile_tab.dart';
 
-
-class LayoutViewModel extends Cubit <LayoutState> {
+class LayoutViewModel extends Cubit<LayoutState> {
   LayoutViewModel() : super(LayoutInitialState());
   int currentIndex = 0;
   void doIntent(LayoutIntent layoutIntent) {
-    switch(layoutIntent) {
+    switch (layoutIntent) {
       case LayoutChangeBottomNavIntent():
         _changeBottomNav(layoutIntent.index);
     }
   }
-List<Widget>tabs=[
-  MultiBlocProvider(
-  providers: [
-    BlocProvider(
-  create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
-),
-    BlocProvider(
-      create: (context) => getIt.get<BestSellerCubit>()..getBestSeller(),
+
+  List<Widget> tabs = [
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
+        ),
+        BlocProvider(
+          create: (context) => getIt.get<BestSellerCubit>()..getBestSeller(),
+        ),
+        BlocProvider(
+          create: (context) => getIt.get<OccasionCubit>()..fetchOccasion(),
+        ),
+      ],
+      child: HomeTab(),
     ),
-    BlocProvider(
-      create: (context) => getIt.get<OccasionCubit>()..fetchOccasion(),
+    // OccasionsScreen(),
+    // const HomeTab(),
+    CategoriesTab(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt.get<DeleteSpecificItemCubit>()),
+        BlocProvider(create: (context) => getIt.get<UpdateQuantityCubit>()),
+      ],
+      child: CartTab(),
     ),
-  ],
-  child: HomeTab(),
-),
-  // OccasionsScreen(),
-  // const HomeTab(),
-   CategoriesTab(),
-   MultiBlocProvider(
-  providers: [
-    BlocProvider(
-  create: (context) => getIt.get<DeleteSpecificItemCubit>(),
-),
-    BlocProvider(
-      create: (context) => getIt.get<UpdateQuantityCubit>(),
-    ),
-  ],
-  child: CartTab(),
-),
-  const ProfileTab(),
-];
+    const ProfileTab(),
+  ];
   void _changeBottomNav(int index) {
-    emit( LayoutInitialState());
+    emit(LayoutInitialState());
     currentIndex = index;
     emit(LayoutChangeBottomNavState());
   }
 }
-sealed class LayoutIntent{}
-class LayoutChangeBottomNavIntent extends LayoutIntent{
+
+sealed class LayoutIntent {}
+
+class LayoutChangeBottomNavIntent extends LayoutIntent {
   int index;
-  LayoutChangeBottomNavIntent( this.index);
+  LayoutChangeBottomNavIntent(this.index);
 }

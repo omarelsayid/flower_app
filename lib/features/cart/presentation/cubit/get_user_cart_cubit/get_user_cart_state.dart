@@ -5,16 +5,15 @@ sealed class GetUserCartState {}
 
 final class GetUserCartInitial extends GetUserCartState {}
 
-class GetUserCartSuccess extends GetUserCartState{
-
+class GetUserCartSuccess extends GetUserCartState {
   final UserCartEntity userCartEntity;
 
   GetUserCartSuccess(this.userCartEntity);
-
 }
 
-class GetUserCartLoading extends GetUserCartState{}
-class GetUserCartError extends GetUserCartState{
+class GetUserCartLoading extends GetUserCartState {}
+
+class GetUserCartError extends GetUserCartState {
   final String error;
 
   GetUserCartError(this.error);

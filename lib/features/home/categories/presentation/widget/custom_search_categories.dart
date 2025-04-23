@@ -20,9 +20,7 @@ class CustomSearchCategories extends StatelessWidget {
         hintStyle: AppTextStyles.inter400_14.copyWith(
           color: AppColors.greyColor,
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         prefixIcon: Icon(Icons.search, color: AppColors.greyColor),
       ),
     );

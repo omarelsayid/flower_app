@@ -84,7 +84,6 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
       case PagesRoutes.occasionScreen:
         return MaterialPageRoute(
           builder: (context) => OccasionsScreen(),
@@ -115,7 +114,8 @@ class RoutesGenerator {
         return MaterialPageRoute(
           builder: (context) => EditProfileView(),
           settings: settings,
-        );case PagesRoutes.checkoutScreen:
+        );
+      case PagesRoutes.checkoutScreen:
         return MaterialPageRoute(
           builder: (context) => CheckoutView(),
           settings: settings,
@@ -127,13 +127,20 @@ class RoutesGenerator {
         );
       case PagesRoutes.userAddressesDetailsScreen:
         return MaterialPageRoute(
-            builder: (_) => UserAddressesCardDetailsWidget(), settings: settings);
+          builder: (_) => UserAddressesCardDetailsWidget(),
+          settings: settings,
+        );
       case PagesRoutes.userAddressesScreen:
         return MaterialPageRoute(
-            builder: (_) => UserAddressesView(), settings: settings);
+          builder: (_) => UserAddressesView(),
+          settings: settings,
+        );
 
       case PagesRoutes.addressScreen:
-        return MaterialPageRoute(builder: (context) => AddressDetailsView(), settings: settings,);
+        return MaterialPageRoute(
+          builder: (context) => AddressDetailsView(),
+          settings: settings,
+        );
 
       default:
         return unDefinedRoute();

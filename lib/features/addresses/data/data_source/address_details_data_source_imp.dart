@@ -13,7 +13,9 @@ class AddressDetailsDataSourceImp implements AddressDetailsDataSource {
 
   @override
   Future<void> saveAddressDetails(AddressDTO addressDetailsModel) async {
-    var token = await SharedPreferenceServices.getData(AppConstants.token.toString());
+    var token = await SharedPreferenceServices.getData(
+      AppConstants.token.toString(),
+    );
 
     if (addressDetailsModel.id != null) {
       await apiClient.updateAddress(
@@ -21,13 +23,17 @@ class AddressDetailsDataSourceImp implements AddressDetailsDataSource {
         addressDetailsModel.toJson(),
       );
     } else {
-      await apiClient.saveUserAddress("Bearer $token", addressDetailsModel.toJson());
+      await apiClient.saveUserAddress(
+        "Bearer $token",
+        addressDetailsModel.toJson(),
+      );
     }
   }
 
   @override
-  Future<UserAddressesDTO> updateAddressDetails(AddressDTO addressDetailsModel) async {
-
+  Future<UserAddressesDTO> updateAddressDetails(
+    AddressDTO addressDetailsModel,
+  ) async {
     return await apiClient.updateAddress(
       addressDetailsModel.id!,
       addressDetailsModel.toJson(),

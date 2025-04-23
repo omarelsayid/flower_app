@@ -7,6 +7,7 @@ import 'package:flower_app/features/profile/main_profile_screen/domain/entity/ch
 import 'package:injectable/injectable.dart';
 
 import '../../domain/repository/reset_password_repository.dart';
+
 @Injectable(as: ChangePasswordRepository)
 class ChangePasswordRepositoryImp implements ChangePasswordRepository {
   final ChangePasswordDataSource _changePasswordDataSource;
@@ -16,7 +17,7 @@ class ChangePasswordRepositoryImp implements ChangePasswordRepository {
   @override
   Future<Result<ChangePasswordEntity>> changePassword(
     ChangePasswordRequestModel data,
-  ) async{
+  ) async {
     return await _changePasswordDataSource.changePassword(data);
   }
 }

@@ -15,7 +15,10 @@ class CustomProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, PagesRoutes.productDetails,arguments: product.id
+        Navigator.pushNamed(
+          context,
+          PagesRoutes.productDetails,
+          arguments: product.id,
         );
       },
       child: Container(

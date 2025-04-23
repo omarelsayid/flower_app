@@ -6,9 +6,7 @@ part 'create_cart_reponse.g.dart';
 class CreateCartResponse {
   final String message;
 
-  CreateCartResponse({
-    required this.message,
-  });
+  CreateCartResponse({required this.message});
 
   factory CreateCartResponse.fromJson(Map<String, dynamic> json) =>
       _$CreateCartResponseFromJson(json);

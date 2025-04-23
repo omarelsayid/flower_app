@@ -9,33 +9,25 @@ import '../../../domain/entity/category_entity.dart';
 part 'category_state.dart';
 
 @injectable
-
 class CategoryCubit extends Cubit<CategoryState> {
   CategoryCubit(this.getCategoriesUseCase) : super(CategoryInitial());
   final HomeUseCase getCategoriesUseCase;
 
-
-  Future<void> fetchCategories()async{
-    if(isClosed)
-      return;
+  Future<void> fetchCategories() async {
+    if (isClosed) return;
     emit(CategoryLoading());
 
     final result = await getCategoriesUseCase.executeCategory();
-    switch(result)
-        {
+    switch (result) {
       case Success():
-        if(result.data != null)
-          {
-            if(isClosed)
-              return;
-            emit(CategoriesLoaded(result.data!));
-          }
+        if (result.data != null) {
+          if (isClosed) return;
+          emit(CategoriesLoaded(result.data!));
+        }
 
       case Error():
-        if(isClosed)
-          return;
+        if (isClosed) return;
         emit(CategoriesError(result.exception.toString()));
     }
   }
-
 }

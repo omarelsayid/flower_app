@@ -6,7 +6,6 @@ import '../../../occasions/domain/entity/products_response_entity.dart';
 import '../entity/categories_response_entity.dart';
 import '../entity/specific_category_response_entity.dart';
 
-
 @injectable
 class CategoriesUseCase {
   final CategoriesRepository _categoriesRepository;
@@ -17,17 +16,17 @@ class CategoriesUseCase {
     return _categoriesRepository.getAllCategories();
   }
 
-  Future<Result<SpecificCategoriesResponseEntity>> call(
-    String categoryId,
-  ) {
+  Future<Result<SpecificCategoriesResponseEntity>> call(String categoryId) {
     return _categoriesRepository.getSpecificCategory(categoryId);
   }
+
   Future<List<ProductsEntity>> invoke(String search) {
     return _categoriesRepository.search(search);
   }
-  Future<Result<SpecificCategoriesResponseEntity>> executeFilter(String sort) async{
+
+  Future<Result<SpecificCategoriesResponseEntity>> executeFilter(
+    String sort,
+  ) async {
     return await _categoriesRepository.getFiltered(sort);
-
   }
-
 }

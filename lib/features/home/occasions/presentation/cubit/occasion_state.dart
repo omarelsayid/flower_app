@@ -7,7 +7,7 @@ class LoadingOccasionState extends OccasionState {}
 
 class SuccessOccasionState extends OccasionState {
   final List<Occasion?> occasion;
-  SuccessOccasionState(this.occasion,);
+  SuccessOccasionState(this.occasion);
 }
 
 class ErrorOccasionState extends OccasionState {
@@ -19,5 +19,5 @@ class SuccessSpecificOccasionState extends OccasionState {
   final List<Products> specificOccasion;
   SuccessSpecificOccasionState(this.specificOccasion);
 }
-class ChangeOccasionIndexState extends OccasionState {}
 
+class ChangeOccasionIndexState extends OccasionState {}

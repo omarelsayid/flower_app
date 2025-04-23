@@ -4,6 +4,7 @@ import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/services/location_service.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,26 +19,24 @@ import '../../cubit/address_details_states.dart';
 
 class AddressDetailsViewBody extends StatefulWidget {
   final AddressDTO initialAddress;
-  const AddressDetailsViewBody({Key? key, required this.initialAddress}) : super(key: key);
-
+  const AddressDetailsViewBody({Key? key, required this.initialAddress})
+    : super(key: key);
 
   @override
   State<AddressDetailsViewBody> createState() => _AddressDetailsViewBodyState();
 }
 
 class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
-
   late AddressDTO addressDetailsModel;
   late CameraPosition _initialCameraPosition;
   late LocationService _locationService;
   late GoogleMapController _mapController;
   bool get isEditMode => addressDetailsModel.id != null;
 
-
   late TextEditingController _streetController;
   late TextEditingController _cityController;
   late TextEditingController _areaController;
-  late TextEditingController _phoneNumberController ;
+  late TextEditingController _phoneNumberController;
   late TextEditingController _recipientController;
 
   final AutovalidateMode validateMode = AutovalidateMode.disabled;
@@ -52,8 +51,12 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     super.initState();
     addressDetailsModel = widget.initialAddress;
     _streetController = TextEditingController(text: addressDetailsModel.street);
-    _phoneNumberController = TextEditingController(text: addressDetailsModel.phone);
-    _recipientController = TextEditingController(text: addressDetailsModel.username);
+    _phoneNumberController = TextEditingController(
+      text: addressDetailsModel.phone,
+    );
+    _recipientController = TextEditingController(
+      text: addressDetailsModel.username,
+    );
     _cityController = TextEditingController(text: addressDetailsModel.city);
     _areaController = TextEditingController();
     _initialCameraPosition = const CameraPosition(
@@ -63,7 +66,18 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     _locationService = LocationService();
     _loadMarkerIcon();
 
+    // _setupSearchListener();
   }
+
+  // void _setupSearchListener() {
+  //   _streetController.addListener(() {
+  //     String query = _streetController.text.trim();
+  //     if (query.isNotEmpty) {
+  //       context.read<GetAddressesSuggestioCubit>().getAddressSuggestion(query);
+  //     }
+  //   });
+  // }
+
   Future<void> _loadMarkerIcon() async {
     // _markerBitmap = await BitmapDescriptor.Asset(
     _markerBitmap = await BitmapDescriptor.fromAssetImage(
@@ -145,6 +159,13 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
               ),
               SizedBox(height: resposiveHeight(24)),
               _buildField(
+                onChanged: (p0) {
+                  if (p0.isNotEmpty) {
+                    context
+                        .read<GetAddressesSuggestioCubit>()
+                        .getAddressSuggestion(p0);
+                  }
+                },
                 _streetController,
                 S.of(context).address,
                 S.of(context).enterAddress,
@@ -172,9 +193,9 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                     child: TextFormField(
                       validator:
                           (value) => _fieldValidator(
-                        value,
-                        S.of(context).cityRequired,
-                      ),
+                            value,
+                            S.of(context).cityRequired,
+                          ),
                       controller: _cityController,
                       decoration: InputDecoration(
                         suffixIcon: SvgPicture.asset(
@@ -193,9 +214,9 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                     child: TextFormField(
                       validator:
                           (value) => _fieldValidator(
-                        value,
-                        S.of(context).areaRequired,
-                      ),
+                            value,
+                            S.of(context).areaRequired,
+                          ),
                       controller: _areaController,
                       decoration: InputDecoration(
                         suffixIcon: SvgPicture.asset(
@@ -219,9 +240,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                   child: ElevatedButton(
                     onPressed: isEditMode ? _updateAddress : _saveAddress,
                     child: Text(
-                      isEditMode
-                          ? 'updateAddress'
-                          : S.of(context).saveAddress,
+                      isEditMode ? 'updateAddress' : S.of(context).saveAddress,
                       style: AppTextStyles.roboto500_16.copyWith(
                         color: Colors.white,
                       ),
@@ -236,7 +255,6 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     );
   }
 
-
   void _handleStates(AddressDetailsStates state) {
     switch (state) {
       case AddressDetailsLoading():
@@ -245,7 +263,10 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       case AddressDetailsSuccess():
         EasyLoading.dismiss();
         EasyLoading.showSuccess(S.of(context).addressSavedSuccessfully);
-        Future.delayed(const Duration(milliseconds: 500), () => Navigator.pop(context, true));
+        Future.delayed(
+          const Duration(milliseconds: 500),
+          () => Navigator.pop(context, true),
+        );
         break;
       case AddressDetailsError():
         EasyLoading.showError(state.error);
@@ -253,7 +274,6 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       default:
         break;
     }
-
   }
 
   void _saveAddress() {
@@ -298,14 +318,17 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     }
     return null;
   }
+
   Widget _buildField(
-      TextEditingController controller,
-      String label,
-      String hint,
-      String validatorMsg, {
-        TextInputType? keyboardType,
-      }) {
+    TextEditingController controller,
+    String label,
+    String hint,
+    String validatorMsg, {
+    TextInputType? keyboardType,
+    void Function(String)? onChanged,
+  }) {
     return TextFormField(
+      onChanged: onChanged,
       controller: controller,
       keyboardType: keyboardType,
       decoration: InputDecoration(labelText: label, hintText: hint),

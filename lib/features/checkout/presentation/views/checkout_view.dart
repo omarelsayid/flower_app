@@ -18,8 +18,8 @@ class CheckoutView extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as List<double>;
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getAddressesViewModel,),
-        BlocProvider(create: (context) => getIt.get<CheckoutViewModel>(),)
+        BlocProvider(create: (context) => getAddressesViewModel),
+        BlocProvider(create: (context) => getIt.get<CheckoutViewModel>()),
       ],
       child: Scaffold(
         appBar: AppBar(

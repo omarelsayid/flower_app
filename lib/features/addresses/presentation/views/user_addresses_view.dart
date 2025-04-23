@@ -15,22 +15,31 @@ class UserAddressesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      getIt.get<UserAddressesViewModel>()..doIntent(GetUserAddressesClickedIntent()),
+      create:
+          (context) =>
+              getIt.get<UserAddressesViewModel>()
+                ..doIntent(GetUserAddressesClickedIntent()),
       child: SafeArea(
         child: Column(
           children: [
             Row(
               children: [
-                IconButton(onPressed: () {
-                  Navigator.pop(context);
-                },
-                    icon: Icon(AppIcons.back)
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(AppIcons.back),
                 ),
-                Text(S.of(context).savedAddress,style: AppTextStyles.inter500_20.copyWith(color: AppColors.blackColor,decoration: TextDecoration.none),)
+                Text(
+                  S.of(context).savedAddress,
+                  style: AppTextStyles.inter500_20.copyWith(
+                    color: AppColors.blackColor,
+                    decoration: TextDecoration.none,
+                  ),
+                ),
               ],
             ),
-            Expanded(child:  UserAddressesBuilder())
+            Expanded(child: UserAddressesBuilder()),
           ],
         ),
       ),

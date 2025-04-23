@@ -9,7 +9,7 @@ class UpdateCartQuantityUseCase {
 
   UpdateCartQuantityUseCase(this._cartRepository);
 
-  Future<Result<String>> execute( String id, int newQuantity) {
+  Future<Result<String>> execute(String id, int newQuantity) {
     return _cartRepository.updateCartQuantity(id, newQuantity);
   }
 }

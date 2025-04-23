@@ -79,12 +79,13 @@ class MainAppContent extends StatelessWidget {
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       // initialRoute: PagesRoutes.addressScreen,
-      initialRoute: (SharedPreferenceServices.getData(AppConstants.token) != null &&
-              (SharedPreferenceServices.getData(AppConstants.rememberMe)
-                      as bool? ??
-                  false))
-          ? PagesRoutes.layOutScreen
-          : PagesRoutes.signInScreen,
+      initialRoute:
+          (SharedPreferenceServices.getData(AppConstants.token) != null &&
+                  (SharedPreferenceServices.getData(AppConstants.rememberMe)
+                          as bool? ??
+                      false))
+              ? PagesRoutes.layOutScreen
+              : PagesRoutes.signInScreen,
       builder: (context, child) => child!,
     );
   }

@@ -5,9 +5,10 @@ class LocaleProvider extends ChangeNotifier {
   LocaleProvider() {
     loadLocale();
   }
-  
-  Locale _locale =
-      Locale('ar'); // Use a private field to encapsulate the state.
+
+  Locale _locale = Locale(
+    'ar',
+  ); // Use a private field to encapsulate the state.
 
   Locale get locale => _locale; // Provide a getter for the locale.
 

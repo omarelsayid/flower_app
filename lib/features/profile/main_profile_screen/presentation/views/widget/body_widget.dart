@@ -31,7 +31,7 @@ class BodyWidget extends StatelessWidget {
           ),
           Spacer(),
           InkWell(onTap: onTap, child: Icon(Icons.arrow_forward_ios, size: 20)),
-          SizedBox(width: resposiveWidth(8),)
+          SizedBox(width: resposiveWidth(8)),
         ],
       ),
     );
