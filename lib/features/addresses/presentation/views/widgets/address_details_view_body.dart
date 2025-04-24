@@ -8,6 +8,8 @@ import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/addresses/data/model/auto_complete_model/suggestion.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_states.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_cubit.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_states.dart';
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -125,7 +127,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       Marker marker = Marker(
         markerId: const MarkerId('1'),
         position: target,
-        icon: _markerBitmap, // ✅ Use the loaded bitmap
+        icon: _markerBitmap, 
       );
       _markers.add(marker);
       setState(() {});
@@ -213,50 +215,57 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                 S.of(context).recipientNameRequired,
               ),
               SizedBox(height: resposiveHeight(24)),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      validator:
-                          (value) => _fieldValidator(
-                            value,
-                            S.of(context).cityRequired,
+              BlocListener<PlaceDetailsCubit, PlaceDetailsStates>(
+                listener: (context, state) {
+                  if (state is PlaceDetailsSuccess) {
+                    placeDetailSuccessState(state);
+                  }
+                },
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        validator:
+                            (value) => _fieldValidator(
+                              value,
+                              S.of(context).cityRequired,
+                            ),
+                        controller: _cityController,
+                        decoration: InputDecoration(
+                          suffixIcon: SvgPicture.asset(
+                            SvgImages.dropDownIcon,
+                            width: resposiveWidth(16),
+                            height: resposiveHeight(16),
+                            fit: BoxFit.scaleDown,
                           ),
-                      controller: _cityController,
-                      decoration: InputDecoration(
-                        suffixIcon: SvgPicture.asset(
-                          SvgImages.dropDownIcon,
-                          width: resposiveWidth(16),
-                          height: resposiveHeight(16),
-                          fit: BoxFit.scaleDown,
+                          hintText: S.of(context).cairo,
+                          labelText: S.of(context).city,
                         ),
-                        hintText: S.of(context).cairo,
-                        labelText: S.of(context).city,
                       ),
                     ),
-                  ),
-                  SizedBox(width: resposiveWidth(17)),
-                  Expanded(
-                    child: TextFormField(
-                      validator:
-                          (value) => _fieldValidator(
-                            value,
-                            S.of(context).areaRequired,
+                    SizedBox(width: resposiveWidth(17)),
+                    Expanded(
+                      child: TextFormField(
+                        validator:
+                            (value) => _fieldValidator(
+                              value,
+                              S.of(context).areaRequired,
+                            ),
+                        controller: _areaController,
+                        decoration: InputDecoration(
+                          suffixIcon: SvgPicture.asset(
+                            SvgImages.dropDownIcon,
+                            width: resposiveWidth(16),
+                            height: resposiveHeight(16),
+                            fit: BoxFit.scaleDown,
                           ),
-                      controller: _areaController,
-                      decoration: InputDecoration(
-                        suffixIcon: SvgPicture.asset(
-                          SvgImages.dropDownIcon,
-                          width: resposiveWidth(16),
-                          height: resposiveHeight(16),
-                          fit: BoxFit.scaleDown,
+                          hintText: S.of(context).october,
+                          labelText: S.of(context).area,
                         ),
-                        hintText: S.of(context).october,
-                        labelText: S.of(context).area,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(height: resposiveHeight(24)),
               BlocListener<AddressDetailsCubit, AddressDetailsStates>(
@@ -281,30 +290,73 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     );
   }
 
+  void placeDetailSuccessState(PlaceDetailsSuccess state) {
+             Map placeDetailsMap = state.placeDetailsMap;
+    _cityController.text = placeDetailsMap['city'];
+    _areaController.text = placeDetailsMap['area'];
+    _streetController.text = placeDetailsMap['address'];
+    _mapController.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: LatLng(
+            placeDetailsMap['location'].latitude,
+            placeDetailsMap['location'].longitude,
+          ),
+          zoom: 16,
+        ),
+      ),
+    );
+    Marker marker = Marker(
+      markerId: const MarkerId('1'),
+      position: LatLng(
+        placeDetailsMap['location'].latitude,
+        placeDetailsMap['location'].longitude,
+      ),
+      icon: _markerBitmap, 
+    );
+    _markers.add(marker);
+    setState(() {});
+    
+    addressDetailsModel.copyWith(
+      city: _cityController.text,
+      street: _streetController.text,
+      lat: placeDetailsMap['location'].latitude.toString(),
+      long: placeDetailsMap['location'].longitude.toString(),
+    );
+  }
+
   Container _customSearchListView() {
     return Container(
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    final suggestion = _suggestions[index];
-                    return ListTile(
-                      leading: const Icon(
-                        Icons.location_pin,
-                        color: AppColors.primaryColor,
-                      ),
-                      title: Text(
-                        suggestion.placePrediction!.text!.text.toString(),
-                      ),
-                    );
-                  },
-                  separatorBuilder: (context, index) => Divider(height: 0),
-                  itemCount: _suggestions.length,
-                ),
-              );
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ListView.separated(
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          final suggestion = _suggestions[index];
+          return ListTile(
+            onTap: () async {
+              await context
+                  .read<PlaceDetailsCubit>()
+                  .getPlaceDetails(suggestion.placePrediction!.placeId!)
+                  .then(
+                    (value) => setState(() {
+                      _suggestions = [];
+                    }),
+                  );
+            },
+            leading: const Icon(
+              Icons.location_pin,
+              color: AppColors.primaryColor,
+            ),
+            title: Text(suggestion.placePrediction!.text!.text.toString()),
+          );
+        },
+        separatorBuilder: (context, index) => Divider(height: 0),
+        itemCount: _suggestions.length,
+      ),
+    );
   }
 
   void _handleStates(AddressDetailsStates state) {

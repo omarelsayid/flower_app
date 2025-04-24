@@ -8,4 +8,9 @@ class AppConstants {
 
   static const String editProfile = "Edit Profile";
   static const String locale = "locale";
+
+  static const String addressKey = "address";
+  static const String areaKey = "area";
+  static const String cityKey = "city";
+  static const String locationKey = "location";
 }
