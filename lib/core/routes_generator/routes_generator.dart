@@ -24,6 +24,7 @@ import '../../features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart
 import '../../features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
 import '../../features/profile/main_profile_screen/presentation/views/change_password_screen.dart';
 import '../../features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
+import '../../features/profile/main_profile_screen/presentation/views/notification_screen.dart';
 import '../di/injectable_initializer.dart';
 import '../widgets/test_screen.dart';
 
@@ -84,7 +85,6 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
       case PagesRoutes.occasionScreen:
         return MaterialPageRoute(
           builder: (context) => OccasionsScreen(),
@@ -115,7 +115,8 @@ class RoutesGenerator {
         return MaterialPageRoute(
           builder: (context) => EditProfileView(),
           settings: settings,
-        );case PagesRoutes.checkoutScreen:
+        );
+      case PagesRoutes.checkoutScreen:
         return MaterialPageRoute(
           builder: (context) => CheckoutView(),
           settings: settings,
@@ -127,14 +128,25 @@ class RoutesGenerator {
         );
       case PagesRoutes.userAddressesDetailsScreen:
         return MaterialPageRoute(
-            builder: (_) => UserAddressesCardDetailsWidget(), settings: settings);
+          builder: (_) => UserAddressesCardDetailsWidget(),
+          settings: settings,
+        );
       case PagesRoutes.userAddressesScreen:
         return MaterialPageRoute(
-            builder: (_) => UserAddressesView(), settings: settings);
+          builder: (_) => UserAddressesView(),
+          settings: settings,
+        );
 
       case PagesRoutes.addressScreen:
-        return MaterialPageRoute(builder: (context) => AddressDetailsView(), settings: settings,);
-
+        return MaterialPageRoute(
+          builder: (context) => AddressDetailsView(),
+          settings: settings,
+        );
+      case PagesRoutes.notificationScreen:
+        return MaterialPageRoute(
+          builder: (context) => NotificationScreen(),
+          settings: settings,
+        );
       default:
         return unDefinedRoute();
     }

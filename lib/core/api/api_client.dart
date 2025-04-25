@@ -14,7 +14,10 @@ import 'package:flower_app/features/auth/domain/entity/sign_in_request.dart';
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart';
 import 'package:flower_app/features/home/occasions/data/model/occasions_dto.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/change_password_model.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/delete_notifiacation_response_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/edit_profile_response_dto.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/get_all_notification_response_model.dart';
+import 'package:flower_app/features/profile/main_profile_screen/data/model/get_notification_details_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/data/model/profile_response_dto.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -33,6 +36,7 @@ import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';
 import '../../features/auth/domain/entity/sign_up_request.dart';
 import '../../features/profile/main_profile_screen/data/model/change_password_request_model.dart';
+import '../../features/profile/main_profile_screen/domain/entity/get_notification_details_entity.dart';
 
 part 'api_client.g.dart';
 
@@ -190,4 +194,19 @@ abstract class ApiClient {
 
   @GET("/api/v1/auth/profile-data")
   Future<ProfileResponseDTO> getProfileData();
+  @GET("/api/v1/notifications")
+  Future<GetAllNotificationResponseModel> getAllNotifications(
+    @Header("Authorization") String token,
+      @Query("sort") String sort,
+      );
+  @GET("/api/v1/notifications/{id}")
+ Future<GetNotificationDetailsModel> getNotificationDetails(
+    @Header("Authorization") String token,
+    @Path("id") String id,
+  );
+  @DELETE("/api/v1/notifications/{id}")
+  Future<DeleteNotificationResponseModel> deleteNotification(
+    @Header("Authorization") String token,
+    @Path("id") String id,
+  );
 }
