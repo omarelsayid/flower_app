@@ -1,11 +1,14 @@
 import 'dart:developer';
 
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/services/localization_service.dart';
 import 'package:flower_app/core/services/location_service.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/addresses/data/model/auto_complete_model/suggestion.dart';
+import 'package:flower_app/features/addresses/domain/entity/city_entity.dart';
+import 'package:flower_app/features/addresses/domain/entity/states_entity.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_states.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_cubit.dart';
@@ -51,6 +54,8 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   List<Suggestion> _suggestions = [];
 
   final _formKey = GlobalKey<FormState>();
+  String? selectedCity;
+  String? selectedState;
 
   @override
   void initState() {
@@ -127,7 +132,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       Marker marker = Marker(
         markerId: const MarkerId('1'),
         position: target,
-        icon: _markerBitmap, 
+        icon: _markerBitmap,
       );
       _markers.add(marker);
       setState(() {});
@@ -142,6 +147,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final String locale = context.watch<LocaleProvider>().locale.languageCode;
     return Form(
       key: _formKey,
       autovalidateMode: AutovalidateMode.disabled,
@@ -223,45 +229,74 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                 },
                 child: Row(
                   children: [
-                    Expanded(
-                      child: TextFormField(
-                        validator:
-                            (value) => _fieldValidator(
-                              value,
-                              S.of(context).cityRequired,
-                            ),
-                        controller: _cityController,
-                        decoration: InputDecoration(
-                          suffixIcon: SvgPicture.asset(
-                            SvgImages.dropDownIcon,
-                            width: resposiveWidth(16),
-                            height: resposiveHeight(16),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          hintText: S.of(context).cairo,
-                          labelText: S.of(context).city,
+                    // First Dropdown with fixed size
+                    SizedBox(
+                      width: 163,
+                      height: 56,
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        icon: SvgPicture.asset(
+                          SvgImages.dropDownIcon,
+                          fit: BoxFit.scaleDown,
                         ),
+                        hint: Text('city'),
+                        value: selectedCity,
+                        items:
+                            cities.map((state) {
+                              return DropdownMenuItem<String>(
+                                value:
+                                    locale == 'en'
+                                        ? state.governorateNameEn
+                                        : state.governorateNameAr,
+                                child: Text(
+                                  locale == 'en'
+                                      ? state.governorateNameEn
+                                      : state.governorateNameAr,
+                                ),
+                              );
+                            }).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedCity = value;
+                          });
+                        },
                       ),
                     ),
-                    SizedBox(width: resposiveWidth(17)),
-                    Expanded(
-                      child: TextFormField(
-                        validator:
-                            (value) => _fieldValidator(
-                              value,
-                              S.of(context).areaRequired,
-                            ),
-                        controller: _areaController,
-                        decoration: InputDecoration(
-                          suffixIcon: SvgPicture.asset(
-                            SvgImages.dropDownIcon,
-                            width: resposiveWidth(16),
-                            height: resposiveHeight(16),
-                            fit: BoxFit.scaleDown,
-                          ),
-                          hintText: S.of(context).october,
-                          labelText: S.of(context).area,
+
+                    // SizedBox between dropdowns
+                    SizedBox(width: 17),
+
+                    // Second Dropdown with same size
+                    SizedBox(
+                      width: 163,
+                      height: 56,
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        icon: SvgPicture.asset(
+                          SvgImages.dropDownIcon,
+                          fit: BoxFit.scaleDown,
                         ),
+                        hint: Text('Area'),
+                        value: selectedState,
+                        items:
+                            states.map((state) {
+                              return DropdownMenuItem<String>(
+                                value:
+                                    locale == 'en'
+                                        ? state.cityNameEn
+                                        : state.cityNameAr,
+                                child: Text(
+                                  locale == 'en'
+                                      ? state.cityNameEn
+                                      : state.cityNameAr,
+                                ),
+                              );
+                            }).toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedState = value;
+                          });
+                        },
                       ),
                     ),
                   ],
@@ -291,7 +326,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   }
 
   void placeDetailSuccessState(PlaceDetailsSuccess state) {
-             Map placeDetailsMap = state.placeDetailsMap;
+    Map placeDetailsMap = state.placeDetailsMap;
     _cityController.text = placeDetailsMap['city'];
     _areaController.text = placeDetailsMap['area'];
     _streetController.text = placeDetailsMap['address'];
@@ -312,11 +347,11 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
         placeDetailsMap['location'].latitude,
         placeDetailsMap['location'].longitude,
       ),
-      icon: _markerBitmap, 
+      icon: _markerBitmap,
     );
     _markers.add(marker);
     setState(() {});
-    
+
     addressDetailsModel.copyWith(
       city: _cityController.text,
       street: _streetController.text,

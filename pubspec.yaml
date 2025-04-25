@@ -10,6 +10,7 @@ dependencies:
   bloc_test: ^10.0.0
   cached_network_image: ^3.3.0
   dio: ^5.8.0+1
+  dropdown_button2: ^2.3.9
   equatable: null
   flutter:
     sdk: flutter

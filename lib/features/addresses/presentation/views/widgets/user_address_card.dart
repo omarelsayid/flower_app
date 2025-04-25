@@ -52,10 +52,13 @@ class AddressCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: resposiveWidth(8)),
-                    Text(
-                      address.city ?? '',
-                      style: AppTextStyles.inter500_16.copyWith(
-                        color: AppColors.blackColor,
+                    Expanded(
+                      child: Text(
+                        address.city ?? '',
+                        style: AppTextStyles.inter500_16.copyWith(
+                          color: AppColors.blackColor,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                     Spacer(),
