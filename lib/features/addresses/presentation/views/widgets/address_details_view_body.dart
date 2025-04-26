@@ -52,9 +52,10 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   late BitmapDescriptor _markerBitmap;
   Set<Marker> _markers = {};
   List<Suggestion> _suggestions = [];
+  List<StateEntity> statesFilter = [];
 
   final _formKey = GlobalKey<FormState>();
-  String? selectedCity;
+  CityEntity? selectedCity;
   String? selectedState;
 
   @override
@@ -233,7 +234,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                     SizedBox(
                       width: 163,
                       height: 56,
-                      child: DropdownButton<String>(
+                      child: DropdownButton<CityEntity>(
                         isExpanded: true,
                         icon: SvgPicture.asset(
                           SvgImages.dropDownIcon,
@@ -243,11 +244,8 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                         value: selectedCity,
                         items:
                             cities.map((state) {
-                              return DropdownMenuItem<String>(
-                                value:
-                                    locale == 'en'
-                                        ? state.governorateNameEn
-                                        : state.governorateNameAr,
+                              return DropdownMenuItem(
+                                value: state,
                                 child: Text(
                                   locale == 'en'
                                       ? state.governorateNameEn
@@ -259,6 +257,10 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                           setState(() {
                             selectedCity = value;
                           });
+                          statesFilter =
+                              states.where((state) {
+                                return state.governorateId == selectedCity!.id;
+                              }).toList();
                         },
                       ),
                     ),
@@ -279,7 +281,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                         hint: Text('Area'),
                         value: selectedState,
                         items:
-                            states.map((state) {
+                            statesFilter.map((state) {
                               return DropdownMenuItem<String>(
                                 value:
                                     locale == 'en'
