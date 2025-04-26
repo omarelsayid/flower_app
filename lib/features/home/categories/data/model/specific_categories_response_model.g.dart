@@ -7,20 +7,21 @@ part of 'specific_categories_response_model.dart';
 // **************************************************************************
 
 SpecificCategoriesResponseModel _$SpecificCategoriesResponseModelFromJson(
-        Map<String, dynamic> json) =>
-    SpecificCategoriesResponseModel(
-      message: json['message'] as String?,
-      products: (json['products'] as List<dynamic>?)
+  Map<String, dynamic> json,
+) => SpecificCategoriesResponseModel(
+  message: json['message'] as String?,
+  products:
+      (json['products'] as List<dynamic>?)
           ?.map((e) => ProductsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-    );
+);
 
 Map<String, dynamic> _$SpecificCategoriesResponseModelToJson(
-        SpecificCategoriesResponseModel instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-      'products': instance.products,
-    };
+  SpecificCategoriesResponseModel instance,
+) => <String, dynamic>{
+  'message': instance.message,
+  'products': instance.products,
+};
 
 ProductsModel _$ProductsModelFromJson(Map<String, dynamic> json) =>
     ProductsModel(

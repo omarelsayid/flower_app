@@ -7,13 +7,9 @@ part of 'update_cart_quantity_response_dto.dart';
 // **************************************************************************
 
 UpdateCartQuantityResponseDTO _$UpdateCartQuantityResponseDTOFromJson(
-        Map<String, dynamic> json) =>
-    UpdateCartQuantityResponseDTO(
-      message: json['message'] as String,
-    );
+  Map<String, dynamic> json,
+) => UpdateCartQuantityResponseDTO(message: json['message'] as String);
 
 Map<String, dynamic> _$UpdateCartQuantityResponseDTOToJson(
-        UpdateCartQuantityResponseDTO instance) =>
-    <String, dynamic>{
-      'message': instance.message,
-    };
+  UpdateCartQuantityResponseDTO instance,
+) => <String, dynamic>{'message': instance.message};

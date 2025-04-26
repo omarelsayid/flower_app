@@ -7,6 +7,7 @@ import 'package:flower_app/core/utils/app_assets.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/addresses/data/model/auto_complete_model/suggestion.dart';
+import 'package:flower_app/features/addresses/data/model/place_details_model/place_details_model.dart';
 import 'package:flower_app/features/addresses/domain/entity/city_entity.dart';
 import 'package:flower_app/features/addresses/domain/entity/states_entity.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
@@ -42,7 +43,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   bool get isEditMode => addressDetailsModel.id != null;
 
   late TextEditingController _streetController;
-  late TextEditingController _cityController;
+  // late TextEditingController _cityController;
   late TextEditingController _areaController;
   late TextEditingController _phoneNumberController;
   late TextEditingController _recipientController;
@@ -69,7 +70,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     _recipientController = TextEditingController(
       text: addressDetailsModel.username,
     );
-    _cityController = TextEditingController(text: addressDetailsModel.city);
+    // _cityController = TextEditingController(text: addressDetailsModel.city);
     _areaController = TextEditingController();
     _initialCameraPosition = const CameraPosition(
       target: LatLng(23.580902573252857, 32.01367325581865),
@@ -77,18 +78,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     );
     _locationService = LocationService();
     _loadMarkerIcon();
-
-    // _setupSearchListener();
   }
-
-  // void _setupSearchListener() {
-  //   _streetController.addListener(() {
-  //     String query = _streetController.text.trim();
-  //     if (query.isNotEmpty) {
-  //       context.read<GetAddressesSuggestioCubit>().getAddressSuggestion(query);
-  //     }
-  //   });
-  // }
 
   void _loadMarkerIcon() async {
     // _markerBitmap = await BitmapDescriptor.Asset(
@@ -120,13 +110,13 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       if (places.isNotEmpty) {
         final place = places.length > 1 ? places[1] : places.first;
         _streetController.text = place.street ?? '';
-        _cityController.text = place.administrativeArea ?? '';
+        // _cityController.text = place.administrativeArea ?? '';
         _areaController.text = place.subAdministrativeArea ?? '';
         addressDetailsModel = addressDetailsModel.copyWith(
           lat: target.latitude.toString(),
           long: target.longitude.toString(),
           street: _streetController.text,
-          city: _cityController.text,
+          // city: _cityController.text,
         );
       }
 
@@ -272,6 +262,12 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                                 states
                                     .where((s) => s.governorateId == value!.id)
                                     .toList();
+                            addressDetailsModel.copyWith(
+                              city:
+                                  locale == 'en'
+                                      ? value!.governorateNameEn
+                                      : value!.governorateNameAr,
+                            );
                             selectedState = null;
                           });
                         },
@@ -358,16 +354,14 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   }
 
   void placeDetailSuccessState(PlaceDetailsSuccess state) {
-    Map placeDetailsMap = state.placeDetailsMap;
-    _cityController.text = placeDetailsMap['city'];
-    _areaController.text = placeDetailsMap['area'];
-    _streetController.text = placeDetailsMap['address'];
+    PlaceDetailsModel placeDetails = state.placeDetails;
+    _streetController.text = placeDetails.formattedAddress!;
     _mapController.animateCamera(
       CameraUpdate.newCameraPosition(
         CameraPosition(
           target: LatLng(
-            placeDetailsMap['location'].latitude,
-            placeDetailsMap['location'].longitude,
+            placeDetails.location!.latitude!,
+            placeDetails.location!.longitude!,
           ),
           zoom: 16,
         ),
@@ -376,8 +370,8 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     Marker marker = Marker(
       markerId: const MarkerId('1'),
       position: LatLng(
-        placeDetailsMap['location'].latitude,
-        placeDetailsMap['location'].longitude,
+        placeDetails.location!.latitude!,
+        placeDetails.location!.longitude!,
       ),
       icon: _markerBitmap,
     );
@@ -385,10 +379,9 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     setState(() {});
 
     addressDetailsModel.copyWith(
-      city: _cityController.text,
       street: _streetController.text,
-      lat: placeDetailsMap['location'].latitude.toString(),
-      long: placeDetailsMap['location'].longitude.toString(),
+      lat: placeDetails.location!.latitude.toString(),
+      long: placeDetails.location!.longitude.toString(),
     );
   }
 
@@ -453,7 +446,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       street: _streetController.text,
       phone: _phoneNumberController.text,
       username: _recipientController.text,
-      city: _cityController.text,
+      city: selectedCity!.governorateNameEn,
     );
     context.read<AddressDetailsCubit>().saveUserAddress(addressDetailsModel);
   }
@@ -464,7 +457,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       street: _streetController.text,
       phone: _phoneNumberController.text,
       username: _recipientController.text,
-      city: _cityController.text,
+      city: selectedCity!.governorateNameEn,
     );
     context.read<AddressDetailsCubit>().updateUserAddress(addressDetailsModel);
   }
