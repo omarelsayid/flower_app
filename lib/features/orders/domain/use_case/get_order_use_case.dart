@@ -1,7 +1,9 @@
 import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/features/orders/domain/entites/orders_response_entity.dart';
 import 'package:flower_app/features/orders/domain/repo/get_orders_repo.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class GetOrderUseCase {
   final GetOrdersRepo _getOrdersRepo;
   GetOrderUseCase(this._getOrdersRepo);

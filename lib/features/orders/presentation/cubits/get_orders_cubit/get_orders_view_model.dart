@@ -2,7 +2,9 @@ import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/features/orders/domain/use_case/get_order_use_case.dart';
 import 'package:flower_app/features/orders/presentation/cubits/get_orders_cubit/get_orders_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class GetOrdersViewModel extends Cubit<GetOrdersStates> {
   final GetOrderUseCase _getOrderUseCase;
   GetOrdersViewModel(this._getOrderUseCase) : super(GetOrdersInitialState());
