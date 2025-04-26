@@ -106,10 +106,13 @@ class AddressCard extends StatelessWidget {
                       //     color: AppColors.greyDarkColor,
                       //   ),
                       // ),
-                      Text(
-                        "- ${address.street ?? ''}",
-                        style: AppTextStyles.inter500_13.copyWith(
-                          color: AppColors.greyDarkColor,
+                      Expanded(
+                        child: Text(
+                          overflow: TextOverflow.ellipsis,
+                          "- ${address.street ?? ''}",
+                          style: AppTextStyles.inter500_13.copyWith(
+                            color: AppColors.greyDarkColor,
+                          ),
                         ),
                       ),
                     ],
