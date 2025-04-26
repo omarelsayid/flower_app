@@ -1,3 +1,4 @@
+import 'package:flower_app/features/orders/domain/entites/orders_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'orders_response_dto.g.dart';
@@ -14,6 +15,11 @@ class OrdersResponseDTO {
       _$OrdersResponseDTOFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrdersResponseDTOToJson(this);
+
+  OrdersResponseEntity toEntity() => OrdersResponseEntity(
+    message: message,
+    orders: orders?.map((e) => e.toEntity()).toList(),
+  );
 }
 
 @JsonSerializable()
@@ -63,6 +69,20 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderToJson(this);
+
+  OrderEntity toEntity() => OrderEntity(
+    id: id,
+    user: user,
+    orderItems: orderItems?.map((e) => e.toEntity()).toList(),
+    totalPrice: totalPrice,
+    paymentType: paymentType,
+    isPaid: isPaid,
+    isDelivered: isDelivered,
+    state: state,
+    createdAt: createdAt,
+    updatedAt: updatedAt,
+    orderNumber: orderNumber,
+  );
 }
 
 @JsonSerializable()
@@ -77,6 +97,12 @@ class OrderItem {
       _$OrderItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderItemToJson(this);
+
+  OrderItemEntity toEntity() => OrderItemEntity(
+    product: product?.toEntity(),
+    price: price,
+    quantity: quantity,
+  );
 }
 
 @JsonSerializable()
@@ -124,4 +150,24 @@ class Product {
       _$ProductFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductToJson(this);
+
+  ProductEntity toEntity() => ProductEntity(
+    id: id,
+    title: title,
+    slug: slug,
+    description: description,
+    imgCover: imgCover,
+    images: images,
+    price: price,
+    priceAfterDiscount: priceAfterDiscount,
+    quantity: quantity,
+    category: category,
+    occasion: occasion,
+    createdAt: createdAt,
+    updatedAt: updatedAt,
+    discount: discount,
+    sold: sold,
+    rateAvg: rateAvg,
+    rateCount: rateCount,
+  );
 }
