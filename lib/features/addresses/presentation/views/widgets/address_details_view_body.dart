@@ -230,75 +230,105 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                 },
                 child: Row(
                   children: [
-                    // First Dropdown with fixed size
-                    SizedBox(
-                      width: 163,
-                      height: 56,
-                      child: DropdownButton<CityEntity>(
-                        isExpanded: true,
-                        icon: SvgPicture.asset(
-                          SvgImages.dropDownIcon,
-                          fit: BoxFit.scaleDown,
+                    // City Dropdown
+                    Expanded(
+                      child: DropdownButtonFormField<CityEntity>(
+                        icon: SizedBox(
+                          height: resposiveHeight(16),
+                          width: resposiveWidth(16),
+                          child: SvgPicture.asset(
+                            SvgImages.dropDownIcon,
+                            fit: BoxFit.fitHeight,
+                          ),
                         ),
-                        hint: Text('city'),
+                        isDense: true,
+                        isExpanded: true,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: resposiveWidth(8),
+                            vertical: resposiveHeight(8),
+                          ),
+                          labelText: locale == 'en' ? 'City' : 'المدينة',
+                          border: OutlineInputBorder(),
+                        ),
                         value: selectedCity,
                         items:
-                            cities.map((state) {
-                              return DropdownMenuItem(
-                                value: state,
+                            cities.map((city) {
+                              return DropdownMenuItem<CityEntity>(
+                                value: city,
                                 child: Text(
                                   locale == 'en'
-                                      ? state.governorateNameEn
-                                      : state.governorateNameAr,
+                                      ? city.governorateNameEn
+                                      : city.governorateNameAr,
                                 ),
                               );
                             }).toList(),
-                        onChanged: (value) {
+                        onChanged: (CityEntity? value) {
                           setState(() {
                             selectedCity = value;
+                            selectedState = null;
+                            // Filter states for new city
+                            statesFilter =
+                                states
+                                    .where((s) => s.governorateId == value!.id)
+                                    .toList();
+                            selectedState = null;
                           });
-                          statesFilter =
-                              states.where((state) {
-                                return state.governorateId == selectedCity!.id;
-                              }).toList();
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return S.of(context).cityRequired;
+                          }
+                          return null;
                         },
                       ),
                     ),
 
-                    // SizedBox between dropdowns
-                    SizedBox(width: 17),
+                    SizedBox(width: resposiveWidth(14)),
 
-                    // Second Dropdown with same size
-                    SizedBox(
-                      width: 163,
-                      height: 56,
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        icon: SvgPicture.asset(
-                          SvgImages.dropDownIcon,
-                          fit: BoxFit.scaleDown,
+                    // Area Dropdown
+                    Expanded(
+                      child: DropdownButtonFormField<String>(
+                        icon: SizedBox(
+                          height: resposiveHeight(16),
+                          width: resposiveWidth(16),
+                          child: SvgPicture.asset(
+                            SvgImages.dropDownIcon,
+                            fit: BoxFit.fitHeight,
+                          ),
                         ),
-                        hint: Text('Area'),
+                        isExpanded: true,
+                        isDense: true,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: resposiveWidth(8),
+                            vertical: resposiveHeight(8),
+                          ),
+                          labelText: locale == 'en' ? 'Area' : 'المنطقة',
+                          border: OutlineInputBorder(),
+                        ),
                         value: selectedState,
                         items:
                             statesFilter.map((state) {
-                              return DropdownMenuItem<String>(
-                                value:
-                                    locale == 'en'
-                                        ? state.cityNameEn
-                                        : state.cityNameAr,
-                                child: Text(
+                              final name =
                                   locale == 'en'
                                       ? state.cityNameEn
-                                      : state.cityNameAr,
-                                ),
+                                      : state.cityNameAr;
+                              return DropdownMenuItem<String>(
+                                value: name,
+                                child: Text(name),
                               );
                             }).toList(),
-                        onChanged: (value) {
+                        onChanged: (String? value) {
                           setState(() {
                             selectedState = value;
                           });
                         },
+                        validator:
+                            (value) =>
+                                value == null
+                                    ? S.of(context).areaRequired
+                                    : null,
                       ),
                     ),
                   ],
