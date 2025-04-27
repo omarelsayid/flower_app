@@ -6,6 +6,7 @@ import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:flower_app/features/orders/domain/entites/orders_response_entity.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -20,7 +21,8 @@ class CompletedOrderWidget extends StatelessWidget {
     return ordersCompleted.isEmpty
         ? Center(
           child: Text(
-            'Not found Active Orders',
+            S.of(context).notfoundCompletedOrders,
+
             style: AppTextStyles.roboto500_18,
           ),
         )
@@ -65,11 +67,11 @@ class CompletedOrderWidget extends StatelessWidget {
                           style: AppTextStyles.inter400_12,
                         ),
                         Text(
-                          "EGP ${total.toString() ?? ''}",
+                          "${S.of(context).EGP} ${total.toString() ?? ''}",
                           style: AppTextStyles.inter500_14,
                         ),
                         Text(
-                          "Delivered on ${ordersCompleted[index].isDelivered.toString() ?? ''}",
+                          "${S.of(context).Deliveredon} ${ordersCompleted[index].isDelivered.toString() ?? ''}",
                           style: AppTextStyles.inter400_12,
                         ),
                         SizedBox(height: resposiveHeight(8)),
@@ -98,7 +100,7 @@ class CompletedOrderWidget extends StatelessWidget {
                                   });
                                 },
                                 child: Text(
-                                  "Reorder",
+                                  S.of(context).Reorder,
                                   style: AppTextStyles.inter500_13.copyWith(
                                     color: AppColors.whiteColor,
                                   ),

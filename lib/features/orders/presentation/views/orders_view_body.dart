@@ -8,6 +8,7 @@ import 'package:flower_app/features/orders/presentation/cubits/get_orders_cubit/
 import 'package:flower_app/features/orders/presentation/cubits/get_orders_cubit/get_orders_view_model.dart';
 import 'package:flower_app/features/orders/presentation/views/widgets/active_order_widget.dart';
 import 'package:flower_app/features/orders/presentation/views/widgets/completed_order_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -87,11 +88,11 @@ class _OrdersViewBodyState extends State<OrdersViewBody> {
                   child: TabBar(
                     tabs: [
                       Tab(
-                        child: Text('Active', style: AppTextStyles.inter400_16),
+                        child: Text(S.of(context).active, style: AppTextStyles.inter400_16),
                       ),
                       Tab(
                         child: Text(
-                          'Completed',
+                          S.of(context).completed,
                           style: AppTextStyles.inter400_16,
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/orders/presentation/cubits/get_orders_cubit/get_orders_view_model.dart';
 import 'package:flower_app/features/orders/presentation/views/orders_view_body.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,11 +17,9 @@ class OrdersView extends StatelessWidget {
       create: (context) => getOrdersViewModel,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('My Orders', style: AppTextStyles.roboto500_18),
+          title: Text(S.of(context).myOrder, style: AppTextStyles.roboto500_18),
         ),
-        body: OrdersViewBody(
-            getOrdersViewModel:getOrdersViewModel
-        ),
+        body: OrdersViewBody(getOrdersViewModel: getOrdersViewModel),
       ),
     );
   }

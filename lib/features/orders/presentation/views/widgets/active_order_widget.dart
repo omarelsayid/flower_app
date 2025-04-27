@@ -3,6 +3,7 @@ import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/orders/domain/entites/orders_response_entity.dart';
 import 'package:flower_app/features/orders/presentation/views/widgets/completed_order_widget.dart';
+import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class ActiveOrderWidget extends StatelessWidget {
@@ -14,7 +15,7 @@ class ActiveOrderWidget extends StatelessWidget {
     return ordersActive.isEmpty
         ? Center(
           child: Text(
-            'Not found Active Orders',
+            S.of(context).notfoundActiveOrders,
             style: AppTextStyles.roboto500_18,
           ),
         )
@@ -53,11 +54,11 @@ class ActiveOrderWidget extends StatelessWidget {
                           style: AppTextStyles.inter400_12,
                         ),
                         Text(
-                          "EGP ${total.toString() ?? ''}",
+                          "${S.of(context).EGP} ${total.toString() ?? ''}",
                           style: AppTextStyles.inter500_14,
                         ),
                         Text(
-                          "Order Number ${ordersActive[index].orderNumber.toString() ?? ''}",
+                          "${S.of(context).OrderNumber} ${ordersActive[index].orderNumber.toString() ?? ''}",
                           style: AppTextStyles.inter400_12,
                         ),
                         SizedBox(height: resposiveHeight(8)),
@@ -67,7 +68,7 @@ class ActiveOrderWidget extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {},
                             child: Text(
-                              "Track Order",
+                              S.of(context).TrackOrder,
                               style: AppTextStyles.inter500_13.copyWith(
                                 color: AppColors.whiteColor,
                               ),
