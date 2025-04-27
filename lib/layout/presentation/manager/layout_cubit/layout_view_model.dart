@@ -1,3 +1,4 @@
+import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
 import 'package:flower_app/layout/presentation/manager/layout_cubit/layout_state.dart';
@@ -41,8 +42,9 @@ class LayoutViewModel extends Cubit<LayoutState> {
     CategoriesTab(),
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => getIt.get<DeleteSpecificItemCubit>()),
-        BlocProvider(create: (context) => getIt.get<UpdateQuantityCubit>()),
+        BlocProvider.value(value: getIt.get<DeleteSpecificItemCubit>()),
+        BlocProvider.value(value: getIt.get<UpdateQuantityCubit>()),
+        BlocProvider.value(value: getIt.get<GetUserCartCubit>()..GetUserCart()),
       ],
       child: CartTab(),
     ),

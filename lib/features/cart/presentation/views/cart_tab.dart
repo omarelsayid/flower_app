@@ -27,7 +27,7 @@ class _CartTabState extends State<CartTab> {
   @override
   void initState() {
     super.initState();
-    context.read<GetUserCartCubit>().GetUserCart();
+    
   }
 
   @override
