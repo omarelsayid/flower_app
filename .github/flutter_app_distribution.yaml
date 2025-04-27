@@ -12,6 +12,7 @@ on:
     branches:
       - development
       - googel-maps-improvments-#2
+      - test-app-distribution
 jobs:
   build:
     runs-on: ubuntu-latest
