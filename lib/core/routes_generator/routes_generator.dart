@@ -10,6 +10,7 @@ import 'package:flower_app/features/auth/presentation/views/sign_in_screen.dart'
 import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/products_details_view.dart';
 import 'package:flower_app/features/home/occasions/presentation/views/occasion_screen.dart';
+import 'package:flower_app/features/orders/presentation/views/orders_view.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,7 +85,6 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
       case PagesRoutes.occasionScreen:
         return MaterialPageRoute(
           builder: (context) => OccasionsScreen(),
@@ -115,7 +115,8 @@ class RoutesGenerator {
         return MaterialPageRoute(
           builder: (context) => EditProfileView(),
           settings: settings,
-        );case PagesRoutes.checkoutScreen:
+        );
+      case PagesRoutes.checkoutScreen:
         return MaterialPageRoute(
           builder: (context) => CheckoutView(),
           settings: settings,
@@ -127,13 +128,25 @@ class RoutesGenerator {
         );
       case PagesRoutes.userAddressesDetailsScreen:
         return MaterialPageRoute(
-            builder: (_) => UserAddressesCardDetailsWidget(), settings: settings);
+          builder: (_) => UserAddressesCardDetailsWidget(),
+          settings: settings,
+        );
       case PagesRoutes.userAddressesScreen:
         return MaterialPageRoute(
-            builder: (_) => UserAddressesView(), settings: settings);
+          builder: (_) => UserAddressesView(),
+          settings: settings,
+        );
 
       case PagesRoutes.addressScreen:
-        return MaterialPageRoute(builder: (context) => AddressDetailsView(), settings: settings,);
+        return MaterialPageRoute(
+          builder: (context) => AddressDetailsView(),
+          settings: settings,
+        );
+      case PagesRoutes.ordersScreen:
+        return MaterialPageRoute(
+          builder: (context) => OrdersView(),
+          settings: settings,
+        );
 
       default:
         return unDefinedRoute();
