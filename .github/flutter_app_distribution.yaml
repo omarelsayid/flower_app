@@ -1,4 +1,4 @@
-name: Flutter
+name: Flutter App Distribution
 
 on:
   push:
@@ -8,7 +8,8 @@ on:
 
   pull_request:
     branches:
-      - development    
+      - development
+      - googel-maps-improvments-#2
 jobs:
   build:
     runs-on: ubuntu-latest
