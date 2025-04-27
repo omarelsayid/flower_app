@@ -38,6 +38,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
     return Scaffold(
       body: MultiBlocProvider(
         providers: [
+          BlocProvider(create: (_)=> getIt.get<AddToCartCubit>()),
           BlocProvider(
             create: (_) => viewModel..doIntent(GetAllCategoriesIntent()),
           ),

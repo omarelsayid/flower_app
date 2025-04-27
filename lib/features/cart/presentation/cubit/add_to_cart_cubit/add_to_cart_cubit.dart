@@ -18,7 +18,10 @@ class AddToCartCubit extends Cubit<AddToCartState> {
     required String productId,
     required int quantity,
   }) async {
-    emit(AddToCartLoading(productId));
+    if(!isClosed){
+      emit(AddToCartLoading(productId));
+    }
+
     try {
       final String token =
           await SharedPreferenceServices.getData(AppConstants.token).toString();

@@ -66,6 +66,9 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
     isSearching = false;
     var result = await _categoriesUseCase.execute();
 
+    if(isClosed){
+      return;
+    }
     switch (result) {
       case Success():
         var data = result.data;

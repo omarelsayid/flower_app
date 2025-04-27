@@ -1,4 +1,5 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/checkout/domain/entites/addresses_response_entity.dart';
@@ -62,7 +63,9 @@ class AddressCardWidget extends StatelessWidget {
             ],
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, PagesRoutes.addressScreen,arguments: addressEntity);
+            },
             icon: Icon(Icons.edit_outlined, size: 30),
           ),
         ],

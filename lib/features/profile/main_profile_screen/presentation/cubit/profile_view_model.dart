@@ -52,6 +52,11 @@ class ProfileViewModel extends Cubit<ProfileState> {
     switch (result) {
       case Success():
         final profile = result.data;
+        if(isClosed)
+          {
+            log("The Cubit is closed ");
+            return;
+          }
         if (profile != null) {
           emit(SuccessProfileState(profile.user));
           log("Fetched successfully: ${profile.user?.firstName}");
