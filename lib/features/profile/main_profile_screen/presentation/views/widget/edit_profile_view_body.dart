@@ -15,6 +15,7 @@ import 'package:flower_app/features/profile/main_profile_screen/presentation/cub
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_state.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_view_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/pick_image_widget.dart';
+import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -100,6 +101,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       log('success');
                       EasyLoading.dismiss();
                       EasyLoading.showSuccess("Upload photo successfully");
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LayoutScreen(initialIndex: 3),
+                        ),
+                      );
                     case UploadPhotoErrorState():
                       log('error');
                       EasyLoading.dismiss();
@@ -200,7 +208,10 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                     },
                     child: InkWell(
                       onTap: () {
-                        Navigator.pushNamed(context, PagesRoutes.changePasswordScreen);
+                        Navigator.pushNamed(
+                          context,
+                          PagesRoutes.changePasswordScreen,
+                        );
                       },
                       child: Text(
                         'change',
@@ -245,14 +256,23 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               SizedBox(height: resposiveHeight(32)),
               BlocConsumer<EditProfileViewModel, EditProfileState>(
                 bloc: widget.editProfileViewModel,
-                listener: (context, state) async{
+                listener: (context, state) async {
                   switch (state) {
                     case EditProfileLoadingState():
                       log('loading');
                     case EditProfileSuccessState():
                       log('success');
                       EasyLoading.showSuccess("Profile Edit successfully");
+
+                      log('success');
                       Navigator.pop(context);
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LayoutScreen(initialIndex: 3),
+                        ),
+                      );
 
                     case EditProfileErrorState():
                       log('error');

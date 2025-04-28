@@ -1,7 +1,9 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
+import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/utils/app_assets.dart';
 import '../../../../../../core/utils/app_colors.dart';
@@ -29,20 +31,25 @@ class UserInformationWidget extends StatelessWidget {
             backgroundColor: AppColors.lightPinkColor,
             radius: 50,
             backgroundImage:
-            userData.photo == null || userData.photo!.isEmpty
-                ? AssetImage(ImageAssets.profileImage)
-                : NetworkImage(userData.photo!),
+                userData.photo == null || userData.photo!.isEmpty
+                    ? AssetImage(ImageAssets.profileImage)
+                    : NetworkImage(userData.photo!),
           ),
           Padding(
-            padding: EdgeInsets.only(top:resposiveHeight(16),bottom: resposiveHeight(24)),
+            padding: EdgeInsets.only(
+              top: resposiveHeight(16),
+              bottom: resposiveHeight(24),
+            ),
             child: Column(
               children: [
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(userData.firstName ?? '',style: AppTextStyles.inter500_18),
-                    SizedBox(width: resposiveWidth(8),),
+                    Text(
+                      userData.firstName ?? '',
+                      style: AppTextStyles.inter500_18,
+                    ),
+                    SizedBox(width: resposiveWidth(8)),
                     SizedBox(
                       width: resposiveWidth(24),
                       height: resposiveHeight(24),
@@ -59,7 +66,12 @@ class UserInformationWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(userData.email ?? '',style: AppTextStyles.inter500_18.copyWith(color: AppColors.greyDarkColor),)
+                Text(
+                  userData.email ?? '',
+                  style: AppTextStyles.inter500_18.copyWith(
+                    color: AppColors.greyDarkColor,
+                  ),
+                ),
               ],
             ),
           ),
@@ -68,4 +80,3 @@ class UserInformationWidget extends StatelessWidget {
     );
   }
 }
-
