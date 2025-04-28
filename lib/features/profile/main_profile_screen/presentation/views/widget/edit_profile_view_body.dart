@@ -101,13 +101,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       log('success');
                       EasyLoading.dismiss();
                       EasyLoading.showSuccess("Upload photo successfully");
-                      Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LayoutScreen(initialIndex: 3),
-                        ),
-                      );
+                    // Navigator.pop(context);
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => LayoutScreen(initialIndex: 3),
+                    //   ),
+                    // );
                     case UploadPhotoErrorState():
                       log('error');
                       EasyLoading.dismiss();
@@ -265,9 +265,9 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
                       EasyLoading.showSuccess("Profile Edit successfully");
 
                       log('success');
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
 
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => LayoutScreen(initialIndex: 3),

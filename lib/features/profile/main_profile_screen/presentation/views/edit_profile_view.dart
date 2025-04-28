@@ -5,6 +5,7 @@ import 'package:flower_app/features/profile/main_profile_screen/domain/entity/pr
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/edit_profile_cubit/edit_profile_view_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/edit_profile_view_body.dart';
+import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,6 +29,18 @@ class EditProfileView extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              // Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LayoutScreen(initialIndex: 3),
+                ),
+              );
+            },
+          ),
           title: Text(
             AppConstants.editProfile,
             style: AppTextStyles.roboto500_18.copyWith(fontSize: 20),

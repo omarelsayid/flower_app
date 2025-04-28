@@ -55,7 +55,7 @@ class UserInformationWidget extends StatelessWidget {
                       height: resposiveHeight(24),
                       child: InkWell(
                         onTap: () {
-                          Navigator.pushNamed(
+                          Navigator.pushReplacementNamed(
                             context,
                             PagesRoutes.editProfileScreen,
                             arguments: userData,
