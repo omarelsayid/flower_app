@@ -35,6 +35,8 @@ dependencies:
   google_maps_flutter: ^2.12.1
   location: ^8.0.0
   geocoding: ^3.0.0
+  animate_do: ^4.2.0
+  flutter_slidable: ^4.0.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0

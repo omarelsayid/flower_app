@@ -146,14 +146,20 @@ import '../../features/home/products_details/presentation/cubits/product_details
     as _i8;
 import '../../features/profile/main_profile_screen/data/data_source/change_pasword_data_source.dart'
     as _i584;
+import '../../features/profile/main_profile_screen/data/data_source/notification_remote_data_source.dart'
+    as _i665;
 import '../../features/profile/main_profile_screen/data/data_source/profile_local_data_source.dart'
     as _i678;
 import '../../features/profile/main_profile_screen/data/data_source/profile_remote_data_source.dart'
     as _i428;
 import '../../features/profile/main_profile_screen/data/repository_imp/change_password_repositoy_impl.dart'
     as _i782;
+import '../../features/profile/main_profile_screen/data/repository_imp/notification_repository_impl.dart'
+    as _i918;
 import '../../features/profile/main_profile_screen/data/repository_imp/profile_screen_repository_imp.dart'
     as _i62;
+import '../../features/profile/main_profile_screen/domain/repository/notification_repository.dart'
+    as _i608;
 import '../../features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart'
     as _i152;
 import '../../features/profile/main_profile_screen/domain/repository/reset_password_repository.dart'
@@ -162,6 +168,8 @@ import '../../features/profile/main_profile_screen/domain/use_case/change_passwo
     as _i922;
 import '../../features/profile/main_profile_screen/domain/use_case/edit_profile_use_case.dart'
     as _i295;
+import '../../features/profile/main_profile_screen/domain/use_case/notification_use_case.dart'
+    as _i9;
 import '../../features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart'
     as _i929;
 import '../../features/profile/main_profile_screen/domain/use_case/upload_photo_use_case.dart'
@@ -170,6 +178,8 @@ import '../../features/profile/main_profile_screen/presentation/cubit/change_pas
     as _i378;
 import '../../features/profile/main_profile_screen/presentation/cubit/edit_profile_cubit/edit_profile_view_model.dart'
     as _i177;
+import '../../features/profile/main_profile_screen/presentation/cubit/notification_cubit/notification_view_model.dart'
+    as _i599;
 import '../../features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart'
     as _i513;
 import '../../features/profile/main_profile_screen/presentation/cubit/upload_photo_cubit/upload_photo_view_model.dart'
@@ -228,6 +238,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i85.BestSellerCubit(gh<_i480.BestSellerUseCase>()));
     gh.factory<_i332.ProductsDetailsRemoteDataScource>(
         () => _i382.ProductsDetailsRemoteDataScourceImp(gh<_i277.ApiClient>()));
+    gh.factory<_i665.NotificationRemoteDataSource>(
+        () => _i665.NotificationRemoteDataSourceImp(gh<_i277.ApiClient>()));
     gh.factory<_i614.ForgetPasswordViewModel>(
         () => _i614.ForgetPasswordViewModel(gh<_i701.AuthUseCase>()));
     gh.factory<_i931.ResetPasswordViewModel>(
@@ -283,6 +295,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i464.UpdateCartQuantityUseCase(gh<_i379.CartRepository>()));
     gh.factory<_i1066.AddToCartCubit>(
         () => _i1066.AddToCartCubit(gh<_i956.AddToCartUseCase>()));
+    gh.factory<_i608.NotificationRepository>(() =>
+        _i918.NotificationRepositoryImpl(
+            gh<_i665.NotificationRemoteDataSource>()));
     gh.factory<_i1063.CheckoutCreditRepo>(() =>
         _i338.CheckoutCreditRepoImpl(gh<_i575.CheckoutRemoteDataSource>()));
     gh.factory<_i632.GetUserCartCubit>(
@@ -311,6 +326,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i25.UserAddressesViewModel(gh<_i138.UserAddressesUseCase>()));
     gh.factory<_i506.GetAddressesUseCase>(
         () => _i506.GetAddressesUseCase(gh<_i383.GetAddressesRepo>()));
+    gh.factory<_i9.NotificationUseCase>(
+        () => _i9.NotificationUseCase(gh<_i608.NotificationRepository>()));
     gh.factory<_i1024.DeleteSpecificItemCubit>(
         () => _i1024.DeleteSpecificItemCubit(gh<_i486.DeleteUseCase>()));
     gh.factory<_i737.CategoryCubit>(
@@ -333,6 +350,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i272.AddressDetailsCubit(gh<_i1001.AddressDetailsUseCase>()));
     gh.factory<_i164.CheckoutCreditUseCase>(
         () => _i164.CheckoutCreditUseCase(gh<_i1063.CheckoutCreditRepo>()));
+    gh.factory<_i599.NotificationViewModel>(
+        () => _i599.NotificationViewModel(gh<_i9.NotificationUseCase>()));
     gh.factory<_i396.CheckoutViewModel>(
         () => _i396.CheckoutViewModel(gh<_i164.CheckoutCreditUseCase>()));
     return this;
