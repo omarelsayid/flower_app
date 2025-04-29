@@ -97,5 +97,17 @@
   "newDate": "جديد",
   "highest_Price":"اعلى سعر",
   "sort_py":"حث ب ",
-  "lowes_Price": "اقل سعر"
+  "lowes_Price": "اقل سعر",
+  "myOrder": "طلباتي",
+  "active": "نشط",
+  "completed": "مكتمل",
+  "notfoundActiveOrders": "لا توجد طلبات نشطة",
+  "notfoundCompletedOrders": "لا توجد طلبات مكتملة",
+  "EGP": "جنيه مصري",
+  "Deliveredon": "تم التسليم في",
+  "Reorder": "إعادة الطلب",
+  "OrderNumber": "رقم الطلب",
+  "TrackOrder": "تتبع الطلب"
+
+
 }

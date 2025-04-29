@@ -19,10 +19,11 @@ class ProfileAppBarWidget extends StatelessWidget {
         children: [
           SvgPicture.asset(SvgImages.logo),
           SizedBox(width: resposiveWidth(16)),
-          ImageIcon(
-            AssetImage(IconAssets.notificationIcon),
-            size: 24,
-          ), //I want to add width and height 24
+          InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, PagesRoutes.notificationScreen);
+              },
+              child: ImageIcon(AssetImage(IconAssets.notificationIcon,),size: 24,)),//I want to add width and height 24
         ],
       ),
     );

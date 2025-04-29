@@ -97,5 +97,17 @@
   "newDate": "New",
   "highest_Price":"Highest Prise",
   "sort_py":"Sort By",
-  "lowes_Price": "Lower Price"
+  "lowes_Price": "Lower Price",
+  "myOrder": "My Orders",
+  "active": "Active",
+  "completed": "Completed",
+  "notfoundActiveOrders": "Not Found Active Orders",
+  "notfoundCompletedOrders": "Not Found Completed Orders",
+  "EGP": "EGP",
+  "Deliveredon": "Delivered on",
+  "Reorder": "Reorder",
+  "OrderNumber": "Order Number",
+  "TrackOrder": "Track Order"
+
+
 }

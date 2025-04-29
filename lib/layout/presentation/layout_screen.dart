@@ -49,12 +49,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // }
 
 class LayoutScreen extends StatelessWidget {
-  const LayoutScreen({super.key});
+  const LayoutScreen({super.key, this.initialIndex = 0});
+  final int initialIndex;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LayoutViewModel(),
+      create: (context) => LayoutViewModel(initialIndex),
       child: BlocBuilder<LayoutViewModel, LayoutState>(
         builder: (context, state) {
           final viewModel = context.read<LayoutViewModel>();

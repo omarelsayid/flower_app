@@ -14,7 +14,7 @@ import '../../../../features/home/categories/presentation/categories_tab.dart';
 import '../../../../features/profile/main_profile_screen/presentation/views/profile_tab.dart';
 
 class LayoutViewModel extends Cubit<LayoutState> {
-  LayoutViewModel() : super(LayoutInitialState());
+  LayoutViewModel(this.currentIndex) : super(LayoutInitialState());
   int currentIndex = 0;
   void doIntent(LayoutIntent layoutIntent) {
     switch (layoutIntent) {
@@ -44,6 +44,7 @@ class LayoutViewModel extends Cubit<LayoutState> {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt.get<DeleteSpecificItemCubit>()),
+        BlocProvider(create: (context) => getIt.get<GetUserCartCubit>()),
         BlocProvider(create: (context) => getIt.get<UpdateQuantityCubit>()),
       ],
       child: CartTab(),

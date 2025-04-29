@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/body_widget.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/language_widget.dart';
@@ -29,6 +31,7 @@ class ProfileTab extends StatelessWidget {
             getIt<ProfileUseCase>(),
             getIt<ProfileLocalDataSource>(),
           )..doIntent(ProfileClickedIntent()),
+
       child: SafeArea(
         child: BlocListener<ProfileViewModel, ProfileState>(
           listener: (context, state) {
@@ -115,6 +118,12 @@ class ProfileTab extends StatelessWidget {
                       BodyWidget(
                         text: S.of(context).myOrders,
                         icon: Icons.list_alt_outlined,
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            PagesRoutes.ordersScreen,
+                          );
+                        },
                       ),
                       BodyWidget(
                         text: S.of(context).savedAddress,
@@ -178,3 +187,4 @@ class ProfileTab extends StatelessWidget {
     );
   }
 }
+

@@ -16,17 +16,13 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^9.1.0
   flutter_easyloading: null
-  flutter_localization: ^0.3.2
   flutter_nominatim: ^0.0.1+2
-  flutter_svg: ^2.0.17
-  geocoding: ^3.0.0
   get_it: null
-  google_maps_flutter: ^2.12.1
   image_picker: ^1.1.2
   injectable: null
   internet_connection_checker: ^3.0.1
+  skeletonizer: ^1.4.3
   json_annotation: ^4.9.0
-  location: ^8.0.0
   mime: ^2.0.0
   mockito: ^5.4.5
   path_provider: ^2.1.5
@@ -34,12 +30,20 @@ dependencies:
   provider: ^6.1.4
   retrofit: ^4.4.2
   shared_preferences: null
-  skeletonizer: ^1.4.3
   smooth_page_indicator: ^1.2.1
   url_launcher: ^6.2.5
+  google_maps_flutter: ^2.12.1
+  location: ^8.0.0
+  geocoding: ^3.0.0
+  animate_do: ^4.2.0
+  flutter_slidable: ^4.0.0
+  firebase_core: ^3.13.0
+  firebase_analytics: ^11.4.5
+  firebase_crashlytics: ^4.3.5
+  firebase_messaging: ^15.2.5
+  flutter_local_notifications:
 
 dev_dependencies:
-  build_runner: ^2.4.8
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
@@ -47,6 +51,7 @@ dev_dependencies:
   json_serializable: ^6.8.0
   mockito: ^5.4.5
   retrofit_generator: ^8.0.4
+  build_runner: ^2.4.8
 
 flutter:
   uses-material-design: true
