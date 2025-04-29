@@ -19,4 +19,5 @@ abstract class PagesRoutes {
   static const String userAddressesScreen = "user_addresses";
   static const String addressScreen = "address_screen";
   static const String notificationScreen = "notification_screen";
+  static const String ordersScreen = "orders_screen";
 }

@@ -23,7 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("المنتجات الرائجة"),
+    "Deliveredon": MessageLookupByLibrary.simpleMessage("تم التسليم في"),
+    "EGP": MessageLookupByLibrary.simpleMessage("جنيه مصري"),
+    "OrderNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
+    "Reorder": MessageLookupByLibrary.simpleMessage("إعادة الطلب"),
+    "TrackOrder": MessageLookupByLibrary.simpleMessage("تتبع الطلب"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+    "active": MessageLookupByLibrary.simpleMessage("نشط"),
     "addNew": MessageLookupByLibrary.simpleMessage("أضف جديد"),
     "add_new_addresses": MessageLookupByLibrary.simpleMessage(
       "إضافة عنوان جديد",
@@ -56,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkout": MessageLookupByLibrary.simpleMessage("ادفع"),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "cityRequired": MessageLookupByLibrary.simpleMessage("يرجى إدخال المدينة"),
+    "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("تأكيد تسجيل الخروج"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
@@ -118,11 +125,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "lowes_Price": MessageLookupByLibrary.simpleMessage("اقل سعر"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+    "myOrder": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم"),
     "newDate": MessageLookupByLibrary.simpleMessage("جديد"),
     "noAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "no_address_found": MessageLookupByLibrary.simpleMessage("لا يوجد عنوان."),
+    "notfoundActiveOrders": MessageLookupByLibrary.simpleMessage(
+      "لا توجد طلبات نشطة",
+    ),
+    "notfoundCompletedOrders": MessageLookupByLibrary.simpleMessage(
+      "لا توجد طلبات مكتملة",
+    ),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "occasions": MessageLookupByLibrary.simpleMessage("المناسبات"),
     "october": MessageLookupByLibrary.simpleMessage("أكتوبر"),

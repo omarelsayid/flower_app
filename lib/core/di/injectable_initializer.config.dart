@@ -144,6 +144,17 @@ import '../../features/home/products_details/domain/repositories/get_product_det
     as _i798;
 import '../../features/home/products_details/presentation/cubits/product_details_cubit/products_detail_cubit.dart'
     as _i8;
+import '../../features/orders/data/data_sorce/orders_remote_data_source.dart'
+    as _i47;
+import '../../features/orders/data/data_sorce/orders_remote_data_source_impl.dart'
+    as _i459;
+import '../../features/orders/data/repo_impl/get_orders_repo_impl.dart'
+    as _i998;
+import '../../features/orders/domain/repo/get_orders_repo.dart' as _i364;
+import '../../features/orders/domain/use_case/get_order_use_case.dart'
+    as _i1013;
+import '../../features/orders/presentation/cubits/get_orders_cubit/get_orders_view_model.dart'
+    as _i560;
 import '../../features/profile/main_profile_screen/data/data_source/change_pasword_data_source.dart'
     as _i584;
 import '../../features/profile/main_profile_screen/data/data_source/notification_remote_data_source.dart'
@@ -209,6 +220,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1001.BestSellerRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i584.ChangePasswordDataSource>(
         () => _i584.ChangePasswordDataSourceImp(gh<_i277.ApiClient>()));
+    gh.factory<_i47.OrdersRemoteDataSource>(
+        () => _i459.OrdersRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i1070.CategoriesRemoteDataSource>(
         () => _i1070.CategoriesRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i182.AuthRemoteDataSource>(
@@ -217,6 +230,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1026.CartRemoteDataSourceImpl(gh<_i277.ApiClient>()));
     gh.factory<_i961.AuthRepository>(
         () => _i62.AuthRepositoryImpl(gh<_i182.AuthRemoteDataSource>()));
+    gh.factory<_i364.GetOrdersRepo>(
+        () => _i998.GetOrdersRepoImpl(gh<_i47.OrdersRemoteDataSource>()));
     gh.factory<_i890.ChangePasswordRepository>(() =>
         _i782.ChangePasswordRepositoryImp(
             gh<_i584.ChangePasswordDataSource>()));
@@ -249,6 +264,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i953.UserAddressesRepository>(() =>
         _i630.UserAddressesRepositoryImpl(
             gh<_i31.UserAddressesRemoteDataSource>()));
+    gh.factory<_i1013.GetOrderUseCase>(
+        () => _i1013.GetOrderUseCase(gh<_i364.GetOrdersRepo>()));
     gh.factory<_i347.SignInViewModel>(
         () => _i347.SignInViewModel(gh<_i489.SignInUseCase>()));
     gh.factory<_i379.CartRepository>(
@@ -273,6 +290,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i357.VerifyEmailVewModel(gh<_i701.AuthUseCase>()));
     gh.factory<_i922.ChangePasswordUseCase>(() =>
         _i922.ChangePasswordUseCase(gh<_i890.ChangePasswordRepository>()));
+    gh.factory<_i560.GetOrdersViewModel>(
+        () => _i560.GetOrdersViewModel(gh<_i1013.GetOrderUseCase>()));
     gh.factory<_i383.GetAddressesRepo>(
         () => _i223.GetAddressesRepoImpl(gh<_i575.CheckoutRemoteDataSource>()));
     gh.factory<_i798.GetProductDetailsRepo>(() => _i29.ProductsDetailRepoImp(

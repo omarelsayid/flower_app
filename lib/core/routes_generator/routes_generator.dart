@@ -2,7 +2,6 @@ import 'package:flower_app/features/checkout/presentation/views/checkout_view.da
 import 'package:flower_app/features/checkout/presentation/views/payment_screen.dart';
 import 'package:flower_app/features/addresses/presentation/views/widgets/user_addresses_card_details_widget.dart';
 import 'package:flower_app/features/addresses/presentation/views/address_details_view.dart';
-import 'package:flower_app/features/addresses/presentation/views/widgets/address_details_view_body.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view.dart';
 import 'package:flower_app/features/home/categories/presentation/categories_tab.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
@@ -10,11 +9,10 @@ import 'package:flower_app/features/auth/presentation/views/sign_in_screen.dart'
 import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/products_details_view.dart';
 import 'package:flower_app/features/home/occasions/presentation/views/occasion_screen.dart';
+import 'package:flower_app/features/orders/presentation/views/orders_view.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../features/addresses/domain/entity/user_addresses_entity.dart';
 import '../../features/addresses/presentation/views/user_addresses_view.dart';
 import '../../features/auth/presentation/views/forget_passwerd/email_verification_screen.dart';
 import '../../features/auth/presentation/views/forget_passwerd/forget_paswerd_screen.dart';
@@ -26,7 +24,6 @@ import '../../features/profile/main_profile_screen/presentation/views/change_pas
 import '../../features/profile/main_profile_screen/presentation/views/edit_profile_view.dart';
 import '../../features/profile/main_profile_screen/presentation/views/notification_screen.dart';
 import '../di/injectable_initializer.dart';
-import '../widgets/test_screen.dart';
 
 class RoutesGenerator {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -84,6 +81,7 @@ class RoutesGenerator {
           builder: (context) => CategoriesTab(),
           settings: settings,
         );
+
 
       case PagesRoutes.occasionScreen:
         return MaterialPageRoute(
@@ -147,6 +145,16 @@ class RoutesGenerator {
           builder: (context) => NotificationScreen(),
           settings: settings,
         );
+        return MaterialPageRoute(
+          builder: (context) => AddressDetailsView(),
+          settings: settings,
+        );
+      case PagesRoutes.ordersScreen:
+        return MaterialPageRoute(
+          builder: (context) => OrdersView(),
+          settings: settings,
+        );
+
       default:
         return unDefinedRoute();
     }

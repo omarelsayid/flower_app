@@ -12,29 +12,25 @@ part 'add_to_cart_state.dart';
 
 @injectable
 class AddToCartCubit extends Cubit<AddToCartState> {
-
   final AddToCartUseCase _addToCartUseCase;
   AddToCartCubit(this._addToCartUseCase) : super(AddToCartInitial());
   Future<void> AddToCart({
-
     required String productId,
     required int quantity,
   }) async {
     emit(AddToCartLoading(productId));
     try {
-      final String token= await SharedPreferenceServices.getData(
-        AppConstants.token,
-      ).toString();
+      final String token =
+          await SharedPreferenceServices.getData(AppConstants.token).toString();
       final message = await _addToCartUseCase.execute(
         token: token,
         productId: productId,
         quantity: quantity,
       );
-      emit(AddToCartSuccess(message,productId));
+      emit(AddToCartSuccess(message, productId));
     } catch (e) {
       log(e.toString());
-      emit(AddToCartError(e.toString(),productId));
+      emit(AddToCartError(e.toString(), productId));
     }
   }
-
 }

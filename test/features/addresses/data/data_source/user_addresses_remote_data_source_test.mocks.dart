@@ -57,6 +57,8 @@ import 'package:flower_app/features/home/occasions/data/model/products_response_
     as _i10;
 import 'package:flower_app/features/home/products_details/data/models/products_details_models.dart'
     as _i27;
+import 'package:flower_app/features/orders/data/model/orders_response_dto.dart'
+    as _i38;
 import 'package:flower_app/features/profile/main_profile_screen/data/model/change_password_model.dart'
     as _i13;
 import 'package:flower_app/features/profile/main_profile_screen/data/model/change_password_request_model.dart'
@@ -989,4 +991,22 @@ class MockApiClient extends _i1.Mock implements _i22.ApiClient {
           ),
         )),
       ) as _i23.Future<_i21.DeleteNotificationResponseModel>);
+
+  @override
+  _i23.Future<_i3.HttpResponse<_i38.OrdersResponseDTO>> getUserOrders() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getUserOrders,
+          [],
+        ),
+        returnValue:
+            _i23.Future<_i3.HttpResponse<_i38.OrdersResponseDTO>>.value(
+                _FakeHttpResponse_1<_i38.OrdersResponseDTO>(
+          this,
+          Invocation.method(
+            #getUserOrders,
+            [],
+          ),
+        )),
+      ) as _i23.Future<_i3.HttpResponse<_i38.OrdersResponseDTO>>);
 }
