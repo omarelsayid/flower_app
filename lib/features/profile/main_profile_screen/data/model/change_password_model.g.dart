@@ -14,9 +14,9 @@ ChangePasswordModel _$ChangePasswordModelFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ChangePasswordModelToJson(
-  ChangePasswordModel instance,
-) => <String, dynamic>{
-  'message': instance.message,
-  'token': instance.token,
-  'error': instance.error,
-};
+        ChangePasswordModel instance) =>
+    <String, dynamic>{
+      'message': instance.message,
+      'token': instance.token,
+      'error': instance.error,
+    };

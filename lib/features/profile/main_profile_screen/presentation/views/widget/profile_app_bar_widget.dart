@@ -1,3 +1,4 @@
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
