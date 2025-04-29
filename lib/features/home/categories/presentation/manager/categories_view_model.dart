@@ -10,16 +10,16 @@ import '../../../../../core/common/result.dart';
 @injectable
 class CategoriesViewModel extends Cubit<CategoriesState> {
   CategoriesViewModel(this._categoriesUseCase)
-      : super(CategoriesLoadingState());
+    : super(CategoriesLoadingState());
 
   final CategoriesUseCase _categoriesUseCase;
 
   List<CategoriesEntity> categories = [];
-  List<ProductsEntity> allProducts = [];  // store all products
+  List<ProductsEntity> allProducts = []; // store all products
   List<ProductsEntity> products = [];
   int currentIndex = 0;
   bool isSearching = false;
-  String filter= "" ;
+  String filter = "";
 
   void doIntent(CategoriesIntent intent) {
     switch (intent) {
@@ -40,13 +40,18 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         break;
     }
   }
+
   Future<void> _search({required String query}) async {
     try {
       emit(LoadingSearchState());
       isSearching = true;
-      var result = allProducts.where((product) =>
-          product.title!.toUpperCase().contains(query.toUpperCase())
-      ).toList();
+      var result =
+          allProducts
+              .where(
+                (product) =>
+                    product.title!.toUpperCase().contains(query.toUpperCase()),
+              )
+              .toList();
 
       products = result;
       log("Search Results: ${products.length}");
@@ -55,11 +60,15 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
       emit(FailedSearchState(e.toString()));
     }
   }
+
   Future<void> _getAllCategories() async {
     emit(CategoriesLoadingState());
     isSearching = false;
     var result = await _categoriesUseCase.execute();
 
+    if(isClosed){
+      return;
+    }
     switch (result) {
       case Success():
         var data = result.data;
@@ -76,13 +85,15 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         break;
     }
   }
+
   void _changeCategoryIndex(int index) {
     currentIndex = index;
     emit(ChangeCategoriesIndexState());
     _getSpecificCategory(categories[currentIndex].id.toString());
   }
+
   Future<void> _getSpecificCategory(String categoryId) async {
-    if(isClosed) {
+    if (isClosed) {
       return;
     }
     emit(SpecificCategoriesLoadingState());
@@ -94,29 +105,28 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         if (data!.message == "success") {
           allProducts = data.products ?? [];
           log("Products Count: ${allProducts.length}");
-          if(isClosed)
-            return;
+          if (isClosed) return;
           emit(SpecificCategoriesSuccessState(data.products ?? []));
         } else {
-          if(isClosed)
-            return;
+          if (isClosed) return;
           emit(SpecificCategoriesErrorState(data.message!));
         }
         break;
       case Error():
-        if(isClosed)
-          return;
+        if (isClosed) return;
         emit(SpecificCategoriesErrorState(result.exception!));
         break;
     }
   }
+
   void _changeFilter(String sort) {
-    filter = sort ;
+    filter = sort;
     emit(FilterCategoriesState());
     _getFilter(filter);
   }
+
   Future<void> _getFilter(String sort) async {
-    if(isClosed) {
+    if (isClosed) {
       return;
     }
     emit(LoadingFilterState());
@@ -128,25 +138,20 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         if (data!.message == "success") {
           allProducts = data.products ?? [];
           log("Products Count: ${allProducts.length}");
-          if(isClosed)
-            return;
+          if (isClosed) return;
           emit(SuccessfulFilterState(data.products ?? []));
         } else {
-          if(isClosed)
-            return;
+          if (isClosed) return;
           emit(FailedFilterState(data.message!));
         }
         break;
       case Error():
-        if(isClosed)
-          return;
+        if (isClosed) return;
         emit(FailedFilterState(result.exception!));
         break;
     }
   }
 }
-
-
 
 sealed class CategoriesIntent {}
 
@@ -163,13 +168,14 @@ class ChangeCategoriesIndexIntent extends CategoriesIntent {
 
   ChangeCategoriesIndexIntent(this.index);
 }
+
 class FilterIntent extends CategoriesIntent {
   final String filter;
 
-  FilterIntent (this.filter);
+  FilterIntent(this.filter);
 }
 
-class SearchIntent extends CategoriesIntent{
+class SearchIntent extends CategoriesIntent {
   final String query;
   SearchIntent(this.query);
 }

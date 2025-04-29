@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'occasion_response_dto.g.dart';
 
-
 @JsonSerializable()
 class OccasionResponseDTO {
   final String message;
@@ -14,9 +13,8 @@ class OccasionResponseDTO {
     required this.message,
     required this.metadata,
     required this.occasions,
-    this.error
-  }
-      );
+    this.error,
+  });
 
   factory OccasionResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$OccasionResponseDTOFromJson(json);

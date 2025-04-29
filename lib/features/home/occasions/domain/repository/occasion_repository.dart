@@ -5,5 +5,4 @@ import '../../../../../core/common/result.dart';
 abstract class OccasionRepository {
   Future<Result<OccasionsResponseEntity>> getOccasion();
   Future<Result<ProductsResponseEntity>> getSpecificOccasion(String occasionId);
-
 }

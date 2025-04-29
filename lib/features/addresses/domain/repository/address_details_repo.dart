@@ -5,5 +5,7 @@ import '../entity/user_addresses_entity.dart';
 
 abstract class AddressDetailsRepo {
   Future<Result> saveAddressDetails(AddressDTO addressDetailsModel);
-  Future<Result<UserAddressesEntity>> updateAddressDetails(AddressDTO addressDetailsModel);
+  Future<Result<UserAddressesEntity>> updateAddressDetails(
+    AddressDTO addressDetailsModel,
+  );
 }

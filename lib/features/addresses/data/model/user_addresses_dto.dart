@@ -9,10 +9,10 @@ class UserAddressesDTO extends UserAddressesEntity {
   final List<AddressDTO>? address;
 
   UserAddressesDTO({String? message, this.address})
-      : super(
-    message: message,
-    addresses: address?.map((e) => e.toEntity()).toList(),
-  );
+    : super(
+        message: message,
+        addresses: address?.map((e) => e.toEntity()).toList(),
+      );
 
   factory UserAddressesDTO.fromJson(Map<String, dynamic> json) =>
       _$UserAddressesDTOFromJson(json);

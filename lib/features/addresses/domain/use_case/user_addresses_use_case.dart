@@ -10,11 +10,11 @@ class UserAddressesUseCase {
 
   UserAddressesUseCase(this._userAddressesRepository);
 
-  Future<Result<UserAddressesEntity>> execute() async{
+  Future<Result<UserAddressesEntity>> execute() async {
     return await _userAddressesRepository.getUserAddresses();
   }
-  Future<Result<UserAddressesEntity>> executeDeletion(String id) async{
+
+  Future<Result<UserAddressesEntity>> executeDeletion(String id) async {
     return await _userAddressesRepository.deleteUserAddress(id);
   }
-
 }

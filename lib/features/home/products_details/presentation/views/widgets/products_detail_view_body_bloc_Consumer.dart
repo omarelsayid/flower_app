@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class ProductsDetailViewBodyBlocConsumer extends StatefulWidget {
-   const ProductsDetailViewBodyBlocConsumer({super.key, required this.id});
+  const ProductsDetailViewBodyBlocConsumer({super.key, required this.id});
   final String id;
   @override
   State<ProductsDetailViewBodyBlocConsumer> createState() =>

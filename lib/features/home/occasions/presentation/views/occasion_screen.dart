@@ -80,9 +80,7 @@ class _OccasionsScreenState extends State<OccasionsScreen>
 
             if (occasions.isEmpty) {
               return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
+                body: Center(child: CircularProgressIndicator()),
               );
             }
 
@@ -91,7 +89,10 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                 title: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(S.of(context).occasions, style: AppTextStyles.inter500_20),
+                    Text(
+                      S.of(context).occasions,
+                      style: AppTextStyles.inter500_20,
+                    ),
                     Text(
                       S.of(context).bloomwithourexquisitebestsellers,
                       style: AppTextStyles.inter400_14.copyWith(
@@ -101,30 +102,28 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                   ],
                 ),
                 bottom:
-                _tabController == null
-                    ? const TabBar(tabs: [])
-                    : TabBar(
-                  tabAlignment: TabAlignment.start,
-                  controller: _tabController,
-                  labelColor: AppColors.primaryColor,
-                  unselectedLabelColor: AppColors.greyColor,
-                  indicatorColor: AppColors.primaryColor,
-                  isScrollable: true,
-                  tabs:
-                  occasions
-                      .map(
-                        (occasion) =>
-                        Tab(text: occasion?.name ?? ''),
-                  )
-                      .toList(),
-                ),
+                    _tabController == null
+                        ? const TabBar(tabs: [])
+                        : TabBar(
+                          tabAlignment: TabAlignment.start,
+                          controller: _tabController,
+                          labelColor: AppColors.primaryColor,
+                          unselectedLabelColor: AppColors.greyColor,
+                          indicatorColor: AppColors.primaryColor,
+                          isScrollable: true,
+                          tabs:
+                              occasions
+                                  .map(
+                                    (occasion) =>
+                                        Tab(text: occasion?.name ?? ''),
+                                  )
+                                  .toList(),
+                        ),
               ),
               body: BlocBuilder<OccasionViewModel, OccasionState>(
                 builder: (context, state) {
                   if (state is LoadingOccasionState) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
+                    return Center(child: CircularProgressIndicator());
                   } else if (state is SuccessSpecificOccasionState) {
                     final products = state.specificOccasion;
                     return GridView.builder(
@@ -148,7 +147,7 @@ class _OccasionsScreenState extends State<OccasionsScreen>
                               arguments: product.id.toString(),
                             );
                           },
-                          child: OccasionScreenConsumer(product: product,),
+                          child: OccasionScreenConsumer(product: product),
                         );
                       },
                     );

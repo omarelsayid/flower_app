@@ -34,7 +34,7 @@ class SignUpScreen extends StatelessWidget {
           }
         },
         child: Scaffold(
-          appBar: AppBar(title:  Text(S.of(context).signUp)),
+          appBar: AppBar(title: Text(S.of(context).signUp)),
           body: BlocBuilder<SignUpViewModel, SignUpState>(
             builder: (context, state) {
               final cubit = context.read<SignUpViewModel>();

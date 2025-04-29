@@ -9,7 +9,7 @@ class ProductsDetailsView extends StatelessWidget {
   const ProductsDetailsView({super.key});
   @override
   Widget build(BuildContext context) {
-  final String id = ModalRoute.of(context)!.settings.arguments as String;
+    final String id = ModalRoute.of(context)!.settings.arguments as String;
 
     return BlocProvider(
       create:

@@ -62,7 +62,9 @@ class ServerFailure extends Failure {
               return ServerFailure(errorMessage: 'Login again');
             } else if (message.contains('token not provided')) {
               return ServerFailure(errorMessage: 'Token not provided');
-            }else if (message.contains('Invalid phone number format for any country.')) {
+            } else if (message.contains(
+              'Invalid phone number format for any country.',
+            )) {
               return ServerFailure(errorMessage: 'Invalid phone number format');
             }
             return ServerFailure(errorMessage: 'Something went wrong');

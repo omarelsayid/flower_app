@@ -3,5 +3,7 @@ import 'package:flower_app/features/profile/main_profile_screen/data/model/chang
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/change_password_entity.dart';
 
 abstract class ChangePasswordRepository {
-  Future<Result<ChangePasswordEntity>> changePassword(ChangePasswordRequestModel data);
+  Future<Result<ChangePasswordEntity>> changePassword(
+    ChangePasswordRequestModel data,
+  );
 }

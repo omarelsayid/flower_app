@@ -9,11 +9,8 @@ class SignUpResponseDTO extends SignUpResponseEntity {
   @JsonKey(fromJson: UserDTO.fromJson, toJson: _userToJson)
   final UserDTO? user;
 
-  SignUpResponseDTO({
-    String? message,
-    String? token,
-    this.user,
-  }) : super(message: message, token: token, user: user);
+  SignUpResponseDTO({String? message, String? token, this.user})
+    : super(message: message, token: token, user: user);
 
   factory SignUpResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$SignUpResponseDTOFromJson(json);

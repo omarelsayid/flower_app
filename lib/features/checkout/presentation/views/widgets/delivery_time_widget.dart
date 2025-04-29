@@ -36,10 +36,14 @@ class DeliveryTimeWidget extends StatelessWidget {
 
               Text(S.of(context).instant, style: AppTextStyles.inter500_18),
               SizedBox(width: resposiveWidth(4)),
-              Text(
-                "${S.of(context).arriveBy} 03 Sep 2024, 11:00 AM",
-                style: AppTextStyles.inter500_14.copyWith(
-                  color: Color(0xFF0CB359),
+              Expanded(
+                child: Text(
+                  "${S.of(context).arriveBy} 03 Sep 2024, 11:00 AM",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTextStyles.inter500_14.copyWith(
+                    color: Color(0xFF0CB359),
+                  ),
                 ),
               ),
             ],

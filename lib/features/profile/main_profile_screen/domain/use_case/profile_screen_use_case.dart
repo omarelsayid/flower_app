@@ -6,25 +6,23 @@ import '../repository/profile_screen_repository.dart';
 
 @injectable
 class ProfileUseCase {
+  final ProfileRepository _profileRepository;
 
- final ProfileRepository _profileRepository;
+  ProfileUseCase(this._profileRepository);
 
- ProfileUseCase(this._profileRepository);
+  Future<Result<ProfileResponseEntity>> execute() async {
+    return await _profileRepository.getProfileData();
+  }
 
- Future<Result<ProfileResponseEntity>> execute() async{
-  return await _profileRepository.getProfileData();
- }
+  Future<Result<void>> callLogout() async {
+    return _profileRepository.logout();
+  }
 
- Future<Result<void>> callLogout() async {
-  return _profileRepository.logout();
- }
+  Future<String?> getToken() async {
+    return _profileRepository.getToken();
+  }
 
- Future<String?> getToken() async {
-  return _profileRepository.getToken();
- }
-
- Future<void> deleteToken() async {
-  await _profileRepository.deleteToken();
- }
-
+  Future<void> deleteToken() async {
+    await _profileRepository.deleteToken();
+  }
 }

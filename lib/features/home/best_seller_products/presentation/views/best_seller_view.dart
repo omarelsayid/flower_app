@@ -1,3 +1,4 @@
+import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/cubit/best_seller_cubit.dart';
 import 'package:flower_app/features/home/best_seller_products/presentation/views/best_seller_view_body.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
@@ -16,9 +17,16 @@ class BestSellerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return MultiBlocProvider(
+  providers: [
+    BlocProvider(
       create: (context) => bestSellerViewModel,
-      child: Scaffold(
+),
+    BlocProvider(
+      create: (context) => getIt.get<AddToCartCubit>(),
+    ),
+  ],
+  child: Scaffold(
         appBar: AppBar(
           toolbarHeight: resposiveHeight(80),
           title: Column(
@@ -41,6 +49,6 @@ class BestSellerView extends StatelessWidget {
         ),
         body: BestSellerViewBody(bestSellerViewModel: bestSellerViewModel),
       ),
-    );
+);
   }
 }

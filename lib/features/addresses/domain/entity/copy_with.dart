@@ -19,6 +19,7 @@ class AddressDetailsStates {
     this.currentAddressId,
   });
 }
+
 extension AddressDetailsStatesCopyWith on AddressDetailsStates {
   AddressDetailsStates copyWith({
     TextEditingController? usernameController,

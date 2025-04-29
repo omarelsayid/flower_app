@@ -8,10 +8,7 @@ class SuccessUserAddressesState extends UserAddressesState {
   final List<Address> data;
   final String? deletingId;
 
-  SuccessUserAddressesState(
-      this.data, {
-        this.deletingId,
-      });
+  SuccessUserAddressesState(this.data, {this.deletingId});
 }
 
 class ErrorUserAddressesState extends UserAddressesState {

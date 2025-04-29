@@ -52,10 +52,13 @@ class AddressCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: resposiveWidth(8)),
-                    Text(
-                      address.city ?? '',
-                      style: AppTextStyles.inter500_16.copyWith(
-                        color: AppColors.blackColor,
+                    Expanded(
+                      child: Text(
+                        address.city ?? '',
+                        style: AppTextStyles.inter500_16.copyWith(
+                          color: AppColors.blackColor,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                     Spacer(),
@@ -63,9 +66,7 @@ class AddressCard extends StatelessWidget {
                       SizedBox(
                         width: resposiveWidth(24),
                         height: resposiveHeight(24),
-                        child: CircularProgressIndicator(
-                            strokeWidth:2
-                        ),
+                        child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     else ...[
                       InkWell(
@@ -105,10 +106,13 @@ class AddressCard extends StatelessWidget {
                       //     color: AppColors.greyDarkColor,
                       //   ),
                       // ),
-                      Text(
-                        "- ${address.street ?? ''}",
-                        style: AppTextStyles.inter500_13.copyWith(
-                          color: AppColors.greyDarkColor,
+                      Expanded(
+                        child: Text(
+                          overflow: TextOverflow.ellipsis,
+                          "- ${address.street ?? ''}",
+                          style: AppTextStyles.inter500_13.copyWith(
+                            color: AppColors.greyDarkColor,
+                          ),
                         ),
                       ),
                     ],

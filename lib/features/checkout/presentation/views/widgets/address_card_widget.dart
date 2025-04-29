@@ -1,4 +1,5 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/checkout/domain/entites/addresses_response_entity.dart';
@@ -39,30 +40,43 @@ class AddressCardWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Column(
-            children: [
-              Row(
-                children: [
-                  Radio(
-                    value: value,
-                    groupValue: selectedValue,
-                    onChanged: onChanged,
-                  ),
-                  Text(
-                    addressEntity.city ?? '',
-                    style: AppTextStyles.inter500_16,
-                  ),
-                ],
-              ),
-              SizedBox(height: resposiveHeight(2)),
-              Text(
-                addressEntity.street ?? '',
-                style: AppTextStyles.roboto400_14,
-              ),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Radio(
+                      value: value,
+                      groupValue: selectedValue,
+                      onChanged: onChanged,
+                    ),
+                    Expanded(
+                      child: Text(
+                        addressEntity.city ?? '',
+                        // 'CairoCairoCairoCairoCairoCairoCairoCairoCairoCairoCairoCairoCairoCairoCairov',
+                        style: AppTextStyles.inter500_16,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: resposiveHeight(2)),
+                Text(
+                  addressEntity.street ?? '',
+                  style: AppTextStyles.roboto400_14,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, PagesRoutes.addressScreen,arguments: addressEntity);
+            },
             icon: Icon(Icons.edit_outlined, size: 30),
           ),
         ],

@@ -1,7 +1,5 @@
-sealed class LayoutState{
+sealed class LayoutState {}
 
-}
+class LayoutInitialState extends LayoutState {}
 
-class LayoutInitialState extends LayoutState{}
-
-class LayoutChangeBottomNavState extends LayoutState{}
+class LayoutChangeBottomNavState extends LayoutState {}

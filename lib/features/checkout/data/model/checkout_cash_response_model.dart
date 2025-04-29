@@ -1,4 +1,3 @@
-
 import 'package:flower_app/features/checkout/domain/entites/checkout_cash_response_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 

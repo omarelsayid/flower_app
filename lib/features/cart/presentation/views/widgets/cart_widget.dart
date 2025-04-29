@@ -6,9 +6,12 @@ import '../../../../../core/utils/app_assets.dart';
 import '../../../domain/entity/user_cart_entity.dart';
 
 class CartItemWidget extends StatelessWidget {
-
-  CartItemWidget(this.onDelete, this.onIncrement, this.onDecrement,
-      this.userCartItem);
+  CartItemWidget(
+    this.onDelete,
+    this.onIncrement,
+    this.onDecrement,
+    this.userCartItem,
+  );
   VoidCallback onDelete;
   VoidCallback onIncrement;
   VoidCallback onDecrement;
@@ -19,9 +22,7 @@ class CartItemWidget extends StatelessWidget {
     return Card(
       elevation: 1,
       color: AppColors.whiteColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Row(
@@ -45,33 +46,33 @@ class CartItemWidget extends StatelessWidget {
                       Expanded(
                         child: Text(
                           userCartItem.product.title,
-                          style: AppTextStyles.inter500_16
+                          style: AppTextStyles.inter500_16,
                         ),
                       ),
                       InkWell(
-                        onTap:() => onDelete(),
-                        child: Image.asset(IconAssets.deleteIcon)
+                        onTap: () => onDelete(),
+                        child: Image.asset(IconAssets.deleteIcon),
                       ),
                     ],
                   ),
                   const SizedBox(height: 4),
                   Text(
-                      userCartItem.product.slug,
-                    style: AppTextStyles.inter500_13
+                    userCartItem.product.slug,
+                    style: AppTextStyles.inter500_13,
                   ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
-                          userCartItem.product.price.toString(),
-                        style:AppTextStyles.inter500_16
+                        userCartItem.product.price.toString(),
+                        style: AppTextStyles.inter500_16,
                       ),
                       const Spacer(),
                       Row(
                         children: [
                           IconButton(
                             icon: Icon(Icons.remove),
-                            onPressed:() => onDecrement(),
+                            onPressed: () => onDecrement(),
                           ),
                           Text(
                             userCartItem.quantity.toString(),
@@ -96,6 +97,4 @@ class CartItemWidget extends StatelessWidget {
       ),
     );
   }
-
-
 }

@@ -10,7 +10,9 @@ class EditProfileUseCase {
 
   EditProfileUseCase(this._profileRepository);
 
-  Future<Result<EditProfileResponseEntity>> execute(Map<String,dynamic> data) async {
-  return await _profileRepository.editProfile(data);
+  Future<Result<EditProfileResponseEntity>> execute(
+    Map<String, dynamic> data,
+  ) async {
+    return await _profileRepository.editProfile(data);
   }
 }

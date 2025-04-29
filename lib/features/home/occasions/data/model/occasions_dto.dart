@@ -1,6 +1,7 @@
 import 'package:flower_app/features/home/occasions/domain/entity/occasions_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'occasions_dto.g.dart';
+
 @JsonSerializable()
 class OccasionsResponseDTO extends OccasionsResponseEntity {
   @override
@@ -8,11 +9,7 @@ class OccasionsResponseDTO extends OccasionsResponseEntity {
   @override
   final List<OccasionDTO>? occasions;
 
-  OccasionsResponseDTO({
-    super.message,
-    this.metadata,
-    this.occasions,
-  });
+  OccasionsResponseDTO({super.message, this.metadata, this.occasions});
 
   // factory OccasionsResponseDTO.fromJson(Map<String, dynamic> json) {
   //   return OccasionsResponseDTO(
@@ -24,8 +21,6 @@ class OccasionsResponseDTO extends OccasionsResponseEntity {
 
   factory OccasionsResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$OccasionsResponseDTOFromJson(json);
-
-
 }
 
 @JsonSerializable()
@@ -41,8 +36,8 @@ class OccasionDTO extends Occasion {
     super.productsCount,
   });
 
-   factory OccasionDTO.fromJson(Map<String, dynamic> json) =>
-       _$OccasionDTOFromJson(json);
+  factory OccasionDTO.fromJson(Map<String, dynamic> json) =>
+      _$OccasionDTOFromJson(json);
 }
 
 @JsonSerializable()
@@ -54,8 +49,6 @@ class MetadataDTO extends Metadata {
     super.totalItems,
   });
 
-
   factory MetadataDTO.fromJson(Map<String, dynamic> json) =>
       _$MetadataDTOFromJson(json);
-
 }

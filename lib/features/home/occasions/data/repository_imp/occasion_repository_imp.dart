@@ -21,27 +21,19 @@ class OccasionRepositoryImpl implements OccasionRepository {
 
   @override
   Future<Result<OccasionsResponseEntity>> getOccasion() async {
-    return executeApi(
-          () async {
-        var data = await _occasionRemoteDataSource.getOccasion();
-        return data;
-      },
-    );
+    return executeApi(() async {
+      var data = await _occasionRemoteDataSource.getOccasion();
+      return data;
+    });
   }
-
-
 
   @override
-  Future<Result<ProductsResponseEntity>> getSpecificOccasion(String occasionId) {
-    return executeApi(
-          () async {
-        var data = await _occasionRemoteDataSource.getOccasionDetails(occasionId);
-        return data;
-      },
-    );
+  Future<Result<ProductsResponseEntity>> getSpecificOccasion(
+    String occasionId,
+  ) {
+    return executeApi(() async {
+      var data = await _occasionRemoteDataSource.getOccasionDetails(occasionId);
+      return data;
+    });
   }
-
-
-
-
 }

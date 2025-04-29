@@ -1,4 +1,3 @@
-
 import '../../domain/entity/forget_response_password_entity.dart';
 
 class ForgetResponsePasswordDto extends ForgetResponsePasswordEntity {

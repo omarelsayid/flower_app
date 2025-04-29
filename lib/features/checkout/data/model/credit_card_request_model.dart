@@ -1,6 +1,5 @@
 class CreditCardRequestModel {
-  CreditCardRequestModel({
-      this.shippingAddress,});
+  CreditCardRequestModel({this.shippingAddress});
 
   ShippingAddress? shippingAddress;
 
@@ -11,16 +10,10 @@ class CreditCardRequestModel {
     }
     return map;
   }
-
 }
 
 class ShippingAddress {
-  ShippingAddress({
-      this.street, 
-      this.phone, 
-      this.city, 
-      this.lat, 
-      this.long,});
+  ShippingAddress({this.street, this.phone, this.city, this.lat, this.long});
   String? street;
   String? phone;
   String? city;
@@ -36,5 +29,4 @@ class ShippingAddress {
     map['long'] = long;
     return map;
   }
-
 }

@@ -12,16 +12,18 @@ import '../../domain/entity/specific_category_response_entity.dart';
 
 abstract class CategoriesRemoteDataSource {
   Future<Result<CategoriesResponseEntity>> getAllCategories();
-  Future<Result<SpecificCategoriesResponseEntity>>getSpecificCategory(String categoryId);
-  Future<Result<SpecificCategoriesResponseEntity>>getFiltered(String sort);
-
+  Future<Result<SpecificCategoriesResponseEntity>> getSpecificCategory(
+    String categoryId,
+  );
+  Future<Result<SpecificCategoriesResponseEntity>> getFiltered(String sort);
 }
+
 @Injectable(as: CategoriesRemoteDataSource)
 class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   final ApiClient _apiClient;
   CategoriesRemoteDataSourceImpl(this._apiClient);
   @override
-  Future<Result<CategoriesResponseEntity>> getAllCategories()async {
+  Future<Result<CategoriesResponseEntity>> getAllCategories() async {
     return executeApi(() async {
       var response = await _apiClient.getAllCategories();
       log("response ${response.categories!.length}");
@@ -30,27 +32,23 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
   }
 
   @override
-  Future<Result<SpecificCategoriesResponseEntity>> getSpecificCategory(String categoryId) async{
-    return executeApi(
-          () async {
-        var response= await _apiClient.getSpecificCategory(categoryId);
+  Future<Result<SpecificCategoriesResponseEntity>> getSpecificCategory(
+    String categoryId,
+  ) async {
+    return executeApi(() async {
+      var response = await _apiClient.getSpecificCategory(categoryId);
 
-        log("response ${response.message}");
-        return response;
-      },
-    );
+      log("response ${response.message}");
+      return response;
+    });
   }
 
   @override
   Future<Result<SpecificCategoriesResponseEntity>> getFiltered(String sort) {
-    return executeApi(
-          () async {
-        var response= await _apiClient.getProductsByFilter(sort);
-        log("response ${response.message}");
-        return response;
-      },
-    );
+    return executeApi(() async {
+      var response = await _apiClient.getProductsByFilter(sort);
+      log("response ${response.message}");
+      return response;
+    });
   }
-
-
 }

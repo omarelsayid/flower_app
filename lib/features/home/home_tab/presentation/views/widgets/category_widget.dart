@@ -1,4 +1,3 @@
-
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -10,28 +9,26 @@ class CategoryWidget extends StatelessWidget {
   final String imgUrl;
   final String name;
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12,vertical: 12),
+            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             width: 70,
             height: 65,
 
             decoration: BoxDecoration(
-              color:AppColors.lightPinkColor,
-              borderRadius: BorderRadius.circular(20)
+              color: AppColors.lightPinkColor,
+              borderRadius: BorderRadius.circular(20),
             ),
 
-
-            child:Image.network(imgUrl,width: 25,),
+            child: Image.network(imgUrl, width: 25),
           ),
-          SizedBox(height: 8,),
-          Text(name,style: AppTextStyles.inter400_14,)
+          SizedBox(height: 8),
+          Text(name, style: AppTextStyles.inter400_14),
         ],
       ),
     );

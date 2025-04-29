@@ -12,8 +12,12 @@ abstract class CartRemoteDataSource {
 
   Future<UserCartResponseModel> getUserCart(String token);
 
-  Future<DeleteCartResponseDTO> deleteCArtItem(String token,String id);
-  Future<UpdateCartQuantityResponseDTO> updateCArtQuantity(String token, String id, int quantity);
+  Future<DeleteCartResponseDTO> deleteCArtItem(String token, String id);
+  Future<UpdateCartQuantityResponseDTO> updateCArtQuantity(
+    String token,
+    String id,
+    int quantity,
+  );
 }
 
 @Injectable(as: CartRemoteDataSource)
@@ -23,36 +27,44 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   CartRemoteDataSourceImpl(this._apiClient);
 
   @override
-  Future<String> createCart(String token, String productId, int quantity) async {
+  Future<String> createCart(
+    String token,
+    String productId,
+    int quantity,
+  ) async {
     final request = CreateCartRequest(product: productId, quantity: quantity);
 
-      final response = await _apiClient.addProductToCart("Bearer $token", request);
-      return response.data.message;
+    final response = await _apiClient.addProductToCart(
+      "Bearer $token",
+      request,
+    );
+    return response.data.message;
   }
 
-@override
-  Future<UserCartResponseModel> getUserCart(String token) async{
-
+  @override
+  Future<UserCartResponseModel> getUserCart(String token) async {
     return await _apiClient.getUserCart("Bearer $token");
-
   }
 
-
   @override
-  Future<DeleteCartResponseDTO> deleteCArtItem(String token, String id)async {
-    final response= await _apiClient.deleteCartItem("Bearer $token", id);
+  Future<DeleteCartResponseDTO> deleteCArtItem(String token, String id) async {
+    final response = await _apiClient.deleteCartItem("Bearer $token", id);
 
     return response.data;
   }
 
-
-
   @override
-  Future<UpdateCartQuantityResponseDTO> updateCArtQuantity(String token, String id, int quantity) async{
-
-    final request=UpdateCartQuantityRequest(quantity: quantity);
-    final response =await _apiClient.updateCartQuantity("Bearer $token", id, request);
+  Future<UpdateCartQuantityResponseDTO> updateCArtQuantity(
+    String token,
+    String id,
+    int quantity,
+  ) async {
+    final request = UpdateCartQuantityRequest(quantity: quantity);
+    final response = await _apiClient.updateCartQuantity(
+      "Bearer $token",
+      id,
+      request,
+    );
     return response.data;
   }
-
 }

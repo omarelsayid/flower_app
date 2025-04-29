@@ -4,17 +4,20 @@ import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/text_styles.dart';
 
 class RowWidget extends StatelessWidget {
-  const RowWidget({super.key, required this.txt, required this.leading_text, required this.onPressed});
+  const RowWidget({
+    super.key,
+    required this.txt,
+    required this.leading_text,
+    required this.onPressed,
+  });
 
   final String txt;
   final String leading_text;
   final VoidCallback onPressed;
 
-
-
   @override
   Widget build(BuildContext context) {
-    return   Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(

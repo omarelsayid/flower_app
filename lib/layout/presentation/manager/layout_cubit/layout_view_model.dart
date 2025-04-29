@@ -1,3 +1,4 @@
+import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
 import 'package:flower_app/layout/presentation/manager/layout_cubit/layout_state.dart';
@@ -13,55 +14,54 @@ import '../../../../features/home/home_tab/presentation/cubit/best_seller_cubit/
 import '../../../../features/home/categories/presentation/categories_tab.dart';
 import '../../../../features/profile/main_profile_screen/presentation/views/profile_tab.dart';
 
-
-class LayoutViewModel extends Cubit <LayoutState> {
-  LayoutViewModel() : super(LayoutInitialState());
+class LayoutViewModel extends Cubit<LayoutState> {
+  LayoutViewModel(this.currentIndex) : super(LayoutInitialState());
   int currentIndex = 0;
   void doIntent(LayoutIntent layoutIntent) {
-    switch(layoutIntent) {
+    switch (layoutIntent) {
       case LayoutChangeBottomNavIntent():
         _changeBottomNav(layoutIntent.index);
     }
   }
-List<Widget>tabs=[
-  MultiBlocProvider(
-  providers: [
-    BlocProvider(
-  create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
-),
-    BlocProvider(
-      create: (context) => getIt.get<BestSellerCubit>()..getBestSeller(),
+
+  List<Widget> tabs = [
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt.get<CategoryCubit>()..fetchCategories(),
+        ),
+        BlocProvider(
+          create: (context) => getIt.get<BestSellerCubit>()..getBestSeller(),
+        ),
+        BlocProvider(
+          create: (context) => getIt.get<OccasionCubit>()..fetchOccasion(),
+        ),
+      ],
+      child: HomeTab(),
     ),
-    BlocProvider(
-      create: (context) => getIt.get<OccasionCubit>()..fetchOccasion(),
+    // OccasionsScreen(),
+    // const HomeTab(),
+    CategoriesTab(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt.get<DeleteSpecificItemCubit>()),
+        BlocProvider(create: (context) => getIt.get<GetUserCartCubit>()),
+        BlocProvider(create: (context) => getIt.get<UpdateQuantityCubit>()),
+      ],
+      child: CartTab(),
     ),
-  ],
-  child: HomeTab(),
-),
-  // OccasionsScreen(),
-  // const HomeTab(),
-   CategoriesTab(),
-   MultiBlocProvider(
-  providers: [
-    BlocProvider(
-  create: (context) => getIt.get<DeleteSpecificItemCubit>(),
-),
-    BlocProvider(
-      create: (context) => getIt.get<UpdateQuantityCubit>(),
-    ),
-  ],
-  child: CartTab(),
-),
-  const ProfileTab(),
-];
+    const ProfileTab(),
+  ];
   void _changeBottomNav(int index) {
-    emit( LayoutInitialState());
+    emit(LayoutInitialState());
     currentIndex = index;
     emit(LayoutChangeBottomNavState());
   }
 }
-sealed class LayoutIntent{}
-class LayoutChangeBottomNavIntent extends LayoutIntent{
+
+sealed class LayoutIntent {}
+
+class LayoutChangeBottomNavIntent extends LayoutIntent {
   int index;
-  LayoutChangeBottomNavIntent( this.index);
+  LayoutChangeBottomNavIntent(this.index);
 }

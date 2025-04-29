@@ -33,11 +33,12 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
 
   @override
   Future<EditProfileResponseDTO> editProfile(Map<String, dynamic> data) async {
-    var token=  SharedPreferenceServices.getData(AppConstants.token.toString());
+    var token = SharedPreferenceServices.getData(AppConstants.token.toString());
     HttpResponse<EditProfileResponseDTO> response = await _apiClient
-        .editProfile("Bearer $token",data,);
+        .editProfile("Bearer $token", data);
     return response.data;
   }
+
   @override
   Future<void> logout() async {
     await _apiClient.logout();
@@ -51,19 +52,14 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
         'photo': await MultipartFile.fromFile(
           photo.path,
           filename:
-          'upload_${DateTime.now().millisecondsSinceEpoch}.${photo.path.split('.').last}',
+              'upload_${DateTime.now().millisecondsSinceEpoch}.${photo.path.split('.').last}',
           contentType: MediaType.parse(mimeType!),
         ),
       });
       final token =
-      SharedPreferenceServices.getData(AppConstants.token) as String;
+          SharedPreferenceServices.getData(AppConstants.token) as String;
       var response = await _apiClient.uploadPhoto('Bearer $token', formData);
       return response;
     });
   }
 }
-
-
-
-
-

@@ -9,8 +9,6 @@ abstract class ProfileLocalDataSource {
   Future<void> deleteToken();
 }
 
-
-
 @Injectable(as: ProfileLocalDataSource)
 class ProfileLocalDataSourceImpl implements ProfileLocalDataSource {
   final SharedPreferences sharedPreferences;

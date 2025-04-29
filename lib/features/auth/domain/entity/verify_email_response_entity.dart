@@ -1,4 +1,4 @@
-class VerifyEmailResponseEntity{
-  String ? status;
+class VerifyEmailResponseEntity {
+  String? status;
   VerifyEmailResponseEntity({this.status});
 }

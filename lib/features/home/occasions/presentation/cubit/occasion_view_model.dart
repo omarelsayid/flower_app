@@ -36,7 +36,9 @@ class OccasionViewModel extends Cubit<OccasionState> {
     currentIndex = index;
     _getSpecificOccasion(occasions[currentIndex].id.toString());
     log("Changed occasion index to: $currentIndex");
-    emit(SuccessOccasionState(occasions));  // Update occasions after changing the index
+    emit(
+      SuccessOccasionState(occasions),
+    ); // Update occasions after changing the index
   }
 
   Future<void> _getOccasion() async {
@@ -60,7 +62,9 @@ class OccasionViewModel extends Cubit<OccasionState> {
             log("Fetched ${occasionsList.length} occasions successfully.");
           }
         } else {
-          emit(ErrorOccasionState("Failed to fetch occasions: No data received"));
+          emit(
+            ErrorOccasionState("Failed to fetch occasions: No data received"),
+          );
         }
         break;
 
@@ -88,10 +92,16 @@ class OccasionViewModel extends Cubit<OccasionState> {
             emit(ErrorOccasionState("No specific occasions available"));
           } else {
             emit(SuccessSpecificOccasionState(specificOccasionsList));
-            log("Fetched ${specificOccasionsList.length} specific occasions successfully.");
+            log(
+              "Fetched ${specificOccasionsList.length} specific occasions successfully.",
+            );
           }
         } else {
-          emit(ErrorOccasionState("Failed to fetch specific occasions: No data received"));
+          emit(
+            ErrorOccasionState(
+              "Failed to fetch specific occasions: No data received",
+            ),
+          );
         }
         break;
 
@@ -103,11 +113,10 @@ class OccasionViewModel extends Cubit<OccasionState> {
   }
 }
 
-
-
 sealed class OccasionIntent {}
 
 class OccasionClickedIntent extends OccasionIntent {}
+
 class ChangeOccasionIndexIntent extends OccasionIntent {
   final int index;
   ChangeOccasionIndexIntent(this.index);
@@ -117,4 +126,3 @@ class SpecificOccasionClickedIntent extends OccasionIntent {
   final String occasionId;
   SpecificOccasionClickedIntent(this.occasionId);
 }
-
