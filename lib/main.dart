@@ -1,3 +1,7 @@
+import 'dart:ui';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,9 +19,21 @@ import 'generated/l10n.dart';
 import 'core/routes_generator/pages_routes.dart';
 import 'core/routes_generator/routes_generator.dart';
 import 'core/di/injectable_initializer.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+   FlutterError.onError = (errorDetails) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    };
+    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+    PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      return true;
+    };
   configureDependencies();
   Bloc.observer = MyBlocObserver();
   ConfigLoading().showLoading();
@@ -79,12 +95,13 @@ class MainAppContent extends StatelessWidget {
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
       // initialRoute: PagesRoutes.addressScreen,
-      initialRoute: (SharedPreferenceServices.getData(AppConstants.token) != null &&
-              (SharedPreferenceServices.getData(AppConstants.rememberMe)
-                      as bool? ??
-                  false))
-          ? PagesRoutes.layOutScreen
-          : PagesRoutes.signInScreen,
+      initialRoute:
+          (SharedPreferenceServices.getData(AppConstants.token) != null &&
+                  (SharedPreferenceServices.getData(AppConstants.rememberMe)
+                          as bool? ??
+                      false))
+              ? PagesRoutes.layOutScreen
+              : PagesRoutes.signInScreen,
       builder: (context, child) => child!,
     );
   }
