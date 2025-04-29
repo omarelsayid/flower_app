@@ -17,7 +17,7 @@ class DialogUtils {
             content: Row(
               children: [
                 CircularProgressIndicator(
-                  color: primaryColor,
+                  color: AppColors.primaryColor,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -53,7 +53,7 @@ class DialogUtils {
           },
           child: Text(
             postActionName,
-            style:  TextStyle(color: primaryColor),
+            style:  TextStyle(color: AppColors.primaryColor),
           )));
       if (negativeActionName != null) {
         actions.add(TextButton(
@@ -63,7 +63,7 @@ class DialogUtils {
             },
             child: Text(
               negativeActionName,
-              style:  TextStyle(color: primaryColor),
+              style:  TextStyle(color: AppColors.primaryColor),
             )));
       }
     }
