@@ -794,6 +794,76 @@ class S {
   String get lowes_Price {
     return Intl.message('Lower Price', name: 'lowes_Price', desc: '', args: []);
   }
+
+  /// `My Orders`
+  String get myOrder {
+    return Intl.message('My Orders', name: 'myOrder', desc: '', args: []);
+  }
+
+  /// `Active`
+  String get active {
+    return Intl.message('Active', name: 'active', desc: '', args: []);
+  }
+
+  /// `Completed`
+  String get completed {
+    return Intl.message('Completed', name: 'completed', desc: '', args: []);
+  }
+
+  /// `Not Found Active Orders`
+  String get notfoundActiveOrders {
+    return Intl.message(
+      'Not Found Active Orders',
+      name: 'notfoundActiveOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Found Completed Orders`
+  String get notfoundCompletedOrders {
+    return Intl.message(
+      'Not Found Completed Orders',
+      name: 'notfoundCompletedOrders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EGP`
+  String get EGP {
+    return Intl.message('EGP', name: 'EGP', desc: '', args: []);
+  }
+
+  /// `Delivered on`
+  String get Deliveredon {
+    return Intl.message(
+      'Delivered on',
+      name: 'Deliveredon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reorder`
+  String get Reorder {
+    return Intl.message('Reorder', name: 'Reorder', desc: '', args: []);
+  }
+
+  /// `Order Number`
+  String get OrderNumber {
+    return Intl.message(
+      'Order Number',
+      name: 'OrderNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Track Order`
+  String get TrackOrder {
+    return Intl.message('Track Order', name: 'TrackOrder', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

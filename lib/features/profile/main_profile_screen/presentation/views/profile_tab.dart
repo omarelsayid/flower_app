@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/body_widget.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/language_widget.dart';
@@ -24,11 +26,12 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-      ProfileViewModel(
-        getIt<ProfileUseCase>(),
-        getIt<ProfileLocalDataSource>(),
-      )..doIntent(ProfileClickedIntent()),
+      create:
+          (context) => ProfileViewModel(
+            getIt<ProfileUseCase>(),
+            getIt<ProfileLocalDataSource>(),
+          )..doIntent(ProfileClickedIntent()),
+
       child: SafeArea(
         child: BlocListener<ProfileViewModel, ProfileState>(
           listener: (context, state) {
@@ -36,12 +39,12 @@ class ProfileTab extends StatelessWidget {
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 PagesRoutes.signInScreen,
-                    (route) => false,
+                (route) => false,
               );
             } else if (state is ErrorProfileState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.message)),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text(state.message)));
             }
           },
           child: BlocBuilder<ProfileViewModel, ProfileState>(
@@ -115,13 +118,22 @@ class ProfileTab extends StatelessWidget {
                       BodyWidget(
                         text: S.of(context).myOrders,
                         icon: Icons.list_alt_outlined,
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            PagesRoutes.ordersScreen,
+                          );
+                        },
                       ),
                       BodyWidget(
                         text: S.of(context).savedAddress,
                         icon: Icons.place_outlined,
-                        onTap:   () {
-                Navigator.pushNamed(context, PagesRoutes.userAddressesScreen);
-                },
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            PagesRoutes.userAddressesScreen,
+                          );
+                        },
                       ),
                       const Divider(color: AppColors.greyColor),
                       const NotificationWidget(),
@@ -130,24 +142,25 @@ class ProfileTab extends StatelessWidget {
                       BodyWidget(
                         text: S.of(context).aboutUs,
                         onTap: () {
-
                           JsonContentBottomSheet.show(
                             context,
-                            assetPath: 'assets/Flowery About Section JSON with Expanded Content.json',
+                            assetPath:
+                                'assets/Flowery About Section JSON with Expanded Content.json',
                             rootKey: 'about_app',
                           );
                         },
                       ),
                       BodyWidget(
-                          onTap: () {
-
-                            JsonContentBottomSheet.show(
-                              context,
-                              assetPath: 'assets/Flowery Terms and Conditions JSON with Arabic and English.json',
-                              rootKey: 'terms_and_conditions',
-                            );
-                          },
-                          text: S.of(context).termsAndConditions),
+                        onTap: () {
+                          JsonContentBottomSheet.show(
+                            context,
+                            assetPath:
+                                'assets/Flowery Terms and Conditions JSON with Arabic and English.json',
+                            rootKey: 'terms_and_conditions',
+                          );
+                        },
+                        text: S.of(context).termsAndConditions,
+                      ),
                       const Divider(color: AppColors.greyColor),
                       const LogoutWidget(),
                       Padding(
@@ -174,4 +187,3 @@ class ProfileTab extends StatelessWidget {
     );
   }
 }
-

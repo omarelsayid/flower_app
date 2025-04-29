@@ -23,7 +23,13 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "BestSellers": MessageLookupByLibrary.simpleMessage("Best Sellers"),
+    "Deliveredon": MessageLookupByLibrary.simpleMessage("Delivered on"),
+    "EGP": MessageLookupByLibrary.simpleMessage("EGP"),
+    "OrderNumber": MessageLookupByLibrary.simpleMessage("Order Number"),
+    "Reorder": MessageLookupByLibrary.simpleMessage("Reorder"),
+    "TrackOrder": MessageLookupByLibrary.simpleMessage("Track Order"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
+    "active": MessageLookupByLibrary.simpleMessage("Active"),
     "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
     "add_new_addresses": MessageLookupByLibrary.simpleMessage(
       "Add New Address",
@@ -56,6 +62,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "checkout": MessageLookupByLibrary.simpleMessage("Checkout"),
     "city": MessageLookupByLibrary.simpleMessage("City"),
     "cityRequired": MessageLookupByLibrary.simpleMessage("Please enter a city"),
+    "completed": MessageLookupByLibrary.simpleMessage("Completed"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmLogout": MessageLookupByLibrary.simpleMessage("confirm logout"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
@@ -120,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "lowes_Price": MessageLookupByLibrary.simpleMessage("Lower Price"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
+    "myOrder": MessageLookupByLibrary.simpleMessage("My Orders"),
     "myOrders": MessageLookupByLibrary.simpleMessage("My orders"),
     "name": MessageLookupByLibrary.simpleMessage("Name"),
     "newDate": MessageLookupByLibrary.simpleMessage("New"),
@@ -128,6 +136,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "no_address_found": MessageLookupByLibrary.simpleMessage(
       "No address found.",
+    ),
+    "notfoundActiveOrders": MessageLookupByLibrary.simpleMessage(
+      "Not Found Active Orders",
+    ),
+    "notfoundCompletedOrders": MessageLookupByLibrary.simpleMessage(
+      "Not Found Completed Orders",
     ),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "occasions": MessageLookupByLibrary.simpleMessage("Occasions"),
