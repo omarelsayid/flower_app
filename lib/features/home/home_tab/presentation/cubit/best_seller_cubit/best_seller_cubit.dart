@@ -20,6 +20,10 @@ class BestSellerCubit extends Cubit<BestSellerState> {
 
     emit(BestSellerLoading());
     final result = await _bestSellerUseCase.getBestSeller();
+    if(isClosed)
+      {
+        return;
+      }
     switch (result) {
       case Success():
         log('success');

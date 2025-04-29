@@ -8,10 +8,25 @@ import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CheckoutView extends StatelessWidget {
+class CheckoutView extends StatefulWidget {
   CheckoutView({super.key});
+
+  @override
+  State<CheckoutView> createState() => _CheckoutViewState();
+}
+
+class _CheckoutViewState extends State<CheckoutView> {
   GetAddressesViewModel getAddressesViewModel =
       getIt.get<GetAddressesViewModel>();
+
+  Future<void> _handleRefresh() async {
+    await Future.delayed(Duration(seconds: 2));
+    setState(() {
+      getAddressesViewModel.getAddresses();
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<double> total =
@@ -21,18 +36,23 @@ class CheckoutView extends StatelessWidget {
         BlocProvider(create: (context) => getAddressesViewModel),
         BlocProvider(create: (context) => getIt.get<CheckoutViewModel>()),
       ],
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            S.of(context).checkout,
-            style: AppTextStyles.inter500_20.copyWith(
-              color: AppColors.blackColor,
+      child: RefreshIndicator(
+        backgroundColor: AppColors.whiteColor,
+       color: AppColors.primaryColor,
+       onRefresh: _handleRefresh,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              S.of(context).checkout,
+              style: AppTextStyles.inter500_20.copyWith(
+                color: AppColors.blackColor,
+              ),
             ),
           ),
-        ),
-        body: CheckoutViewBody(
-          getAddressesViewModel: getAddressesViewModel,
-          total: total,
+          body: CheckoutViewBody(
+            getAddressesViewModel: getAddressesViewModel,
+            total: total,
+          ),
         ),
       ),
     );

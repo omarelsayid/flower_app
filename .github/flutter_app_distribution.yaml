@@ -5,12 +5,14 @@ on:
   push:
     branches:
       - development
+      - test-app-distribution
       - googel-maps-improvments-#2
 
   pull_request:
     branches:
       - development
       - googel-maps-improvments-#2
+      - test-app-distribution
 jobs:
   build:
     runs-on: ubuntu-latest

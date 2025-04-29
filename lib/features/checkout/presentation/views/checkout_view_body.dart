@@ -133,7 +133,9 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
                         SizedBox(
                           height: resposiveHeight(36),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, PagesRoutes.addressScreen);
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               side: BorderSide(color: Color(0xFFA6A6A6)),

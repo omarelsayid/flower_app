@@ -77,11 +77,11 @@ class UserAddressesBuilder extends StatelessWidget {
                       ),
                   onEdit: () async {
                     final Address entity = address;
-                    final AddressDTO dto = AddressDTO.fromEntity(entity);
+                    // final AddressDTO dto = AddressDTO.fromEntity(entity);
                     final result = await Navigator.pushNamed(
                       context,
                       PagesRoutes.addressScreen,
-                      arguments: dto,
+                      arguments: entity,
                     );
 
                     if (result == true) {

@@ -10,6 +10,7 @@ import 'package:flower_app/features/addresses/data/model/auto_complete_model/sug
 import 'package:flower_app/features/addresses/data/model/place_details_model/place_details_model.dart';
 import 'package:flower_app/features/addresses/domain/entity/city_entity.dart';
 import 'package:flower_app/features/addresses/domain/entity/states_entity.dart';
+import 'package:flower_app/features/addresses/domain/entity/user_addresses_entity.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_states.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_cubit.dart';
@@ -27,7 +28,7 @@ import '../../cubit/address_details_cubit.dart';
 import '../../cubit/address_details_states.dart';
 
 class AddressDetailsViewBody extends StatefulWidget {
-  final AddressDTO initialAddress;
+  final Address initialAddress;
   const AddressDetailsViewBody({Key? key, required this.initialAddress})
     : super(key: key);
 
@@ -36,7 +37,7 @@ class AddressDetailsViewBody extends StatefulWidget {
 }
 
 class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
-  late AddressDTO addressDetailsModel;
+  late Address addressDetailsModel;
   late CameraPosition _initialCameraPosition;
   late LocationService _locationService;
   late GoogleMapController _mapController;
@@ -63,6 +64,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
   void initState() {
     super.initState();
     addressDetailsModel = widget.initialAddress;
+
     _streetController = TextEditingController(text: addressDetailsModel.street);
     _phoneNumberController = TextEditingController(
       text: addressDetailsModel.phone,
@@ -157,7 +159,15 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                   zoomControlsEnabled: false,
                   onMapCreated: (controller) {
                     _mapController = controller;
-                    _moveToUserLocation();
+                    if (isEditMode) {
+                      final lat = double.tryParse(addressDetailsModel.lat ?? '');
+                      final lng = double.tryParse(addressDetailsModel.long ?? '');
+                      if (lat != null && lng != null) {
+                        _moveToAndPopulate(LatLng(lat, lng));
+                      }
+                    } else {
+                      _moveToUserLocation();
+                    }
                     _initMapStyle();
                   },
                   onTap: _moveToAndPopulate,
@@ -448,7 +458,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       username: _recipientController.text,
       city: selectedCity!.governorateNameEn,
     );
-    context.read<AddressDetailsCubit>().saveUserAddress(addressDetailsModel);
+    context.read<AddressDetailsCubit>().saveUserAddress(  AddressDTO.fromEntity(addressDetailsModel),);
   }
 
   void _updateAddress() {
@@ -459,7 +469,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       username: _recipientController.text,
       city: selectedCity!.governorateNameEn,
     );
-    context.read<AddressDetailsCubit>().updateUserAddress(addressDetailsModel);
+    context.read<AddressDetailsCubit>().updateUserAddress(AddressDTO.fromEntity(addressDetailsModel));
   }
 
   Future<void> _moveToUserLocation() async {
