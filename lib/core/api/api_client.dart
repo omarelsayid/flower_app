@@ -37,7 +37,6 @@ import '../../features/auth/data/model/reset_password_dto.dart';
 import '../../features/auth/data/model/verify_email_response_dto.dart';
 import '../../features/auth/domain/entity/sign_up_request.dart';
 import '../../features/profile/main_profile_screen/data/model/change_password_request_model.dart';
-import '../../features/profile/main_profile_screen/domain/entity/get_notification_details_entity.dart';
 
 part 'api_client.g.dart';
 
