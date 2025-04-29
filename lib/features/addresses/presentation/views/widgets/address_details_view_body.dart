@@ -26,6 +26,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../../../data/model/user_addresses_dto.dart';
 import '../../cubit/address_details_cubit.dart';
 import '../../cubit/address_details_states.dart';
+import 'package:collection/collection.dart';
+
+
+
 
 class AddressDetailsViewBody extends StatefulWidget {
   final Address initialAddress;
@@ -80,6 +84,13 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     );
     _locationService = LocationService();
     _loadMarkerIcon();
+
+    selectedCity = cities.firstWhereOrNull(
+          (c) => c.governorateNameEn == addressDetailsModel.city || c.governorateNameAr == addressDetailsModel.city,
+    );
+    if (selectedCity != null) {
+      statesFilter = states.where((s) => s.governorateId == selectedCity!.id).toList();
+    }
   }
 
   void _loadMarkerIcon() async {
@@ -272,11 +283,8 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                                 states
                                     .where((s) => s.governorateId == value!.id)
                                     .toList();
-                            addressDetailsModel.copyWith(
-                              city:
-                                  locale == 'en'
-                                      ? value!.governorateNameEn
-                                      : value!.governorateNameAr,
+                            addressDetailsModel = addressDetailsModel.copyWith(
+                              city: locale == 'en' ? value!.governorateNameEn : value!.governorateNameAr,
                             );
                             selectedState = null;
                           });
@@ -460,16 +468,23 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     );
     context.read<AddressDetailsCubit>().saveUserAddress(  AddressDTO.fromEntity(addressDetailsModel),);
   }
-
   void _updateAddress() {
     if (!_formKey.currentState!.validate()) return;
-    addressDetailsModel = addressDetailsModel.copyWith(
+
+    final currentLocale = Localizations.localeOf(context).languageCode;
+
+    final updatedAddress = addressDetailsModel.copyWith(
       street: _streetController.text,
       phone: _phoneNumberController.text,
       username: _recipientController.text,
-      city: selectedCity!.governorateNameEn,
+      city: selectedCity != null
+          ? (currentLocale == 'en'
+          ? selectedCity!.governorateNameEn
+          : selectedCity!.governorateNameAr)
+          : addressDetailsModel.city, // if didnt choose return...
     );
-    context.read<AddressDetailsCubit>().updateUserAddress(AddressDTO.fromEntity(addressDetailsModel));
+
+    context.read<AddressDetailsCubit>().updateUserAddress(AddressDTO.fromEntity(updatedAddress));
   }
 
   Future<void> _moveToUserLocation() async {

@@ -2,13 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
-import '../network/auth_interceptor.dart';
 import '../services/shared_preference_services.dart';
 import '../utils/constant_manager.dart';
 
-import '../services/shared_preference_services.dart';
-import '../utils/constant_manager.dart';
 
 @module
 abstract class DioProvider {

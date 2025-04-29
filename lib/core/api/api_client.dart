@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/core/utils/end_points.dart';
 import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
 import 'package:flower_app/features/cart/data/models/create_cart_reponse.dart';
@@ -103,19 +104,12 @@ abstract class ApiClient {
   @GET("/api/v1/auth/logout")
   Future<HttpResponse<void>> logout();
 
-  // Future<HttpResponse<void>> logout(@Header("Authorization") String token);
-
-  // Future<HttpResponse<ProfileResponseDTO>> getProfileData();
   @PATCH("/api/v1/auth/change-password")
   Future<ChangePasswordModel> changePassword(
     @Body() ChangePasswordRequestModel data,
     @Header("Authorization") String token,
   );
 
-  // Future<ChangePasswordModel> changePassword(
-  //   @Body() ChangePasswordRequestModel data,
-  //   @Header("Authorization") String token,
-  // );
   @PUT("/api/v1/auth/editProfile")
   Future<HttpResponse<EditProfileResponseDTO>> editProfile(
     @Header("Authorization") String token,
@@ -192,8 +186,9 @@ abstract class ApiClient {
     @Body() Map<String, dynamic> address,
   );
 
-  @GET("/api/v1/auth/profile-data")
+  @GET(ApiEndPoints.getProfileDataEndPoint)
   Future<ProfileResponseDTO> getProfileData();
+
   @GET("/api/v1/notifications")
   Future<GetAllNotificationResponseModel> getAllNotifications(
     @Header("Authorization") String token,
