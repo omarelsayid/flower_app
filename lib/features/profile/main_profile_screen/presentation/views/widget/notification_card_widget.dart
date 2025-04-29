@@ -6,49 +6,54 @@ import '../../../../../../core/utils/app_colors.dart';
 import '../../../../../../core/utils/text_styles.dart';
 
 class NotificationCardWidget extends StatelessWidget {
-   NotificationCardWidget({super.key,required this.notification});
-NotificationsResponseEntity notification;
+  const NotificationCardWidget({super.key, required this.notification});
+
+  final NotificationsResponseEntity notification;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: resposiveWidth(16)),
-          child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: resposiveWidth(16)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.notifications_outlined),
-              SizedBox(width: resposiveWidth(8)),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    notification.title.toString(),
-                    style: AppTextStyles.inter600_18.copyWith(fontSize: 16),
-                  ),
-                  SizedBox(height: resposiveHeight(8)),
-                  Text(
-                    notification.body.toString(),
-                    maxLines: 3,
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTextStyles.inter400_12,
-                  ),
-                ],
+              Icon(Icons.notifications_outlined, size: resposiveWidth(24)),
+              SizedBox(width: resposiveWidth(12)),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      notification.title ?? '',
+                      style: AppTextStyles.inter600_18.copyWith(fontSize: 16),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(height: resposiveHeight(4)),
+                    Text(
+                      notification.body ?? '',
+                      style: AppTextStyles.inter400_12,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
-        SizedBox(height: resposiveHeight(8)),
-        Divider(
-          height: 5,
-          color: AppColors.greyColor,
-          thickness: .6,
-        ),
-        SizedBox(
-          height: 16,
-        )
-      ],
+          SizedBox(height: resposiveHeight(12)),
+          Divider(
+            height: 1,
+            color: AppColors.greyColor,
+            thickness: 0.5,
+          ),
+          SizedBox(height: resposiveHeight(12)),
+        ],
+      ),
     );
   }
 }
+
