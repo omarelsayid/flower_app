@@ -5,13 +5,9 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../services/shared_preference_services.dart';
 import '../utils/constant_manager.dart';
 
-import '../network/auth_interceptor.dart';
-import '../services/shared_preference_services.dart';
-import '../utils/constant_manager.dart';
 
 @module
 abstract class DioProvider {
-    AuthInterceptor get authInterceptor => AuthInterceptor();
   @lazySingleton
   Dio dioProvider() {
     final Dio dio = Dio(
