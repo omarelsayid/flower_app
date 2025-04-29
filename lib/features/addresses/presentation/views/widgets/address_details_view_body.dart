@@ -1,9 +1,20 @@
 import 'dart:developer';
 
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/services/localization_service.dart';
 import 'package:flower_app/core/services/location_service.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
+import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/features/addresses/data/model/auto_complete_model/suggestion.dart';
+import 'package:flower_app/features/addresses/data/model/place_details_model/place_details_model.dart';
+import 'package:flower_app/features/addresses/domain/entity/city_entity.dart';
+import 'package:flower_app/features/addresses/domain/entity/states_entity.dart';
+import 'package:flower_app/features/addresses/domain/entity/user_addresses_entity.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_states.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_cubit.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_states.dart';
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,44 +28,51 @@ import '../../cubit/address_details_cubit.dart';
 import '../../cubit/address_details_states.dart';
 
 class AddressDetailsViewBody extends StatefulWidget {
-  final AddressDTO initialAddress;
-  const AddressDetailsViewBody({Key? key, required this.initialAddress}) : super(key: key);
-
+  final Address initialAddress;
+  const AddressDetailsViewBody({Key? key, required this.initialAddress})
+    : super(key: key);
 
   @override
   State<AddressDetailsViewBody> createState() => _AddressDetailsViewBodyState();
 }
 
 class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
-
-  late AddressDTO addressDetailsModel;
+  late Address addressDetailsModel;
   late CameraPosition _initialCameraPosition;
   late LocationService _locationService;
   late GoogleMapController _mapController;
   bool get isEditMode => addressDetailsModel.id != null;
 
-
   late TextEditingController _streetController;
-  late TextEditingController _cityController;
+  // late TextEditingController _cityController;
   late TextEditingController _areaController;
-  late TextEditingController _phoneNumberController ;
+  late TextEditingController _phoneNumberController;
   late TextEditingController _recipientController;
 
   final AutovalidateMode validateMode = AutovalidateMode.disabled;
   late AssetMapBitmap assetMapBitmap;
   late BitmapDescriptor _markerBitmap;
   Set<Marker> _markers = {};
+  List<Suggestion> _suggestions = [];
+  List<StateEntity> statesFilter = [];
 
   final _formKey = GlobalKey<FormState>();
+  CityEntity? selectedCity;
+  String? selectedState;
 
   @override
   void initState() {
     super.initState();
     addressDetailsModel = widget.initialAddress;
+
     _streetController = TextEditingController(text: addressDetailsModel.street);
-    _phoneNumberController = TextEditingController(text: addressDetailsModel.phone);
-    _recipientController = TextEditingController(text: addressDetailsModel.username);
-    _cityController = TextEditingController(text: addressDetailsModel.city);
+    _phoneNumberController = TextEditingController(
+      text: addressDetailsModel.phone,
+    );
+    _recipientController = TextEditingController(
+      text: addressDetailsModel.username,
+    );
+    // _cityController = TextEditingController(text: addressDetailsModel.city);
     _areaController = TextEditingController();
     _initialCameraPosition = const CameraPosition(
       target: LatLng(23.580902573252857, 32.01367325581865),
@@ -62,11 +80,11 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     );
     _locationService = LocationService();
     _loadMarkerIcon();
-
   }
-  Future<void> _loadMarkerIcon() async {
+
+  void _loadMarkerIcon() async {
     // _markerBitmap = await BitmapDescriptor.Asset(
-    _markerBitmap = await BitmapDescriptor.fromAssetImage(
+    _markerBitmap = await BitmapDescriptor.asset(
       const ImageConfiguration(),
       IconAssets.markerIcon,
     );
@@ -94,24 +112,27 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       if (places.isNotEmpty) {
         final place = places.length > 1 ? places[1] : places.first;
         _streetController.text = place.street ?? '';
-        _cityController.text = place.administrativeArea ?? '';
+        // _cityController.text = place.administrativeArea ?? '';
         _areaController.text = place.subAdministrativeArea ?? '';
         addressDetailsModel = addressDetailsModel.copyWith(
           lat: target.latitude.toString(),
           long: target.longitude.toString(),
           street: _streetController.text,
-          city: _cityController.text,
+          // city: _cityController.text,
         );
       }
 
-      _markers = {
-        Marker(
-          markerId: const MarkerId('selected'),
-          position: target,
-          icon: assetMapBitmap,
-        ),
-      };
+      Marker marker = Marker(
+        markerId: const MarkerId('1'),
+        position: target,
+        icon: _markerBitmap,
+      );
+      _markers.add(marker);
       setState(() {});
+      log(
+        _markers.length.toString() +
+            "#############################################",
+      );
     } catch (e) {
       log('Error in moveToAndPopulate: $e');
     }
@@ -119,6 +140,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    final String locale = context.watch<LocaleProvider>().locale.languageCode;
     return Form(
       key: _formKey,
       autovalidateMode: AutovalidateMode.disabled,
@@ -137,19 +159,53 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                   zoomControlsEnabled: false,
                   onMapCreated: (controller) {
                     _mapController = controller;
-                    _moveToUserLocation();
+                    if (isEditMode) {
+                      final lat = double.tryParse(addressDetailsModel.lat ?? '');
+                      final lng = double.tryParse(addressDetailsModel.long ?? '');
+                      if (lat != null && lng != null) {
+                        _moveToAndPopulate(LatLng(lat, lng));
+                      }
+                    } else {
+                      _moveToUserLocation();
+                    }
                     _initMapStyle();
                   },
                   onTap: _moveToAndPopulate,
                 ),
               ),
               SizedBox(height: resposiveHeight(24)),
-              _buildField(
-                _streetController,
-                S.of(context).address,
-                S.of(context).enterAddress,
-                S.of(context).addressRequired,
+              BlocListener<
+                GetAddressesSuggestioCubit,
+                GetAddressesSuggestioStates
+              >(
+                listener: (context, state) {
+                  if (state is GetAddressesSuggestioSuccessState) {
+                    _suggestions = state.data;
+                    setState(() {});
+                  }
+                },
+                child: _buildField(
+                  onChanged: (p0) {
+                    if (p0.isNotEmpty) {
+                      context
+                          .read<GetAddressesSuggestioCubit>()
+                          .getAddressSuggestion(p0);
+                      setState(() {});
+                    } else {
+                      _suggestions = [];
+                      setState(() {});
+                    }
+                  },
+                  _streetController,
+                  S.of(context).address,
+                  S.of(context).enterAddress,
+                  S.of(context).addressRequired,
+                ),
               ),
+              if (_suggestions.isNotEmpty)
+                _customSearchListView()
+              else
+                SizedBox.shrink(),
               SizedBox(height: resposiveHeight(24)),
               _buildField(
                 _phoneNumberController,
@@ -166,50 +222,123 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                 S.of(context).recipientNameRequired,
               ),
               SizedBox(height: resposiveHeight(24)),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      validator:
-                          (value) => _fieldValidator(
-                        value,
-                        S.of(context).cityRequired,
-                      ),
-                      controller: _cityController,
-                      decoration: InputDecoration(
-                        suffixIcon: SvgPicture.asset(
-                          SvgImages.dropDownIcon,
-                          width: resposiveWidth(16),
+              BlocListener<PlaceDetailsCubit, PlaceDetailsStates>(
+                listener: (context, state) {
+                  if (state is PlaceDetailsSuccess) {
+                    placeDetailSuccessState(state);
+                  }
+                },
+                child: Row(
+                  children: [
+                    // City Dropdown
+                    Expanded(
+                      child: DropdownButtonFormField<CityEntity>(
+                        icon: SizedBox(
                           height: resposiveHeight(16),
-                          fit: BoxFit.scaleDown,
+                          width: resposiveWidth(16),
+                          child: SvgPicture.asset(
+                            SvgImages.dropDownIcon,
+                            fit: BoxFit.fitHeight,
+                          ),
                         ),
-                        hintText: S.of(context).cairo,
-                        labelText: S.of(context).city,
+                        isDense: true,
+                        isExpanded: true,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: resposiveWidth(8),
+                            vertical: resposiveHeight(8),
+                          ),
+                          labelText: locale == 'en' ? 'City' : 'المدينة',
+                          border: OutlineInputBorder(),
+                        ),
+                        value: selectedCity,
+                        items:
+                            cities.map((city) {
+                              return DropdownMenuItem<CityEntity>(
+                                value: city,
+                                child: Text(
+                                  locale == 'en'
+                                      ? city.governorateNameEn
+                                      : city.governorateNameAr,
+                                ),
+                              );
+                            }).toList(),
+                        onChanged: (CityEntity? value) {
+                          setState(() {
+                            selectedCity = value;
+                            selectedState = null;
+                            // Filter states for new city
+                            statesFilter =
+                                states
+                                    .where((s) => s.governorateId == value!.id)
+                                    .toList();
+                            addressDetailsModel.copyWith(
+                              city:
+                                  locale == 'en'
+                                      ? value!.governorateNameEn
+                                      : value!.governorateNameAr,
+                            );
+                            selectedState = null;
+                          });
+                        },
+                        validator: (value) {
+                          if (value == null) {
+                            return S.of(context).cityRequired;
+                          }
+                          return null;
+                        },
                       ),
                     ),
-                  ),
-                  SizedBox(width: resposiveWidth(17)),
-                  Expanded(
-                    child: TextFormField(
-                      validator:
-                          (value) => _fieldValidator(
-                        value,
-                        S.of(context).areaRequired,
-                      ),
-                      controller: _areaController,
-                      decoration: InputDecoration(
-                        suffixIcon: SvgPicture.asset(
-                          SvgImages.dropDownIcon,
-                          width: resposiveWidth(16),
+
+                    SizedBox(width: resposiveWidth(14)),
+
+                    // Area Dropdown
+                    Expanded(
+                      child: DropdownButtonFormField<String>(
+                        icon: SizedBox(
                           height: resposiveHeight(16),
-                          fit: BoxFit.scaleDown,
+                          width: resposiveWidth(16),
+                          child: SvgPicture.asset(
+                            SvgImages.dropDownIcon,
+                            fit: BoxFit.fitHeight,
+                          ),
                         ),
-                        hintText: S.of(context).october,
-                        labelText: S.of(context).area,
+                        isExpanded: true,
+                        isDense: true,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: resposiveWidth(8),
+                            vertical: resposiveHeight(8),
+                          ),
+                          labelText: locale == 'en' ? 'Area' : 'المنطقة',
+                          border: OutlineInputBorder(),
+                        ),
+                        value: selectedState,
+                        items:
+                            statesFilter.map((state) {
+                              final name =
+                                  locale == 'en'
+                                      ? state.cityNameEn
+                                      : state.cityNameAr;
+                              return DropdownMenuItem<String>(
+                                value: name,
+                                child: Text(name),
+                              );
+                            }).toList(),
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedState = value;
+                          });
+                        },
+                        validator:
+                            (value) =>
+                                value == null
+                                    ? S.of(context).areaRequired
+                                    : null,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(height: resposiveHeight(24)),
               BlocListener<AddressDetailsCubit, AddressDetailsStates>(
@@ -219,9 +348,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                   child: ElevatedButton(
                     onPressed: isEditMode ? _updateAddress : _saveAddress,
                     child: Text(
-                      isEditMode
-                          ? 'updateAddress'
-                          : S.of(context).saveAddress,
+                      isEditMode ? 'updateAddress' : S.of(context).saveAddress,
                       style: AppTextStyles.roboto500_16.copyWith(
                         color: Colors.white,
                       ),
@@ -236,6 +363,71 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     );
   }
 
+  void placeDetailSuccessState(PlaceDetailsSuccess state) {
+    PlaceDetailsModel placeDetails = state.placeDetails;
+    _streetController.text = placeDetails.formattedAddress!;
+    _mapController.animateCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: LatLng(
+            placeDetails.location!.latitude!,
+            placeDetails.location!.longitude!,
+          ),
+          zoom: 16,
+        ),
+      ),
+    );
+    Marker marker = Marker(
+      markerId: const MarkerId('1'),
+      position: LatLng(
+        placeDetails.location!.latitude!,
+        placeDetails.location!.longitude!,
+      ),
+      icon: _markerBitmap,
+    );
+    _markers.add(marker);
+    setState(() {});
+
+    addressDetailsModel.copyWith(
+      street: _streetController.text,
+      lat: placeDetails.location!.latitude.toString(),
+      long: placeDetails.location!.longitude.toString(),
+    );
+  }
+
+  Container _customSearchListView() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: ListView.separated(
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          final suggestion = _suggestions[index];
+          return ListTile(
+            onTap: () async {
+              await context
+                  .read<PlaceDetailsCubit>()
+                  .getPlaceDetails(suggestion.placePrediction!.placeId!)
+                  .then(
+                    (value) => setState(() {
+                      _suggestions = [];
+                    }),
+                  );
+            },
+            leading: const Icon(
+              Icons.location_pin,
+              color: AppColors.primaryColor,
+            ),
+            title: Text(suggestion.placePrediction!.text!.text.toString()),
+          );
+        },
+        separatorBuilder: (context, index) => Divider(height: 0),
+        itemCount: _suggestions.length,
+      ),
+    );
+  }
 
   void _handleStates(AddressDetailsStates state) {
     switch (state) {
@@ -245,7 +437,10 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       case AddressDetailsSuccess():
         EasyLoading.dismiss();
         EasyLoading.showSuccess(S.of(context).addressSavedSuccessfully);
-        Future.delayed(const Duration(milliseconds: 500), () => Navigator.pop(context, true));
+        Future.delayed(
+          const Duration(milliseconds: 500),
+          () => Navigator.pop(context, true),
+        );
         break;
       case AddressDetailsError():
         EasyLoading.showError(state.error);
@@ -253,7 +448,6 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       default:
         break;
     }
-
   }
 
   void _saveAddress() {
@@ -262,9 +456,9 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       street: _streetController.text,
       phone: _phoneNumberController.text,
       username: _recipientController.text,
-      city: _cityController.text,
+      city: selectedCity!.governorateNameEn,
     );
-    context.read<AddressDetailsCubit>().saveUserAddress(addressDetailsModel);
+    context.read<AddressDetailsCubit>().saveUserAddress(  AddressDTO.fromEntity(addressDetailsModel),);
   }
 
   void _updateAddress() {
@@ -273,9 +467,9 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       street: _streetController.text,
       phone: _phoneNumberController.text,
       username: _recipientController.text,
-      city: _cityController.text,
+      city: selectedCity!.governorateNameEn,
     );
-    context.read<AddressDetailsCubit>().updateUserAddress(addressDetailsModel);
+    context.read<AddressDetailsCubit>().updateUserAddress(AddressDTO.fromEntity(addressDetailsModel));
   }
 
   Future<void> _moveToUserLocation() async {
@@ -298,14 +492,17 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
     }
     return null;
   }
+
   Widget _buildField(
-      TextEditingController controller,
-      String label,
-      String hint,
-      String validatorMsg, {
-        TextInputType? keyboardType,
-      }) {
+    TextEditingController controller,
+    String label,
+    String hint,
+    String validatorMsg, {
+    TextInputType? keyboardType,
+    void Function(String)? onChanged,
+  }) {
     return TextFormField(
+      onChanged: onChanged,
       controller: controller,
       keyboardType: keyboardType,
       decoration: InputDecoration(labelText: label, hintText: hint),

@@ -35,9 +35,8 @@ class CartRepositoryImpl implements CartRepository {
   @override
   Future<Result<UserCartEntity>> getUserCart() async {
     try {
-      final String token = await SharedPreferenceServices.getData(
-        AppConstants.token,
-      ).toString();
+      final String token =
+          await SharedPreferenceServices.getData(AppConstants.token).toString();
       final model = await _cartRemoteDataSource.getUserCart(token);
       final entity = MapUserCartToEntity.mapToEntity(model);
       return Success<UserCartEntity>(entity);
@@ -52,9 +51,8 @@ class CartRepositoryImpl implements CartRepository {
   @override
   Future<Result<String>> deleteCartItem(String id) async {
     try {
-      final String token = await SharedPreferenceServices.getData(
-        AppConstants.token,
-      ).toString();
+      final String token =
+          await SharedPreferenceServices.getData(AppConstants.token).toString();
       final responseDto = await _cartRemoteDataSource.deleteCArtItem(token, id);
       return Success<String>(responseDto.message);
     } on DioException catch (dioError) {
@@ -66,28 +64,23 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   @override
-  Future<Result<String>> updateCartQuantity(String id, int newQuantity)async {
+  Future<Result<String>> updateCartQuantity(String id, int newQuantity) async {
+    try {
+      final String token =
+          await SharedPreferenceServices.getData(AppConstants.token).toString();
 
-    try{
-      final String token = await SharedPreferenceServices.getData(
-        AppConstants.token,
-      ).toString();
-
-      final responseDTO = await _cartRemoteDataSource.updateCArtQuantity(token, id,newQuantity);
+      final responseDTO = await _cartRemoteDataSource.updateCArtQuantity(
+        token,
+        id,
+        newQuantity,
+      );
       return Success<String>(responseDTO.message);
-    }catch(e){
-
-      if(e is DioException){
+    } catch (e) {
+      if (e is DioException) {
         final failure = ServerFailure.fromDioException(e);
         return Error<String>(failure.errorMessage);
       }
       return Error<String>(e.toString());
     }
-
-
-
-
-
   }
 }
-

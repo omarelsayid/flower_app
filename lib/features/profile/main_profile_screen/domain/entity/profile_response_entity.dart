@@ -1,11 +1,8 @@
 class ProfileResponseEntity {
-  ProfileResponseEntity({
-      this.message, 
-      this.user,});
+  ProfileResponseEntity({this.message, this.user});
 
   String? message;
   UserEntity? user;
-
 }
 
 /// _id : "67dc96c7836ee8be70624cdc"
@@ -22,16 +19,16 @@ class ProfileResponseEntity {
 
 class UserEntity {
   UserEntity({
-      this.id, 
-      this.firstName, 
-      this.lastName, 
-      this.email, 
-      this.gender, 
-      this.phone, 
-      this.photo, 
-      this.role, 
-      this.wishlist, 
-      this.addresses, 
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.gender,
+    this.phone,
+    this.photo,
+    this.role,
+    this.wishlist,
+    this.addresses,
   });
 
   // UserEntity.fromJson(dynamic json) {
@@ -85,5 +82,4 @@ class UserEntity {
   //   }
   //   return map;
   // }
-
 }

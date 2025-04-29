@@ -13,14 +13,12 @@ class UserAddressesViewModel extends Cubit<UserAddressesState> {
 
   void doIntent(UserAddressesIntent intent) {
     switch (intent) {
-
       case GetUserAddressesClickedIntent():
         _getUserAddresses();
         break;
 
       case DeleteUserAddressClickedIntent():
-          _deleteAddress(intent.id);
-
+        _deleteAddress(intent.id);
     }
   }
 
@@ -36,9 +34,10 @@ class UserAddressesViewModel extends Cubit<UserAddressesState> {
   }
 
   Future<void> _deleteAddress(String id) async {
-    final current = state is SuccessUserAddressesState
-        ? (state as SuccessUserAddressesState).data
-        : <Address>[];
+    final current =
+        state is SuccessUserAddressesState
+            ? (state as SuccessUserAddressesState).data
+            : <Address>[];
 
     emit(SuccessUserAddressesState(current.cast<Address>(), deletingId: id));
 
@@ -52,12 +51,12 @@ class UserAddressesViewModel extends Cubit<UserAddressesState> {
         emit(ErrorUserAddressesState(result.exception.toString()));
     }
   }
-
 }
 
 sealed class UserAddressesIntent {}
 
 class GetUserAddressesClickedIntent extends UserAddressesIntent {}
+
 class DeleteUserAddressClickedIntent extends UserAddressesIntent {
   final String id;
   DeleteUserAddressClickedIntent(this.id);

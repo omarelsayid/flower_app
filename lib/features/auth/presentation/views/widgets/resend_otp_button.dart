@@ -57,11 +57,9 @@ class _ResendOTPButtonState extends State<ResendOTPButton> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: _canResend ? handleResend : null, // تعطيل الزر أثناء العد التنازلي
-      child: Text(
-        _canResend ? "Resend" : "Resend in $_timerSeconds ",
-
-      ),
+      onPressed:
+          _canResend ? handleResend : null, // تعطيل الزر أثناء العد التنازلي
+      child: Text(_canResend ? "Resend" : "Resend in $_timerSeconds "),
     );
   }
 }

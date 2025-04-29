@@ -24,7 +24,7 @@ class ProductsDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product=state.productDetailsEntity;
+    final product = state.productDetailsEntity;
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -47,9 +47,9 @@ class ProductsDetailsViewBody extends StatelessWidget {
 
               return FlexibleSpaceBar(
                 title:
-                isCollapsed
-                    ? CollapsedSliverAppBarWidget(state: state)
-                    : null,
+                    isCollapsed
+                        ? CollapsedSliverAppBarWidget(state: state)
+                        : null,
                 background: ProductsDetailsImageViewWidget(
                   pageController: _pageController,
                   state: state,
@@ -84,12 +84,12 @@ class ProductsDetailsViewBody extends StatelessWidget {
                           TextSpan(
                             text: 'Status: ',
                             style:
-                            AppTextStyles
-                                .inter500_16, // Bold style for "Status:"
+                                AppTextStyles
+                                    .inter500_16, // Bold style for "Status:"
                           ),
                           TextSpan(
                             text:
-                            '${state.productDetailsEntity.quantity} in stock',
+                                '${state.productDetailsEntity.quantity} in stock',
                             style: AppTextStyles.inter400_14,
                           ),
                         ],
@@ -107,8 +107,10 @@ class ProductsDetailsViewBody extends StatelessWidget {
                 ),
 
                 SizedBox(height: resposiveHeight(8)),
-                Text('${state.productDetailsEntity.slug}',
-                    style: AppTextStyles.inter500_16),
+                Text(
+                  '${state.productDetailsEntity.slug}',
+                  style: AppTextStyles.inter500_16,
+                ),
 
                 SizedBox(height: resposiveHeight(16)),
 
@@ -127,18 +129,20 @@ class ProductsDetailsViewBody extends StatelessWidget {
                   bloc: getIt.get<AddToCartCubit>(),
                   listener: (context, state) {
                     if (state is AddToCartSuccess) {
-                      EasyLoading.showSuccess(duration: Duration(seconds: 2),state.message);
-                    }
-                    else if (state is AddToCartError) {
+                      EasyLoading.showSuccess(
+                        duration: Duration(seconds: 2),
+                        state.message,
+                      );
+                    } else if (state is AddToCartError) {
                       EasyLoading.showError(state.error);
                     }
                   },
                   builder: (context, state) {
                     return ElevatedButton(
                       onPressed: () {
-
-                        BlocProvider.of<AddToCartCubit>(context).AddToCart(
-                            productId: product.id!, quantity: 1);
+                        BlocProvider.of<AddToCartCubit>(
+                          context,
+                        ).AddToCart(productId: product.id!, quantity: 1);
                       },
                       child: Text(
                         'Add to cart',
@@ -157,8 +161,7 @@ class ProductsDetailsViewBody extends StatelessWidget {
             ),
           ),
         ),
-      ]
-      ,
+      ],
     );
   }
 }

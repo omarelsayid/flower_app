@@ -22,6 +22,13 @@ class MasterEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props =>
-      [id, name, slug, image, createdAt, updatedAt, productsCount];
+  List<Object?> get props => [
+    id,
+    name,
+    slug,
+    image,
+    createdAt,
+    updatedAt,
+    productsCount,
+  ];
 }

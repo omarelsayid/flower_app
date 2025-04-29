@@ -1,5 +1,3 @@
-
-
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/common/result.dart';
@@ -19,5 +17,4 @@ class HomeUseCase {
   Future<Result<List<MasterEntity>>> executeOccasion() async {
     return await repository.getOccasion();
   }
-
 }

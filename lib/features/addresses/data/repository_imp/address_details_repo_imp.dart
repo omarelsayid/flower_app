@@ -21,13 +21,14 @@ class AddressDetailsRepoImp implements AddressDetailsRepo {
   }
 
   @override
-  Future<Result<UserAddressesEntity>> updateAddressDetails(AddressDTO addressDetailsModel) async {
-    return await executeApi(
-          () async {
-        var result = await addressDetailsDataSource.updateAddressDetails(
-            addressDetailsModel);
-        return result;
-      },
-    );
+  Future<Result<UserAddressesEntity>> updateAddressDetails(
+    AddressDTO addressDetailsModel,
+  ) async {
+    return await executeApi(() async {
+      var result = await addressDetailsDataSource.updateAddressDetails(
+        addressDetailsModel,
+      );
+      return result;
+    });
   }
 }

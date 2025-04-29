@@ -11,7 +11,7 @@ final getIt = GetIt.instance;
   preferRelativeImports: true,
   asExtension: true,
 )
-void configureDependencies() async{
+void configureDependencies() async {
   // getIt.registerLazySingleton<Dio>(() => Dio());
   final sharedPreferences = await SharedPreferences.getInstance();
   getIt.registerSingleton<SharedPreferences>(sharedPreferences);

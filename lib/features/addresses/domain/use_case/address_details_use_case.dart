@@ -11,11 +11,11 @@ class AddressDetailsUseCase {
 
   AddressDetailsUseCase(this._addressRepository);
 
-  Future<Result> execute(AddressDTO addressDetailsModel) async{
+  Future<Result> execute(AddressDTO addressDetailsModel) async {
     return await _addressRepository.saveAddressDetails(addressDetailsModel);
   }
-  Future<Result<UserAddressesEntity>> executeUpdate(AddressDTO address) async{
+
+  Future<Result<UserAddressesEntity>> executeUpdate(AddressDTO address) async {
     return await _addressRepository.updateAddressDetails(address);
   }
-
 }

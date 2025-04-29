@@ -4,7 +4,6 @@ import 'package:flower_app/features/auth/presentation/views/widgets/sign_in_view
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 

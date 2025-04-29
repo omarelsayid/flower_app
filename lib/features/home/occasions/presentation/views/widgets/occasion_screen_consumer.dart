@@ -7,28 +7,28 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../../../../../core/widgets/flower_card.dart';
 
 class OccasionScreenConsumer extends StatelessWidget {
-   OccasionScreenConsumer({super.key,required this.product});
+  OccasionScreenConsumer({super.key, required this.product});
   Products product;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddToCartCubit, AddToCartState>(
       listener: (context, state) {
-        if (state is AddToCartSuccess &&
-            state.id == product.id) {
+        if (state is AddToCartSuccess && state.id == product.id) {
           EasyLoading.showSuccess(state.message);
-        }
-        else if(state is AddToCartError && state.id==product.id)
-        {
+        } else if (state is AddToCartError && state.id == product.id) {
           EasyLoading.showError(state.error);
         }
       },
       builder: (context, state) {
-        final isLoading = state is AddToCartLoading && state.id==product.id;
+        final isLoading = state is AddToCartLoading && state.id == product.id;
         return FlowerCard(
           isLoading: isLoading,
           onAddToCart: () {
-            context.read<AddToCartCubit>().AddToCart(productId: product.id!, quantity: 1);
+            context.read<AddToCartCubit>().AddToCart(
+              productId: product.id!,
+              quantity: 1,
+            );
           },
           name: product.title.toString(),
           beforeDiscount: "${product.discount}",

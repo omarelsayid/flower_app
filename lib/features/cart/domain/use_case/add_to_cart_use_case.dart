@@ -17,7 +17,4 @@ class AddToCartUseCase {
   }) {
     return _cartRepository.addToCart(token, productId, quantity);
   }
-
-
-
 }

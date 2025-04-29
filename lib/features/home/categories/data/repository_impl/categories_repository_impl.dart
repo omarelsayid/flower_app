@@ -1,4 +1,3 @@
-
 import 'package:flower_app/features/home/categories/domain/entity/categories_response_entity.dart';
 import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/core/di/injectable_initializer.dart';
@@ -38,30 +37,10 @@ class CategoriesRepositoryImpl implements CategoriesRepository {
               product.title!.toUpperCase().contains(query.toUpperCase()),
         )
         .toList();
-
   }
 
   @override
-
-  Future<Result<SpecificCategoriesResponseEntity>> getFiltered(
-      String sort,
-      )  {
+  Future<Result<SpecificCategoriesResponseEntity>> getFiltered(String sort) {
     return _categoriesRemoteDataSource.getFiltered(sort);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-

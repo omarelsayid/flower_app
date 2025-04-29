@@ -37,8 +37,6 @@ class Address {
     this.id,
   });
 
-
-
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
 

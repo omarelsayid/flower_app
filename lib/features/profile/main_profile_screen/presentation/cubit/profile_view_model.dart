@@ -11,10 +11,8 @@ import '../../data/data_source/profile_local_data_source.dart';
 
 @injectable
 class ProfileViewModel extends Cubit<ProfileState> {
-  ProfileViewModel(
-      this._profileUseCase,
-      this._localDataSource,
-      ) : super(LoadingProfileState());
+  ProfileViewModel(this._profileUseCase, this._localDataSource)
+    : super(LoadingProfileState());
 
   final ProfileUseCase _profileUseCase;
   final ProfileLocalDataSource _localDataSource;
@@ -54,6 +52,11 @@ class ProfileViewModel extends Cubit<ProfileState> {
     switch (result) {
       case Success():
         final profile = result.data;
+        if(isClosed)
+          {
+            log("The Cubit is closed ");
+            return;
+          }
         if (profile != null) {
           emit(SuccessProfileState(profile.user));
           log("Fetched successfully: ${profile.user?.firstName}");

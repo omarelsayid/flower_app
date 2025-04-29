@@ -15,28 +15,21 @@ class OccasionCubit extends Cubit<OccasionState> {
   OccasionCubit(this.getCategoriesUseCase) : super(OccasionInitial());
   final HomeUseCase getCategoriesUseCase;
 
-
-
-  Future<void> fetchOccasion()async{
-    if(isClosed)
-      return;
+  Future<void> fetchOccasion() async {
+    if (isClosed) return;
     emit(OccasionLoading());
 
     final result = await getCategoriesUseCase.executeOccasion();
-    switch(result)
-    {
+    switch (result) {
       case Success():
-        if(result.data != null)
-        {
-          if(isClosed)
-            return;
+        if (result.data != null) {
+          if (isClosed) return;
           emit(OccasionSuccess(result.data!));
         }
 
       case Error():
         log("error ${result.exception.toString()}");
-        if(isClosed)
-          return;
+        if (isClosed) return;
         emit(OccasionError(result.exception.toString()));
     }
   }

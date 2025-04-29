@@ -6,6 +6,10 @@ import 'package:flower_app/features/checkout/domain/entites/credit_card_response
 
 abstract class CheckoutRemoteDataSource {
   Future<AddressesResponseDTO> getAddresses(String token);
-  Future<Result<CreditCardResponseEntity>> checkoutCredit(CreditCardRequestModel data);
-  Future<Result<CheckoutCashResponseEntity>> checkoutCash(CreditCardRequestModel data);
+  Future<Result<CreditCardResponseEntity>> checkoutCredit(
+    CreditCardRequestModel data,
+  );
+  Future<Result<CheckoutCashResponseEntity>> checkoutCash(
+    CreditCardRequestModel data,
+  );
 }

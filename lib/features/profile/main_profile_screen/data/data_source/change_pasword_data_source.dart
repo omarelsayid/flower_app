@@ -15,20 +15,21 @@ abstract class ChangePasswordDataSource {
     ChangePasswordRequestModel data,
   );
 }
+
 @Injectable(as: ChangePasswordDataSource)
-class ChangePasswordDataSourceImp implements ChangePasswordDataSource  {
- final ApiClient _apiClient;
+class ChangePasswordDataSourceImp implements ChangePasswordDataSource {
+  final ApiClient _apiClient;
 
   ChangePasswordDataSourceImp(this._apiClient);
   @override
   Future<Result<ChangePasswordEntity>> changePassword(
     ChangePasswordRequestModel data,
-  ) async{
-  var token=  SharedPreferenceServices.getData(AppConstants.token.toString());
-    return executeApi(() async{
-      var response = await _apiClient.changePassword(data,"Bearer $token");
+  ) async {
+    var token = SharedPreferenceServices.getData(AppConstants.token.toString());
+    return executeApi(() async {
+      var response = await _apiClient.changePassword(data, "Bearer $token");
       log("response ${response.message}");
       return response;
-    },);
+    });
   }
 }

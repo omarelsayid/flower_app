@@ -145,13 +145,17 @@ class RoutesGenerator {
           builder: (context) => NotificationScreen(),
           settings: settings,
         );
-        return MaterialPageRoute(
-          builder: (context) => AddressDetailsView(),
-          settings: settings,
-        );
+        // return MaterialPageRoute(
+        //   builder: (context) => AddressDetailsView(),
+        //   settings: settings,
+        // );
       case PagesRoutes.ordersScreen:
         return MaterialPageRoute(
           builder: (context) => OrdersView(),
+          settings: settings,
+        );
+        return MaterialPageRoute(
+          builder: (context) => AddressDetailsView(),
           settings: settings,
         );
 

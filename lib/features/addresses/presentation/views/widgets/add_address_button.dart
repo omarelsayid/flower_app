@@ -5,7 +5,7 @@ import 'package:flower_app/generated/l10n.dart';
 
 class AddAddressButton extends StatelessWidget {
   final VoidCallback onPressed;
-  const AddAddressButton({super.key,required this.onPressed});
+  const AddAddressButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,7 @@ class AddAddressButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         S.of(context).add_new_addresses,
-        style: AppTextStyles.inter500_18.copyWith(
-          color: AppColors.whiteColor,
-        ),
+        style: AppTextStyles.inter500_18.copyWith(color: AppColors.whiteColor),
       ),
     );
   }

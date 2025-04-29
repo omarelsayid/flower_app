@@ -4,10 +4,7 @@ class UserAddressesEntity {
   final String? message;
   final List<Address>? addresses;
 
-  UserAddressesEntity({
-    this.message,
-    this.addresses,
-  });
+  UserAddressesEntity({this.message, this.addresses});
 }
 
 class Address extends Equatable {

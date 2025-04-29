@@ -259,7 +259,7 @@ class _CartTabState extends State<CartTab> {
                           Navigator.pushNamed(
                             context,
                             PagesRoutes.checkoutScreen,
-                            arguments: [total,deliveryFee,subTotal],
+                            arguments: [total, deliveryFee, subTotal],
                           );
                         },
                         child: Text(

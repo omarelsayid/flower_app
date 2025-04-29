@@ -13,9 +13,8 @@ class CategoryResponseDTO {
     required this.message,
     required this.metadata,
     required this.categories,
-    this.error
-  }
-  );
+    this.error,
+  });
 
   factory CategoryResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$CategoryResponseDTOFromJson(json);

@@ -29,7 +29,7 @@ class CategoriesTab extends StatefulWidget {
 }
 
 class _CategoriesTabState extends State<CategoriesTab> {
- // bool lower_price = false;
+  // bool lower_price = false;
   @override
   Widget build(BuildContext context) {
     final viewModel = getIt.get<CategoriesViewModel>();
@@ -38,20 +38,22 @@ class _CategoriesTabState extends State<CategoriesTab> {
     return Scaffold(
       body: MultiBlocProvider(
         providers: [
-      BlocProvider(
-        create: (_) => viewModel..doIntent(GetAllCategoriesIntent()),
-
-      ),
-
+          BlocProvider(create: (_)=> getIt.get<AddToCartCubit>()),
+          BlocProvider(
+            create: (_) => viewModel..doIntent(GetAllCategoriesIntent()),
+          ),
         ],
         child: BlocConsumer<CategoriesViewModel, CategoriesState>(
           listener: (context, state) {
-            if (state is CategoriesErrorState || state is SpecificCategoriesErrorState || state is FailedFilterState) {
+            if (state is CategoriesErrorState ||
+                state is SpecificCategoriesErrorState ||
+                state is FailedFilterState) {
               DialogUtils.showMessage(
                 context: context,
-                message: (state is CategoriesErrorState)
-                    ? state.errMessage
-                    : (state as SpecificCategoriesErrorState).errMessage,
+                message:
+                    (state is CategoriesErrorState)
+                        ? state.errMessage
+                        : (state as SpecificCategoriesErrorState).errMessage,
                 title: "Error",
                 negativeActionName: "Cancel",
               );
@@ -71,14 +73,15 @@ class _CategoriesTabState extends State<CategoriesTab> {
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: Row(
-
                         children: [
                           Expanded(
                             flex: 5,
                             child: CustomSearchCategories(
                               onChanged: (value) {
                                 if (value.trim().isNotEmpty) {
-                                  viewModel.doIntent(SearchIntent(value.trim()));
+                                  viewModel.doIntent(
+                                    SearchIntent(value.trim()),
+                                  );
                                 } else {
                                   viewModel.doIntent(GetAllCategoriesIntent());
                                 }
@@ -90,21 +93,22 @@ class _CategoriesTabState extends State<CategoriesTab> {
                             flex: 1,
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
-                                minimumSize: Size(resposiveWidth(64), resposiveHeight(48)),
+                                minimumSize: Size(
+                                  resposiveWidth(64),
+                                  resposiveHeight(48),
+                                ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
                               onPressed: () {
-                                showFilters(context,
-                                      (value) {
-                                    viewModel.doIntent(
-                                      FilterIntent(value),
-                                    );
-                                  },
-                                );
+                                showFilters(context, (value) {
+                                  viewModel.doIntent(FilterIntent(value));
+                                });
                               },
-                              child: ImageIcon(AssetImage(IconAssets.filterIcon)),
+                              child: ImageIcon(
+                                AssetImage(IconAssets.filterIcon),
+                              ),
                             ),
                           ),
                         ],
@@ -133,9 +137,10 @@ class _CategoriesTabState extends State<CategoriesTab> {
                             labelColor: AppColors.primaryColor,
                             unselectedLabelColor: AppColors.greyColor,
                             indicatorColor: AppColors.primaryColor,
-                            tabs: viewModel.categories
-                                .map((category) => Tab(text: category.name))
-                                .toList(),
+                            tabs:
+                                viewModel.categories
+                                    .map((category) => Tab(text: category.name))
+                                    .toList(),
                           ),
                         ],
                       ),
@@ -143,55 +148,49 @@ class _CategoriesTabState extends State<CategoriesTab> {
 
                   SizedBox(height: height * 0.02),
                   // Show product lists or empty states.
-                  if (state is LoadingSearchState || state is SpecificCategoriesLoadingState||
+                  if (state is LoadingSearchState ||
+                      state is SpecificCategoriesLoadingState ||
                       state is LoadingFilterState)
                     Skeletonizer(
                       enabled: true,
                       containersColor: AppColors.whiteColor,
                       child: _buildProductsList(viewModel.products, 5),
                     )
-                  else if (state is SuccessfulSearchState && viewModel.isSearching)
+                  else if (state is SuccessfulSearchState &&
+                      viewModel.isSearching)
                     state.products.isNotEmpty
-                        ? _buildProductsList(state.products, state.products.length)
+                        ? _buildProductsList(
+                          state.products,
+                          state.products.length,
+                        )
                         : _buildEmptyState("No products found")
                   else if (state is SpecificCategoriesSuccessState &&
-                        state.products.isNotEmpty &&
-                        !viewModel.isSearching)
-                      _buildProductsList(state.products, state.products.length)
-                    else if (state is SuccessfulFilterState &&
-                          state.products.isNotEmpty &&
-                          !viewModel.isSearching)
-                        _buildProductsList(state.products, state.products.length)
-                    else
-                      _buildEmptyState("No products found"),
-
-
+                      state.products.isNotEmpty &&
+                      !viewModel.isSearching)
+                    _buildProductsList(state.products, state.products.length)
+                  else if (state is SuccessfulFilterState &&
+                      state.products.isNotEmpty &&
+                      !viewModel.isSearching)
+                    _buildProductsList(state.products, state.products.length)
+                  else
+                    _buildEmptyState("No products found"),
                 ],
               ),
-
             );
           },
         ),
       ),
 
-
-
-
-
       floatingActionButton: SizedBox(
         width: resposiveWidth(100),
         height: resposiveHeight(34),
         child: FloatingActionButton(
-            backgroundColor:AppColors.primaryColor,
+          backgroundColor: AppColors.primaryColor,
 
           onPressed: () {
-            showFilters(context,
-                  (value) {
-                viewModel.doIntent(
-                  FilterIntent(value),
-                );
-              },
-            );
+            showFilters(context, (value) {
+              viewModel.doIntent(FilterIntent(value));
+            });
 
             print('Floating Action Button Pressed!');
           },
@@ -199,16 +198,13 @@ class _CategoriesTabState extends State<CategoriesTab> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
-              Icon(Icons.filter_list_outlined,
-                  color: AppColors.whiteColor
-              ),
-              SizedBox(
-                width: resposiveWidth(10),
-              ),
+              Icon(Icons.filter_list_outlined, color: AppColors.whiteColor),
+              SizedBox(width: resposiveWidth(10)),
               Text(
                 S.of(context).filter,
-                style: AppTextStyles.inter500_14.copyWith(color: AppColors.whiteColor),
+                style: AppTextStyles.inter500_14.copyWith(
+                  color: AppColors.whiteColor,
+                ),
               ),
             ],
           ), // لون الزر
@@ -249,41 +245,40 @@ class _CategoriesTabState extends State<CategoriesTab> {
             );
           },
           child: BlocConsumer<AddToCartCubit, AddToCartState>(
-       listener: (context, state) {
-      if(state is AddToCartSuccess && state.id==product.id)
-        {
-          EasyLoading.showSuccess(state.message);
-        }
-      else if(state is AddToCartError && state.id == product.id)
-        {
-          EasyLoading.showError(state.error);
-        }
-
-  },
-  builder: (context, state) {
-    final isLoading = state is AddToCartLoading && state.id==product.id;
-    return FlowerCard(
-            name: product.title.toString(),
-           // beforeDiscount: "${product.discount}",
-            beforeDiscount: "${product.price}",
-            discountRate: "${product.discount}%",
-           // discountRate: "${product.priceAfterDiscount}%",
-            cost: '${product.priceAfterDiscount}',
-          //  cost: '${product.price}',
-            imageUrl: '${product.imgCover}',
-           id: "${product.id}",
-      isLoading: isLoading,
-      onAddToCart:() {
-        context.read<AddToCartCubit>().AddToCart(productId:product.id , quantity: 1);
-      },
-          );
-  },
-),
+            listener: (context, state) {
+              if (state is AddToCartSuccess && state.id == product.id) {
+                EasyLoading.showSuccess(state.message);
+              } else if (state is AddToCartError && state.id == product.id) {
+                EasyLoading.showError(state.error);
+              }
+            },
+            builder: (context, state) {
+              final isLoading =
+                  state is AddToCartLoading && state.id == product.id;
+              return FlowerCard(
+                name: product.title.toString(),
+                // beforeDiscount: "${product.discount}",
+                beforeDiscount: "${product.price}",
+                discountRate: "${product.discount}%",
+                // discountRate: "${product.priceAfterDiscount}%",
+                cost: '${product.priceAfterDiscount}',
+                //  cost: '${product.price}',
+                imageUrl: '${product.imgCover}',
+                id: "${product.id}",
+                isLoading: isLoading,
+                onAddToCart: () {
+                  context.read<AddToCartCubit>().AddToCart(
+                    productId: product.id,
+                    quantity: 1,
+                  );
+                },
+              );
+            },
+          ),
         );
       },
     );
   }
-
 
   /// A helper widget to show empty state messages.
   Widget _buildEmptyState(String message) {
@@ -301,12 +296,12 @@ class _CategoriesTabState extends State<CategoriesTab> {
     );
   }
 
-
-
-  showFilters( BuildContext context ,  Function(String) gitFilter  ) async {
-    showModalBottomSheet(context: context, builder: (BuildContext context) {
-       return DrawerWidget(onChanged : gitFilter );
-
-    },);
+  showFilters(BuildContext context, Function(String) gitFilter) async {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return DrawerWidget(onChanged: gitFilter);
+      },
+    );
   }
 }

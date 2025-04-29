@@ -9,11 +9,7 @@ class ProductsResponseDTO extends ProductsResponseEntity {
   @override
   final MetadataDTO? metadata;
 
-  ProductsResponseDTO({
-    super.message,
-    this.products,
-    this.metadata
-  });
+  ProductsResponseDTO({super.message, this.products, this.metadata});
 
   factory ProductsResponseDTO.fromJson(Map<String, dynamic> json) =>
       _$ProductsResponseDTOFromJson(json);
@@ -23,29 +19,29 @@ class ProductsResponseDTO extends ProductsResponseEntity {
 
 @JsonSerializable()
 class ProductsDTO extends Products {
-   const ProductsDTO({
+  const ProductsDTO({
     super.id,
     super.category,
     super.slug,
     super.description,
-     super.discount,
-     super.images,
-     super.imgCover,
-     super.occasion,
-     super.price,
-     super.priceAfterDiscount,
-     super.quantity,
-     super.sold,
-     super.title,
-     super.rateAvg,
-     super.rateCount,
-     super.v
+    super.discount,
+    super.images,
+    super.imgCover,
+    super.occasion,
+    super.price,
+    super.priceAfterDiscount,
+    super.quantity,
+    super.sold,
+    super.title,
+    super.rateAvg,
+    super.rateCount,
+    super.v,
   });
 
-   factory ProductsDTO.fromJson(Map<String, dynamic> json) =>
-       _$ProductsDTOFromJson(json);
+  factory ProductsDTO.fromJson(Map<String, dynamic> json) =>
+      _$ProductsDTOFromJson(json);
 
-   Map<String, dynamic> toJson() => _$ProductsDTOToJson(this);
+  Map<String, dynamic> toJson() => _$ProductsDTOToJson(this);
 }
 
 @JsonSerializable()
@@ -56,7 +52,6 @@ class MetadataDTO extends Metadata {
     super.limit,
     super.totalItems,
   });
-
 
   factory MetadataDTO.fromJson(Map<String, dynamic> json) =>
       _$MetadataDTOFromJson(json);

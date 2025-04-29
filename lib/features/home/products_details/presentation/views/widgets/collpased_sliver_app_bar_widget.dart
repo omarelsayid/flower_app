@@ -6,10 +6,7 @@ import 'package:flower_app/features/home/products_details/presentation/cubits/pr
 import 'package:flutter/material.dart';
 
 class CollapsedSliverAppBarWidget extends StatelessWidget {
-  const CollapsedSliverAppBarWidget({
-    super.key,
-    required this.state,
-  });
+  const CollapsedSliverAppBarWidget({super.key, required this.state});
 
   final ProductsDetailSuccess state;
 
@@ -22,17 +19,14 @@ class CollapsedSliverAppBarWidget extends StatelessWidget {
           child: CachedNetworkImage(
             imageUrl: state.productDetailsEntity.imgCover!,
             imageBuilder:
-                (context, imageProvider) => Image.network(
-                  state.productDetailsEntity.imgCover!,
-                ),
-            fadeInDuration: const Duration(
-              milliseconds: 600,
-            ),
+                (context, imageProvider) =>
+                    Image.network(state.productDetailsEntity.imgCover!),
+            fadeInDuration: const Duration(milliseconds: 600),
             fadeInCurve: Curves.easeInCubic,
           ),
         ),
         SizedBox(width: resposiveWidth(8)),
-    
+
         Expanded(
           child: Text(
             maxLines: 1,

@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:flower_app/features/home/best_seller_products/data/model/ProductModel.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomProductItem extends StatelessWidget {
   const CustomProductItem({super.key, required this.product});
@@ -15,7 +17,10 @@ class CustomProductItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, PagesRoutes.productDetails,arguments: product.id
+        Navigator.pushNamed(
+          context,
+          PagesRoutes.productDetails,
+          arguments: product.id,
         );
       },
       child: Container(
@@ -87,7 +92,10 @@ class CustomProductItem extends StatelessWidget {
                 width: resposiveWidth(147),
                 height: resposiveHeight(30),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // add cart
+                    context.read<AddToCartCubit>().AddToCart(productId: product.id!, quantity: 1);
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

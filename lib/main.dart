@@ -8,7 +8,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-
 import 'core/services/localization_service.dart';
 import 'core/services/screen_size_service.dart';
 import 'core/services/bloc_observer.dart';

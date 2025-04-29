@@ -49,7 +49,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
             EasyLoading.dismiss();
             Navigator.pushReplacementNamed(context, PagesRoutes.layOutScreen);
           case SignInErrorState():
-            log(state.message+"++++++++++++++");
+            log(state.message + "++++++++++++++");
             EasyLoading.dismiss();
             EasyLoading.showError(state.message);
           default:

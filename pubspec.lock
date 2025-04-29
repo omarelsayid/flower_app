@@ -310,6 +310,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  dropdown_button2:
+    dependency: "direct main"
+    description:
+      name: dropdown_button2
+      sha256: b0fe8d49a030315e9eef6c7ac84ca964250155a6224d491c1365061bc974a9e1
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.9"
   equatable:
     dependency: "direct main"
     description:
@@ -552,6 +560,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_nominatim:
+    dependency: "direct main"
+    description:
+      name: flutter_nominatim
+      sha256: "37f52d8ead24b97a7a6fb46fac743ca79109b50103bdf991e4af76005ec46bc2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1+2"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -580,10 +596,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_svg
-      sha256: c200fd79c918a40c5cd50ea0877fa13f81bdaf6f0a5d3dbcc2a13e3285d6aa1b
+      sha256: d44bf546b13025ec7353091516f6881f1d4c633993cb109c3916c3a0159dadf1
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.17"
+    version: "2.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter

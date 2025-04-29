@@ -8,29 +8,29 @@ environment:
 
 dependencies:
   bloc_test: ^10.0.0
-  dio: null
+  cached_network_image: ^3.3.0
+  dio: ^5.8.0+1
+  dropdown_button2: ^2.3.9
   equatable: null
   flutter:
     sdk: flutter
-  cached_network_image: ^3.3.0
   flutter_bloc: ^9.1.0
   flutter_easyloading: null
+  flutter_nominatim: ^0.0.1+2
   get_it: null
+  image_picker: ^1.1.2
   injectable: null
   internet_connection_checker: ^3.0.1
   skeletonizer: ^1.4.3
   json_annotation: ^4.9.0
+  mime: ^2.0.0
   mockito: ^5.4.5
+  path_provider: ^2.1.5
+  pretty_dio_logger: ^1.4.0
+  provider: ^6.1.4
   retrofit: ^4.4.2
   shared_preferences: null
   smooth_page_indicator: ^1.2.1
-  flutter_svg: ^2.0.17
-  provider: ^6.1.4
-  flutter_localization: ^0.3.2
-  pretty_dio_logger: ^1.4.0
-  image_picker: ^1.1.2
-  path_provider: ^2.1.5
-  mime: ^2.0.0
   url_launcher: ^6.2.5
   google_maps_flutter: ^2.12.1
   location: ^8.0.0
@@ -42,6 +42,9 @@ dependencies:
   firebase_crashlytics: ^4.3.5
   firebase_messaging: ^15.2.5
   flutter_local_notifications:
+  flutter_svg: ^2.1.0
+  flutter_localization: ^0.3.2
+
 
 dev_dependencies:
   flutter_lints: ^5.0.0
