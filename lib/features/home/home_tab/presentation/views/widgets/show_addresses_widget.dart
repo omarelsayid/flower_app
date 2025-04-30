@@ -1,4 +1,5 @@
 import 'package:flower_app/core/utils/app_assets.dart';
+import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/constans.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/user_addresses_cubit/user_addresses_state.dart';
@@ -53,7 +54,7 @@ class _ShowAddressesWidgetState extends State<ShowAddressesWidget> {
               const SizedBox(width: 8),
               Expanded(child: displayText),
               PopupMenuButton<Address>(
-                icon: const Icon(Icons.keyboard_arrow_down_sharp),
+                icon: const Icon(Icons.keyboard_arrow_down_sharp,color: AppColors.primaryColor,),
                 onSelected: (address) {
                   setState(() {
                     _selectedAddress = address;
