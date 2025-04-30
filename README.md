@@ -44,3 +44,8 @@ A cross-platform Flutter application designed to provide an elegant and responsi
 | profile | Category | Edit profile |
 
 
+
+| ![Screenshot_1746036933](https://github.com/user-attachments/assets/4b391813-ec3d-450a-9683-a9d0e005fc09) | ![Screenshot_1746036942](https://github.com/user-attachments/assets/fa97aa6f-d262-4228-8360-8b008eef8e11) |
+|:--:|:--:|
+| product details | Category Details |
+
