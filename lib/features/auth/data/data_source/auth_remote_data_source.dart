@@ -9,7 +9,6 @@ import '../model/forget_response_password_dto.dart';
 import '../model/reset_password_dto.dart';
 import '../model/sign_up_response_dto.dart';
 import '../model/verify_email_response_dto.dart';
-import 'auth_remote_data_source.dart' as _apiClient;
 
 abstract class AuthRemoteDataSource {
   Future<SignUpResponseDTO> signUp(SignUpRequest data);

@@ -1,7 +1,6 @@
 import 'package:flower_app/features/home/categories/data/data_source/categories_remote_data_source.dart';
 import 'package:flower_app/features/home/categories/data/repository_impl/categories_repository_impl.dart';
 import 'package:flower_app/features/home/categories/domain/entity/categories_response_entity.dart';
-import 'package:flower_app/features/home/categories/domain/entity/specific_category_response_entity.dart';
 import 'package:flower_app/core/common/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

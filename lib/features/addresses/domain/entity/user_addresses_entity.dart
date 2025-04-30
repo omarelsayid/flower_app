@@ -17,7 +17,7 @@ class Address extends Equatable {
   final String? long;
   final String? username;
 
-  Address({
+  const Address({
     this.id,
     this.street,
     this.phone,

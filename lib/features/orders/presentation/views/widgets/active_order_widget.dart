@@ -54,11 +54,11 @@ class ActiveOrderWidget extends StatelessWidget {
                           style: AppTextStyles.inter400_12,
                         ),
                         Text(
-                          "${S.of(context).EGP} ${total.toString() ?? ''}",
+                          "${S.of(context).EGP} ${total.toString()}",
                           style: AppTextStyles.inter500_14,
                         ),
                         Text(
-                          "${S.of(context).OrderNumber} ${ordersActive[index].orderNumber.toString() ?? ''}",
+                          "${S.of(context).OrderNumber} ${ordersActive[index].orderNumber.toString()}",
                           style: AppTextStyles.inter400_12,
                         ),
                         SizedBox(height: resposiveHeight(8)),

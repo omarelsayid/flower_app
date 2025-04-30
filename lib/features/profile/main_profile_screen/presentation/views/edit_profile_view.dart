@@ -3,7 +3,6 @@ import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/edit_profile_cubit/edit_profile_view_model.dart';
-import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/edit_profile_view_body.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';

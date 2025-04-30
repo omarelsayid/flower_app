@@ -154,10 +154,7 @@ class RoutesGenerator {
           builder: (context) => OrdersView(),
           settings: settings,
         );
-        return MaterialPageRoute(
-          builder: (context) => AddressDetailsView(),
-          settings: settings,
-        );
+
 
       default:
         return unDefinedRoute();

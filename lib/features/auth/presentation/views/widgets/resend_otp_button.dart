@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ResendOTPButton extends StatefulWidget {
   final Function onResend; // تمرير الدالة التي تنفذ عند إعادة الإرسال
 
-  ResendOTPButton({required this.onResend});
+  const ResendOTPButton({required this.onResend});
 
   @override
   _ResendOTPButtonState createState() => _ResendOTPButtonState();

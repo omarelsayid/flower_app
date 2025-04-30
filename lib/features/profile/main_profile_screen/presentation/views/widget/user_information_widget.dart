@@ -1,9 +1,7 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
-import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/profile_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/utils/app_assets.dart';
 import '../../../../../../core/utils/app_colors.dart';

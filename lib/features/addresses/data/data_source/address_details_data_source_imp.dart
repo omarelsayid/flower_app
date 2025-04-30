@@ -13,7 +13,7 @@ class AddressDetailsDataSourceImp implements AddressDetailsDataSource {
 
   @override
   Future<void> saveAddressDetails(AddressDTO addressDetailsModel) async {
-    var token = await SharedPreferenceServices.getData(
+    var token = SharedPreferenceServices.getData(
       AppConstants.token.toString(),
     );
 

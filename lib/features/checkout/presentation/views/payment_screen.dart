@@ -1,7 +1,6 @@
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_assets.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/common/get_resposive_height_and_width.dart';

@@ -2,7 +2,6 @@ import 'package:flower_app/features/home/categories/domain/repository/categories
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/common/result.dart';
-import '../../../occasions/domain/entity/products_response_entity.dart';
 import '../entity/categories_response_entity.dart';
 import '../entity/specific_category_response_entity.dart';
 

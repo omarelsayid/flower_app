@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/features/cart/domain/entity/user_cart_entity.dart';
 import 'package:flower_app/features/cart/domain/use_case/get_user_cart_use_case.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 part 'get_user_cart_state.dart';
 

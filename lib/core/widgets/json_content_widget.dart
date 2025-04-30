@@ -166,7 +166,7 @@ class JsonContentBottomSheet extends StatelessWidget {
                                 ? item
                                 : (item[locale] ?? item['en']) as String;
                         return buildText(text, styleFor(false));
-                      }).toList(),
+                      }),
                   ],
                 );
               },

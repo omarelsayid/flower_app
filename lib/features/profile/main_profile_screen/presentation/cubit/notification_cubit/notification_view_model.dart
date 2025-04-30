@@ -2,7 +2,6 @@ import 'package:flower_app/features/profile/main_profile_screen/domain/entity/ge
 import 'package:flower_app/features/profile/main_profile_screen/domain/use_case/notification_use_case.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/notification_cubit/notifiaction_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/common/result.dart';

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/add_to_cart_cubit.dart';
 import 'package:flower_app/features/home/categories/presentation/manager/categories_state.dart';
 import 'package:flower_app/features/home/categories/presentation/manager/categories_view_model.dart';
@@ -16,7 +14,6 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../core/common/get_resposive_height_and_width.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/constans.dart';
 import '../../../../core/utils/text_styles.dart';
 import '../../../../core/widgets/flower_card.dart';
 import '../../../../generated/l10n.dart';
@@ -192,7 +189,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
               viewModel.doIntent(FilterIntent(value));
             });
 
-            print('Floating Action Button Pressed!');
+            debugPrint('Floating Action Button Pressed!');
           },
 
           child: Row(

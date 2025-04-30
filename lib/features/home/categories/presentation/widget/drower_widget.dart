@@ -197,12 +197,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         onPressed: () {
                           if (filter == "0") {
                             Navigator.pop(context);
-                            print('Floating Action Button Pressed!');
+                            debugPrint('Floating Action Button Pressed!');
                           } else {
                             widget.onChanged(filter);
                             // showFilters(context);
                             Navigator.pop(context);
-                            print('Floating Action Button Pressed!');
+                            debugPrint('Floating Action Button Pressed!');
                           }
                         },
 

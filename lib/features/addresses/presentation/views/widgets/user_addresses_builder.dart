@@ -7,8 +7,6 @@ import 'package:flower_app/features/addresses/presentation/views/widgets/user_ad
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../data/model/user_addresses_dto.dart';
 import '../../../domain/entity/user_addresses_entity.dart';
 import '../../cubit/user_addresses_cubit/user_addresses_state.dart';
 import '../../cubit/user_addresses_cubit/user_addresses_view_model.dart';

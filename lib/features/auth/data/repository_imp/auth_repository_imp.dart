@@ -55,8 +55,7 @@ class AuthRepositoryImpl implements AuthRepository {
       }
     } on DioException catch (dioException) {
       log(
-        "Dio Exception: ${dioException.response?.data}" +
-            "++++++++++++++++++++++++++",
+        "Dio Exception: ${dioException.response?.data}" "++++++++++++++++++++++++++",
       );
       return Error(
         ServerFailure.fromDioException(dioException).errorMessage.toString(),

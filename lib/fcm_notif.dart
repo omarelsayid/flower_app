@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 
@@ -13,10 +14,9 @@ class FCM {
     await requestIosPermission();
     await getToken();
     await initLocalNotifications();
-    await initLocalNotifications();
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("Foreground message received: ${message.notification?.title}");
+      debugPrint("Foreground message received: ${message.notification?.title}");
 
       if (message.notification != null) {
         showNotification(message);
@@ -30,14 +30,14 @@ class FCM {
       badge: true,
       sound: true,
     );
-    print('======================================================================='
+    debugPrint('======================================================================='
         '===============================+++++++++++++++++++++++++++++++++++++++++++++++'
         'User granted permission: ${settings.authorizationStatus}');
   }
 
   Future<String?> getToken() async {
     String? token = await messaging.getToken();
-    print('=========================================================================='
+    debugPrint('=========================================================================='
         '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'
         'The token is: $token');
     return token;
@@ -54,7 +54,7 @@ class FCM {
     await _notificationsPlugin.initialize(
       settings,
       onDidReceiveNotificationResponse: (NotificationResponse response) {
-        print("Notification Clicked: ${response.payload}");
+        debugPrint("Notification Clicked: ${response.payload}");
       },
     );
     const AndroidInitializationSettings initializationSettingsAndroid =

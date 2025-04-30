@@ -141,8 +141,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
       _markers.add(marker);
       setState(() {});
       log(
-        _markers.length.toString() +
-            "#############################################",
+        "${_markers.length}#############################################",
       );
     } catch (e) {
       log('Error in moveToAndPopulate: $e');

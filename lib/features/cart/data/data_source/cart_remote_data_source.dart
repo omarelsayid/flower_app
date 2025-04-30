@@ -3,7 +3,6 @@ import 'package:flower_app/features/cart/data/models/update_product_quantity/upd
 import 'package:flower_app/features/cart/data/models/update_product_quantity/update_cart_quantity_response_dto.dart';
 import 'package:flower_app/features/cart/data/models/user_cart_response/user_cart_response_model.dart';
 import 'package:injectable/injectable.dart';
-import 'package:dio/dio.dart';
 import '../../../../core/api/api_client.dart';
 import '../models/create_cart_request.dart';
 

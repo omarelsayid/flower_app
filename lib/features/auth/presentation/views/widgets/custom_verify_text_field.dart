@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_colors.dart' as ColorsManager;
-import '../../../../../core/utils/constans.dart';
-
 class CustomVerifyTextField extends StatelessWidget {
   CustomVerifyTextField({
     super.key,

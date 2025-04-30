@@ -1,4 +1,3 @@
-import 'package:flower_app/features/profile/main_profile_screen/presentation/cubit/change_password_cubit/change_password_view-model.dart';
 
 class AppValidate {
   static String? validateEmail(String? value) {

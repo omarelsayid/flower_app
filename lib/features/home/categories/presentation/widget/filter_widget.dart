@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../core/common/get_resposive_height_and_width.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
-import '../../../../../generated/l10n.dart';
 
 class FilterWidget extends StatelessWidget {
   final String sort;

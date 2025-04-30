@@ -29,7 +29,7 @@ class _ResetPasswordState extends State<ResetPassword> {
   Widget build(BuildContext context) {
     widget.email = ModalRoute.of(context)!.settings.arguments as String;
 
-    print("the email is ${widget.email}");
+    debugPrint("the email is ${widget.email}");
     return BlocProvider(
       create: (context) => getIt<ResetPasswordViewModel>(),
       child: BlocListener<ResetPasswordViewModel, ResetPasswordState>(

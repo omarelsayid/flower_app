@@ -19,8 +19,7 @@ class GetAddressesSuggestioCubit extends Cubit<GetAddressesSuggestioStates> {
     switch (result) {
       case Success():
         log(
-          result.data!.suggestions![0].placePrediction!.text!.text.toString() +
-              "#################################",
+          "${result.data!.suggestions![0].placePrediction!.text!.text}#################################",
         );
         emit(GetAddressesSuggestioSuccessState(result.data!.suggestions!));
       case Error():

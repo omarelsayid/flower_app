@@ -1,18 +1,14 @@
 import 'package:flower_app/core/api/api_execute.dart';
-import 'package:flower_app/features/home/occasions/data/model/products_response_dto.dart';
 import 'package:flower_app/features/home/occasions/domain/entity/occasions_entity.dart';
 import 'package:flower_app/features/home/occasions/domain/entity/products_response_entity.dart';
 import 'package:injectable/injectable.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
 import '../../../../../core/common/result.dart';
 import '../../domain/repository/occasion_repository.dart';
 import '../data_source/occasion_remote_data_source.dart';
-import '../model/occasions_dto.dart';
 
 @Injectable(as: OccasionRepository)
 class OccasionRepositoryImpl implements OccasionRepository {
   final OccasionRemoteDataSource _occasionRemoteDataSource;
-  // final InternetConnectionChecker internetConnectionChecker;
 
   OccasionRepositoryImpl(
     this._occasionRemoteDataSource,

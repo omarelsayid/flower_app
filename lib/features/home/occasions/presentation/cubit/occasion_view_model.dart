@@ -1,7 +1,6 @@
 import 'dart:developer';
 import 'package:flower_app/features/home/occasions/domain/entity/occasions_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/common/result.dart';
 import '../../domain/use_case/occasion_use_case.dart';

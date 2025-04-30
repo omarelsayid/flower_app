@@ -1,9 +1,9 @@
 import 'dart:developer';
 
-import 'package:bloc/bloc.dart';
 import 'package:flower_app/features/home/best_seller_products/data/model/ProductModel.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../best_seller_products/domain/use_case/best_seller_use_case.dart';
 import '../../../../../../core/common/result.dart';

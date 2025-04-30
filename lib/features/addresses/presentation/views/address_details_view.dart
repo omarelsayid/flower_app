@@ -1,18 +1,5 @@
 import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/core/widgets/custom_app_bar.dart';
-import 'package:flower_app/features/addresses/data/model/user_addresses_dto.dart';
-import 'package:flower_app/features/addresses/presentation/cubit/address_details_cubit.dart';
-import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
-import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_cubit.dart';
-import 'package:flower_app/features/addresses/presentation/views/widgets/address_details_view_body.dart';
-import 'package:flower_app/generated/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../domain/entity/user_addresses_entity.dart';
-
-import 'package:flower_app/core/di/injectable_initializer.dart';
-import 'package:flower_app/core/widgets/custom_app_bar.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/address_details_cubit.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/get_addresses_suggestio_cubit/get_addresses_suggestio_cubit.dart';
 import 'package:flower_app/features/addresses/presentation/cubit/place_details_cubit/place_details_cubit.dart';

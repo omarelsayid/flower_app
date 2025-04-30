@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/di/injectable_initializer.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
@@ -67,11 +65,11 @@ class CompletedOrderWidget extends StatelessWidget {
                           style: AppTextStyles.inter400_12,
                         ),
                         Text(
-                          "${S.of(context).EGP} ${total.toString() ?? ''}",
+                          "${S.of(context).EGP} ${total.toString()}",
                           style: AppTextStyles.inter500_14,
                         ),
                         Text(
-                          "${S.of(context).Deliveredon} ${ordersCompleted[index].isDelivered.toString() ?? ''}",
+                          "${S.of(context).Deliveredon} ${ordersCompleted[index].isDelivered.toString()}",
                           style: AppTextStyles.inter400_12,
                         ),
                         SizedBox(height: resposiveHeight(8)),

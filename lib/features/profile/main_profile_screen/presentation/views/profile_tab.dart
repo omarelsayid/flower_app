@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/features/profile/main_profile_screen/presentation/views/widget/body_widget.dart';

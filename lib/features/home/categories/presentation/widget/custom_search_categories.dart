@@ -1,7 +1,5 @@
-import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/text_styles.dart';
 

@@ -80,10 +80,10 @@ class HomeTab extends StatelessWidget {
                     ),
                     IconButton(
                       onPressed: () async {
-                        print(
+                        debugPrint(
                           await SharedPreferenceServices.getData(
                             AppConstants.token,
-                          ),
+                          ).toString(),
                         );
                       },
                       icon: Icon(

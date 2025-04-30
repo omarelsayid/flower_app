@@ -6,9 +6,7 @@ import 'package:flower_app/features/cart/presentation/cubit/add_to_cart_cubit/ad
 import 'package:flower_app/features/home/occasions/presentation/views/widgets/occasion_screen_consumer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import '../../../../../core/di/injectable_initializer.dart';
-import '../../../../../core/widgets/flower_card.dart';
 import '../../../../../generated/l10n.dart';
 import '../../domain/entity/occasions_entity.dart';
 import '../cubit/occasion_view_model.dart';

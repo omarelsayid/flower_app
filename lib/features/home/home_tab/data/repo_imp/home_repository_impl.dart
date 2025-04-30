@@ -1,13 +1,7 @@
-import 'dart:developer';
-
-import 'package:dio/dio.dart';
 import 'package:flower_app/core/api/api_execute.dart';
-import 'package:flower_app/core/error/failures.dart';
 import 'package:flower_app/features/home/home_tab/data/data_source/home_data_source.dart';
 import 'package:flower_app/features/home/home_tab/domain/repo/home_repo.dart';
 import 'package:injectable/injectable.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-
 import '../../../../../core/common/result.dart';
 import '../../domain/entity/category_entity.dart';
 

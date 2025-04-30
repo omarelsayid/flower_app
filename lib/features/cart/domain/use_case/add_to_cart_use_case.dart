@@ -1,5 +1,3 @@
-import 'package:flower_app/core/common/result.dart';
-import 'package:flower_app/features/cart/domain/entity/user_cart_entity.dart';
 import 'package:injectable/injectable.dart';
 
 import '../repo/cart_repo.dart';

@@ -35,7 +35,7 @@ class GoogelMapsService {
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      log(data.toString() + "++++++++++++++++++++++++++++++++++");
+      log("$data++++++++++++++++++++++++++++++++++");
       return PlaceDetailsModel.fromJson(data);
     } else {
       throw Exception('Failed to load suggestions');

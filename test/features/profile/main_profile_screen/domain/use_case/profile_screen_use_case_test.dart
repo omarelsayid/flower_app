@@ -1,7 +1,6 @@
 import 'package:flower_app/core/common/result.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/entity/profile_response_entity.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart';
-import 'package:flower_app/features/profile/main_profile_screen/domain/repository/profile_screen_repository.dart';
 import 'package:flower_app/features/profile/main_profile_screen/domain/use_case/profile_screen_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

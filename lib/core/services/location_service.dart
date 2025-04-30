@@ -22,8 +22,9 @@ class LocationService {
         throw LocationPermissionException();
       }
     }
-    if (permissionStatus == PermissionStatus.deniedForever)
+    if (permissionStatus == PermissionStatus.deniedForever) {
       throw LocationPermissionException();
+    }
 
     return true;
   }

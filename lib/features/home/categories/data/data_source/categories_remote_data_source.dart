@@ -6,8 +6,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../../core/api/api_client.dart';
 import '../../../../../core/api/api_execute.dart';
-import '../../../occasions/data/model/products_response_dto.dart';
-import '../../../occasions/domain/entity/products_response_entity.dart';
 import '../../domain/entity/specific_category_response_entity.dart';
 
 abstract class CategoriesRemoteDataSource {
