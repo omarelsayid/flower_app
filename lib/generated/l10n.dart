@@ -860,6 +860,16 @@ class S {
     );
   }
 
+  /// `update Address`
+  String get updateAddress {
+    return Intl.message(
+      'update Address',
+      name: 'updateAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Track Order`
   String get TrackOrder {
     return Intl.message('Track Order', name: 'TrackOrder', desc: '', args: []);

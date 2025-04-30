@@ -21,7 +21,7 @@ class FilterWidget extends StatelessWidget {
       height: resposiveHeight(52),
       width: resposiveWidth(343),
       child: Card(
-        elevation: 0.5,
+        elevation: 1,
         color: AppColors.whiteColor,
         child: Padding(
           padding: EdgeInsets.only(right: 8, left: 8),

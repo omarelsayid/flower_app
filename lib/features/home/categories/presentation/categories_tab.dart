@@ -70,6 +70,7 @@ class _CategoriesTabState extends State<CategoriesTab> {
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Expanded(
                             flex: 5,
@@ -90,6 +91,8 @@ class _CategoriesTabState extends State<CategoriesTab> {
                             flex: 1,
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
+                                padding: EdgeInsets.zero,
+                                alignment: Alignment.center,
                                 minimumSize: Size(
                                   resposiveWidth(64),
                                   resposiveHeight(48),
@@ -97,15 +100,15 @@ class _CategoriesTabState extends State<CategoriesTab> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8),
                                 ),
+
                               ),
                               onPressed: () {
                                 showFilters(context, (value) {
                                   viewModel.doIntent(FilterIntent(value));
                                 });
                               },
-                              child: ImageIcon(
-                                AssetImage(IconAssets.filterIcon),
-                              ),
+                              child:Center(child: Icon(Icons.filter_list_outlined, color: AppColors.greyColor)),
+
                             ),
                           ),
                         ],

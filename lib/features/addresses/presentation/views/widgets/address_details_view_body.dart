@@ -355,7 +355,7 @@ class _AddressDetailsViewBodyState extends State<AddressDetailsViewBody> {
                   child: ElevatedButton(
                     onPressed: isEditMode ? _updateAddress : _saveAddress,
                     child: Text(
-                      isEditMode ? 'updateAddress' : S.of(context).saveAddress,
+                      isEditMode ? S.of(context).updateAddress : S.of(context).saveAddress,
                       style: AppTextStyles.roboto500_16.copyWith(
                         color: Colors.white,
                       ),

@@ -33,6 +33,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode validateMode = AutovalidateMode.disabled;
   bool rememberMe = false;
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
             EasyLoading.dismiss();
             Navigator.pushReplacementNamed(context, PagesRoutes.layOutScreen);
           case SignInErrorState():
-            log(state.message + "++++++++++++++");
+            log("${state.message}++++++++++++++");
             EasyLoading.dismiss();
             EasyLoading.showError(state.message);
           default:
@@ -88,6 +89,10 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                   const SizedBox(height: 20),
                   TextFormField(
                     autovalidateMode: validateMode,
+                    obscureText: !isPasswordVisible,
+                    obscuringCharacter: '*',
+                    enableSuggestions: false,
+                    autocorrect: false,
                     validator: (value) {
                       if (value == null || value.isEmpty == true) {
                         return S.of(context).passwordRequired;
@@ -105,6 +110,16 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                     decoration: InputDecoration(
                       labelText: S.of(context).password,
                       hintText: S.of(context).enterYourPassword,
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),

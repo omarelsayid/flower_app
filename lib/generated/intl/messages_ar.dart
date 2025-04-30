@@ -179,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الشروط والأحكام",
     ),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
+    "updateAddress": MessageLookupByLibrary.simpleMessage("تحديث العنوان"),
     "viewAll": MessageLookupByLibrary.simpleMessage("اعرض الكل"),
   };
 }

@@ -34,7 +34,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
           topLeft: Radius.circular(60),
           topRight: Radius.circular(60),
         ),
-        color: AppColors.lightPinkColor,
+        color: AppColors.whiteColor,
       ),
       child: Stack(
         children: [

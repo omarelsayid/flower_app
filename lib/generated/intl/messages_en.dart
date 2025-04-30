@@ -184,6 +184,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Terms & Conditions",
     ),
     "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "updateAddress": MessageLookupByLibrary.simpleMessage("update Address"),
     "viewAll": MessageLookupByLibrary.simpleMessage("View all"),
   };
 }
