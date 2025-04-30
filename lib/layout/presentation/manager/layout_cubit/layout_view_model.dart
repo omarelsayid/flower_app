@@ -1,3 +1,4 @@
+import 'package:flower_app/features/addresses/presentation/cubit/user_addresses_cubit/user_addresses_view_model.dart';
 import 'package:flower_app/features/cart/presentation/cubit/get_user_cart_cubit/get_user_cart_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
@@ -36,6 +37,10 @@ class LayoutViewModel extends Cubit<LayoutState> {
         BlocProvider(
           create: (context) => getIt.get<OccasionCubit>()..fetchOccasion(),
         ),
+        BlocProvider(
+          create: (context) => getIt.get<UserAddressesViewModel>()..doIntent(GetUserAddressesClickedIntent()),
+        ),
+
       ],
       child: HomeTab(),
     ),

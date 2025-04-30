@@ -6,6 +6,8 @@ import 'package:flower_app/core/utils/app_assets.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/user_addresses_cubit/user_addresses_state.dart';
+import 'package:flower_app/features/addresses/presentation/cubit/user_addresses_cubit/user_addresses_view_model.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/best_seller_cubit/best_seller_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/category_cubit/category_cubit.dart';
 import 'package:flower_app/features/home/home_tab/presentation/cubit/occasion_cubit/occasion_cubit.dart';
@@ -20,6 +22,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/services/shared_preference_services.dart';
 import '../../../../../core/utils/constans.dart';
+import 'widgets/show_addresses_widget.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
@@ -67,34 +70,7 @@ class HomeTab extends StatelessWidget {
                 ],
               ), // logo
               // address
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: kVerticalHPadding),
-                child: Row(
-                  children: [
-                    Image.asset(IconAssets.LocationIcon),
-                    Flexible(
-                      child: Text(
-                        " Deliver to 2XVP+XC - Sheikh Zayed",
-                        style: AppTextStyles.inter400_14,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () async {
-                        debugPrint(
-                          await SharedPreferenceServices.getData(
-                            AppConstants.token,
-                          ).toString(),
-                        );
-                      },
-                      icon: Icon(
-                        Icons.keyboard_arrow_down_sharp,
-                        size: 35,
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              ShowAddressesWidget(),
 
               // category
               Column(
