@@ -7,30 +7,65 @@ environment:
   sdk: ^3.7.0
 
 dependencies:
+  bloc_test: ^10.0.0
+  cached_network_image: ^3.3.0
+  dio: ^5.8.0+1
+  dropdown_button2: ^2.3.9
+  equatable: null
   flutter:
     sdk: flutter
-  retrofit: ^4.4.2
-  json_annotation: ^4.9.0
-  injectable:  
-  get_it:      
   flutter_bloc: ^9.1.0
-  equatable:
-  flutter_easyloading:
-  shared_preferences:
+  flutter_easyloading: null
+  flutter_nominatim: ^0.0.1+2
+  get_it: null
+  image_picker: ^1.1.2
+  injectable: null
+  internet_connection_checker: ^3.0.1
+  skeletonizer: ^1.4.3
+  json_annotation: ^4.9.0
+  mime: ^2.0.0
+  mockito: ^5.4.5
+  path_provider: ^2.1.5
+  pretty_dio_logger: ^1.4.0
+  provider: ^6.1.4
+  retrofit: ^4.4.2
+  shared_preferences: null
+  smooth_page_indicator: ^1.2.1
+  url_launcher: ^6.2.5
+  google_maps_flutter: ^2.12.1
+  location: ^8.0.0
+  geocoding: ^3.0.0
+  animate_do: ^4.2.0
+  flutter_slidable: ^4.0.0
+  firebase_core: ^3.13.0
+  firebase_analytics: ^11.4.5
+  firebase_crashlytics: ^4.3.5
+  firebase_messaging: ^15.2.5
+  flutter_local_notifications:
+  flutter_svg: ^2.1.0
+  flutter_localization: ^0.3.2
+
 
 dev_dependencies:
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
-  retrofit_generator: '>=8.0.0 <10.0.0' # for Dart 3.3 use ^9.0.0
+  injectable_generator: null
   json_serializable: ^6.8.0
-  injectable_generator:  
-  build_runner:    
- 
+  mockito: ^5.4.5
+  retrofit_generator: ^8.0.4
+  build_runner: ^2.4.8
 
 flutter:
   uses-material-design: true
-
+  assets:
+    - assets/icons/
+    - assets/translations/
+    - assets/images/
+    - assets/svg/
+    - assets/
+    - assets/map_styles/
+    - assets/
   fonts:
     - family: IM FELL English
       fonts:
@@ -47,3 +82,5 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
+flutter_intl:
+  enabled: true

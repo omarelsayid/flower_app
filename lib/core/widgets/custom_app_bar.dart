@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 AppBar buildCustomAppBar({
   required String title,
   required bool isVisible,
+  bool? isCenterTitle,
   List<Widget>? actions,
   required BuildContext context,
 }) {
   return AppBar(
+    centerTitle: isCenterTitle,
     actions: actions,
     backgroundColor: Colors.white,
     scrolledUnderElevation: 0,
