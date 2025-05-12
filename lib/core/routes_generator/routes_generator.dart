@@ -10,6 +10,7 @@ import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart'
 import 'package:flower_app/features/home/products_details/presentation/views/products_details_view.dart';
 import 'package:flower_app/features/home/occasions/presentation/views/occasion_screen.dart';
 import 'package:flower_app/features/orders/presentation/views/orders_view.dart';
+import 'package:flower_app/features/orders/presentation/views/track_order_screen.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,7 +83,6 @@ class RoutesGenerator {
           settings: settings,
         );
 
-
       case PagesRoutes.occasionScreen:
         return MaterialPageRoute(
           builder: (context) => OccasionsScreen(),
@@ -145,15 +145,21 @@ class RoutesGenerator {
           builder: (context) => NotificationScreen(),
           settings: settings,
         );
-        // return MaterialPageRoute(
-        //   builder: (context) => AddressDetailsView(),
-        //   settings: settings,
-        // );
+      // return MaterialPageRoute(
+      //   builder: (context) => AddressDetailsView(),
+      //   settings: settings,
+      // );
       case PagesRoutes.ordersScreen:
         return MaterialPageRoute(
           builder: (context) => OrdersView(),
           settings: settings,
         );
+      case PagesRoutes.trackOrderScreen:
+        return MaterialPageRoute(
+          builder: (context) =>const TrackOrderScreen(),
+          settings: settings,
+        );
+
         return MaterialPageRoute(
           builder: (context) => AddressDetailsView(),
           settings: settings,

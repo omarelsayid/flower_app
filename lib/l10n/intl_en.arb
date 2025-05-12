@@ -107,7 +107,10 @@
   "Deliveredon": "Delivered on",
   "Reorder": "Reorder",
   "OrderNumber": "Order Number",
-  "TrackOrder": "Track Order"
+  "TrackOrder": "Track Order",
+  "EstimatedArrival:"Estimated arrival",
+  "IsYourDeliveryHereForToday":"Is your delivery here for today",
+  "ShowMap":"Show map"
 
 
 }

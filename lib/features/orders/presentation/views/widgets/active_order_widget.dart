@@ -1,13 +1,16 @@
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/orders/domain/entites/orders_response_entity.dart';
 import 'package:flower_app/features/orders/presentation/views/widgets/completed_order_widget.dart';
 import 'package:flower_app/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 class ActiveOrderWidget extends StatelessWidget {
   const ActiveOrderWidget({super.key, required this.ordersActive});
+
   final List<OrderEntity> ordersActive;
 
   @override
@@ -66,7 +69,13 @@ class ActiveOrderWidget extends StatelessWidget {
                           width: resposiveWidth(152),
                           height: resposiveHeight(30),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                PagesRoutes.trackOrderScreen,
+                                arguments: ordersActive[index].id.toString(),
+                              );
+                            },
                             child: Text(
                               S.of(context).TrackOrder,
                               style: AppTextStyles.inter500_13.copyWith(
