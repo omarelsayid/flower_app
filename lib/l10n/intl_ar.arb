@@ -108,9 +108,9 @@
   "Reorder": "إعادة الطلب",
   "OrderNumber": "رقم الطلب",
   "TrackOrder": "تتبع الطلب",
-  "EstimatedArrival:"وقت الوصول",
-  "IsYourDeliveryHereForToday":"هل تسليمك اليوم",
-  "ShowMap":"عرض الخريطة"
+  "estimatedArrival:"وقت الوصول",
+  "isYourDeliveryHereForToday":"هل تسليمك اليوم",
+  "showMap":"عرض الخريطة"
 
 
 }

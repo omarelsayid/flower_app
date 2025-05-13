@@ -11,12 +11,10 @@ class TrackOrderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var arg=ModalRoute.of(context)?.settings.arguments as String;
+    var arg = ModalRoute.of(context)?.settings.arguments as String;
     var local = S.of(context);
-    final Stream<DocumentSnapshot> _orderStream = FirebaseFirestore.instance
-        .collection('order')
-        .doc(arg)
-        .snapshots();
+    final Stream<DocumentSnapshot> orderStream =
+        FirebaseFirestore.instance.collection('order').doc(arg).snapshots();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -34,9 +32,26 @@ class TrackOrderScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: StreamBuilder(
-        stream: _orderStream,
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: orderStream,
         builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(color: AppColors.primaryColor),
+            );
+          }
+
+          if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
+          }
+
+          if (!snapshot.hasData || !snapshot.data!.exists) {
+            return Center(child: Text("Order not found"));
+          }
+
+          final orderData = snapshot.data!;
+          final int statusIndex = orderData.get("status") ?? 0;
+
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: resposiveWidth(16)),
             child: Column(
@@ -44,7 +59,10 @@ class TrackOrderScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: resposiveWidth(16)),
-                  child: Text("wreyaz s u as", style: AppTextStyles.inter500_14),
+                  child: Text(
+                    "wreyaz s u as",
+                    style: AppTextStyles.inter500_14,
+                  ),
                 ),
                 SizedBox(height: resposiveHeight(8)),
                 Padding(
@@ -57,14 +75,14 @@ class TrackOrderScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: resposiveHeight(16)),
-                Divider(color: AppColors.greyColor, height: .9),
+                const Divider(color: AppColors.greyColor, height: .9),
                 SizedBox(height: resposiveHeight(40)),
-                CustomCardDriver(index: snapshot.data?.get("status")??0,),
-                Expanded(child: SizedBox(height: resposiveHeight(8))),
+                CustomCardDriver(index: statusIndex),
+                const Spacer(),
                 ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    lo,
+                    "Show Map",
                     style: AppTextStyles.inter600_18.copyWith(
                       color: AppColors.whiteColor,
                     ),
