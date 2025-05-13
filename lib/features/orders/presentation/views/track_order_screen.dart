@@ -64,7 +64,7 @@ class TrackOrderScreen extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    "Show Map",
+                    lo,
                     style: AppTextStyles.inter600_18.copyWith(
                       color: AppColors.whiteColor,
                     ),
