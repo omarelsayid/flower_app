@@ -37,13 +37,18 @@ dependencies:
   geocoding: ^3.0.0
   animate_do: ^4.2.0
   flutter_slidable: ^4.0.0
-  firebase_core: ^3.13.0
-  firebase_analytics: ^11.4.5
+  firebase_core: any
+  firebase_analytics: any
   firebase_crashlytics: ^4.3.5
   firebase_messaging: ^15.2.5
   flutter_local_notifications:
   flutter_svg: ^2.1.0
   flutter_localization: ^0.3.2
+  timelines_plus: ^1.0.6
+  order_tracker: ^0.0.2
+  cloud_firestore: ^5.6.7
+  intl: ^0.19.0
+
 
 
 dev_dependencies:

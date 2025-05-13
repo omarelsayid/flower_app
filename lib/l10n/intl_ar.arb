@@ -107,7 +107,10 @@
   "Deliveredon": "تم التسليم في",
   "Reorder": "إعادة الطلب",
   "OrderNumber": "رقم الطلب",
-  "TrackOrder": "تتبع الطلب"
+  "TrackOrder": "تتبع الطلب",
+  "estimatedArrival:"وقت الوصول",
+  "isYourDeliveryHereForToday":"هل تسليمك اليوم",
+  "showMap":"عرض الخريطة"
 
 
 }
