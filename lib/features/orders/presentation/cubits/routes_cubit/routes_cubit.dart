@@ -17,38 +17,31 @@ class RouteCubit extends Cubit<RouteState> {
 
   RouteCubit(this._loadRoute, this._locationService) : super(RouteInitial());
 
-  Future<void> loadRoute({
-    bool isPickup = true,
-    LatLngModel? userLatLng,
-  }) async {
+  Future<void> loadRoute({LatLngModel? driverLatLng}) async {
     emit(RouteLoading());
 
     try {
-      print('📍 isPickup: $isPickup');
-      print('📍 userLatLng: ${userLatLng?.latitude}, ${userLatLng?.longitude}');
+      print(
+        '📍 userLatLng: ${driverLatLng?.latitude}, ${driverLatLng?.longitude}',
+      );
 
-      if (!isPickup && userLatLng == null) {
+      if (driverLatLng == null) {
         emit(RouteError('❌ userLatLng is required when isPickup is false'));
         return;
       }
 
-      // DRIVER LOCATION
-      final driverLoc = await _locationService.getUserLocation();
-
-      // STORE LOCATION
-      const double storeLat = 31.201875670799417;
-      const double storeLng = 29.91034419386273;
+      final userLoc = await _locationService.getUserLocation();
 
       // ICONS
-      final driverIcon = await BitmapDescriptor.fromAssetImage(
+      final driverIcon = await BitmapDescriptor.asset(
         const ImageConfiguration(size: Size(60, 60)),
-        'assets/images/driver_location.png',
+        'assets/images/Delivery Motorcycle.png',
       );
-      final storeIcon = await BitmapDescriptor.fromAssetImage(
+      final storeIcon = await BitmapDescriptor.asset(
         const ImageConfiguration(size: Size(48, 48)),
         'assets/images/Flowery_location.png',
       );
-      final userIcon = await BitmapDescriptor.fromAssetImage(
+      final userIcon = await BitmapDescriptor.asset(
         const ImageConfiguration(size: Size(48, 48)),
         'assets/images/user_location.png',
       );
@@ -56,26 +49,23 @@ class RouteCubit extends Cubit<RouteState> {
       // FIRST LOCATION OF DRIVER
       final originInfo = LocationInfo(
         latLng: LatLngModel(
-          latitude: driverLoc.latitude!,
-          longitude: driverLoc.longitude!,
+          latitude: userLoc.latitude!,
+          longitude: userLoc.longitude!,
         ),
       );
-      final originIcon = driverIcon;
+      final originIcon = userIcon;
 
       // LAST LOCATION
-      final destLatLng =
-          isPickup
-              ? LatLngModel(latitude: storeLat, longitude: storeLng)
-              : userLatLng!;
+      final destLatLng = driverLatLng;
 
-      final destIcon = isPickup ? storeIcon : userIcon;
+      final destIcon = driverIcon;
 
       final destInfo = LocationInfo(latLng: destLatLng);
 
       //
       final entity = await _loadRoute(
-        origin: originInfo,
-        destination: destInfo,
+        origin: destInfo,
+        destination: originInfo,
         modifiers: RouteModifiers(
           avoidTolls: false,
           avoidFerries: false,

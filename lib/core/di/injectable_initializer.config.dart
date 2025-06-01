@@ -170,11 +170,18 @@ import '../../features/orders/data/data_sorce/orders_remote_data_source_impl.dar
     as _i459;
 import '../../features/orders/data/repo_impl/get_orders_repo_impl.dart'
     as _i998;
+import '../../features/orders/data/repo_impl/routes_repository_imp.dart'
+    as _i431;
 import '../../features/orders/domain/repo/get_orders_repo.dart' as _i364;
+import '../../features/orders/domain/repo/routes_repository.dart' as _i280;
 import '../../features/orders/domain/use_case/get_order_use_case.dart'
     as _i1013;
+import '../../features/orders/domain/use_case/get_routes_use_case.dart'
+    as _i903;
 import '../../features/orders/presentation/cubits/get_orders_cubit/get_orders_view_model.dart'
     as _i560;
+import '../../features/orders/presentation/cubits/routes_cubit/routes_cubit.dart'
+    as _i950;
 import '../../features/profile/main_profile_screen/data/data_source/change_pasword_data_source.dart'
     as _i584;
 import '../../features/profile/main_profile_screen/data/data_source/notification_remote_data_source.dart'
@@ -218,6 +225,8 @@ import '../../features/profile/main_profile_screen/presentation/cubit/upload_pho
 import '../api/api_client.dart' as _i277;
 import '../api/googel_maps_service.dart' as _i997;
 import '../api/network_factory.dart' as _i1013;
+import '../api/routes_api.dart' as _i693;
+import '../services/location_service.dart' as _i669;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -235,6 +244,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.lazySingleton<_i1013.AuthInterceptor>(() => _i1013.AuthInterceptor());
+    gh.lazySingleton<_i693.RoutesApi>(() => _i693.RoutesApi());
+    gh.lazySingleton<_i669.LocationService>(() => _i669.LocationService());
     gh.singleton<_i277.ApiClient>(() => _i277.ApiClient(gh<_i361.Dio>()));
     gh.factory<_i848.GetAddressesSuggestionDataSource>(() =>
         _i263.GetAddressesSuggestionDataSourceImp(
@@ -262,6 +273,10 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i584.ChangePasswordDataSource>()));
     gh.factory<_i330.BestSellerRepo>(
         () => _i174.BestSellerRepoImpl(gh<_i550.BestSellerRemoteDataSource>()));
+    gh.factory<_i280.RouteRepository>(() => _i431.RouteRepositoryImpl(
+          gh<_i669.LocationService>(),
+          gh<_i693.RoutesApi>(),
+        ));
     gh.factory<_i701.AuthUseCase>(
         () => _i701.AuthUseCase(gh<_i961.AuthRepository>()));
     gh.factory<_i489.SignInUseCase>(
@@ -276,8 +291,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i237.BestSellerViewModel(gh<_i480.BestSellerUseCase>()));
     gh.factory<_i85.BestSellerCubit>(
         () => _i85.BestSellerCubit(gh<_i480.BestSellerUseCase>()));
+    gh.factory<_i903.LoadRouteUseCase>(
+        () => _i903.LoadRouteUseCase(gh<_i280.RouteRepository>()));
     gh.factory<_i528.GetPlaceDetailsDataSource>(() =>
         _i253.GetPlaceDetailsDataSourceImp(gh<_i997.GoogelMapsService>()));
+    gh.factory<_i950.RouteCubit>(() => _i950.RouteCubit(
+          gh<_i903.LoadRouteUseCase>(),
+          gh<_i669.LocationService>(),
+        ));
     gh.factory<_i516.GetAddressesSuggestionRepo>(() =>
         _i688.GetAddressesSuggestionRepoImp(
             gh<_i848.GetAddressesSuggestionDataSource>()));

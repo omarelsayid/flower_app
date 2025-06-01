@@ -56,9 +56,9 @@ void main() async {
   await SharedPreferenceServices.init();
 
   String? token =
-  SharedPreferenceServices.getData(AppConstants.token) as String?;
+      SharedPreferenceServices.getData(AppConstants.token) as String?;
   bool? rememberMe =
-  SharedPreferenceServices.getData(AppConstants.rememberMe) as bool?;
+      SharedPreferenceServices.getData(AppConstants.rememberMe) as bool?;
 
   runApp(PreInitApp(token: token, rememberMe: rememberMe));
 }
@@ -109,13 +109,14 @@ class MainAppContent extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       onGenerateRoute: RoutesGenerator.onGenerateRoute,
-      initialRoute:
-      (SharedPreferenceServices.getData(AppConstants.token) != null &&
-          (SharedPreferenceServices.getData(AppConstants.rememberMe)
-          as bool? ??
-              false))
-          ? PagesRoutes.layOutScreen
-          : PagesRoutes.signInScreen,
+      // initialRoute:
+      // (SharedPreferenceServices.getData(AppConstants.token) != null &&
+      //     (SharedPreferenceServices.getData(AppConstants.rememberMe)
+      //     as bool? ??
+      //         false))
+      //     ? PagesRoutes.layOutScreen
+      //     : PagesRoutes.signInScreen,
+      initialRoute: PagesRoutes.routeViewrScreen,
       builder: (context, child) => child!,
     );
   }

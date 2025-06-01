@@ -9,6 +9,8 @@ class OrderEntity {
   final String? id;
   final String? user;
   final List<OrderItemEntity>? orderItems;
+  ShippingAddressEntity? shippingAddress;
+
   final int? totalPrice;
   final String? paymentType;
   final bool? isPaid;
@@ -21,6 +23,7 @@ class OrderEntity {
   OrderEntity({
     this.id,
     this.user,
+    this.shippingAddress,
     this.orderItems,
     this.totalPrice,
     this.paymentType,
@@ -78,5 +81,21 @@ class ProductEntity {
     this.sold,
     this.rateAvg,
     this.rateCount,
+  });
+}
+
+class ShippingAddressEntity {
+  String? street;
+  final String? city;
+  final String? phone;
+  final String? lat;
+  final String? long;
+
+  ShippingAddressEntity({
+    this.street,
+    this.city,
+    this.phone,
+    this.lat,
+    this.long,
   });
 }
