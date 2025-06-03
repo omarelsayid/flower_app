@@ -9,6 +9,8 @@ import 'package:flower_app/features/auth/presentation/views/sign_in_screen.dart'
 import 'package:flower_app/features/auth/presentation/views/sign_up_screen.dart';
 import 'package:flower_app/features/home/products_details/presentation/views/products_details_view.dart';
 import 'package:flower_app/features/home/occasions/presentation/views/occasion_screen.dart';
+import 'package:flower_app/features/orders/presentation/cubits/routes_cubit/routes_cubit.dart';
+import 'package:flower_app/features/orders/presentation/views/map_view.dart';
 import 'package:flower_app/features/orders/presentation/views/orders_view.dart';
 import 'package:flower_app/features/orders/presentation/views/track_order_screen.dart';
 import 'package:flower_app/layout/presentation/layout_screen.dart';
@@ -156,10 +158,18 @@ class RoutesGenerator {
         );
       case PagesRoutes.trackOrderScreen:
         return MaterialPageRoute(
-          builder: (context) =>const TrackOrderScreen(),
+          builder: (context) => const TrackOrderScreen(),
           settings: settings,
         );
-
+      case PagesRoutes.routeViewrScreen:
+        return MaterialPageRoute(
+          builder:
+              (context) => BlocProvider<RouteCubit>(
+                create: (_) => getIt<RouteCubit>()..loadRoute(),
+                child: RouteView(),
+              ),
+          settings: settings,
+        );
         return MaterialPageRoute(
           builder: (context) => AddressDetailsView(),
           settings: settings,

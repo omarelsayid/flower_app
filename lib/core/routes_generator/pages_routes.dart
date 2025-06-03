@@ -21,4 +21,7 @@ abstract class PagesRoutes {
   static const String notificationScreen = "notification_screen";
   static const String ordersScreen = "orders_screen";
   static const String trackOrderScreen="track_order";
+  static const String routeViewrScreen="RouteView";
+
+
 }

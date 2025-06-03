@@ -1,5 +1,6 @@
+import 'package:injectable/injectable.dart';
 import 'package:location/location.dart';
-
+@lazySingleton
 class LocationService {
   Location location = Location();
 

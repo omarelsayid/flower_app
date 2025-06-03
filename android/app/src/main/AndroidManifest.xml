@@ -2,8 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.flower_app">
 
-    <!-- Required permissions -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- For Android 13+ -->
 
     <!-- Optional: Needed for FCM to work properly -->
@@ -15,9 +16,8 @@
         android:icon="@mipmap/ic_launcher">
 
         <!-- Google Maps API Key -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDTfammkGjt7pCFRQnMA_KOdl6Zwx6rWFE" />
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA58V9xiOqj_f8bCkjNxnUl4G5Jf86kRtc"/>
 
         <!-- Flutter MainActivity -->
         <activity
