@@ -21,7 +21,6 @@ dependencies:
   image_picker: ^1.1.2
   injectable: null
   internet_connection_checker: ^3.0.1
-  skeletonizer: ^2.0.1
   json_annotation: ^4.9.0
   mime: ^2.0.0
   mockito: ^5.4.5
@@ -47,8 +46,9 @@ dependencies:
   timelines_plus: ^1.0.6
   order_tracker: ^0.0.2
   cloud_firestore: ^5.6.7
-  intl: ^0.20.0
   flutter_polyline_points: ^2.1.0
+  skeletonizer:
+  intl:
 
 
 
