@@ -21,7 +21,7 @@ dependencies:
   image_picker: ^1.1.2
   injectable: null
   internet_connection_checker: ^3.0.1
-  skeletonizer: ^1.4.3
+  skeletonizer: ^2.0.1
   json_annotation: ^4.9.0
   mime: ^2.0.0
   mockito: ^5.4.5
@@ -43,11 +43,11 @@ dependencies:
   firebase_messaging: ^15.2.5
   flutter_local_notifications:
   flutter_svg: ^2.1.0
-  flutter_localization: ^0.3.2
+  flutter_localization: any
   timelines_plus: ^1.0.6
   order_tracker: ^0.0.2
   cloud_firestore: ^5.6.7
-  intl: ^0.19.0
+  intl: ^0.20.0
   flutter_polyline_points: ^2.1.0
 
 

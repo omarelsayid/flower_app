@@ -65,7 +65,7 @@ class _CartTabState extends State<CartTab> {
             );
           } else if (state is GetUserCartSuccess) {
             final userCart = state.userCartEntity;
-            if (userCart.cart.cartItems.isEmpty) {
+            if (userCart.cart!.cartItems!.isEmpty) {
               return Scaffold(
                 appBar: AppBar(
                   title: Text("Cart", style: AppTextStyles.inter500_20),
@@ -106,10 +106,11 @@ class _CartTabState extends State<CartTab> {
               );
             } else {
               final cart = userCart.cart;
-              double subTotal = cart.cartItems.fold<double>(
+              double subTotal = cart!.cartItems!.fold<double>(
                 0,
                 (previousValue, element) =>
-                    previousValue + (element.product.price * element.quantity),
+                    previousValue +
+                    (element.product?.price ?? 0.0 * element.quantity!),
               );
               double deliveryFee = 10.0;
               double total = subTotal + deliveryFee;
@@ -121,7 +122,7 @@ class _CartTabState extends State<CartTab> {
                       Text("Cart", style: AppTextStyles.inter500_20),
                       const SizedBox(width: 2),
                       Text(
-                        "(${cart.cartItems.length} items)",
+                        "(${cart.cartItems?.length} items)",
                         style: AppTextStyles.inter500_16.copyWith(
                           color: AppColors.greyColor,
                         ),
@@ -165,9 +166,9 @@ class _CartTabState extends State<CartTab> {
                       // Cart Items
                       Expanded(
                         child: ListView.builder(
-                          itemCount: cart.cartItems.length,
+                          itemCount: cart.cartItems?.length,
                           itemBuilder: (context, index) {
-                            final cartItem = cart.cartItems[index];
+                            final cartItem = cart.cartItems?[index];
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               child: BlocConsumer<
@@ -193,21 +194,22 @@ class _CartTabState extends State<CartTab> {
                                       context
                                           .read<DeleteSpecificItemCubit>()
                                           .deleteSpecificItem(
-                                            cartItem.product.id,
+                                            cartItem!.product!.id!,
                                           );
                                     },
                                     () {
-                                      final newQuantity = cartItem.quantity + 1;
+                                      final newQuantity = cartItem.quantity! + 1;
                                       context
                                           .read<UpdateQuantityCubit>()
                                           .updateQuantity(
-                                            cartItem.product.id,
+                                            cartItem.product!.id!,
                                             newQuantity,
                                           );
                                     },
                                     () {
                                       // on decrement
-                                      final newQuantity = cartItem.quantity - 1;
+                                      final newQuantity =
+                                          cartItem.quantity! - 1;
                                       if (newQuantity < 1) {
                                         ScaffoldMessenger.of(
                                           context,
@@ -223,11 +225,11 @@ class _CartTabState extends State<CartTab> {
                                       context
                                           .read<UpdateQuantityCubit>()
                                           .updateQuantity(
-                                            cartItem.product.id,
+                                            cartItem.product!.id!,
                                             newQuantity,
                                           );
                                     },
-                                    cartItem,
+                                    cartItem!,
                                   );
                                 },
                               ),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
+import 'package:flower_app/core/routes_generator/pages_routes.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/text_styles.dart';
 import 'package:flower_app/features/orders/presentation/views/widgets/custom_card_driver.dart';
@@ -80,7 +81,9 @@ class TrackOrderScreen extends StatelessWidget {
                 CustomCardDriver(index: statusIndex),
                 const Spacer(),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, PagesRoutes.routeViewrScreen);
+                  },
                   child: Text(
                     "Show Map",
                     style: AppTextStyles.inter600_18.copyWith(

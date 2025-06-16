@@ -105,6 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
       "Enter your Password",
     ),
+    "estimatedArrival": MessageLookupByLibrary.simpleMessage(
+      "Estimated arrival",
+    ),
     "female": MessageLookupByLibrary.simpleMessage("Female"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
     "firstName": MessageLookupByLibrary.simpleMessage("First name"),
@@ -119,6 +122,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "highest_Price": MessageLookupByLibrary.simpleMessage("Highest Prise"),
     "instant": MessageLookupByLibrary.simpleMessage("Instant"),
+    "isYourDeliveryHereForToday": MessageLookupByLibrary.simpleMessage(
+      "Is your delivery here for today",
+    ),
     "itIsAGift": MessageLookupByLibrary.simpleMessage("It is a gift"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
@@ -174,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "saved_addresses": MessageLookupByLibrary.simpleMessage("Saved Addresses"),
     "schedule": MessageLookupByLibrary.simpleMessage("Schedule"),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "showMap": MessageLookupByLibrary.simpleMessage("Show map"),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signUp": MessageLookupByLibrary.simpleMessage("Sign up"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("Sign up"),

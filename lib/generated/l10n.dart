@@ -28,10 +28,9 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -863,6 +862,31 @@ class S {
   /// `Track Order`
   String get TrackOrder {
     return Intl.message('Track Order', name: 'TrackOrder', desc: '', args: []);
+  }
+
+  /// `Estimated arrival`
+  String get estimatedArrival {
+    return Intl.message(
+      'Estimated arrival',
+      name: 'estimatedArrival',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Is your delivery here for today`
+  String get isYourDeliveryHereForToday {
+    return Intl.message(
+      'Is your delivery here for today',
+      name: 'isYourDeliveryHereForToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show map`
+  String get showMap {
+    return Intl.message('Show map', name: 'showMap', desc: '', args: []);
   }
 }
 

@@ -103,6 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterYourPassword": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة المرور",
     ),
+    "estimatedArrival": MessageLookupByLibrary.simpleMessage("وقت الوصول"),
     "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "filter": MessageLookupByLibrary.simpleMessage("بحث"),
     "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
@@ -117,6 +118,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "haveAccount": MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
     "highest_Price": MessageLookupByLibrary.simpleMessage("اعلى سعر"),
     "instant": MessageLookupByLibrary.simpleMessage("فوري"),
+    "isYourDeliveryHereForToday": MessageLookupByLibrary.simpleMessage(
+      "هل تسليمك اليوم",
+    ),
     "itIsAGift": MessageLookupByLibrary.simpleMessage("إنها هدية"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
@@ -169,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "العناوين المحفوظة",
     ),
     "schedule": MessageLookupByLibrary.simpleMessage("مجدولة"),
+    "showMap": MessageLookupByLibrary.simpleMessage("عرض الخريطة"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "signUpLink": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
