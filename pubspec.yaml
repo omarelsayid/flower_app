@@ -46,9 +46,9 @@ dependencies:
   timelines_plus: ^1.0.6
   order_tracker: ^0.0.2
   cloud_firestore: ^5.6.7
-  intl: ^0.20.0
   flutter_polyline_points: ^2.1.0
   skeletonizer:
+  intl: ^0.20.2
 
 
 
