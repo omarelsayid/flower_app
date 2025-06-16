@@ -2,6 +2,7 @@ import 'package:flower_app/core/common/get_resposive_height_and_width.dart';
 import 'package:flower_app/core/services/firestore_service.dart';
 import 'package:flower_app/core/utils/app_colors.dart';
 import 'package:flower_app/core/utils/app_icons.dart';
+import 'package:flower_app/core/utils/constant_manager.dart';
 import 'package:flower_app/features/orders/data/model/driver_location_model.dart';
 import 'package:flower_app/features/orders/data/model/location_info.dart';
 import 'package:flower_app/features/orders/presentation/views/widgets/bottom_info_card.dart';
@@ -59,7 +60,16 @@ class _RouteViewState extends State<RouteView> {
 
     context.read<RouteCubit>().loadRoute(driverLatLng: userLatLng);
   }
+  Future<void> _onMapCreated(GoogleMapController controller) async {
+    _mapController = controller;
+    final style =
+    await DefaultAssetBundle.of(context).loadString(AppConstants.mapStyle);
+    _mapController.setMapStyle(style);
+    _isMapControllerReady = true;
+    _tryAnimateToRouteBounds();
+    _loadCorrectRoute();
 
+  }
   void _tryAnimateToRouteBounds() {
     if (!_isMapControllerReady || _hasAnimatedCamera) return;
 
@@ -112,12 +122,7 @@ class _RouteViewState extends State<RouteView> {
 
                     return GoogleMap(
                       initialCameraPosition: _initPos,
-                      onMapCreated: (controller) {
-                        _mapController = controller;
-                        _isMapControllerReady = true;
-                        _tryAnimateToRouteBounds();
-                        _loadCorrectRoute();
-                      },
+                      onMapCreated: _onMapCreated,
                       markers: state is RouteLoaded ? state.markers : {},
                       polylines: state is RouteLoaded ? state.polyLines : {},
                       myLocationEnabled: true,

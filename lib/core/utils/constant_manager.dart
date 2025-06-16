@@ -13,4 +13,7 @@ class AppConstants {
   static const String areaKey = "area";
   static const String cityKey = "city";
   static const String locationKey = "location";
+
+  static const String mapStyle = "assets/map_styles/map_style.json";
+
 }
