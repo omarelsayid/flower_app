@@ -25,13 +25,13 @@ class GetUserCartCubit extends Cubit<GetUserCartState> {
         if (result.data != null) {
           final cartData = result.data!;
           log("Number of Cart Items: ${cartData.numOfCartItems}");
-          log("User: ${cartData.cart.user}");
-          log("Total Items in the cart: ${cartData.cart.cartItems.length}");
+          log("User: ${cartData.cart?.user}");
+          log("Total Items in the cart: ${cartData.cart?.cartItems?.length}");
 
           // Safely log the first item's product title (if there is an item)
-          if (cartData.cart.cartItems.isNotEmpty) {
+          if (cartData.cart!.cartItems!.isNotEmpty) {
             log(
-              "First Product Title: ${cartData.cart.cartItems[0].product.title}",
+              "First Product Title: ${cartData.cart?.cartItems?[0].product?.title}",
             );
           } else {
             log("Cart is empty, no product to log.");

@@ -9,9 +9,11 @@ part of 'user_cart_response_model.dart';
 UserCartResponseModel _$UserCartResponseModelFromJson(
         Map<String, dynamic> json) =>
     UserCartResponseModel(
-      message: json['message'] as String,
-      numOfCartItems: (json['numOfCartItems'] as num).toInt(),
-      cart: CartModel.fromJson(json['cart'] as Map<String, dynamic>),
+      message: json['message'] as String?,
+      numOfCartItems: (json['numOfCartItems'] as num?)?.toInt(),
+      cart: json['cart'] == null
+          ? null
+          : CartModel.fromJson(json['cart'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserCartResponseModelToJson(

@@ -30,7 +30,7 @@ class CartItemWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.network(
-                userCartItem.product.imgCover,
+                userCartItem.product?.imgCover ?? '',
                 width: 85,
                 height: 85,
                 fit: BoxFit.cover,
@@ -45,7 +45,7 @@ class CartItemWidget extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          userCartItem.product.title,
+                          userCartItem.product?.title?? 'No Title' ,
                           style: AppTextStyles.inter500_16,
                         ),
                       ),
@@ -57,14 +57,14 @@ class CartItemWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    userCartItem.product.slug,
+                    userCartItem.product?.slug ?? 'No Slug',
                     style: AppTextStyles.inter500_13,
                   ),
                   const SizedBox(height: 8),
                   Row(
                     children: [
                       Text(
-                        userCartItem.product.price.toString(),
+                        userCartItem.product?.price.toString() ?? '0',
                         style: AppTextStyles.inter500_16,
                       ),
                       const Spacer(),
